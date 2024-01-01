@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Login from "../shared/Auth/Login";
 // import Signup from "../shared/Auth/Signup";
 // import Verification from "../shared/Auth/Verification";
 // import ForgotPassword from "../shared/Auth/ForgotPassword";
@@ -21,7 +20,8 @@ const AuthScreen = ({ setOpen }: { setOpen: (e: boolean) => void }) => {
     >
       <div className="w-[500px] bg-slate-900 rounded shadow-sm p-3">
         {activeState === "Login" && (
-          <Login setActiveState={setActiveState} setOpen={setOpen} />
+          // <Login setActiveState={setActiveState} setOpen={setOpen} />
+          <div>dasda</div>
         )}
         {/*{activeState === "Signup" && <Signup setActiveState={setActiveState} />}*/}
         {/*{activeState === "Verification" && (*/}
