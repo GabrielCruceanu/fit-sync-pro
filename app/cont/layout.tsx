@@ -1,6 +1,6 @@
 import { Footer, Header } from "@/modules/layout";
 
-export default function StaticLayout({
+export default function AccountLayout({
   children,
 }: {
   children: React.ReactNode;

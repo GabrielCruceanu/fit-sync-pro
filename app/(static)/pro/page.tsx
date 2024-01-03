@@ -1,4 +1,4 @@
-import ProScreen from "@/screens/ProScreen";
+import { ProScreen } from "@/modules/pro";
 
 export default function ProPage() {
   return (

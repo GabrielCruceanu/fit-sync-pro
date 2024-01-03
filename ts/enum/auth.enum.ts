@@ -1,6 +1,8 @@
 export enum AuthProvider {
   Google = "google",
   Facebook = "facebook",
+  Apple = "apple",
+  Email = "email",
 }
 
 export enum AuthInputError {
