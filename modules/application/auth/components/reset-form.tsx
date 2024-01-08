@@ -25,6 +25,15 @@ export function UserResetPasswordForm({
   className,
   ...props
 }: UserAuthFormProps) {
+  const [emailValue, setEmailValue] = React.useState("");
+  const validateEmail = (value: string) =>
+    value.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i);
+
+  const isInvalid = React.useMemo(() => {
+    if (emailValue === "") return false;
+
+    return validateEmail(emailValue) ? false : true;
+  }, [emailValue]);
   const supabase = createClient();
   const {
     register,
@@ -72,21 +81,22 @@ export function UserResetPasswordForm({
               id="email"
               placeholder="nume@domeniu.ro"
               type="email"
-              label="email"
+              label="Email"
+              value={emailValue}
               autoCapitalize="none"
               autoComplete="email"
               autoCorrect="off"
+              variant="bordered"
               disabled={isLoading}
               {...register("email")}
+              color={isInvalid ? "danger" : "default"}
+              isInvalid={isInvalid}
+              onValueChange={setEmailValue}
+              errorMessage={errors?.email?.message}
             />
-            {errors?.email && (
-              <p className="px-1 text-xs text-red-600">
-                {errors.email.message}
-              </p>
-            )}
           </div>
 
-          <Button disabled={isLoading} type={"submit"}>
+          <Button disabled={isLoading} type={"submit"} color={"primary"}>
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}

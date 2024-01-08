@@ -5,6 +5,12 @@ export enum AuthProvider {
   Email = "email",
 }
 
+export enum AuthType {
+  Login = "login",
+  Register = "register",
+  LostPassword = "lost-password",
+}
+
 export enum AuthInputError {
   UserAlreadyRegistered = "Userul exista deja",
   EmailAlreadyRegistered = "Adresa de email exista deja",

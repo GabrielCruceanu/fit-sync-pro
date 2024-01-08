@@ -1,11 +1,13 @@
 import { create } from "zustand";
 import { createClient } from "@/utils/supabase/client";
 import { User } from "@supabase/gotrue-js";
+import { Database } from "@/ts/supabase";
+import { TypedUserDetails } from "@/ts/types";
 
 type State = {
   isLoading: boolean;
   setLoading: (loading: boolean) => void;
-  user: User | null;
+  user: TypedUserDetails | null;
   userActions: {
     updateUser: (updatedUser: any) => void;
     fetchUser: () => Promise<void>;
@@ -36,15 +38,14 @@ export const useStore = create<State>()((set) => ({
         isLoading: true,
       }));
 
-      const {
-        data: { user },
-        error,
-      } = await supabase.auth.getUser();
+      const { data: users, error } = await supabase.from("users").select("*");
 
-      set((state) => ({
-        ...state,
-        user: user,
-      }));
+      if (users) {
+        set((state) => ({
+          ...state,
+          user: users[0],
+        }));
+      }
 
       set((state) => ({
         ...state,

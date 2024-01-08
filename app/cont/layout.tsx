@@ -1,15 +1,9 @@
-import { Footer, Header } from "@/modules/layout";
+import { LayoutScreen } from "@/modules/application/layout/LayoutScreen";
 
 export default function AccountLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <>
-      <Header />
-      {children}
-      <Footer />
-    </>
-  );
+  return <LayoutScreen>{children}</LayoutScreen>;
 }
