@@ -1,6 +1,6 @@
 import { UserSignUpForm } from "@/modules/application/auth/components/signup-form";
 import Link from "next/link";
-import { PagesLinks, TermsLinks } from "@/constants/links";
+import { WebsiteLinks, TermsLinks, ApplicationLinks } from "@/constants/links";
 import HeaderForm from "@/modules/application/auth/components/header-form";
 import { AuthType } from "@/ts/enum";
 
@@ -45,16 +45,16 @@ export function SingUp() {
 
             <p className="flex justify-between  text-sm text-muted-foreground">
               <Link
-                href={PagesLinks.login.link}
+                href={ApplicationLinks.login.link}
                 className="underline underline-offset-4 hover:text-primary transition-all"
               >
-                {PagesLinks.login.name}
+                {ApplicationLinks.login.name}
               </Link>
               <Link
-                href={PagesLinks.forgotPassword.link}
+                href={ApplicationLinks.forgotPassword.link}
                 className="underline underline-offset-4 hover:text-primary transition-all"
               >
-                {PagesLinks.forgotPassword.name}
+                {ApplicationLinks.forgotPassword.name}
               </Link>
             </p>
           </div>

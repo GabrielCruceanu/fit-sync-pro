@@ -1,11 +1,11 @@
 import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { PagesLinks } from "@/constants/links";
-import ProfileDropDown from "@/modules/layout/components/ProfileDropdown";
+import { ApplicationLinks } from "@/constants/links";
 import { Database } from "@/ts/supabase";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { TypedUserDetails } from "@/ts/types";
+import ProfileDropDown from "@/modules/static/layout/components/ProfileDropdown";
 
 export default async function AuthButton() {
   const supabase = createServerComponentClient<Database>({ cookies });
@@ -23,7 +23,7 @@ export default async function AuthButton() {
   return (
     <ProfileDropDown user={user}>
       <form action={signOut}>
-        <button>{PagesLinks.logout.name}</button>
+        <button>{ApplicationLinks.logout.name}</button>
       </form>
     </ProfileDropDown>
   );

@@ -12,7 +12,7 @@ import {
   AuthErrorMessage,
   checkErrorMessage,
 } from "@/lib/validations/error-check";
-import { PagesLinks } from "@/constants/links";
+import { ApplicationLinks } from "@/constants/links";
 import { createClient } from "@/utils/supabase/client";
 import { toast } from "@/components/use-toast";
 import { AuthProvider } from "@/ts/enum";
@@ -87,7 +87,7 @@ export function UserSignUpForm({ className, ...props }: UserAuthFormProps) {
       setIsLoading(false);
 
       if (!error && user) {
-        router.replace(PagesLinks.login.link);
+        router.replace(ApplicationLinks.login.link);
 
         return toast({
           title: AuthErrorMessage.SuccessSignUp.title,
@@ -122,7 +122,7 @@ export function UserSignUpForm({ className, ...props }: UserAuthFormProps) {
             access_type: "offline",
             prompt: "consent",
           },
-          redirectTo: PagesLinks.profile.link,
+          redirectTo: ApplicationLinks.profile.link,
         },
       });
       if (error) {

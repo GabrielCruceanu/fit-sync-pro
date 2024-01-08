@@ -1,8 +1,8 @@
 import { Button } from "@nextui-org/button";
 import { cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
-import AuthBox from "@/modules/home/components/AuthBox";
 import { cn } from "@nextui-org/react";
+import AuthBox from "@/modules/static/home/components/AuthBox";
 
 export default async function HomeHero() {
   const cookieStore = cookies();

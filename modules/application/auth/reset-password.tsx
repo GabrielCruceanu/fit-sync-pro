@@ -1,6 +1,6 @@
 import { UserResetPasswordForm } from "@/modules/application/auth/components/reset-form";
 import Link from "next/link";
-import { PagesLinks } from "@/constants/links";
+import { ApplicationLinks } from "@/constants/links";
 import { AuthType } from "@/ts/enum";
 import HeaderForm from "@/modules/application/auth/components/header-form";
 
@@ -29,16 +29,16 @@ export function ResetPassword() {
             <UserResetPasswordForm />
             <p className="flex justify-between  text-sm text-muted-foreground">
               <Link
-                href={PagesLinks.signUp.link}
+                href={ApplicationLinks.signUp.link}
                 className="underline underline-offset-4 hover:text-primary transition-all"
               >
-                {PagesLinks.signUp.name}
+                {ApplicationLinks.signUp.name}
               </Link>
               <Link
-                href={PagesLinks.login.link}
+                href={ApplicationLinks.login.link}
                 className="underline underline-offset-4 hover:text-primary transition-all"
               >
-                {PagesLinks.login.name}
+                {ApplicationLinks.login.name}
               </Link>
             </p>
           </div>

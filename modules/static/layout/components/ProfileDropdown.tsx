@@ -6,7 +6,7 @@ import {
   DropdownMenu,
   DropdownTrigger,
 } from "@nextui-org/react";
-import { PagesLinks } from "@/constants/links";
+import { ApplicationLinks } from "@/constants/links";
 import Link from "next/link";
 import { TypedUserDetails } from "@/ts/types";
 
@@ -38,10 +38,10 @@ const ProfileDropDown = ({
               </p>
             </DropdownItem>
             <DropdownItem
-              href={PagesLinks.account.link}
-              key={PagesLinks.account.name}
+              href={ApplicationLinks.settings.link}
+              key={ApplicationLinks.settings.name}
             >
-              {PagesLinks.account.name}
+              {ApplicationLinks.settings.name}
             </DropdownItem>
             <DropdownItem key="logout" color="danger">
               {children}
@@ -51,9 +51,9 @@ const ProfileDropDown = ({
       ) : (
         <Link
           className="inline-flex items-center py-3 px-5 font-medium text-center text-white rounded-lg bg-primary-500 hover:bg-primary-600 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary dark:hover:bg-primary-600 dark:focus:ring-primary-700"
-          href={PagesLinks.login.link}
+          href={ApplicationLinks.login.link}
         >
-          {PagesLinks.login.name}
+          {ApplicationLinks.login.name}
         </Link>
         // <Dropdown
         //   placement="bottom-end"

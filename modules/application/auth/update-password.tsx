@@ -1,7 +1,7 @@
 // import ClientReduxProviderWrapper from '@/components/shared/client-redux-provider-wrapper';
 import { UserLoginForm } from "@/modules/application/auth/components/login-form";
 import Link from "next/link";
-import { PagesLinks } from "@/constants/links";
+import { ApplicationLinks } from "@/constants/links";
 import HeaderForm from "@/modules/application/auth/components/header-form";
 import { AuthType } from "@/ts/enum";
 
@@ -33,16 +33,16 @@ export function UpdatePassword() {
             {/*</ClientReduxProviderWrapper>*/}
             <p className="flex justify-between  text-sm text-muted-foreground">
               <Link
-                href={PagesLinks.signUp.link}
+                href={ApplicationLinks.signUp.link}
                 className="underline underline-offset-4 hover:text-primary transition-all"
               >
-                {PagesLinks.signUp.name}
+                {ApplicationLinks.signUp.name}
               </Link>
               <Link
-                href={PagesLinks.login.link}
+                href={ApplicationLinks.login.link}
                 className="underline underline-offset-4 hover:text-primary transition-all"
               >
-                {PagesLinks.login.name}
+                {ApplicationLinks.login.name}
               </Link>
             </p>
           </div>

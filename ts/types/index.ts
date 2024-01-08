@@ -3,7 +3,7 @@ import { Database } from "@/ts/supabase";
 
 export type { AuthState, AuthUser, AuthError } from "./auth";
 
-export type { DashboardConfig } from "./dashboard";
+export type { DashboardConfig, UserLayout } from "./dashboard";
 export type { NavItem, SidebarNavItem, MainNavItem } from "./navigation";
 
 export type { TrainerDetails, NutritionistDetails } from "./details";

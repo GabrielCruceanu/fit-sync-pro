@@ -14,7 +14,7 @@ import {
 } from "@/lib/validations/error-check";
 import { AuthProvider } from "@/ts/enum";
 import { createClient } from "@/utils/supabase/client";
-import { PagesLinks } from "@/constants/links";
+import { ApplicationLinks } from "@/constants/links";
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/react";
 import { Icons } from "@/components/icons";
@@ -82,7 +82,7 @@ export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
         return toast(errorToast);
       }
 
-      location.replace(PagesLinks.account.link);
+      location.replace(ApplicationLinks.settings.link);
     } catch (error: any) {
       console.log("Error thrown:", error.message);
 

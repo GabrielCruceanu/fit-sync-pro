@@ -10,9 +10,9 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
 } from "@nextui-org/react";
-import NavItems from "@/modules/layout/components/NavItems";
+import NavItems from "./NavItems";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
-import { PagesLinks } from "@/constants/links";
+import { ApplicationLinks } from "@/constants/links";
 import { CircleUserRound } from "lucide-react";
 import React from "react";
 import { usePathname } from "next/navigation";
@@ -63,11 +63,11 @@ export default function NavigationBar({
           <Link
             className={cn(
               "w-full cursor-pointer",
-              pathname === PagesLinks.login.link
+              pathname === ApplicationLinks.login.link
                 ? "text-primary-500"
                 : "text-foreground",
             )}
-            href={PagesLinks.login.link}
+            href={ApplicationLinks.login.link}
             size="lg"
           >
             <CircleUserRound className="mr-2" />

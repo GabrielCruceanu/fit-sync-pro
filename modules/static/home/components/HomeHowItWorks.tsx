@@ -1,7 +1,7 @@
 import HowItWorkImage from "@/public/images/homepage/how-it-works.png";
 import Image from "next/image";
 import Link from "next/link";
-import { PagesLinks } from "@/constants/links";
+import { ApplicationLinks } from "@/constants/links";
 import {
   CalendarCheck,
   CircleUserRound,
@@ -28,7 +28,7 @@ export default function HomeHowItWorks() {
             pot ajuta clienții să își atingă obiectivele de fitness.
           </p>
           <Link
-            href={PagesLinks.login.link}
+            href={ApplicationLinks.signUp.link}
             className="mb-8 inline-flex items-center text-primary-600 hover:text-primary-800 dark:text-primary-500 dark:hover:text-primary-600"
           >
             Înregistrați-vă
