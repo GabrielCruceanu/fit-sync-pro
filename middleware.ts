@@ -18,7 +18,11 @@ export async function middleware(req: NextRequest) {
     user && req.nextUrl.pathname === "/autentificare",
   );
   // if user is signed in and the current path is / redirect the user to /account
-  if (user && req.nextUrl.pathname === PagesLinks.login.link) {
+  if (
+    (user && req.nextUrl.pathname === PagesLinks.login.link) ||
+    (user && req.nextUrl.pathname === PagesLinks.signUp.link) ||
+    (user && req.nextUrl.pathname === PagesLinks.forgotPassword.link)
+  ) {
     return NextResponse.redirect(new URL(PagesLinks.account.link, req.url));
   }
 
@@ -31,5 +35,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/autentificare", "/cont"],
+  matcher: ["/autentificare", "/inregistrare", "/resetare-parola", "/cont"],
 };
