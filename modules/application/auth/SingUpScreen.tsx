@@ -1,10 +1,10 @@
 import { UserSignUpForm } from "@/modules/application/auth/components/signup-form";
 import Link from "next/link";
-import { WebsiteLinks, TermsLinks, ApplicationLinks } from "@/constants/links";
+import { ApplicationLinks, TermsLinks } from "@/constants/links";
 import HeaderForm from "@/modules/application/auth/components/header-form";
 import { AuthType } from "@/ts/enum";
 
-export function SingUp() {
+export function SingUpScreen() {
   return (
     <div className="lg:flex justify-center items-center min-h-screen">
       <div className="w-full relative flex md:min-h-[800px] flex-col items-center justify-center md:grid lg:max-w-screen-xl lg:grid-cols-2 lg:px-0 lg:shadow-[0_3px_10px_rgb(0,0,0,0.2)] lg:rounded overflow-hidden">

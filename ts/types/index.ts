@@ -4,9 +4,19 @@ import { Database } from "@/ts/supabase";
 export type { AuthState, AuthUser, AuthError } from "./auth";
 
 export type { DashboardConfig, UserLayout } from "./dashboard";
+
 export type { NavItem, SidebarNavItem, MainNavItem } from "./navigation";
 
 export type { TrainerDetails, NutritionistDetails } from "./details";
+
+export type {
+  OnboardingClientDetails,
+  Location,
+  LocationDetails,
+  Birthdate,
+  FitnessAvailability,
+  Notifications,
+} from "./onboarding";
 
 export type TypedSupabaseClient = SupabaseClient<Database>;
 

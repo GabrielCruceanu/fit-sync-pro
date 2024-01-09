@@ -1,12 +1,11 @@
 import { Metadata } from "next";
-import { ResetPassword } from "@/modules/application/auth";
+import { ResetPasswordScreen } from "@/modules/application/auth";
 
 export const metadata: Metadata = {
-  title: "Resetare Parola",
+  title: "Resetare Parolă | FitSync",
   description:
-    "Introdu adresa de e-mail si parola in campurile de mai jos pentru a intra in cont.",
+    "FitSync este o platformă care dorește să îmbunătățească experiența clienților cu antrenorii și să facă munca antrenorilor mai ușoară oferindu-le mai multe unelte prin care își pot gestiona clienții mai ușor.",
 };
-
 export default function ResetPasswordPage() {
-  return <ResetPassword />;
+  return <ResetPasswordScreen />;
 }

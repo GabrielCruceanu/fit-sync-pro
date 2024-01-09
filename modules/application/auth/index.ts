@@ -1,4 +1,4 @@
-export { Login } from './login';
-export { ResetPassword } from './reset-password';
-export { SingUp } from './sing-up';
-export { UpdatePassword } from './update-password';
+export { LoginScreen } from "./LoginScreen";
+export { ResetPasswordScreen } from "./ResetPasswordScreen";
+export { SingUpScreen } from "./SingUpScreen";
+export { UpdatePasswordScreen } from "./UpdatePasswordScreen";

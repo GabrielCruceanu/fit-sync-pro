@@ -1,12 +1,12 @@
 import { Metadata } from "next";
-import { UpdatePassword } from "@/modules/application/auth";
+import { UpdatePasswordScreen } from "@/modules/application/auth";
 
 export const metadata: Metadata = {
-  title: "Actualizare parola",
+  title: "Actualizare parolă | FitSync",
   description:
-    "Introdu adresa de e-mail si parola in campurile de mai jos pentru a intra in cont.",
+    "FitSync este o platformă care dorește să îmbunătățească experiența clienților cu antrenorii și să facă munca antrenorilor mai ușoară oferindu-le mai multe unelte prin care își pot gestiona clienții mai ușor.",
 };
 
 export default function UpdatePasswordPage() {
-  return <UpdatePassword />;
+  return <UpdatePasswordScreen />;
 }

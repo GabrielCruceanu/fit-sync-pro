@@ -1,33 +1,32 @@
-import { UserLoginForm } from "@/modules/application/auth/components/login-form";
+import { UserResetPasswordForm } from "@/modules/application/auth/components/reset-form";
 import Link from "next/link";
 import { ApplicationLinks } from "@/constants/links";
-import HeaderForm from "./components/header-form";
 import { AuthType } from "@/ts/enum";
+import HeaderForm from "@/modules/application/auth/components/header-form";
 
-export function Login() {
+export function ResetPasswordScreen() {
   return (
     <div className="lg:flex justify-center items-center min-h-screen">
-      <div className="w-full relative flex md:min-h-[800px]  flex-col items-center justify-center md:grid lg:max-w-screen-xl lg:grid-cols-2 lg:px-0 lg:shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] lg:rounded overflow-hidden">
+      <div className="w-full relative flex md:min-h-[800px]  flex-col items-center justify-center md:grid lg:max-w-screen-xl lg:grid-cols-2 lg:px-0 lg:shadow-[0_3px_10px_rgb(0,0,0,0.2)] lg:rounded overflow-hidden">
         <HeaderForm
-          authType={AuthType.Login}
+          authType={AuthType.LostPassword}
           quote={
-            "If you don’t find the time, if you don’t do the work, you\n" +
-            "            don’t get the results."
+            "If something stands between you and your success, move it. Never be denied."
           }
-          author={"Arnold Schwarzenegger"}
+          author={"Dwayne “The Rock” Johnson"}
         />
-        <div className="container px-4 py-8 lg:p-8">
+        <div className="container p-4 py-8 lg:p-8">
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
             <div className="flex flex-col space-y-2 text-center">
               <h1 className="text-2xl font-semibold tracking-tight">
-                Autentificare
+                Resetare parolă
               </h1>
               <p className="text-sm text-muted-foreground">
-                Introduceți adresa de e-mail și parolă în câmpurile de mai jos
-                pentru a intră în cont.
+                Introduceți adresa de e-mail pentru a primi link-ul de resetare
+                parolă.
               </p>
             </div>
-            <UserLoginForm />
+            <UserResetPasswordForm />
             <p className="flex justify-between  text-sm text-muted-foreground">
               <Link
                 href={ApplicationLinks.signUp.link}
@@ -36,10 +35,10 @@ export function Login() {
                 {ApplicationLinks.signUp.name}
               </Link>
               <Link
-                href={ApplicationLinks.forgotPassword.link}
+                href={ApplicationLinks.login.link}
                 className="underline underline-offset-4 hover:text-primary transition-all"
               >
-                {ApplicationLinks.forgotPassword.name}
+                {ApplicationLinks.login.name}
               </Link>
             </p>
           </div>
