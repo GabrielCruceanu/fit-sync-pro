@@ -2,7 +2,6 @@ import "./globals.css";
 import { Providers } from "@/app/providers/NextUiProvider";
 import { Inter } from "next/font/google";
 import { defaultUrl } from "@/helpers/helpers";
-import "react-datepicker/dist/react-datepicker.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
