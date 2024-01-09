@@ -8,7 +8,7 @@ export default function StaticLayout({
   return (
     <>
       <Header />
-      {children}
+      <main>{children}</main>
       <Footer />
     </>
   );

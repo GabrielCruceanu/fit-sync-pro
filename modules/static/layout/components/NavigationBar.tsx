@@ -16,6 +16,7 @@ import { ApplicationLinks } from "@/constants/links";
 import { CircleUserRound } from "lucide-react";
 import React from "react";
 import { usePathname } from "next/navigation";
+import FitSyncLogo from "@/components/FitSyncLogo";
 
 export default function NavigationBar({
   children,
@@ -34,7 +35,7 @@ export default function NavigationBar({
     >
       <NavbarContent justify="start">
         <NavbarBrand>
-          <p className="font-bold text-inherit">FitSync</p>
+          <FitSyncLogo />
         </NavbarBrand>
       </NavbarContent>
 

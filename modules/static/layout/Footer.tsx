@@ -83,6 +83,15 @@ export function Footer() {
 
           <p className="mt-2 text-sm  text-gray-500 dark:text-gray-400 lg:text-right">
             © 2023 FitSync. <br /> Toate drepturile rezervate.
+            <br />
+            Powered by{" "}
+            <Link
+              href="https://kaapo.studio"
+              target="_blank"
+              className="text-primary-500 hover:text-primary-700"
+            >
+              Kaapo.Studio
+            </Link>
           </p>
         </div>
       </div>

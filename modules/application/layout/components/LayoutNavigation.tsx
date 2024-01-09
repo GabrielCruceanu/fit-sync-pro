@@ -15,6 +15,7 @@ import { LogoutButton } from "@/modules/application/layout/components/LogoutButt
 import { ApplicationLinks } from "@/constants/links";
 import { TypedUserDetails } from "@/ts/types";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
+import FitSyncLogo from "@/components/FitSyncLogo";
 
 export function LayoutNavigation({
   children,
@@ -47,9 +48,7 @@ export function LayoutNavigation({
             href={ApplicationLinks.dashboard.link}
             className="flex items-center"
           >
-            <span className="self-center text-2xl font-semibold whitespace-nowrap text-black dark:text-white ">
-              Fit<span className="text-primary">Sync</span>
-            </span>
+            <FitSyncLogo />
           </Link>
           <div className="flex items-center lg:order-2 min-w-[40px]">
             <ThemeSwitcher />

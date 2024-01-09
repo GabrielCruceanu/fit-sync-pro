@@ -14,7 +14,7 @@ export enum AuthType {
 export enum AuthInputError {
   UserAlreadyRegistered = "Userul exista deja",
   EmailAlreadyRegistered = "Adresa de email exista deja",
-  UsernameInvalid = 'Caractere invalide, poti folosi doar "a-z" si "0-9"',
+  UsernameInvalid = 'Caractere invalide, poti folosi doar "a-z", "0-9" si "_"',
   UsernameIsNotAvailable = "Numele de utilizator este luat.",
   InputRequired = "Acest camp este obligatoriu",
   OnlyLetter = 'Caractere invalide sau prea putine, foloseste doar "a-z"',
