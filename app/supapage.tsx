@@ -1,10 +1,10 @@
 import DeployButton from "../components/DeployButton";
-import AuthButton from "../modules/layout/components/AuthButton";
 import { createClient } from "@/utils/supabase/server";
 import ConnectSupabaseSteps from "@/components/ConnectSupabaseSteps";
 import SignUpUserSteps from "@/components/SignUpUserSteps";
 import Header from "@/components/Header";
 import { cookies } from "next/headers";
+import AuthButton from "@/modules/static/layout/components/AuthButton";
 
 export default async function Index() {
   const cookieStore = cookies();
@@ -38,7 +38,6 @@ export default async function Index() {
           {isSupabaseConnected ? <SignUpUserSteps /> : <ConnectSupabaseSteps />}
         </main>
       </div>
-
       <footer className="w-full border-t border-t-foreground/10 p-8 flex justify-center text-center text-xs">
         <p>
           Powered by{" "}
