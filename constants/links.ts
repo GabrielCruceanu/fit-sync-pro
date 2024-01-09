@@ -32,7 +32,7 @@ export const TermsLinks = {
   },
 };
 
-export const PagesLinks = {
+export const WebsiteLinks = {
   homePage: {
     link: "/",
     name: "Acasă",
@@ -57,6 +57,37 @@ export const PagesLinks = {
     link: "/blog",
     name: "Blog",
   },
+};
+
+export const ApplicationLinks = {
+  dashboard: {
+    link: "/dashboard",
+    name: "Tabloul de bord",
+  },
+  clientProgress: {
+    link: "/progress",
+    name: "Progress",
+  },
+  profile: {
+    link: "/profile",
+    name: "Profil",
+  },
+  messages: {
+    link: "/messages",
+    name: "Mesaje",
+  },
+  notifications: {
+    link: "/notifications",
+    name: "Notificări",
+  },
+  settings: {
+    link: "/settings",
+    name: "Setări",
+  },
+  onboarding: {
+    link: "/onboarding",
+    name: "Integrare",
+  },
   login: {
     link: "/autentificare",
     name: "Autentificare",
@@ -72,21 +103,5 @@ export const PagesLinks = {
   forgotPassword: {
     link: "/resetare-parola",
     name: "Resetare parolă",
-  },
-  physicalDetails: {
-    link: "/adaugare-masuratori",
-    name: "Progress",
-  },
-  profile: {
-    link: "/profil",
-    name: "Profil",
-  },
-  account: {
-    link: "/cont",
-    name: "Cont",
-  },
-  onboarding: {
-    link: "/integrare",
-    name: "Integrare",
   },
 };

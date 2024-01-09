@@ -1,10 +1,7 @@
-"use client";
-import * as React from "react";
-import { useRouter } from "next/navigation";
 import { Link } from "@nextui-org/react";
+import { WebsiteLinks } from "@/constants/links";
 
 export default function PostNotFound() {
-  const router = useRouter();
   return (
     <section className="bg-background h-screen flex justify-center items-center">
       <div className="h-fit max-w-screen-xl py-8 px-4 lg:py-16 lg:px-6">
@@ -17,13 +14,11 @@ export default function PostNotFound() {
           </p>
           <p className="mb-6 text-lg font-light ">
             Ne pare rău, nu putem găsi pagina respectivă. Veți găsi multe de
-            explorat pe pagina principala.
+            explorat pe pagina principală.
           </p>
           <Link
             className="w-full max-w-xl mx-auto flex cursor-pointer justify-center text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-500 dark:focus:ring-primary-700"
-            onClick={() => {
-              router.push("/");
-            }}
+            href={WebsiteLinks.homePage.link}
           >
             Acasă
           </Link>

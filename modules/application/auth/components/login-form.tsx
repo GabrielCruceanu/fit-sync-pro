@@ -14,12 +14,13 @@ import {
 } from "@/lib/validations/error-check";
 import { AuthProvider } from "@/ts/enum";
 import { createClient } from "@/utils/supabase/client";
-import { PagesLinks } from "@/constants/links";
+import { ApplicationLinks } from "@/constants/links";
 import { Input } from "@nextui-org/input";
-import { Button } from "@nextui-org/button";
+import { Button } from "@nextui-org/react";
 import { Icons } from "@/components/icons";
 import { Provider } from "@supabase/gotrue-js";
 import { toast } from "@/components/use-toast";
+import { EyeFilledIcon, EyeSlashFilledIcon } from "@nextui-org/shared-icons";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -28,6 +29,20 @@ type FormData = z.infer<typeof LoginSchema>;
 export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
   const supabase = createClient();
   const router = useRouter();
+  const [passwordIsVisible, setPasswordIsVisible] = React.useState(false);
+  const [emailValue, setEmailValue] = React.useState("");
+  const [passwordValue, setPasswordValue] = React.useState("");
+
+  const validateEmail = (value: string) =>
+    value.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i);
+
+  const isInvalid = React.useMemo(() => {
+    if (emailValue === "") return false;
+
+    return validateEmail(emailValue) ? false : true;
+  }, [emailValue]);
+  const togglePasswordVisibility = () =>
+    setPasswordIsVisible(!passwordIsVisible);
 
   const {
     register,
@@ -67,7 +82,7 @@ export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
         return toast(errorToast);
       }
 
-      location.replace(PagesLinks.account.link);
+      location.replace(ApplicationLinks.settings.link);
     } catch (error: any) {
       console.log("Error thrown:", error.message);
 
@@ -121,47 +136,60 @@ export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
               id="email"
               placeholder="nume@domeniu.ro"
               type="email"
-              label="email"
+              label="Email"
+              value={emailValue}
               autoCapitalize="none"
               autoComplete="email"
               autoCorrect="off"
+              variant="bordered"
               disabled={isLoading || isGoogleLoading || isFacebookLoading}
               {...register("email")}
+              color={isInvalid ? "danger" : "default"}
+              isInvalid={isInvalid}
+              onValueChange={setEmailValue}
+              errorMessage={errors?.email?.message}
             />
-            {errors?.email && (
-              <p className="px-1 text-xs text-red-600">
-                {errors.email.message}
-              </p>
-            )}
           </div>
 
           {/*Password*/}
           <div className="grid gap-1">
             <Input
               id="password"
+              label="Parola"
               placeholder="••••••••"
-              type="password"
-              label="Parolă"
               autoCapitalize="none"
               autoComplete="password"
               autoCorrect="off"
+              variant="bordered"
               disabled={isLoading || isGoogleLoading || isFacebookLoading}
+              value={passwordValue}
+              onValueChange={setPasswordValue}
+              endContent={
+                <button
+                  className="focus:outline-none"
+                  type="button"
+                  onClick={togglePasswordVisibility}
+                >
+                  {passwordIsVisible ? (
+                    <EyeSlashFilledIcon className="text-2xl text-default-400 pointer-events-none" />
+                  ) : (
+                    <EyeFilledIcon className="text-2xl text-default-400 pointer-events-none" />
+                  )}
+                </button>
+              }
+              type={passwordIsVisible ? "text" : "password"}
               {...register("password")}
+              color={errors?.password ? "danger" : "default"}
+              errorMessage={errors?.password?.message}
             />
-            {errors?.password && (
-              <p className="px-1 text-xs text-red-600">
-                {errors.password.message}
-              </p>
-            )}
           </div>
 
-          <Button disabled={isLoading} type={"submit"}>
+          <Button disabled={isLoading} type={"submit"} color="primary">
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
             Autentificare
           </Button>
-
           {/*Social Login*/}
           <div className="relative">
             <div className="absolute inset-0 flex items-center">

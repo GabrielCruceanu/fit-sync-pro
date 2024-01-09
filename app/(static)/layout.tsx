@@ -1,4 +1,4 @@
-import { Footer, Header } from "@/modules/layout";
+import { Footer, Header } from "@/modules/static/layout";
 
 export default function StaticLayout({
   children,

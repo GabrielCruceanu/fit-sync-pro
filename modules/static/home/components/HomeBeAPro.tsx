@@ -1,5 +1,5 @@
 import { Link } from "@nextui-org/react";
-import { PagesLinks } from "@/constants/links";
+import { WebsiteLinks } from "@/constants/links";
 
 export default function HomeBeAPro() {
   return (
@@ -17,7 +17,7 @@ export default function HomeBeAPro() {
             prin listarea pe platforma FitSync?
           </p>
           <Link
-            href={PagesLinks.proPage.link}
+            href={WebsiteLinks.proPage.link}
             className="text-white bg-primary-500 hover:bg-primary-600 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
           >
             Detalii

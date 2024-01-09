@@ -12,7 +12,7 @@ import {
   AuthErrorMessage,
   checkErrorMessage,
 } from "@/lib/validations/error-check";
-import { PagesLinks } from "@/constants/links";
+import { ApplicationLinks } from "@/constants/links";
 import { createClient } from "@/utils/supabase/client";
 import { toast } from "@/components/use-toast";
 import { AuthProvider } from "@/ts/enum";
@@ -34,6 +34,7 @@ export function UserSignUpForm({ className, ...props }: UserAuthFormProps) {
     React.useState(false);
   const [emailValue, setEmailValue] = React.useState("");
   const [passwordValue, setPasswordValue] = React.useState("");
+  const [confirmPasswordValue, setConfirmPasswordValue] = React.useState("");
 
   const validateEmail = (value: string) =>
     value.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i);
@@ -61,7 +62,6 @@ export function UserSignUpForm({ className, ...props }: UserAuthFormProps) {
 
   async function onSubmit(formData: FormData) {
     const { email, password, confirmPassword } = formData;
-    console.log("formData", formData);
     setIsLoading(true);
     try {
       if (password !== confirmPassword) {
@@ -87,7 +87,7 @@ export function UserSignUpForm({ className, ...props }: UserAuthFormProps) {
       setIsLoading(false);
 
       if (!error && user) {
-        router.replace(PagesLinks.login.link);
+        router.replace(ApplicationLinks.login.link);
 
         return toast({
           title: AuthErrorMessage.SuccessSignUp.title,
@@ -122,7 +122,7 @@ export function UserSignUpForm({ className, ...props }: UserAuthFormProps) {
             access_type: "offline",
             prompt: "consent",
           },
-          redirectTo: PagesLinks.profile.link,
+          redirectTo: ApplicationLinks.profile.link,
         },
       });
       if (error) {
@@ -179,6 +179,8 @@ export function UserSignUpForm({ className, ...props }: UserAuthFormProps) {
               autoCorrect="off"
               variant="bordered"
               disabled={isLoading || isGoogleLoading || isFacebookLoading}
+              value={passwordValue}
+              onValueChange={setPasswordValue}
               endContent={
                 <button
                   className="focus:outline-none"
@@ -206,6 +208,8 @@ export function UserSignUpForm({ className, ...props }: UserAuthFormProps) {
               label="Confirma Parola"
               placeholder="••••••••"
               variant="bordered"
+              value={confirmPasswordValue}
+              onValueChange={setConfirmPasswordValue}
               endContent={
                 <button
                   className="focus:outline-none"
@@ -230,7 +234,7 @@ export function UserSignUpForm({ className, ...props }: UserAuthFormProps) {
             />
           </div>
 
-          <Button disabled={isLoading} type={"submit"}>
+          <Button disabled={isLoading} type={"submit"} color={"primary"}>
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}

@@ -1,6 +1,6 @@
 import React from "react";
-import AuthButton from "@/modules/layout/components/AuthButton";
-import NavigationBar from "@/modules/layout/components/NavigationBar";
+import AuthButton from "./components/AuthButton";
+import NavigationBar from "./components/NavigationBar";
 
 export function Header() {
   return (
