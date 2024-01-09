@@ -89,19 +89,23 @@ export const ApplicationLinks = {
     name: "Integrare",
   },
   login: {
-    link: "/autentificare",
+    link: "/login",
     name: "Autentificare",
   },
   logout: {
-    link: "/autentificare",
+    link: "/login",
     name: "Iesire din cont",
   },
   signUp: {
-    link: "/inregistrare",
+    link: "/sign-up",
     name: "Înregistrare",
   },
   forgotPassword: {
-    link: "/resetare-parola",
+    link: "/reset-password",
     name: "Resetare parolă",
+  },
+  updatePassword: {
+    link: "/update-password",
+    name: "Actualizare parolă",
   },
 };
