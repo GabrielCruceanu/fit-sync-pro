@@ -8,7 +8,7 @@ export function Welcome() {
   const updateOnboardingType = useStore((state) => state.updateOnboardingType);
   return (
     <OnboardingLayout
-      image={"/images/auth/forgot-password.jpg"}
+      image={"/images/onboarding/welcome.jpg"}
       author={"Ray Lewis, American Football Player"}
       quote={
         "But effort? Nobody can judge that because effort is between you and you."

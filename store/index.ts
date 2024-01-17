@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { createClient } from "@/utils/supabase/client";
+import { createClient } from "@/utils/supabase/create-client";
 import { OnboardingClientDetails, TypedUserDetails } from "@/ts/types";
 import { Onboarding } from "@/ts/types/onboarding";
 import { OnboardClientSteps, OnboardingType } from "@/ts/enum";
@@ -78,6 +78,8 @@ export const useStore = create<State>()(
         onboardingDetails: {
           clientSteps: OnboardClientSteps.PersonalDetails,
           username: undefined,
+          firstname: undefined,
+          lastname: undefined,
           phoneNumber: undefined,
           birthdate: undefined,
           gender: undefined,
@@ -85,13 +87,19 @@ export const useStore = create<State>()(
           weight: undefined,
           goals: undefined,
           foodPreferences: undefined,
-          isFoodAllergies: undefined,
+          haveFoodAllergies: undefined,
           foodAllergiesDescription: undefined,
           fitnessExperience: undefined,
-          fitnessPreferences: undefined,
-          fitnessAvailability: undefined,
+          trainingLocation: undefined,
+          trainingPhysicalPreferences: undefined,
+          trainingOnlinePreferences: undefined,
+          trainingAvailabilityDays: undefined,
+          trainingAvailabilityTime: undefined,
           locationDetails: undefined,
-          notifications: undefined,
+          notificationsWorkout: true,
+          notificationsNutrition: true,
+          newsAndActualizations: true,
+          offersAndPromotions: true,
         },
       },
       updateOnboardingType: (updatedOnboardingType) =>

@@ -68,14 +68,14 @@ export function LayoutNavigation({
           <div className="overflow-y-auto py-5 px-3 h-full bg-white dark:bg-background">
             <div className="flex flex-col items-center">
               <UserNavigation
-                imgUrl={user?.profile_picture_url}
+                imgUrl={user?.profilePictureUrl}
                 fullName={
-                  user?.first_name && user?.last_name
-                    ? user?.first_name + " " + user?.last_name
+                  user?.firstName && user?.lastName
+                    ? user?.firstName + " " + user?.lastName
                     : "Anonymous"
                 }
                 username={user?.username ? user?.username : "anonymous"}
-                userType={user?.user_type ? user?.user_type : "Client"}
+                userType={user?.userType ? user?.userType : "Client"}
               />
             </div>
             <ul className="pt-5 mt-5 border-t border-gray-200 dark:border-gray-700">

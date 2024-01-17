@@ -42,7 +42,7 @@ module.exports = {
           colors: {
             background: "#FFFFFF", // or DEFAULT
             foreground: "#11181C", // or 50 to 900 DEFAULT
-            content1: "#000000", // or
+            content1: "#FFFFFF", // or
             primary: {
               //... 50 to 900
               foreground: "#FFFFFF",
@@ -66,7 +66,7 @@ module.exports = {
           colors: {
             background: "#000000", // or DEFAULT
             foreground: "#ECEDEE", // or 50 to 900 DEFAULT
-            content1: "#FFFFFF", // or
+            content1: "#000000", // or
             primary: {
               //... 50 to 900
               foreground: "#FFFFFF",

@@ -1,12 +1,17 @@
 import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
-import { AuthInputError, OnboardClientSteps, OnboardingType } from "@/ts/enum";
+import {
+  OnboardClientSteps,
+  OnboardingInputError,
+  OnboardingType,
+} from "@/ts/enum";
 import { Input } from "@nextui-org/input";
 import * as React from "react";
 import { useState } from "react";
-import { createClient } from "@/utils/supabase/client";
+import { createClient } from "@/utils/supabase/create-client";
 import {
+  formatPhoneNumber,
   handleInputRequired,
   validateIsPhoneNumber,
   validateOnlyLetter,
@@ -50,12 +55,12 @@ export function ClientOnboardingPersonalDetails() {
 
   const handleSearchUsername = async (username: string) => {
     if (handleInputRequired(username)) {
-      setUsernameError(AuthInputError.InputRequired);
+      setUsernameError(OnboardingInputError.InputRequired);
       return;
     }
 
     if (!validateUsername(username)) {
-      setUsernameError(AuthInputError.UsernameInvalid);
+      setUsernameError(OnboardingInputError.UsernameInvalid);
       return;
     }
 
@@ -64,10 +69,28 @@ export function ClientOnboardingPersonalDetails() {
     const found = usernames?.find((item) => item.username === username);
 
     if (found) {
-      setUsernameError(AuthInputError.UsernameIsNotAvailable);
+      setUsernameError(OnboardingInputError.UsernameIsNotAvailable);
     }
   };
 
+  const handleSetPhoneNumber = (phoneNumber: string) => {
+    const clearNumber = formatPhoneNumber(phoneNumber);
+
+    setPhoneError("");
+    updateOnboardingDetails({
+      ...onboardingDetails,
+      phoneNumber: clearNumber,
+    });
+    setConfirmBtnDisable(false);
+    if (handleInputRequired(clearNumber)) {
+      setPhoneError(OnboardingInputError.InputRequired);
+      return;
+    }
+    if (!validateIsPhoneNumber(clearNumber)) {
+      setPhoneError(OnboardingInputError.OnlyNumbers);
+      return;
+    }
+  };
   const handleBirthChange = (newValue: any) => {
     const dateLanding = new Date(newValue);
     const date = dateLanding.getDate().toString();
@@ -85,48 +108,67 @@ export function ClientOnboardingPersonalDetails() {
     });
 
     handleInputRequired(newValue.startDate === null ? "" : newValue.startDate)
-      ? setBirthError(AuthInputError.InputRequired)
+      ? setBirthError(OnboardingInputError.InputRequired)
       : null;
   };
 
   const inputsAreOk = () => {
     if (!onboardingDetails?.firstname) {
-      setFirstNameError(AuthInputError.InputRequired);
+      setFirstNameError(OnboardingInputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
     if (!onboardingDetails?.lastname) {
-      setLastNameError(AuthInputError.InputRequired);
+      setLastNameError(OnboardingInputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
     if (!onboardingDetails?.username) {
-      setUsernameError(AuthInputError.InputRequired);
+      setUsernameError(OnboardingInputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
     if (!onboardingDetails?.birthdate?.full) {
-      setBirthError(AuthInputError.InputRequired);
+      setBirthError(OnboardingInputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
     if (!onboardingDetails?.phoneNumber) {
-      setPhoneError(AuthInputError.InputRequired);
+      setPhoneError(OnboardingInputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
     if (!onboardingDetails?.gender) {
-      setGenderError(AuthInputError.InputRequired);
+      setGenderError(OnboardingInputError.InputRequired);
+      setConfirmBtnDisable(true);
+      return;
+    }
+    if (!GenderList.includes(onboardingDetails?.gender)) {
+      setGenderError(OnboardingInputError.InputRequired);
+      updateOnboardingDetails({
+        ...onboardingDetails,
+        gender: undefined,
+      });
       setConfirmBtnDisable(true);
       return;
     }
     if (!onboardingDetails?.height) {
-      setHeightError(AuthInputError.InputRequired);
+      setHeightError(OnboardingInputError.InputRequired);
+      setConfirmBtnDisable(true);
+      return;
+    }
+    if (onboardingDetails.height && onboardingDetails.height <= 50) {
+      setHeightError(OnboardingInputError.HeightGreater);
       setConfirmBtnDisable(true);
       return;
     }
     if (!onboardingDetails?.weight) {
-      setWeightError(AuthInputError.InputRequired);
+      setWeightError(OnboardingInputError.InputRequired);
+      setConfirmBtnDisable(true);
+      return;
+    }
+    if (onboardingDetails.weight && onboardingDetails.weight <= 30) {
+      setWeightError(OnboardingInputError.WeightGreater);
       setConfirmBtnDisable(true);
       return;
     }
@@ -140,7 +182,7 @@ export function ClientOnboardingPersonalDetails() {
   };
   return (
     <OnboardingLayout
-      image={"/images/auth/forgot-password.jpg"}
+      image={"/images/onboarding/details.jpg"}
       author={"Ray Lewis, American Football Player"}
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
@@ -179,9 +221,9 @@ export function ClientOnboardingPersonalDetails() {
             onFocusChange={(e) => {
               if (!e) {
                 handleInputRequired(onboardingDetails.firstname!)
-                  ? setUsernameError(AuthInputError.InputRequired)
+                  ? setFirstNameError(OnboardingInputError.InputRequired)
                   : !validateOnlyLetter(onboardingDetails.firstname!)
-                    ? setFirstNameError(AuthInputError.OnlyLetter)
+                    ? setFirstNameError(OnboardingInputError.OnlyLetter)
                     : null;
               }
             }}
@@ -213,9 +255,9 @@ export function ClientOnboardingPersonalDetails() {
             onFocusChange={(e) => {
               if (!e) {
                 handleInputRequired(onboardingDetails.firstname!)
-                  ? setUsernameError(AuthInputError.InputRequired)
+                  ? setLastNameError(OnboardingInputError.InputRequired)
                   : !validateOnlyLetter(onboardingDetails.lastname!)
-                    ? setFirstNameError(AuthInputError.OnlyLetter)
+                    ? setLastNameError(OnboardingInputError.OnlyLetter)
                     : null;
               }
             }}
@@ -247,9 +289,9 @@ export function ClientOnboardingPersonalDetails() {
             onFocusChange={(e) => {
               if (!e) {
                 handleInputRequired(onboardingDetails.username!)
-                  ? setUsernameError(AuthInputError.InputRequired)
+                  ? setUsernameError(OnboardingInputError.InputRequired)
                   : !validateUsername(onboardingDetails.username!)
-                    ? setUsernameError(AuthInputError.UsernameInvalid)
+                    ? setUsernameError(OnboardingInputError.UsernameInvalid)
                     : null;
                 handleSearchUsername(onboardingDetails.username!);
               }
@@ -285,8 +327,14 @@ export function ClientOnboardingPersonalDetails() {
                   errorMessage={birthError}
                   isInvalid={!!birthError}
                   onFocusChange={(e) => {
-                    if (e) {
+                    if (!e) {
                       setBirthError("");
+                      handleInputRequired(
+                        onboardingDetails.birthdate?.full?.toString(),
+                      )
+                        ? setBirthError(OnboardingInputError.InputRequired)
+                        : null;
+                      setConfirmBtnDisable(false);
                     }
                   }}
                 />
@@ -298,6 +346,7 @@ export function ClientOnboardingPersonalDetails() {
                   onSelect={($event) => {
                     handleBirthChange($event);
                     setCalendarIsOpen(false);
+                    setBirthError("");
                   }}
                   initialFocus
                   required
@@ -312,23 +361,35 @@ export function ClientOnboardingPersonalDetails() {
             variant="bordered"
             placeholder="Alege"
             isRequired
+            defaultSelectedKeys={
+              onboardingDetails.gender ? [onboardingDetails.gender] : []
+            }
             value={onboardingDetails.gender}
-            color={genderError ? "danger" : "default"}
-            errorMessage={genderError}
-            isInvalid={!!genderError}
             onChange={(e) => {
               updateOnboardingDetails({
                 ...onboardingDetails,
                 gender: e.target.value,
               });
               setGenderError("");
-              handleInputRequired(e.target.value)
-                ? setGenderError(AuthInputError.InputRequired)
+              handleInputRequired(onboardingDetails.gender)
+                ? setGenderError(OnboardingInputError.InputRequired)
                 : null;
+              setConfirmBtnDisable(false);
             }}
+            color={genderError ? "danger" : "default"}
+            errorMessage={genderError}
+            isInvalid={!!genderError}
           >
             {GenderList.map((gen) => (
-              <SelectItem key={gen} value={gen} className="bg-background">
+              <SelectItem
+                key={gen}
+                value={gen}
+                className="bg-background"
+                onClick={() => {
+                  setGenderError("");
+                  setConfirmBtnDisable(false);
+                }}
+              >
                 {gen}
               </SelectItem>
             ))}
@@ -347,26 +408,11 @@ export function ClientOnboardingPersonalDetails() {
             variant="bordered"
             isRequired
             onValueChange={(e) => {
-              updateOnboardingDetails({
-                ...onboardingDetails,
-                phoneNumber: e,
-              });
-              setPhoneError("");
-              !validateIsPhoneNumber(onboardingDetails.phoneNumber);
-              setConfirmBtnDisable(false);
+              handleSetPhoneNumber(e);
             }}
             color={phoneError ? "danger" : "default"}
             errorMessage={phoneError}
             isInvalid={!!phoneError}
-            onFocusChange={(e) => {
-              if (!e) {
-                handleInputRequired(onboardingDetails.phoneNumber)
-                  ? setPhoneError(AuthInputError.InputRequired)
-                  : !validateIsPhoneNumber(onboardingDetails.phoneNumber)
-                    ? setPhoneError(AuthInputError.OnlyNumbers)
-                    : null;
-              }
-            }}
           />
           {/*Înălțime*/}
           <Input
@@ -395,8 +441,10 @@ export function ClientOnboardingPersonalDetails() {
             onFocusChange={(e) => {
               if (!e) {
                 handleInputRequired(onboardingDetails.height?.toString())
-                  ? setHeightError(AuthInputError.InputRequired)
-                  : null;
+                  ? setHeightError(OnboardingInputError.InputRequired)
+                  : onboardingDetails.height && onboardingDetails.height <= 50
+                    ? setHeightError(OnboardingInputError.HeightGreater)
+                    : null;
               }
             }}
           />
@@ -428,8 +476,10 @@ export function ClientOnboardingPersonalDetails() {
             onFocusChange={(e) => {
               if (!e) {
                 handleInputRequired(onboardingDetails.weight?.toString())
-                  ? setWeightError(AuthInputError.InputRequired)
-                  : null;
+                  ? setWeightError(OnboardingInputError.InputRequired)
+                  : onboardingDetails.weight && onboardingDetails.weight <= 30
+                    ? setWeightError(OnboardingInputError.WeightGreater)
+                    : null;
               }
             }}
           />
@@ -440,6 +490,7 @@ export function ClientOnboardingPersonalDetails() {
         onClick={() => inputsAreOk()}
         type="button"
         color={"primary"}
+        radius={"sm"}
         fullWidth
         disabled={confirmBtnDisable}
       >
@@ -449,6 +500,7 @@ export function ClientOnboardingPersonalDetails() {
         onClick={() => updateOnboardingType(OnboardingType.Welcome)}
         type="button"
         color={"default"}
+        radius={"sm"}
         fullWidth
       >
         Înapoi

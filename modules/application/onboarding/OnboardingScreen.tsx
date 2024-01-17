@@ -2,8 +2,9 @@
 import { Welcome } from "@/modules/application/onboarding/components/Welcome";
 import { useStore } from "@/store";
 import { OnboardingType } from "@/ts/enum";
-import { ClientOnboarding } from "@/modules/application/onboarding/components/ClientOnboarding";
+import { ClientOnboardingScreen } from "@/modules/application/onboarding/client";
 import { useEffect, useState } from "react";
+import { OnboardingSkeleton } from "@/modules/application/onboarding/components/OnboardingSkeleton";
 
 export function OnboardingScreen() {
   const [isClient, setIsClient] = useState(false);
@@ -15,7 +16,7 @@ export function OnboardingScreen() {
   return isClient ? (
     <OnboardingSwitch onboardingType={onboarding.onboardingType} />
   ) : (
-    <h1>Loading</h1>
+    <OnboardingSkeleton />
   );
 }
 
@@ -26,7 +27,7 @@ export function OnboardingSwitch({
 }) {
   switch (onboardingType) {
     case OnboardingType.Client:
-      return <ClientOnboarding />;
+      return <ClientOnboardingScreen />;
     default:
       return <Welcome />;
   }
