@@ -1,23 +1,19 @@
-import { useStore } from "@/store";
-import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
-import { Button } from "@nextui-org/button";
-import {
-  OnboardClientSteps,
-  OnboardingInputError,
-  OnboardingType,
-} from "@/ts/enum";
-import { Input } from "@nextui-org/input";
-import React, { useState } from "react";
 import { createClient } from "@/utils/supabase/create-client";
+import { useStore } from "@/store";
+import React, { useState } from "react";
 import {
-  formatPhoneNumber,
   handleInputRequired,
-  validateIsPhoneNumber,
   validateOnlyLetter,
   validateUsername,
 } from "@/helpers/helpers";
+import {
+  OnboardingInputError,
+  OnboardingType,
+  OnboardTrainerSteps,
+} from "@/ts/enum";
 import { GenderList } from "@/constants/user";
-import { Calendar } from "@/components/calendar";
+import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
+import { Input } from "@nextui-org/input";
 import {
   Popover,
   PopoverContent,
@@ -26,16 +22,18 @@ import {
   SelectItem,
 } from "@nextui-org/react";
 import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
 import { ro } from "date-fns/locale";
+import { CalendarIcon } from "lucide-react";
+import { Calendar } from "@/components/calendar";
+import { Button } from "@nextui-org/button";
 
-export function ClientOnboardingPersonalDetails() {
+export function TrainerOnboardingPersonalDetails() {
   const supabase = createClient();
   const onboardingDetails = useStore(
-    (state) => state.onboarding.onboardingClientDetails,
+    (state) => state.onboarding.onboardingTrainerDetails,
   );
   const updateOnboardingDetails = useStore(
-    (state) => state.updateOnboardingClientDetails,
+    (state) => state.updateOnboardingTrainerDetails,
   );
   const updateOnboardingType = useStore((state) => state.updateOnboardingType);
 
@@ -44,9 +42,6 @@ export function ClientOnboardingPersonalDetails() {
   const [usernameError, setUsernameError] = useState("");
   const [genderError, setGenderError] = useState("");
   const [birthError, setBirthError] = useState("");
-  const [phoneError, setPhoneError] = useState("");
-  const [heightError, setHeightError] = useState("");
-  const [weightError, setWeightError] = useState("");
 
   const [isCalendarOpen, setCalendarIsOpen] = React.useState(false);
 
@@ -72,24 +67,6 @@ export function ClientOnboardingPersonalDetails() {
     }
   };
 
-  const handleSetPhoneNumber = (phoneNumber: string) => {
-    const clearNumber = formatPhoneNumber(phoneNumber);
-
-    setPhoneError("");
-    updateOnboardingDetails({
-      ...onboardingDetails,
-      phoneNumber: clearNumber,
-    });
-    setConfirmBtnDisable(false);
-    if (handleInputRequired(clearNumber)) {
-      setPhoneError(OnboardingInputError.InputRequired);
-      return;
-    }
-    if (!validateIsPhoneNumber(clearNumber)) {
-      setPhoneError(OnboardingInputError.OnlyNumbers);
-      return;
-    }
-  };
   const handleBirthChange = (newValue: any) => {
     const dateLanding = new Date(newValue);
     const date = dateLanding.getDate().toString();
@@ -132,11 +109,6 @@ export function ClientOnboardingPersonalDetails() {
       setConfirmBtnDisable(true);
       return;
     }
-    if (!onboardingDetails?.phoneNumber) {
-      setPhoneError(OnboardingInputError.InputRequired);
-      setConfirmBtnDisable(true);
-      return;
-    }
     if (!onboardingDetails?.gender) {
       setGenderError(OnboardingInputError.InputRequired);
       setConfirmBtnDisable(true);
@@ -151,32 +123,12 @@ export function ClientOnboardingPersonalDetails() {
       setConfirmBtnDisable(true);
       return;
     }
-    if (!onboardingDetails?.height) {
-      setHeightError(OnboardingInputError.InputRequired);
-      setConfirmBtnDisable(true);
-      return;
-    }
-    if (onboardingDetails.height && onboardingDetails.height <= 50) {
-      setHeightError(OnboardingInputError.HeightGreater);
-      setConfirmBtnDisable(true);
-      return;
-    }
-    if (!onboardingDetails?.weight) {
-      setWeightError(OnboardingInputError.InputRequired);
-      setConfirmBtnDisable(true);
-      return;
-    }
-    if (onboardingDetails.weight && onboardingDetails.weight <= 30) {
-      setWeightError(OnboardingInputError.WeightGreater);
-      setConfirmBtnDisable(true);
-      return;
-    }
 
     setConfirmBtnDisable(false);
 
     updateOnboardingDetails({
       ...onboardingDetails,
-      clientSteps: OnboardClientSteps.Goals,
+      trainerSteps: OnboardTrainerSteps.Contact,
     });
   };
   return (
@@ -187,9 +139,7 @@ export function ClientOnboardingPersonalDetails() {
         "But effort? Nobody can judge that because effort is between you and you."
       }
       title={"Detalii personale"}
-      body={
-        "Povestește-ne mai multe despre tine pentru o experiență de fitness personalizată."
-      }
+      body={"Povestește-ne mai multe despre tine."}
     >
       <div className="grid gap-2">
         <div className="grid grid-cols-2 gap-x-3 gap-y-4">
@@ -393,95 +343,6 @@ export function ClientOnboardingPersonalDetails() {
               </SelectItem>
             ))}
           </Select>
-
-          {/*Telefon*/}
-          <Input
-            id="phone"
-            placeholder="0770212948"
-            type="text"
-            label="Telefon"
-            value={onboardingDetails.phoneNumber}
-            autoCapitalize="none"
-            autoComplete="false"
-            autoCorrect="off"
-            variant="bordered"
-            isRequired
-            onValueChange={(e) => {
-              handleSetPhoneNumber(e);
-            }}
-            color={phoneError ? "danger" : "default"}
-            errorMessage={phoneError}
-            isInvalid={!!phoneError}
-          />
-          {/*Înălțime*/}
-          <Input
-            id="height"
-            placeholder="173 cm"
-            type="number"
-            label="Înălțime"
-            value={onboardingDetails.height?.toString()}
-            autoCapitalize="none"
-            autoComplete="false"
-            autoCorrect="off"
-            variant="bordered"
-            isRequired
-            endContent={"cm"}
-            onValueChange={(e) => {
-              updateOnboardingDetails({
-                ...onboardingDetails,
-                height: Number(e),
-              });
-              setHeightError("");
-              setConfirmBtnDisable(false);
-            }}
-            color={heightError ? "danger" : "default"}
-            errorMessage={heightError}
-            isInvalid={!!heightError}
-            onFocusChange={(e) => {
-              if (!e) {
-                handleInputRequired(onboardingDetails.height?.toString())
-                  ? setHeightError(OnboardingInputError.InputRequired)
-                  : onboardingDetails.height && onboardingDetails.height <= 50
-                    ? setHeightError(OnboardingInputError.HeightGreater)
-                    : null;
-              }
-            }}
-          />
-
-          {/*Greutate*/}
-          <Input
-            id="weight"
-            placeholder="75 Kg"
-            type="number"
-            label="Greutate"
-            value={onboardingDetails.weight?.toString()}
-            autoCapitalize="none"
-            autoComplete="false"
-            autoCorrect="off"
-            variant="bordered"
-            isRequired
-            endContent={"Kg"}
-            onValueChange={(e) => {
-              updateOnboardingDetails({
-                ...onboardingDetails,
-                weight: Number(e),
-              });
-              setWeightError("");
-              setConfirmBtnDisable(false);
-            }}
-            color={weightError ? "danger" : "default"}
-            errorMessage={weightError}
-            isInvalid={!!weightError}
-            onFocusChange={(e) => {
-              if (!e) {
-                handleInputRequired(onboardingDetails.weight?.toString())
-                  ? setWeightError(OnboardingInputError.InputRequired)
-                  : onboardingDetails.weight && onboardingDetails.weight <= 30
-                    ? setWeightError(OnboardingInputError.WeightGreater)
-                    : null;
-              }
-            }}
-          />
         </div>
       </div>
 

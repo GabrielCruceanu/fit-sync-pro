@@ -1,8 +1,19 @@
 import { create } from "zustand";
 import { createClient } from "@/utils/supabase/create-client";
-import { OnboardingClientDetails, TypedUserDetails } from "@/ts/types";
-import { Onboarding } from "@/ts/types/onboarding";
-import { OnboardClientSteps, OnboardingType } from "@/ts/enum";
+import {
+  Birthdate,
+  OnboardingClientDetails,
+  TypedUserDetails,
+} from "@/ts/types";
+import { Onboarding, OnboardingTrainerDetails } from "@/ts/types/onboarding";
+import {
+  ClientFitnessGoals,
+  FitnessExperience,
+  FoodPreferences,
+  OnboardClientSteps,
+  OnboardingType,
+  OnboardTrainerSteps,
+} from "@/ts/enum";
 import { createJSONStorage, persist } from "zustand/middleware";
 
 type State = {
@@ -19,7 +30,12 @@ type State = {
   };
   onboarding: Onboarding;
   updateOnboardingType: (onboardingType: OnboardingType) => void;
-  updateOnboardingDetails: (onboardingDetails: OnboardingClientDetails) => void;
+  updateOnboardingClientDetails: (
+    onboardingDetails: OnboardingClientDetails,
+  ) => void;
+  updateOnboardingTrainerDetails: (
+    onboardingDetails: OnboardingTrainerDetails,
+  ) => void;
 };
 
 export const useStore = create<State>()(
@@ -75,19 +91,23 @@ export const useStore = create<State>()(
       },
       onboarding: {
         onboardingType: OnboardingType.Welcome,
-        onboardingDetails: {
+        onboardingClientDetails: {
           clientSteps: OnboardClientSteps.PersonalDetails,
-          username: undefined,
           firstname: undefined,
           lastname: undefined,
+          username: undefined,
           phoneNumber: undefined,
           birthdate: undefined,
           gender: undefined,
+          country: undefined,
+          county: undefined,
+          city: undefined,
           height: undefined,
           weight: undefined,
           goals: undefined,
           foodPreferences: undefined,
           haveFoodAllergies: undefined,
+          foodAllergiesType: undefined,
           foodAllergiesDescription: undefined,
           fitnessExperience: undefined,
           trainingLocation: undefined,
@@ -95,7 +115,40 @@ export const useStore = create<State>()(
           trainingOnlinePreferences: undefined,
           trainingAvailabilityDays: undefined,
           trainingAvailabilityTime: undefined,
-          locationDetails: undefined,
+          notificationsWorkout: true,
+          notificationsNutrition: true,
+          newsAndActualizations: true,
+          offersAndPromotions: true,
+        },
+        onboardingTrainerDetails: {
+          trainerSteps: OnboardTrainerSteps.PersonalDetails,
+          firstname: undefined,
+          lastname: undefined,
+          username: undefined,
+          phoneNumber: undefined,
+          birthdate: undefined,
+          gender: undefined,
+          country: undefined,
+          county: undefined,
+          city: undefined,
+          type: OnboardingType.Trainer,
+          website: undefined,
+          facebook: undefined,
+          twitter: undefined,
+          instagram: undefined,
+          experience: undefined,
+          proType: undefined,
+          gymName: undefined,
+          gymLocation: undefined,
+          isNutritionist: undefined,
+          nutritionistType: undefined,
+          nutritionistExperience: undefined,
+          nutritionistDiets: undefined,
+          trainingLocation: undefined,
+          trainingPhysicalPreferences: undefined,
+          trainingOnlinePreferences: undefined,
+          trainingAvailabilityDays: undefined,
+          trainingAvailabilityTime: undefined,
           notificationsWorkout: true,
           notificationsNutrition: true,
           newsAndActualizations: true,
@@ -110,15 +163,28 @@ export const useStore = create<State>()(
             onboardingType: updatedOnboardingType,
           },
         })),
-      updateOnboardingDetails: (
+      updateOnboardingClientDetails: (
         updatedOnboardingDetails: OnboardingClientDetails,
       ) =>
         set((state) => ({
           ...state,
           onboarding: {
             ...state.onboarding,
-            onboardingDetails: {
-              ...state.onboarding.onboardingDetails,
+            onboardingClientDetails: {
+              ...state.onboarding.onboardingClientDetails,
+              ...updatedOnboardingDetails,
+            },
+          },
+        })),
+      updateOnboardingTrainerDetails: (
+        updatedOnboardingDetails: OnboardingTrainerDetails,
+      ) =>
+        set((state) => ({
+          ...state,
+          onboarding: {
+            ...state.onboarding,
+            onboardingTrainerDetails: {
+              ...state.onboarding.onboardingTrainerDetails,
               ...updatedOnboardingDetails,
             },
           },

@@ -97,3 +97,5 @@ export const FoodAllergies: AlergiiAlimentare[] = [
     alimente_sigure: "-",
   },
 ];
+
+export const FoodDiets = ["Omnivor", "Vegetarian", "Vegan", "Keto"];

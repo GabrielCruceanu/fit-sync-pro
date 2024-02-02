@@ -2,25 +2,26 @@ import { useStore } from "@/store";
 import { Button } from "@nextui-org/button";
 import * as React from "react";
 import { useState } from "react";
-import { OnboardClientSteps } from "@/ts/enum";
+import { OnboardClientSteps, OnboardTrainerSteps } from "@/ts/enum";
 import { createClient } from "@/utils/supabase/create-client";
 import { useRouter } from "next/navigation";
 import { toast } from "@/components/use-toast";
 import { createClientProfile } from "@/utils/supabase/client-service";
-import { TypedClientDetails } from "@/ts/types";
+import { TypedClientDetails, TypedTrainerDetails } from "@/ts/types";
 import { createUserName, updateUser } from "@/utils/supabase/user-service";
 import { OnboardingMessage } from "@/lib/validations/error-check";
 import { UserType } from "@/ts/enum/user.enum";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
+import { createTrainerProfile } from "@/utils/supabase/trainer-service";
 
-export function ClientOnboardingOverview() {
+export function TrainerOnboardingOverview() {
   const supabase = createClient();
   const router = useRouter();
   const onboardingDetails = useStore(
-    (state) => state.onboarding.onboardingClientDetails,
+    (state) => state.onboarding.onboardingTrainerDetails,
   );
   const updateOnboardingDetails = useStore(
-    (state) => state.updateOnboardingClientDetails,
+    (state) => state.updateOnboardingTrainerDetails,
   );
 
   const [confirmBtnDisable, setConfirmBtnDisable] = useState(false);
@@ -49,14 +50,17 @@ export function ClientOnboardingOverview() {
         lastName: onboardingDetails.lastname!,
         name: null,
         profile_picture_url: null,
-        userType: UserType.CLIENT,
+        userType: UserType.TRAINER,
         supabase: supabase,
       });
 
-      const client: TypedClientDetails = {
-        client_id: id,
+      const trainer: TypedTrainerDetails = {
+        id: id,
+        type: onboardingDetails.type!,
         firstName: onboardingDetails.firstname!,
         lastName: onboardingDetails.lastname!,
+        username: onboardingDetails.username!,
+        phoneNumber: onboardingDetails.phoneNumber!,
         country: onboardingDetails.country!,
         city: onboardingDetails.city!,
         state: onboardingDetails.county!,
@@ -67,17 +71,20 @@ export function ClientOnboardingOverview() {
         gender: onboardingDetails.gender!,
         joined: today,
         profilePictureUrl: null,
-        userType: UserType.CLIENT,
-        username: onboardingDetails.username!,
-        phone: onboardingDetails.phoneNumber!,
-        height: onboardingDetails.height!,
-        weight: onboardingDetails.weight!,
-        goals: onboardingDetails.goals!,
-        foodPreferences: onboardingDetails.foodPreferences!,
-        foodAllergiesDescription: onboardingDetails.foodAllergiesDescription!,
-        haveFoodAllergies: onboardingDetails.haveFoodAllergies!,
-        foodAllergiesType: onboardingDetails.foodAllergiesType!,
-        fitnessExperience: onboardingDetails.fitnessExperience!,
+        description: null,
+        completedClients: null,
+        activeCients: null,
+        certificate: null,
+        website: onboardingDetails.website!,
+        facebook: onboardingDetails.facebook!,
+        instagram: onboardingDetails.instagram!,
+        twitter: onboardingDetails.twitter!,
+        gallery: null,
+        hasPremium: false,
+        isNutritionist: onboardingDetails.isNutritionist!,
+        nutritionistDiets: onboardingDetails.nutritionistDiets!,
+        nutritionistExperience: onboardingDetails.nutritionistExperience!,
+        nutritionistType: onboardingDetails.nutritionistType!,
         trainingLocation: onboardingDetails.trainingLocation!,
         trainingOnlinePreferences:
           onboardingDetails.trainingPhysicalPreferences!,
@@ -85,23 +92,26 @@ export function ClientOnboardingOverview() {
           onboardingDetails.trainingPhysicalPreferences!,
         trainingAvailabilityDays: onboardingDetails.trainingAvailabilityDays!,
         trainingAvailabilityTime: onboardingDetails.trainingAvailabilityTime!,
+        gymName: onboardingDetails.gymName!,
+        trainingExperience: onboardingDetails.trainingExperience!,
+        trainerType: onboardingDetails.trainingType!,
       };
 
-      // CREATE CLIENT PROFILE
-      await createClientProfile(user, client, supabase).then(() => {
+      // CREATE TRAINER PROFILE
+      await createTrainerProfile(user, trainer, supabase).then(() => {
         toast({
-          title: OnboardingMessage.Client.Success.title,
-          description: OnboardingMessage.Client.Success.description,
-          variant: OnboardingMessage.Client.Success.variant,
+          title: OnboardingMessage.Trainer.Success.title,
+          description: OnboardingMessage.Trainer.Success.description,
+          variant: OnboardingMessage.Trainer.Success.variant,
         });
         router.push("/dashboard", { scroll: false });
       });
     } else {
       router.refresh();
       return toast({
-        title: OnboardingMessage.Client.Error.title,
-        description: OnboardingMessage.Client.Error.description,
-        variant: OnboardingMessage.Client.Error.variant,
+        title: OnboardingMessage.Trainer.Error.title,
+        description: OnboardingMessage.Trainer.Error.description,
+        variant: OnboardingMessage.Trainer.Error.variant,
       });
     }
   };
@@ -112,14 +122,16 @@ export function ClientOnboardingOverview() {
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
       }
-      title={"Ești pregătit!"}
-      body={"Iată un rezumat al preferințelor tale."}
+      title={"Prezentare generală"}
+      body={"Un rezumat al informațiilor introduse."}
     >
       <div className="grid gap-2 gap-y-4 pb-[100px] md:pb-0">
         <div className="grid grid-cols-2 gap-x-3 gap-y-3">
           <p className="text-sm">
             Tip utilizator: <br />
-            <strong className="text-medium">Client</strong>
+            <strong className="text-medium capitalize">
+              {onboardingDetails.type}
+            </strong>
           </p>
           <p className="text-sm">
             Nume de utilizator: <br />
@@ -158,15 +170,15 @@ export function ClientOnboardingOverview() {
             <strong className="text-medium">{onboardingDetails.gender}</strong>
           </p>
           <p className="text-sm">
-            Adresa: <br />
+            Adresa sală: <br />
             <strong className="text-medium">
               {onboardingDetails.city} / {onboardingDetails.county} /{" "}
               {onboardingDetails.country}
             </strong>
           </p>
           <p className="text-sm">
-            Înălțime: <br />
-            <strong className="text-medium">{onboardingDetails.height}</strong>
+            Nume sală: <br />
+            <strong className="text-medium">{onboardingDetails.gymName}</strong>
           </p>
           <p className="text-sm">
             Greutate: <br />
@@ -273,7 +285,7 @@ export function ClientOnboardingOverview() {
             onClick={() =>
               updateOnboardingDetails({
                 ...onboardingDetails,
-                clientSteps: OnboardClientSteps.Notifications,
+                trainerSteps: OnboardTrainerSteps.Availability,
               })
             }
             type="button"

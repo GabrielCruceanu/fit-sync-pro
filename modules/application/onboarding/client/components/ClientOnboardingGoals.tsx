@@ -14,10 +14,10 @@ import {
 
 export function ClientOnboardingGoals() {
   const onboardingDetails = useStore(
-    (state) => state.onboarding.onboardingDetails,
+    (state) => state.onboarding.onboardingClientDetails,
   );
   const updateOnboardingDetails = useStore(
-    (state) => state.updateOnboardingDetails,
+    (state) => state.updateOnboardingClientDetails,
   );
 
   const [goalsError, setGoalsError] = useState("");

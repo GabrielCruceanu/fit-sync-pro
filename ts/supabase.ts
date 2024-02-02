@@ -635,93 +635,120 @@ export interface Database {
       }
       trainers: {
         Row: {
-          active_clients: string | null
-          birth_date: string | null
-          birth_month: string | null
-          birth_year: string | null
+          activeCients: string | null
+          birthDate: string | null
+          birthMonth: string | null
+          birthYear: string | null
           certificate: boolean | null
           city: string | null
-          completed_clients: string | null
+          completedClients: string | null
           country: string | null
           description: string | null
           email: string | null
-          experience: string | null
           facebook: string | null
-          first_name: string | null
+          firstName: string | null
           gallery: string[] | null
           gender: string | null
-          gym_name: string | null
-          has_premium: boolean | null
+          gymName: string | null
+          hasPremium: boolean | null
           id: string
           instagram: string | null
+          isNutritionist: boolean | null
           joined: string
-          last_name: string | null
-          phone: string | null
-          pro_type: string | null
-          profile_picture_url: string | null
+          lastName: string | null
+          nutritionistDiets: string[] | null
+          nutritionistExperience: string | null
+          nutritionistType: string | null
+          phoneNumber: string | null
+          profilePictureUrl: string | null
           state: string | null
+          trainerType: string | null
+          trainingAvailabilityDays: string[] | null
+          trainingAvailabilityTime: string[] | null
+          trainingExperience: string | null
+          trainingLocation: string[] | null
+          trainingOnlinePreferences: string[] | null
+          trainingPhysicalPreferences: string[] | null
           twitter: string | null
           type: string | null
           username: string | null
           website: string | null
         }
         Insert: {
-          active_clients?: string | null
-          birth_date?: string | null
-          birth_month?: string | null
-          birth_year?: string | null
+          activeCients?: string | null
+          birthDate?: string | null
+          birthMonth?: string | null
+          birthYear?: string | null
           certificate?: boolean | null
           city?: string | null
-          completed_clients?: string | null
+          completedClients?: string | null
           country?: string | null
           description?: string | null
           email?: string | null
-          experience?: string | null
           facebook?: string | null
-          first_name?: string | null
+          firstName?: string | null
           gallery?: string[] | null
           gender?: string | null
-          gym_name?: string | null
-          has_premium?: boolean | null
+          gymName?: string | null
+          hasPremium?: boolean | null
           id: string
           instagram?: string | null
+          isNutritionist?: boolean | null
           joined?: string
-          last_name?: string | null
-          phone?: string | null
-          pro_type?: string | null
-          profile_picture_url?: string | null
+          lastName?: string | null
+          nutritionistDiets?: string[] | null
+          nutritionistExperience?: string | null
+          nutritionistType?: string | null
+          phoneNumber?: string | null
+          profilePictureUrl?: string | null
           state?: string | null
+          trainerType?: string | null
+          trainingAvailabilityDays?: string[] | null
+          trainingAvailabilityTime?: string[] | null
+          trainingExperience?: string | null
+          trainingLocation?: string[] | null
+          trainingOnlinePreferences?: string[] | null
+          trainingPhysicalPreferences?: string[] | null
           twitter?: string | null
           type?: string | null
           username?: string | null
           website?: string | null
         }
         Update: {
-          active_clients?: string | null
-          birth_date?: string | null
-          birth_month?: string | null
-          birth_year?: string | null
+          activeCients?: string | null
+          birthDate?: string | null
+          birthMonth?: string | null
+          birthYear?: string | null
           certificate?: boolean | null
           city?: string | null
-          completed_clients?: string | null
+          completedClients?: string | null
           country?: string | null
           description?: string | null
           email?: string | null
-          experience?: string | null
           facebook?: string | null
-          first_name?: string | null
+          firstName?: string | null
           gallery?: string[] | null
           gender?: string | null
-          gym_name?: string | null
-          has_premium?: boolean | null
+          gymName?: string | null
+          hasPremium?: boolean | null
           id?: string
           instagram?: string | null
+          isNutritionist?: boolean | null
           joined?: string
-          last_name?: string | null
-          phone?: string | null
-          pro_type?: string | null
-          profile_picture_url?: string | null
+          lastName?: string | null
+          nutritionistDiets?: string[] | null
+          nutritionistExperience?: string | null
+          nutritionistType?: string | null
+          phoneNumber?: string | null
+          profilePictureUrl?: string | null
           state?: string | null
+          trainerType?: string | null
+          trainingAvailabilityDays?: string[] | null
+          trainingAvailabilityTime?: string[] | null
+          trainingExperience?: string | null
+          trainingLocation?: string[] | null
+          trainingOnlinePreferences?: string[] | null
+          trainingPhysicalPreferences?: string[] | null
           twitter?: string | null
           type?: string | null
           username?: string | null
@@ -772,6 +799,10 @@ export interface Database {
           id: string
           lastName: string | null
           name: string | null
+          newsAndActualizations: boolean | null
+          notificationsNutrition: boolean | null
+          notificationsWorkout: boolean | null
+          offersAndPromotions: boolean | null
           paymentMethod: Json | null
           profilePictureUrl: string | null
           username: string | null
@@ -785,6 +816,10 @@ export interface Database {
           id: string
           lastName?: string | null
           name?: string | null
+          newsAndActualizations?: boolean | null
+          notificationsNutrition?: boolean | null
+          notificationsWorkout?: boolean | null
+          offersAndPromotions?: boolean | null
           paymentMethod?: Json | null
           profilePictureUrl?: string | null
           username?: string | null
@@ -798,6 +833,10 @@ export interface Database {
           id?: string
           lastName?: string | null
           name?: string | null
+          newsAndActualizations?: boolean | null
+          notificationsNutrition?: boolean | null
+          notificationsWorkout?: boolean | null
+          offersAndPromotions?: boolean | null
           paymentMethod?: Json | null
           profilePictureUrl?: string | null
           username?: string | null

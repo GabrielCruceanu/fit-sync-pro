@@ -7,14 +7,18 @@ export enum OnboardingInputError {
   OnlyNumbers = 'Caractere invalide sau prea putine, foloseste doar "0-9"',
   HeightGreater = "Inaltimea treabuie sa fie mai mare de 50 cm",
   WeightGreater = "Greutatea treabuie sa fie mai mare de 30 Kg",
+  Website = "Link-ul trebuie se fie www.example.ro",
+  Facebook = "Link-ul trebuie se fie www.facebook.ro/username",
+  Twitter = "Link-ul trebuie se fie www.twitter.ro/username",
+  Instagram = "Link-ul trebuie se fie www.instagram.ro/username",
 }
 
 export enum OnboardingType {
-  Welcome = "WELCOME",
-  Client = "CLIENT",
-  Trainer = "TRAINER",
-  Nutritionist = "NUTRITIONIST",
-  Gym = "GYM",
+  Welcome = "Welcome",
+  Client = "Client",
+  Trainer = "Trainer",
+  Nutritionist = "Nutritionist",
+  Gym = "Sala",
 }
 
 export enum OnboardClientSteps {
@@ -61,7 +65,7 @@ export enum TrainingPhysic {
   Grup = "Antrenamente de grup",
 }
 
-export enum ClientFoodPreferences {
+export enum FoodPreferences {
   Omnivor = "Omnivor",
   Vegetarian = "Vegetarian",
   Vegan = "Vegan",
@@ -108,4 +112,23 @@ export enum AvailabilityTime {
   Morning = "MORNING",
   Afternoon = "AFTERNOON",
   Evening = "EVENING",
+}
+
+export enum OnboardTrainerSteps {
+  PersonalDetails = "PERSONAL_DETAILS",
+  Contact = "Contact",
+  NutritionExperience = "NUTRITION_EXPERIENCE",
+  FitnessExperience = "FITNESS_EXPERIENCE",
+  TrainingLocation = "TRAINING_LOCATION",
+  TrainingOnlinePreferences = "TRAINING_ONLINE_PREFERENCES",
+  TrainingPhysicalPreferences = "TRAINING_PHYSICAL_PREFERENCES",
+  Availability = "AVAILABILITY",
+  Location = "LOCATION",
+  Notifications = "NOTIFICATIONS",
+  Overview = "OVERVIEW",
+}
+
+export enum IsOrNot {
+  Is = "Da",
+  Not = "Nu",
 }

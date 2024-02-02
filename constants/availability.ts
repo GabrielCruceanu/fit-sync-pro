@@ -6,8 +6,8 @@ export const AvailabilityDays: TrainingAvailability[] = [
     title: "Luni",
   },
   {
-    value: "marti",
-    title: "Marti",
+    value: "marți",
+    title: "Marți",
   },
   {
     value: "miercuri",
@@ -22,22 +22,22 @@ export const AvailabilityDays: TrainingAvailability[] = [
     title: "Vineri",
   },
   {
-    value: "sambata",
-    title: "Sambata",
+    value: "sâmbătă",
+    title: "Sâmbătă",
   },
   {
-    value: "duminica",
-    title: "Duminica",
+    value: "duminică",
+    title: "Duminică",
   },
 ];
 export const AvailabilityTime: TrainingAvailability[] = [
   {
-    value: "dimineata",
-    title: "Dimineata",
+    value: "dimineața",
+    title: "Dimineața",
   },
   {
-    value: "pranz",
-    title: "Pranz",
+    value: "prânz",
+    title: "Prânz",
   },
   {
     value: "seara",

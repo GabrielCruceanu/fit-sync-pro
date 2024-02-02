@@ -15,6 +15,7 @@ export {
   AvailabilityDays,
   AvailabilityTime,
   ClientFitnessGoals,
-  ClientFoodPreferences,
+  FoodPreferences,
   FoodAllergiesType,
+  OnboardTrainerSteps,
 } from "./onboarding.enum";

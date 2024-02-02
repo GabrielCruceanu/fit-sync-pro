@@ -2,18 +2,23 @@
 import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
-import { OnboardClientSteps, OnboardingInputError } from "@/ts/enum";
+import {
+  OnboardClientSteps,
+  OnboardingInputError,
+  OnboardTrainerSteps,
+} from "@/ts/enum";
 import * as React from "react";
 import { useState } from "react";
 import { Checkbox, CheckboxGroup, cn } from "@nextui-org/react";
 import { AvailabilityDays, AvailabilityTime } from "@/constants/availability";
+import { TrainingLocation } from "@/ts/enum/onboarding.enum";
 
-export function ClientOnboardingTrainingAvailability() {
+export function TrainerOnboardingTrainingAvailability() {
   const onboardingDetails = useStore(
-    (state) => state.onboarding.onboardingClientDetails,
+    (state) => state.onboarding.onboardingTrainerDetails,
   );
   const updateOnboardingDetails = useStore(
-    (state) => state.updateOnboardingClientDetails,
+    (state) => state.updateOnboardingTrainerDetails,
   );
 
   const [trainingAvailabilityError, setTrainingAvailabilityError] =
@@ -46,7 +51,11 @@ export function ClientOnboardingTrainingAvailability() {
 
     updateOnboardingDetails({
       ...onboardingDetails,
-      clientSteps: OnboardClientSteps.Location,
+      trainerSteps: onboardingDetails.trainingLocation?.includes(
+        TrainingLocation.Fizic,
+      )
+        ? OnboardTrainerSteps.Location
+        : OnboardTrainerSteps.Overview,
     });
   };
   return (
@@ -63,7 +72,7 @@ export function ClientOnboardingTrainingAvailability() {
         <div className="grid grid-cols-1 gap-x-3 gap-y-4">
           {/*Training Days*/}
           <CheckboxGroup
-            label="Zile în care vă puteți antrena"
+            label="Zile în care puteți antrena"
             orientation="horizontal"
             onValueChange={(e) => {
               updateOnboardingDetails({
@@ -101,7 +110,7 @@ export function ClientOnboardingTrainingAvailability() {
           </CheckboxGroup>
           {/*Training time*/}
           <CheckboxGroup
-            label="Perioada în care vă puteți antrena"
+            label="Perioada în care puteți antrena"
             orientation="horizontal"
             onValueChange={(e) => {
               updateOnboardingDetails({
@@ -155,7 +164,7 @@ export function ClientOnboardingTrainingAvailability() {
           onClick={() =>
             updateOnboardingDetails({
               ...onboardingDetails,
-              clientSteps: OnboardClientSteps.TrainingLocation,
+              trainerSteps: OnboardTrainerSteps.TrainingPhysicalPreferences,
             })
           }
           type="button"

@@ -31,6 +31,12 @@ export const validateOnlyLetter = (input: string) => {
   const validUsernameRegex = /^[a-zA-Z]+([a-zA-Z](_|-| )[a-zA-Z])*[a-zA-Z]+$/;
   return validUsernameRegex.test(input);
 };
+export const validateIsWebsiteLink = (input: string) => {
+  const expression =
+    /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
+  const regex = new RegExp(expression);
+  return regex.test(input);
+};
 export const validateIsPhoneNumber = (input: string) => {
   if (input.length !== 10) {
     return false;

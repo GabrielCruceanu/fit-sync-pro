@@ -2,23 +2,29 @@
 import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
-import { OnboardClientSteps, OnboardingInputError } from "@/ts/enum";
-import { useState } from "react";
-import { handleInputRequired } from "@/helpers/helpers";
+import {
+  OnboardClientSteps,
+  OnboardingInputError,
+  OnboardTrainerSteps,
+} from "@/ts/enum";
+import React, { useState } from "react";
+import { handleInputRequired, validateOnlyLetter } from "@/helpers/helpers";
 import { Select, SelectItem } from "@nextui-org/react";
 import { CitiesData } from "@/constants/location";
+import { Input } from "@nextui-org/input";
 
-export function ClientOnboardingLocation() {
+export function TrainerOnboardingPhysicalLocation() {
   const onboardingDetails = useStore(
-    (state) => state.onboarding.onboardingClientDetails,
+    (state) => state.onboarding.onboardingTrainerDetails,
   );
   const updateOnboardingDetails = useStore(
-    (state) => state.updateOnboardingClientDetails,
+    (state) => state.updateOnboardingTrainerDetails,
   );
 
   const [currentCountryError, setCurrentCountryError] = useState("");
   const [currentCountyError, setCurrentCountyError] = useState("");
   const [currentCityError, setCurrentCityError] = useState("");
+  const [gymNameError, setGymNameError] = useState("");
 
   const [confirmBtnDisable, setConfirmBtnDisable] = useState(false);
 
@@ -43,7 +49,7 @@ export function ClientOnboardingLocation() {
 
     updateOnboardingDetails({
       ...onboardingDetails,
-      clientSteps: OnboardClientSteps.Notifications,
+      trainerSteps: OnboardTrainerSteps.Overview,
     });
   };
 
@@ -82,13 +88,11 @@ export function ClientOnboardingLocation() {
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
       }
-      title={"Locație preferată"}
-      body={
-        "Stabilește locația preferată pentru a găsi cea mai bună sală de sport și cei mai buni antrenori din apropierea ta."
-      }
+      title={"Locație anternament fizic"}
+      body={"Selectați locația unde va pot găsi clienții."}
     >
       <div className="grid gap-2">
-        <div className="grid grid-cols-1 gap-x-3 gap-y-4">
+        <div className="grid md:grid-cols-2 gap-x-3 gap-y-4">
           {/*Country*/}
           <Select
             label="Tara"
@@ -213,6 +217,39 @@ export function ClientOnboardingLocation() {
               </SelectItem>
             ))}
           </Select>
+          {/*GymName*/}
+          <Input
+            id="gymname"
+            placeholder="Doe Gym"
+            type="text"
+            label="Numele sălii de antrenament"
+            value={onboardingDetails.gymName}
+            autoCapitalize="none"
+            autoComplete="false"
+            autoCorrect="off"
+            variant="bordered"
+            isRequired
+            onValueChange={(e) => {
+              updateOnboardingDetails({
+                ...onboardingDetails,
+                gymName: e,
+              });
+              setGymNameError("");
+              setConfirmBtnDisable(false);
+            }}
+            color={gymNameError ? "danger" : "default"}
+            errorMessage={gymNameError}
+            isInvalid={!!gymNameError}
+            onFocusChange={(e) => {
+              if (!e) {
+                handleInputRequired(onboardingDetails.gymName!)
+                  ? setGymNameError(OnboardingInputError.InputRequired)
+                  : !validateOnlyLetter(onboardingDetails.gymName!)
+                    ? setGymNameError(OnboardingInputError.OnlyLetter)
+                    : null;
+              }
+            }}
+          />
         </div>
       </div>
       <div>
@@ -231,7 +268,7 @@ export function ClientOnboardingLocation() {
           onClick={() =>
             updateOnboardingDetails({
               ...onboardingDetails,
-              clientSteps: OnboardClientSteps.Availability,
+              trainerSteps: OnboardTrainerSteps.Availability,
             })
           }
           type="button"

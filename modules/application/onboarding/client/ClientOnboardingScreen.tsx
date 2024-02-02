@@ -16,7 +16,7 @@ import { ClientOnboardingNotifications } from "@/modules/application/onboarding/
 import { ClientOnboardingOverview } from "@/modules/application/onboarding/client/components/ClientOnboardingOverview";
 export function ClientOnboardingScreen() {
   const clientSteps = useStore(
-    (state) => state.onboarding.onboardingDetails.clientSteps,
+    (state) => state.onboarding.onboardingClientDetails.clientSteps,
   );
   switch (clientSteps) {
     case OnboardClientSteps.PersonalDetails:

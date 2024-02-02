@@ -3,7 +3,7 @@ import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
 import {
-  ClientFoodPreferences,
+  FoodPreferences,
   OnboardClientSteps,
   OnboardingInputError,
 } from "@/ts/enum";
@@ -17,10 +17,10 @@ import { FoodAllergies } from "@/constants/foods";
 
 export function ClientOnboardingFoodPreferences() {
   const onboardingDetails = useStore(
-    (state) => state.onboarding.onboardingDetails,
+    (state) => state.onboarding.onboardingClientDetails,
   );
   const updateOnboardingDetails = useStore(
-    (state) => state.updateOnboardingDetails,
+    (state) => state.updateOnboardingClientDetails,
   );
 
   const [foodPreferencesError, setFoodPreferencesError] = useState("");
@@ -67,7 +67,7 @@ export function ClientOnboardingFoodPreferences() {
             onValueChange={(e) => {
               updateOnboardingDetails({
                 ...onboardingDetails,
-                foodPreferences: e as ClientFoodPreferences,
+                foodPreferences: e as FoodPreferences,
               });
               setFoodPreferencesError("");
               setConfirmBtnDisable(false);
@@ -81,20 +81,20 @@ export function ClientOnboardingFoodPreferences() {
             isInvalid={!!foodPreferencesError}
             value={onboardingDetails.foodPreferences}
           >
-            <RadioButton value={ClientFoodPreferences.Omnivor}>
-              {ClientFoodPreferences.Omnivor}
+            <RadioButton value={FoodPreferences.Omnivor}>
+              {FoodPreferences.Omnivor}
             </RadioButton>
 
-            <RadioButton value={ClientFoodPreferences.Vegetarian}>
-              {ClientFoodPreferences.Vegetarian}
+            <RadioButton value={FoodPreferences.Vegetarian}>
+              {FoodPreferences.Vegetarian}
             </RadioButton>
 
-            <RadioButton value={ClientFoodPreferences.Vegan}>
-              {ClientFoodPreferences.Vegan}
+            <RadioButton value={FoodPreferences.Vegan}>
+              {FoodPreferences.Vegan}
             </RadioButton>
 
-            <RadioButton value={ClientFoodPreferences.Keto}>
-              {ClientFoodPreferences.Keto}
+            <RadioButton value={FoodPreferences.Keto}>
+              {FoodPreferences.Keto}
             </RadioButton>
           </RadioGroup>
           <Switch

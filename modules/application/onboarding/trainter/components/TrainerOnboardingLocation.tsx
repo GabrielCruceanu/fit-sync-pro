@@ -2,7 +2,7 @@
 import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
-import { OnboardClientSteps, OnboardingInputError } from "@/ts/enum";
+import { OnboardingInputError, OnboardTrainerSteps } from "@/ts/enum";
 import { useState } from "react";
 import { handleInputRequired } from "@/helpers/helpers";
 import { Select, SelectItem } from "@nextui-org/react";
@@ -10,10 +10,10 @@ import { CitiesData } from "@/constants/location";
 
 export function ClientOnboardingLocation() {
   const onboardingDetails = useStore(
-    (state) => state.onboarding.onboardingClientDetails,
+    (state) => state.onboarding.onboardingTrainerDetails,
   );
   const updateOnboardingDetails = useStore(
-    (state) => state.updateOnboardingClientDetails,
+    (state) => state.updateOnboardingTrainerDetails,
   );
 
   const [currentCountryError, setCurrentCountryError] = useState("");
@@ -43,7 +43,7 @@ export function ClientOnboardingLocation() {
 
     updateOnboardingDetails({
       ...onboardingDetails,
-      clientSteps: OnboardClientSteps.Notifications,
+      trainerSteps: OnboardTrainerSteps.Notifications,
     });
   };
 
@@ -82,9 +82,9 @@ export function ClientOnboardingLocation() {
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
       }
-      title={"Locație preferată"}
+      title={"Locație"}
       body={
-        "Stabilește locația preferată pentru a găsi cea mai bună sală de sport și cei mai buni antrenori din apropierea ta."
+        "Stabilește locația unde antrenezi pentru a putea fi găsit de clientii din apropierea ta."
       }
     >
       <div className="grid gap-2">
@@ -231,7 +231,7 @@ export function ClientOnboardingLocation() {
           onClick={() =>
             updateOnboardingDetails({
               ...onboardingDetails,
-              clientSteps: OnboardClientSteps.Availability,
+              trainerSteps: OnboardTrainerSteps.Availability,
             })
           }
           type="button"

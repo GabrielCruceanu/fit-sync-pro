@@ -4,11 +4,9 @@ import {
   FitnessExperience,
   OnboardClientSteps,
   OnboardingType,
+  OnboardTrainerSteps,
 } from "@/ts/enum";
-import {
-  ClientFitnessGoals,
-  ClientFoodPreferences,
-} from "@/ts/enum/onboarding.enum";
+import { ClientFitnessGoals, FoodPreferences } from "@/ts/enum/onboarding.enum";
 
 export type Birthdate = {
   date?: string;
@@ -57,7 +55,7 @@ export type OnboardingClientDetails = {
   height?: number;
   weight?: number;
   goals?: ClientFitnessGoals;
-  foodPreferences?: ClientFoodPreferences;
+  foodPreferences?: FoodPreferences;
   haveFoodAllergies?: boolean;
   foodAllergiesType?: string;
   foodAllergiesDescription?: string;
@@ -65,6 +63,39 @@ export type OnboardingClientDetails = {
   trainingLocation?: string;
   trainingPhysicalPreferences?: string;
   trainingOnlinePreferences?: string;
+  trainingAvailabilityDays?: string[];
+  trainingAvailabilityTime?: string[];
+  notificationsWorkout?: boolean;
+  notificationsNutrition?: boolean;
+  newsAndActualizations?: boolean;
+  offersAndPromotions?: boolean;
+};
+export type OnboardingTrainerDetails = {
+  trainerSteps: OnboardTrainerSteps;
+  firstname?: string;
+  lastname?: string;
+  username?: string;
+  phoneNumber?: string;
+  birthdate?: Birthdate;
+  gender?: string;
+  country?: string;
+  county?: string;
+  city?: string;
+  gymName?: string;
+  type?: string;
+  website?: string;
+  facebook?: string;
+  twitter?: string;
+  instagram?: string;
+  isNutritionist?: boolean;
+  nutritionistType?: string;
+  nutritionistExperience?: string;
+  nutritionistDiets?: string[];
+  trainingLocation?: string[];
+  trainingExperience?: string;
+  trainingType?: string;
+  trainingPhysicalPreferences?: string[];
+  trainingOnlinePreferences?: string[];
   trainingAvailabilityDays?: string[];
   trainingAvailabilityTime?: string[];
   notificationsWorkout?: boolean;
@@ -81,7 +112,8 @@ export type AlergiiAlimentare = {
 };
 export type Onboarding = {
   onboardingType: OnboardingType;
-  onboardingDetails: OnboardingClientDetails;
+  onboardingClientDetails: OnboardingClientDetails;
+  onboardingTrainerDetails: OnboardingTrainerDetails;
 };
 
 export type TrainingAvailability = {
