@@ -81,6 +81,7 @@ export type OnboardingTrainerDetails = {
   country?: string;
   county?: string;
   city?: string;
+  gymStreet?: string;
   gymName?: string;
   type?: string;
   website?: string;

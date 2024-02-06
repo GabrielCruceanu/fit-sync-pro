@@ -172,7 +172,7 @@ export function TrainerOnboardingFitnessExperience() {
               <div
                 className={cn(
                   "w-full border-2 rounded p-2",
-                  onboardingDetails?.trainingPhysicalPreferences?.includes(
+                  onboardingDetails?.trainingLocation?.includes(
                     TrainingLocation.Online,
                   )
                     ? "border-primary"
@@ -186,7 +186,7 @@ export function TrainerOnboardingFitnessExperience() {
               <div
                 className={cn(
                   "w-full border-2 rounded p-2",
-                  onboardingDetails?.trainingPhysicalPreferences?.includes(
+                  onboardingDetails?.trainingLocation?.includes(
                     TrainingLocation.Fizic,
                   )
                     ? "border-primary"

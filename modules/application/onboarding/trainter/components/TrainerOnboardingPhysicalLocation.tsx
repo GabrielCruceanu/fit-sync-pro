@@ -2,11 +2,7 @@
 import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
-import {
-  OnboardClientSteps,
-  OnboardingInputError,
-  OnboardTrainerSteps,
-} from "@/ts/enum";
+import { OnboardingInputError, OnboardTrainerSteps } from "@/ts/enum";
 import React, { useState } from "react";
 import { handleInputRequired, validateOnlyLetter } from "@/helpers/helpers";
 import { Select, SelectItem } from "@nextui-org/react";
@@ -24,6 +20,7 @@ export function TrainerOnboardingPhysicalLocation() {
   const [currentCountryError, setCurrentCountryError] = useState("");
   const [currentCountyError, setCurrentCountyError] = useState("");
   const [currentCityError, setCurrentCityError] = useState("");
+  const [gymStreetError, setGymStreetError] = useState("");
   const [gymNameError, setGymNameError] = useState("");
 
   const [confirmBtnDisable, setConfirmBtnDisable] = useState(false);
@@ -41,6 +38,16 @@ export function TrainerOnboardingPhysicalLocation() {
     }
     if (!onboardingDetails.city) {
       setCurrentCityError(OnboardingInputError.InputRequired);
+      setConfirmBtnDisable(true);
+      return;
+    }
+    if (!onboardingDetails.gymStreet) {
+      setGymStreetError(OnboardingInputError.InputRequired);
+      setConfirmBtnDisable(true);
+      return;
+    }
+    if (!onboardingDetails.gymName) {
+      setGymNameError(OnboardingInputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
@@ -217,12 +224,43 @@ export function TrainerOnboardingPhysicalLocation() {
               </SelectItem>
             ))}
           </Select>
+          {/*GymStreet*/}
+          <Input
+            id="gymStreet"
+            placeholder="Unirii, Nr. 14"
+            type="text"
+            label="Strada completă"
+            value={onboardingDetails.gymStreet}
+            autoCapitalize="none"
+            autoComplete="false"
+            autoCorrect="off"
+            variant="bordered"
+            isRequired
+            onValueChange={(e) => {
+              updateOnboardingDetails({
+                ...onboardingDetails,
+                gymStreet: e,
+              });
+              setGymStreetError("");
+              setConfirmBtnDisable(false);
+            }}
+            color={gymStreetError ? "danger" : "primary"}
+            errorMessage={gymStreetError}
+            isInvalid={!!gymStreetError}
+            onFocusChange={(e) => {
+              if (!e) {
+                handleInputRequired(onboardingDetails.gymStreet!)
+                  ? setGymStreetError(OnboardingInputError.InputRequired)
+                  : null;
+              }
+            }}
+          />
           {/*GymName*/}
           <Input
             id="gymname"
             placeholder="Doe Gym"
             type="text"
-            label="Numele sălii de antrenament"
+            label="Numele sală"
             value={onboardingDetails.gymName}
             autoCapitalize="none"
             autoComplete="false"
@@ -237,7 +275,7 @@ export function TrainerOnboardingPhysicalLocation() {
               setGymNameError("");
               setConfirmBtnDisable(false);
             }}
-            color={gymNameError ? "danger" : "default"}
+            color={gymNameError ? "danger" : "primary"}
             errorMessage={gymNameError}
             isInvalid={!!gymNameError}
             onFocusChange={(e) => {

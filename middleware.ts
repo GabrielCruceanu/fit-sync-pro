@@ -34,9 +34,9 @@ export async function middleware(req: NextRequest) {
     usersProfile[0].hasOnboarding &&
     req.nextUrl.pathname === ApplicationLinks.onboarding.link
   ) {
-    // return NextResponse.redirect(
-    //   new URL(ApplicationLinks.dashboard.link, req.url),
-    // );
+    return NextResponse.redirect(
+      new URL(ApplicationLinks.dashboard.link, req.url),
+    );
   }
 
   // if user is not signed in and the current path is not / redirect the user to /

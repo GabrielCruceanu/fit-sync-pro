@@ -2,12 +2,11 @@ import { useStore } from "@/store";
 import { Button } from "@nextui-org/button";
 import * as React from "react";
 import { useState } from "react";
-import { OnboardClientSteps, OnboardTrainerSteps } from "@/ts/enum";
+import { OnboardTrainerSteps } from "@/ts/enum";
 import { createClient } from "@/utils/supabase/create-client";
 import { useRouter } from "next/navigation";
 import { toast } from "@/components/use-toast";
-import { createClientProfile } from "@/utils/supabase/client-service";
-import { TypedClientDetails, TypedTrainerDetails } from "@/ts/types";
+import { TypedTrainerDetails } from "@/ts/types";
 import { createUserName, updateUser } from "@/utils/supabase/user-service";
 import { OnboardingMessage } from "@/lib/validations/error-check";
 import { UserType } from "@/ts/enum/user.enum";
@@ -73,7 +72,7 @@ export function TrainerOnboardingOverview() {
         profilePictureUrl: null,
         description: null,
         completedClients: null,
-        activeCients: null,
+        activeClients: null,
         certificate: null,
         website: onboardingDetails.website!,
         facebook: onboardingDetails.facebook!,
@@ -92,6 +91,7 @@ export function TrainerOnboardingOverview() {
           onboardingDetails.trainingPhysicalPreferences!,
         trainingAvailabilityDays: onboardingDetails.trainingAvailabilityDays!,
         trainingAvailabilityTime: onboardingDetails.trainingAvailabilityTime!,
+        gymStreet: onboardingDetails.gymStreet!,
         gymName: onboardingDetails.gymName!,
         trainingExperience: onboardingDetails.trainingExperience!,
         trainerType: onboardingDetails.trainingType!,
@@ -170,59 +170,106 @@ export function TrainerOnboardingOverview() {
             <strong className="text-medium">{onboardingDetails.gender}</strong>
           </p>
           <p className="text-sm">
-            Adresa sală: <br />
+            Țară: <br />
+            <strong className="text-medium">{onboardingDetails.country}</strong>
+          </p>
+          <p className="text-sm">
+            Județ: <br />
+            <strong className="text-medium">{onboardingDetails.county}</strong>
+          </p>
+          <p className="text-sm">
+            Oraș / Sector: <br />
+            <strong className="text-medium">{onboardingDetails.city}</strong>
+          </p>
+          <p className="text-sm">
+            Stradă sală: <br />
             <strong className="text-medium">
-              {onboardingDetails.city} / {onboardingDetails.county} /{" "}
-              {onboardingDetails.country}
+              {onboardingDetails.gymStreet}
             </strong>
           </p>
           <p className="text-sm">
             Nume sală: <br />
             <strong className="text-medium">{onboardingDetails.gymName}</strong>
           </p>
-          <p className="text-sm">
-            Greutate: <br />
-            <strong className="text-medium">{onboardingDetails.weight}</strong>
-          </p>
-          <p className="text-sm">
-            Scop: <br />
-            <strong className="text-medium">{onboardingDetails.goals}</strong>
-          </p>
-          <p className="text-sm">
-            Preferințe alimentare: <br />
-            <strong className="text-medium">
-              {onboardingDetails.foodPreferences}
-            </strong>
-          </p>
-          {onboardingDetails.haveFoodAllergies && (
-            <p className="text-sm">
-              Alergii: <br />
-              <strong className="text-medium">
-                {onboardingDetails.foodAllergiesType}
-              </strong>
-            </p>
+          {onboardingDetails.isNutritionist && (
+            <>
+              <p className="text-sm">
+                Tip Nutriționist: <br />
+                <strong className="text-medium">
+                  {onboardingDetails.nutritionistType}
+                </strong>
+              </p>
+              <p className="text-sm">
+                Experiență Nutriționist: <br />
+                <strong className="text-medium">
+                  {onboardingDetails.nutritionistExperience}
+                </strong>
+              </p>
+
+              <p className="text-sm">
+                Diete pentru: <br />
+                <span className="flex flex-wrap capitalize">
+                  {onboardingDetails.nutritionistDiets?.map((diets) => (
+                    <strong className="text-medium mr-2" key={diets}>
+                      {diets}
+                    </strong>
+                  ))}
+                </span>
+              </p>
+            </>
           )}
 
           <p className="text-sm">
-            Experiența: <br />
+            Tip Antrenor: <br />
             <strong className="text-medium">
-              {onboardingDetails.fitnessExperience}
+              {onboardingDetails.trainingType}
             </strong>
           </p>
+
           <p className="text-sm">
-            Locatie: <br />
+            Experiență Antrenor: <br />
             <strong className="text-medium">
-              {onboardingDetails.trainingLocation}
+              {onboardingDetails.trainingExperience}
             </strong>
           </p>
+
           <p className="text-sm">
-            Tip: <br />
+            Mod de a antrena: <br />
             <strong className="text-medium">
-              {onboardingDetails.trainingLocation === "Fizic"
-                ? onboardingDetails.trainingPhysicalPreferences
-                : onboardingDetails.trainingOnlinePreferences}
+              <span className="flex flex-wrap capitalize">
+                {onboardingDetails.trainingLocation?.map((location) => (
+                  <strong className="text-medium mr-2" key={location}>
+                    {location}
+                  </strong>
+                ))}
+              </span>
             </strong>
           </p>
+
+          {onboardingDetails.trainingPhysicalPreferences && (
+            <p className="text-sm">
+              Antrenament fizic: <br />
+              {onboardingDetails.trainingPhysicalPreferences?.map(
+                (physical) => (
+                  <strong className="text-medium mr-2 block" key={physical}>
+                    {physical}
+                  </strong>
+                ),
+              )}
+            </p>
+          )}
+
+          {onboardingDetails.trainingOnlinePreferences && (
+            <p className="text-sm">
+              Antrenament online: <br />
+              {onboardingDetails.trainingOnlinePreferences?.map((online) => (
+                <strong className="text-medium mr-2 block" key={online}>
+                  {online}
+                </strong>
+              ))}
+            </p>
+          )}
+
           <p className="text-sm">
             Zile antrenament: <br />
             <span className="flex flex-wrap capitalize">
@@ -242,30 +289,6 @@ export function TrainerOnboardingOverview() {
                 </strong>
               ))}
             </span>
-          </p>
-          <p className="text-sm">
-            Notificari Antrenament: <br />
-            <strong className="text-medium mr-2">
-              {onboardingDetails.notificationsWorkout ? "Da" : "Nu"}
-            </strong>
-          </p>
-          <p className="text-sm">
-            Notificari Nutritie: <br />
-            <strong className="text-medium mr-2">
-              {onboardingDetails.notificationsNutrition ? "Da" : "Nu"}
-            </strong>
-          </p>
-          <p className="text-sm">
-            Notificari Noutati: <br />
-            <strong className="text-medium mr-2">
-              {onboardingDetails.newsAndActualizations ? "Da" : "Nu"}
-            </strong>
-          </p>
-          <p className="text-sm">
-            Notificari Oferte: <br />
-            <strong className="text-medium mr-2">
-              {onboardingDetails.offersAndPromotions ? "Da" : "Nu"}
-            </strong>
           </p>
         </div>
       </div>

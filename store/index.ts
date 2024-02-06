@@ -1,15 +1,8 @@
 import { create } from "zustand";
 import { createClient } from "@/utils/supabase/create-client";
-import {
-  Birthdate,
-  OnboardingClientDetails,
-  TypedUserDetails,
-} from "@/ts/types";
+import { OnboardingClientDetails, TypedUserDetails } from "@/ts/types";
 import { Onboarding, OnboardingTrainerDetails } from "@/ts/types/onboarding";
 import {
-  ClientFitnessGoals,
-  FitnessExperience,
-  FoodPreferences,
   OnboardClientSteps,
   OnboardingType,
   OnboardTrainerSteps,
@@ -138,8 +131,8 @@ export const useStore = create<State>()(
           instagram: undefined,
           experience: undefined,
           proType: undefined,
+          gymStreet: undefined,
           gymName: undefined,
-          gymLocation: undefined,
           isNutritionist: undefined,
           nutritionistType: undefined,
           nutritionistExperience: undefined,
