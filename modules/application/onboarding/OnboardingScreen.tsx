@@ -17,7 +17,7 @@ export function OnboardingScreen() {
       data: { user },
     } = await supabase.auth.getUser();
 
-    if (!user && sessionStorage.getItem("fit-sync-storage")) {
+    if (!user && sessionStorage && sessionStorage.getItem("fit-sync-storage")) {
       sessionStorage.removeItem("fit-sync-storage");
     }
   };

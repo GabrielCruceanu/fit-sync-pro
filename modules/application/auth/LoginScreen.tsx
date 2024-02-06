@@ -6,7 +6,7 @@ import HeaderForm from "./components/header-form";
 import { AuthType } from "@/ts/enum";
 
 export function LoginScreen() {
-  if (sessionStorage.getItem("fit-sync-storage")) {
+  if (sessionStorage && sessionStorage.getItem("fit-sync-storage")) {
     sessionStorage.removeItem("fit-sync-storage");
   }
   return (
