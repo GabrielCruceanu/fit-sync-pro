@@ -34,7 +34,7 @@ const ProfileDropDown = ({
             >
               <p>Bun venit,</p>
               <p className="font-semibold">
-                {`${user.first_name} ${user.last_name}`}
+                {`${user.firstName} ${user.lastName}`}
               </p>
             </DropdownItem>
             <DropdownItem
