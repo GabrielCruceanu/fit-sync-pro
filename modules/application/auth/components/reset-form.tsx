@@ -11,7 +11,7 @@ import {
   AuthErrorMessage,
   checkErrorMessage,
 } from "@/lib/validations/error-check";
-import { createClient } from "@/utils/supabase/client";
+import { createClient } from "@/utils/supabase/create-client";
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
 import { Icons } from "@/components/icons";
@@ -32,7 +32,7 @@ export function UserResetPasswordForm({
   const isInvalid = React.useMemo(() => {
     if (emailValue === "") return false;
 
-    return validateEmail(emailValue) ? false : true;
+    return !validateEmail(emailValue);
   }, [emailValue]);
   const supabase = createClient();
   const {

@@ -6,73 +6,131 @@ export type Json =
   | { [key: string]: Json | undefined }
   | Json[];
 
-export interface Database {
+export type Database = {
   public: {
     Tables: {
+      alergii_alimentare: {
+        Row: {
+          alimente_sigure: string | null;
+          exemplu_alimente_asociate: string | null;
+          id: number;
+          tip_alergie: Database["public"]["Enums"]["tip_alergie_enum"] | null;
+        };
+        Insert: {
+          alimente_sigure?: string | null;
+          exemplu_alimente_asociate?: string | null;
+          id: number;
+          tip_alergie?: Database["public"]["Enums"]["tip_alergie_enum"] | null;
+        };
+        Update: {
+          alimente_sigure?: string | null;
+          exemplu_alimente_asociate?: string | null;
+          id?: number;
+          tip_alergie?: Database["public"]["Enums"]["tip_alergie_enum"] | null;
+        };
+        Relationships: [];
+      };
       clients: {
         Row: {
-          birth_date: string | null;
-          birth_month: string | null;
-          birth_year: string | null;
+          birthDate: string | null;
+          birthMonth: string | null;
+          birthYear: string | null;
           city: string | null;
           client_id: string;
           country: string | null;
           email: string | null;
-          first_name: string | null;
+          firstName: string | null;
+          fitnessExperience: string | null;
+          foodAllergiesDescription: string | null;
+          foodAllergiesType: string | null;
+          foodPreferences: string | null;
           gender: string | null;
-          has_premium: boolean | null;
+          goals: string | null;
+          haveFoodAllergies: boolean | null;
+          height: number | null;
           joined: string;
-          last_name: string | null;
+          lastName: string | null;
           phone: string | null;
-          profile_picture_url: string | null;
+          profilePictureUrl: string | null;
           state: string | null;
-          type: Database['public']['Enums']['user_type'] | null;
+          trainingAvailabilityDays: string[] | null;
+          trainingAvailabilityTime: string[] | null;
+          trainingLocation: string | null;
+          trainingOnlinePreferences: string | null;
+          trainingPhysicalPreferences: string | null;
           username: string | null;
+          userType: Database["public"]["Enums"]["user_type"] | null;
+          weight: number | null;
         };
         Insert: {
-          birth_date?: string | null;
-          birth_month?: string | null;
-          birth_year?: string | null;
+          birthDate?: string | null;
+          birthMonth?: string | null;
+          birthYear?: string | null;
           city?: string | null;
           client_id: string;
           country?: string | null;
           email?: string | null;
-          first_name?: string | null;
+          firstName?: string | null;
+          fitnessExperience?: string | null;
+          foodAllergiesDescription?: string | null;
+          foodAllergiesType?: string | null;
+          foodPreferences?: string | null;
           gender?: string | null;
-          has_premium?: boolean | null;
+          goals?: string | null;
+          haveFoodAllergies?: boolean | null;
+          height?: number | null;
           joined?: string;
-          last_name?: string | null;
+          lastName?: string | null;
           phone?: string | null;
-          profile_picture_url?: string | null;
+          profilePictureUrl?: string | null;
           state?: string | null;
-          type?: Database['public']['Enums']['user_type'] | null;
+          trainingAvailabilityDays?: string[] | null;
+          trainingAvailabilityTime?: string[] | null;
+          trainingLocation?: string | null;
+          trainingOnlinePreferences?: string | null;
+          trainingPhysicalPreferences?: string | null;
           username?: string | null;
+          userType?: Database["public"]["Enums"]["user_type"] | null;
+          weight?: number | null;
         };
         Update: {
-          birth_date?: string | null;
-          birth_month?: string | null;
-          birth_year?: string | null;
+          birthDate?: string | null;
+          birthMonth?: string | null;
+          birthYear?: string | null;
           city?: string | null;
           client_id?: string;
           country?: string | null;
           email?: string | null;
-          first_name?: string | null;
+          firstName?: string | null;
+          fitnessExperience?: string | null;
+          foodAllergiesDescription?: string | null;
+          foodAllergiesType?: string | null;
+          foodPreferences?: string | null;
           gender?: string | null;
-          has_premium?: boolean | null;
+          goals?: string | null;
+          haveFoodAllergies?: boolean | null;
+          height?: number | null;
           joined?: string;
-          last_name?: string | null;
+          lastName?: string | null;
           phone?: string | null;
-          profile_picture_url?: string | null;
+          profilePictureUrl?: string | null;
           state?: string | null;
-          type?: Database['public']['Enums']['user_type'] | null;
+          trainingAvailabilityDays?: string[] | null;
+          trainingAvailabilityTime?: string[] | null;
+          trainingLocation?: string | null;
+          trainingOnlinePreferences?: string | null;
+          trainingPhysicalPreferences?: string | null;
           username?: string | null;
+          userType?: Database["public"]["Enums"]["user_type"] | null;
+          weight?: number | null;
         };
         Relationships: [
           {
-            foreignKeyName: 'clients_client_id_fkey';
-            columns: ['client_id'];
-            referencedRelation: 'users';
-            referencedColumns: ['id'];
+            foreignKeyName: "clients_client_id_fkey";
+            columns: ["client_id"];
+            isOneToOne: true;
+            referencedRelation: "users";
+            referencedColumns: ["id"];
           },
         ];
       };
@@ -91,10 +149,11 @@ export interface Database {
         };
         Relationships: [
           {
-            foreignKeyName: 'customers_id_fkey';
-            columns: ['id'];
-            referencedRelation: 'users';
-            referencedColumns: ['id'];
+            foreignKeyName: "customers_id_fkey";
+            columns: ["id"];
+            isOneToOne: true;
+            referencedRelation: "users";
+            referencedColumns: ["id"];
           },
         ];
       };
@@ -126,7 +185,7 @@ export interface Database {
           street: string | null;
           street_number: string | null;
           twitter: string | null;
-          type: Database['public']['Enums']['user_type'] | null;
+          type: Database["public"]["Enums"]["user_type"] | null;
           username: string | null;
           website: string | null;
         };
@@ -157,7 +216,7 @@ export interface Database {
           street?: string | null;
           street_number?: string | null;
           twitter?: string | null;
-          type?: Database['public']['Enums']['user_type'] | null;
+          type?: Database["public"]["Enums"]["user_type"] | null;
           username?: string | null;
           website?: string | null;
         };
@@ -188,16 +247,17 @@ export interface Database {
           street?: string | null;
           street_number?: string | null;
           twitter?: string | null;
-          type?: Database['public']['Enums']['user_type'] | null;
+          type?: Database["public"]["Enums"]["user_type"] | null;
           username?: string | null;
           website?: string | null;
         };
         Relationships: [
           {
-            foreignKeyName: 'gyms_id_fkey';
-            columns: ['id'];
-            referencedRelation: 'users';
-            referencedColumns: ['id'];
+            foreignKeyName: "gyms_id_fkey";
+            columns: ["id"];
+            isOneToOne: true;
+            referencedRelation: "users";
+            referencedColumns: ["id"];
           },
         ];
       };
@@ -230,7 +290,7 @@ export interface Database {
           programs: string | null;
           state: string | null;
           twitter: string | null;
-          type: Database['public']['Enums']['user_type'] | null;
+          type: Database["public"]["Enums"]["user_type"] | null;
           username: string | null;
           website: string | null;
         };
@@ -262,7 +322,7 @@ export interface Database {
           programs?: string | null;
           state?: string | null;
           twitter?: string | null;
-          type?: Database['public']['Enums']['user_type'] | null;
+          type?: Database["public"]["Enums"]["user_type"] | null;
           username?: string | null;
           website?: string | null;
         };
@@ -294,16 +354,17 @@ export interface Database {
           programs?: string | null;
           state?: string | null;
           twitter?: string | null;
-          type?: Database['public']['Enums']['user_type'] | null;
+          type?: Database["public"]["Enums"]["user_type"] | null;
           username?: string | null;
           website?: string | null;
         };
         Relationships: [
           {
-            foreignKeyName: 'nutritionists_id_fkey';
-            columns: ['id'];
-            referencedRelation: 'users';
-            referencedColumns: ['id'];
+            foreignKeyName: "nutritionists_id_fkey";
+            columns: ["id"];
+            isOneToOne: true;
+            referencedRelation: "users";
+            referencedColumns: ["id"];
           },
         ];
       };
@@ -367,10 +428,11 @@ export interface Database {
         };
         Relationships: [
           {
-            foreignKeyName: 'physical_details_client_id_fkey';
-            columns: ['client_id'];
-            referencedRelation: 'clients';
-            referencedColumns: ['client_id'];
+            foreignKeyName: "physical_details_client_id_fkey";
+            columns: ["client_id"];
+            isOneToOne: false;
+            referencedRelation: "clients";
+            referencedColumns: ["client_id"];
           },
         ];
       };
@@ -380,12 +442,12 @@ export interface Database {
           currency: string | null;
           description: string | null;
           id: string;
-          interval: Database['public']['Enums']['pricing_plan_interval'] | null;
+          interval: Database["public"]["Enums"]["pricing_plan_interval"] | null;
           interval_count: number | null;
           metadata: Json | null;
           product_id: string | null;
           trial_period_days: number | null;
-          type: Database['public']['Enums']['pricing_type'] | null;
+          type: Database["public"]["Enums"]["pricing_type"] | null;
           unit_amount: number | null;
         };
         Insert: {
@@ -394,13 +456,13 @@ export interface Database {
           description?: string | null;
           id: string;
           interval?:
-            | Database['public']['Enums']['pricing_plan_interval']
+            | Database["public"]["Enums"]["pricing_plan_interval"]
             | null;
           interval_count?: number | null;
           metadata?: Json | null;
           product_id?: string | null;
           trial_period_days?: number | null;
-          type?: Database['public']['Enums']['pricing_type'] | null;
+          type?: Database["public"]["Enums"]["pricing_type"] | null;
           unit_amount?: number | null;
         };
         Update: {
@@ -409,21 +471,22 @@ export interface Database {
           description?: string | null;
           id?: string;
           interval?:
-            | Database['public']['Enums']['pricing_plan_interval']
+            | Database["public"]["Enums"]["pricing_plan_interval"]
             | null;
           interval_count?: number | null;
           metadata?: Json | null;
           product_id?: string | null;
           trial_period_days?: number | null;
-          type?: Database['public']['Enums']['pricing_type'] | null;
+          type?: Database["public"]["Enums"]["pricing_type"] | null;
           unit_amount?: number | null;
         };
         Relationships: [
           {
-            foreignKeyName: 'prices_product_id_fkey';
-            columns: ['product_id'];
-            referencedRelation: 'products';
-            referencedColumns: ['id'];
+            foreignKeyName: "prices_product_id_fkey";
+            columns: ["product_id"];
+            isOneToOne: false;
+            referencedRelation: "products";
+            referencedColumns: ["id"];
           },
         ];
       };
@@ -490,16 +553,18 @@ export interface Database {
         };
         Relationships: [
           {
-            foreignKeyName: 'reviews_beneficiary_id_fkey';
-            columns: ['beneficiary_id'];
-            referencedRelation: 'trainers';
-            referencedColumns: ['id'];
+            foreignKeyName: "reviews_beneficiary_id_fkey";
+            columns: ["beneficiary_id"];
+            isOneToOne: false;
+            referencedRelation: "trainers";
+            referencedColumns: ["id"];
           },
           {
-            foreignKeyName: 'reviews_client_id_fkey';
-            columns: ['client_id'];
-            referencedRelation: 'clients';
-            referencedColumns: ['client_id'];
+            foreignKeyName: "reviews_client_id_fkey";
+            columns: ["client_id"];
+            isOneToOne: false;
+            referencedRelation: "clients";
+            referencedColumns: ["client_id"];
           },
         ];
       };
@@ -516,7 +581,7 @@ export interface Database {
           metadata: Json | null;
           price_id: string | null;
           quantity: number | null;
-          status: Database['public']['Enums']['subscription_status'] | null;
+          status: Database["public"]["Enums"]["subscription_status"] | null;
           trial_end: string | null;
           trial_start: string | null;
           user_id: string;
@@ -533,7 +598,7 @@ export interface Database {
           metadata?: Json | null;
           price_id?: string | null;
           quantity?: number | null;
-          status?: Database['public']['Enums']['subscription_status'] | null;
+          status?: Database["public"]["Enums"]["subscription_status"] | null;
           trial_end?: string | null;
           trial_start?: string | null;
           user_id: string;
@@ -550,115 +615,147 @@ export interface Database {
           metadata?: Json | null;
           price_id?: string | null;
           quantity?: number | null;
-          status?: Database['public']['Enums']['subscription_status'] | null;
+          status?: Database["public"]["Enums"]["subscription_status"] | null;
           trial_end?: string | null;
           trial_start?: string | null;
           user_id?: string;
         };
         Relationships: [
           {
-            foreignKeyName: 'subscriptions_price_id_fkey';
-            columns: ['price_id'];
-            referencedRelation: 'prices';
-            referencedColumns: ['id'];
+            foreignKeyName: "subscriptions_price_id_fkey";
+            columns: ["price_id"];
+            isOneToOne: false;
+            referencedRelation: "prices";
+            referencedColumns: ["id"];
           },
           {
-            foreignKeyName: 'subscriptions_user_id_fkey';
-            columns: ['user_id'];
-            referencedRelation: 'users';
-            referencedColumns: ['id'];
+            foreignKeyName: "subscriptions_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "users";
+            referencedColumns: ["id"];
           },
         ];
       };
       trainers: {
         Row: {
-          active_clients: string | null;
-          birth_date: string | null;
-          birth_month: string | null;
-          birth_year: string | null;
+          activeClients: string | null;
+          birthDate: string | null;
+          birthMonth: string | null;
+          birthYear: string | null;
           certificate: boolean | null;
           city: string | null;
-          completed_clients: string | null;
+          completedClients: string | null;
           country: string | null;
           description: string | null;
           email: string | null;
-          experience: string | null;
           facebook: string | null;
-          first_name: string | null;
+          firstName: string | null;
           gallery: string[] | null;
           gender: string | null;
-          gym_name: string | null;
-          has_premium: boolean | null;
+          gymName: string | null;
+          gymStreet: string | null;
+          hasPremium: boolean | null;
           id: string;
           instagram: string | null;
+          isNutritionist: boolean | null;
           joined: string;
-          last_name: string | null;
-          phone: string | null;
-          pro_type: string | null;
-          profile_picture_url: string | null;
+          lastName: string | null;
+          nutritionistDiets: string[] | null;
+          nutritionistExperience: string | null;
+          nutritionistType: string | null;
+          phoneNumber: string | null;
+          profilePictureUrl: string | null;
           state: string | null;
+          trainerType: string | null;
+          trainingAvailabilityDays: string[] | null;
+          trainingAvailabilityTime: string[] | null;
+          trainingExperience: string | null;
+          trainingLocation: string[] | null;
+          trainingOnlinePreferences: string[] | null;
+          trainingPhysicalPreferences: string[] | null;
           twitter: string | null;
           type: string | null;
           username: string | null;
           website: string | null;
         };
         Insert: {
-          active_clients?: string | null;
-          birth_date?: string | null;
-          birth_month?: string | null;
-          birth_year?: string | null;
+          activeClients?: string | null;
+          birthDate?: string | null;
+          birthMonth?: string | null;
+          birthYear?: string | null;
           certificate?: boolean | null;
           city?: string | null;
-          completed_clients?: string | null;
+          completedClients?: string | null;
           country?: string | null;
           description?: string | null;
           email?: string | null;
-          experience?: string | null;
           facebook?: string | null;
-          first_name?: string | null;
+          firstName?: string | null;
           gallery?: string[] | null;
           gender?: string | null;
-          gym_name?: string | null;
-          has_premium?: boolean | null;
+          gymName?: string | null;
+          gymStreet?: string | null;
+          hasPremium?: boolean | null;
           id: string;
           instagram?: string | null;
+          isNutritionist?: boolean | null;
           joined?: string;
-          last_name?: string | null;
-          phone?: string | null;
-          pro_type?: string | null;
-          profile_picture_url?: string | null;
+          lastName?: string | null;
+          nutritionistDiets?: string[] | null;
+          nutritionistExperience?: string | null;
+          nutritionistType?: string | null;
+          phoneNumber?: string | null;
+          profilePictureUrl?: string | null;
           state?: string | null;
+          trainerType?: string | null;
+          trainingAvailabilityDays?: string[] | null;
+          trainingAvailabilityTime?: string[] | null;
+          trainingExperience?: string | null;
+          trainingLocation?: string[] | null;
+          trainingOnlinePreferences?: string[] | null;
+          trainingPhysicalPreferences?: string[] | null;
           twitter?: string | null;
           type?: string | null;
           username?: string | null;
           website?: string | null;
         };
         Update: {
-          active_clients?: string | null;
-          birth_date?: string | null;
-          birth_month?: string | null;
-          birth_year?: string | null;
+          activeClients?: string | null;
+          birthDate?: string | null;
+          birthMonth?: string | null;
+          birthYear?: string | null;
           certificate?: boolean | null;
           city?: string | null;
-          completed_clients?: string | null;
+          completedClients?: string | null;
           country?: string | null;
           description?: string | null;
           email?: string | null;
-          experience?: string | null;
           facebook?: string | null;
-          first_name?: string | null;
+          firstName?: string | null;
           gallery?: string[] | null;
           gender?: string | null;
-          gym_name?: string | null;
-          has_premium?: boolean | null;
+          gymName?: string | null;
+          gymStreet?: string | null;
+          hasPremium?: boolean | null;
           id?: string;
           instagram?: string | null;
+          isNutritionist?: boolean | null;
           joined?: string;
-          last_name?: string | null;
-          phone?: string | null;
-          pro_type?: string | null;
-          profile_picture_url?: string | null;
+          lastName?: string | null;
+          nutritionistDiets?: string[] | null;
+          nutritionistExperience?: string | null;
+          nutritionistType?: string | null;
+          phoneNumber?: string | null;
+          profilePictureUrl?: string | null;
           state?: string | null;
+          trainerType?: string | null;
+          trainingAvailabilityDays?: string[] | null;
+          trainingAvailabilityTime?: string[] | null;
+          trainingExperience?: string | null;
+          trainingLocation?: string[] | null;
+          trainingOnlinePreferences?: string[] | null;
+          trainingPhysicalPreferences?: string[] | null;
           twitter?: string | null;
           type?: string | null;
           username?: string | null;
@@ -666,10 +763,11 @@ export interface Database {
         };
         Relationships: [
           {
-            foreignKeyName: 'trainers_id_fkey';
-            columns: ['id'];
-            referencedRelation: 'users';
-            referencedColumns: ['id'];
+            foreignKeyName: "trainers_id_fkey";
+            columns: ["id"];
+            isOneToOne: true;
+            referencedRelation: "users";
+            referencedColumns: ["id"];
           },
         ];
       };
@@ -691,56 +789,73 @@ export interface Database {
         };
         Relationships: [
           {
-            foreignKeyName: 'usernames_id_fkey';
-            columns: ['id'];
-            referencedRelation: 'users';
-            referencedColumns: ['id'];
+            foreignKeyName: "usernames_id_fkey";
+            columns: ["id"];
+            isOneToOne: true;
+            referencedRelation: "users";
+            referencedColumns: ["id"];
           },
         ];
       };
       users: {
         Row: {
-          billing_address: Json | null;
+          billingAddress: Json | null;
           email: string | null;
-          first_name: string | null;
+          firstName: string | null;
+          hasOnboarding: boolean;
           id: string;
-          last_name: string | null;
+          lastName: string | null;
           name: string | null;
-          payment_method: Json | null;
-          profile_picture_url: string | null;
-          user_type: Database['public']['Enums']['user_type'] | null;
+          newsAndActualizations: boolean | null;
+          notificationsNutrition: boolean | null;
+          notificationsWorkout: boolean | null;
+          offersAndPromotions: boolean | null;
+          paymentMethod: Json | null;
+          profilePictureUrl: string | null;
           username: string | null;
+          userType: Database["public"]["Enums"]["user_type"] | null;
         };
         Insert: {
-          billing_address?: Json | null;
+          billingAddress?: Json | null;
           email?: string | null;
-          first_name?: string | null;
+          firstName?: string | null;
+          hasOnboarding?: boolean;
           id: string;
-          last_name?: string | null;
+          lastName?: string | null;
           name?: string | null;
-          payment_method?: Json | null;
-          profile_picture_url?: string | null;
-          user_type?: Database['public']['Enums']['user_type'] | null;
+          newsAndActualizations?: boolean | null;
+          notificationsNutrition?: boolean | null;
+          notificationsWorkout?: boolean | null;
+          offersAndPromotions?: boolean | null;
+          paymentMethod?: Json | null;
+          profilePictureUrl?: string | null;
           username?: string | null;
+          userType?: Database["public"]["Enums"]["user_type"] | null;
         };
         Update: {
-          billing_address?: Json | null;
+          billingAddress?: Json | null;
           email?: string | null;
-          first_name?: string | null;
+          firstName?: string | null;
+          hasOnboarding?: boolean;
           id?: string;
-          last_name?: string | null;
+          lastName?: string | null;
           name?: string | null;
-          payment_method?: Json | null;
-          profile_picture_url?: string | null;
-          user_type?: Database['public']['Enums']['user_type'] | null;
+          newsAndActualizations?: boolean | null;
+          notificationsNutrition?: boolean | null;
+          notificationsWorkout?: boolean | null;
+          offersAndPromotions?: boolean | null;
+          paymentMethod?: Json | null;
+          profilePictureUrl?: string | null;
           username?: string | null;
+          userType?: Database["public"]["Enums"]["user_type"] | null;
         };
         Relationships: [
           {
-            foreignKeyName: 'users_id_fkey';
-            columns: ['id'];
-            referencedRelation: 'users';
-            referencedColumns: ['id'];
+            foreignKeyName: "users_id_fkey";
+            columns: ["id"];
+            isOneToOne: true;
+            referencedRelation: "users";
+            referencedColumns: ["id"];
           },
         ];
       };
@@ -752,21 +867,117 @@ export interface Database {
       [_ in never]: never;
     };
     Enums: {
-      gender_type: 'masculin' | 'feminin' | 'altul';
-      pricing_plan_interval: 'day' | 'week' | 'month' | 'year';
-      pricing_type: 'one_time' | 'recurring';
+      gender_type: "masculin" | "feminin" | "altul";
+      pricing_plan_interval: "day" | "week" | "month" | "year";
+      pricing_type: "one_time" | "recurring";
       subscription_status:
-        | 'trialing'
-        | 'active'
-        | 'canceled'
-        | 'incomplete'
-        | 'incomplete_expired'
-        | 'past_due'
-        | 'unpaid';
-      user_type: 'client' | 'nutritionist' | 'trainer' | 'gym';
+        | "trialing"
+        | "active"
+        | "canceled"
+        | "incomplete"
+        | "incomplete_expired"
+        | "past_due"
+        | "unpaid";
+      tip_alergie_enum:
+        | "Cereale care contin gluten"
+        | "Crustacee"
+        | "Ouă"
+        | "Pește"
+        | "Arahide"
+        | "Soia"
+        | "Lapte și produse derivate inclusiv lactoza"
+        | "Fructe cu coajă"
+        | "Muștar și produse derivate"
+        | "Seminţe de susan și produse derivate"
+        | "Dioxid de sulf și sulfiţi"
+        | "Lupin și produse derivate"
+        | "Moluște și produse derivate"
+        | "Telina și produse derivate"
+        | "Altele";
+      user_type: "client" | "nutritionist" | "trainer" | "gym";
     };
     CompositeTypes: {
       [_ in never]: never;
     };
   };
-}
+};
+
+export type Tables<
+  PublicTableNameOrOptions extends
+    | keyof (Database["public"]["Tables"] & Database["public"]["Views"])
+    | { schema: keyof Database },
+  TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
+    ? keyof (Database[PublicTableNameOrOptions["schema"]]["Tables"] &
+        Database[PublicTableNameOrOptions["schema"]]["Views"])
+    : never = never,
+> = PublicTableNameOrOptions extends { schema: keyof Database }
+  ? (Database[PublicTableNameOrOptions["schema"]]["Tables"] &
+      Database[PublicTableNameOrOptions["schema"]]["Views"])[TableName] extends {
+      Row: infer R;
+    }
+    ? R
+    : never
+  : PublicTableNameOrOptions extends keyof (Database["public"]["Tables"] &
+        Database["public"]["Views"])
+    ? (Database["public"]["Tables"] &
+        Database["public"]["Views"])[PublicTableNameOrOptions] extends {
+        Row: infer R;
+      }
+      ? R
+      : never
+    : never;
+
+export type TablesInsert<
+  PublicTableNameOrOptions extends
+    | keyof Database["public"]["Tables"]
+    | { schema: keyof Database },
+  TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
+    ? keyof Database[PublicTableNameOrOptions["schema"]]["Tables"]
+    : never = never,
+> = PublicTableNameOrOptions extends { schema: keyof Database }
+  ? Database[PublicTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+      Insert: infer I;
+    }
+    ? I
+    : never
+  : PublicTableNameOrOptions extends keyof Database["public"]["Tables"]
+    ? Database["public"]["Tables"][PublicTableNameOrOptions] extends {
+        Insert: infer I;
+      }
+      ? I
+      : never
+    : never;
+
+export type TablesUpdate<
+  PublicTableNameOrOptions extends
+    | keyof Database["public"]["Tables"]
+    | { schema: keyof Database },
+  TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
+    ? keyof Database[PublicTableNameOrOptions["schema"]]["Tables"]
+    : never = never,
+> = PublicTableNameOrOptions extends { schema: keyof Database }
+  ? Database[PublicTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+      Update: infer U;
+    }
+    ? U
+    : never
+  : PublicTableNameOrOptions extends keyof Database["public"]["Tables"]
+    ? Database["public"]["Tables"][PublicTableNameOrOptions] extends {
+        Update: infer U;
+      }
+      ? U
+      : never
+    : never;
+
+export type Enums<
+  PublicEnumNameOrOptions extends
+    | keyof Database["public"]["Enums"]
+    | { schema: keyof Database },
+  EnumName extends PublicEnumNameOrOptions extends { schema: keyof Database }
+    ? keyof Database[PublicEnumNameOrOptions["schema"]]["Enums"]
+    : never = never,
+> = PublicEnumNameOrOptions extends { schema: keyof Database }
+  ? Database[PublicEnumNameOrOptions["schema"]]["Enums"][EnumName]
+  : PublicEnumNameOrOptions extends keyof Database["public"]["Enums"]
+    ? Database["public"]["Enums"][PublicEnumNameOrOptions]
+    : never;

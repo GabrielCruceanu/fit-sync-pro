@@ -16,7 +16,10 @@ export type {
   Birthdate,
   FitnessAvailability,
   Notifications,
+  AlergiiAlimentare,
 } from "./onboarding";
+
+export type { Country, City, County } from "./location";
 
 export type TypedSupabaseClient = SupabaseClient<Database>;
 

@@ -1,7 +1,7 @@
 import { useRouter } from "next/navigation";
 import { ApplicationLinks } from "@/constants/links";
 import React from "react";
-import { createClient } from "@/utils/supabase/client";
+import { createClient } from "@/utils/supabase/create-client";
 import { Button } from "@nextui-org/button";
 
 export function LogoutButton() {

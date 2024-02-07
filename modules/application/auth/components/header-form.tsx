@@ -11,7 +11,7 @@ export default function HeaderForm({
   author: string;
 }) {
   return (
-    <div className="relative flex p-4 md:px-8 h-full flex-col bg-muted lg:p-10 text-white dark:lg:border-r lg:flex">
+    <div className="relative flex p-4 md:px-8 h-full flex-col bg-muted lg:p-10 text-white lg:flex lg:dark:border-r lg:dark:border-default">
       <div
         className={cn(
           `absolute inset-0 bg-zinc-900 bg-opacity-60 bg-cover bg-center bg-no-repeat bg-blend-multiply`,

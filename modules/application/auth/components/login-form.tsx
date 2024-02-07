@@ -13,7 +13,7 @@ import {
   checkErrorMessage,
 } from "@/lib/validations/error-check";
 import { AuthProvider } from "@/ts/enum";
-import { createClient } from "@/utils/supabase/client";
+import { createClient } from "@/utils/supabase/create-client";
 import { ApplicationLinks } from "@/constants/links";
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/react";
@@ -39,7 +39,7 @@ export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
   const isInvalid = React.useMemo(() => {
     if (emailValue === "") return false;
 
-    return validateEmail(emailValue) ? false : true;
+    return !validateEmail(emailValue);
   }, [emailValue]);
   const togglePasswordVisibility = () =>
     setPasswordIsVisible(!passwordIsVisible);

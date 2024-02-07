@@ -11,11 +11,28 @@ export async function middleware(req: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
+  let { data: usersProfile, error } = await supabase
+    .from("users")
+    .select("hasOnboarding")
+    .eq("id", user?.id);
+
   // if user is signed in and the current path is / redirect the user to /account
   if (
     (user && req.nextUrl.pathname === ApplicationLinks.login.link) ||
     (user && req.nextUrl.pathname === ApplicationLinks.signUp.link) ||
     (user && req.nextUrl.pathname === ApplicationLinks.forgotPassword.link)
+  ) {
+    return NextResponse.redirect(
+      new URL(ApplicationLinks.dashboard.link, req.url),
+    );
+  }
+
+  // if user is signed in and hasOnboarding redirect to /dashboard
+  if (
+    user &&
+    usersProfile?.length &&
+    usersProfile[0].hasOnboarding &&
+    req.nextUrl.pathname === ApplicationLinks.onboarding.link
   ) {
     return NextResponse.redirect(
       new URL(ApplicationLinks.dashboard.link, req.url),

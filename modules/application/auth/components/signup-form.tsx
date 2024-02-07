@@ -13,7 +13,7 @@ import {
   checkErrorMessage,
 } from "@/lib/validations/error-check";
 import { ApplicationLinks } from "@/constants/links";
-import { createClient } from "@/utils/supabase/client";
+import { createClient } from "@/utils/supabase/create-client";
 import { toast } from "@/components/use-toast";
 import { AuthProvider } from "@/ts/enum";
 import { Provider } from "@supabase/gotrue-js";
@@ -42,7 +42,7 @@ export function UserSignUpForm({ className, ...props }: UserAuthFormProps) {
   const isInvalid = React.useMemo(() => {
     if (emailValue === "") return false;
 
-    return validateEmail(emailValue) ? false : true;
+    return !validateEmail(emailValue);
   }, [emailValue]);
   const togglePasswordVisibility = () =>
     setPasswordIsVisible(!passwordIsVisible);

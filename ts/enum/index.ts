@@ -7,10 +7,15 @@ export {
 } from "./auth.enum";
 export { ToastVariant } from "./toast";
 export {
+  OnboardingInputError,
   OnboardingType,
   OnboardClientSteps,
   FitnessExperience,
   FitnessPreferences,
   AvailabilityDays,
   AvailabilityTime,
+  ClientFitnessGoals,
+  FoodPreferences,
+  FoodAllergiesType,
+  OnboardTrainerSteps,
 } from "./onboarding.enum";

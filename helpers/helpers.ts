@@ -31,11 +31,18 @@ export const validateOnlyLetter = (input: string) => {
   const validUsernameRegex = /^[a-zA-Z]+([a-zA-Z](_|-| )[a-zA-Z])*[a-zA-Z]+$/;
   return validUsernameRegex.test(input);
 };
-export const validateIsPhoneNumber = (input?: string) => {
-  if (input?.length !== 10) {
+export const validateIsWebsiteLink = (input: string) => {
+  const expression =
+    /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
+  const regex = new RegExp(expression);
+  return regex.test(input);
+};
+export const validateIsPhoneNumber = (input: string) => {
+  if (input.length !== 10) {
     return false;
   }
-  const validUsernameRegex = /^\+(?:[0-9]●?){6,14}[0-9]$/;
+  const validUsernameRegex =
+    /^(\+4|)?(07[0-8]{1}[0-9]{1}|02[0-9]{2}|03[0-9]{2}){1}?(\s|\.|\-)?([0-9]{3}(\s|\.|\-|)){2}$/;
   return validUsernameRegex.test(input);
 };
 
@@ -45,3 +52,28 @@ export const handleInputRequired = (value?: string) => {
 export const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "http://localhost:3000";
+
+export const formatPhoneNumber = (phoneNumber: string): string => {
+  let clearNumber: string = phoneNumber;
+
+  if (clearNumber.includes(" ")) {
+    clearNumber = clearNumber.replace(/\s/g, "");
+  }
+  if (clearNumber.includes("(")) {
+    clearNumber = clearNumber.replace("(", "");
+  }
+  if (clearNumber.includes(")")) {
+    clearNumber = clearNumber.replace(")", "");
+  }
+  if (clearNumber.startsWith("+", 0)) {
+    clearNumber = clearNumber.slice(1);
+  }
+  if (clearNumber.startsWith("4", 0)) {
+    clearNumber = clearNumber.slice(1);
+  }
+  if (clearNumber.startsWith("004", 0)) {
+    clearNumber = clearNumber.slice(3);
+  }
+
+  return clearNumber;
+};

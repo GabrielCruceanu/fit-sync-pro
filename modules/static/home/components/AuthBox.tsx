@@ -1,7 +1,7 @@
 "use client";
 import { Link } from "@nextui-org/react";
 import { ApplicationLinks } from "@/constants/links";
-import { createClient } from "@/utils/supabase/client";
+import { createClient } from "@/utils/supabase/create-client";
 import { Button } from "@nextui-org/button";
 import { redirect } from "next/navigation";
 

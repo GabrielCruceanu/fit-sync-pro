@@ -38,6 +38,33 @@ export const AuthErrorMessage = {
     variant: ToastVariant.destructive,
   },
 };
+
+export const OnboardingMessage = {
+  Client: {
+    Success: {
+      title: "Profil client",
+      description: "Profilul de client creat cu success",
+      variant: ToastVariant.default,
+    },
+    Error: {
+      title: "Eroare",
+      description: "Ne pare rau, a intervenit o problema",
+      variant: ToastVariant.destructive,
+    },
+  },
+  Trainer: {
+    Success: {
+      title: "Profil antrenor",
+      description: "Profilul de antrenor creat cu success",
+      variant: ToastVariant.default,
+    },
+    Error: {
+      title: "Eroare",
+      description: "Ne pare rau, a intervenit o problema",
+      variant: ToastVariant.destructive,
+    },
+  },
+};
 export function checkErrorMessage(error: any) {
   console.log("error?.message", error?.message);
   switch (error?.message) {
