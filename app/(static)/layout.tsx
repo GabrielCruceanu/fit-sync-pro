@@ -1,4 +1,5 @@
 import { Footer, Header } from "@/modules/static/layout";
+import React from "react";
 
 export default function StaticLayout({
   children,
