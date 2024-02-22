@@ -19,6 +19,8 @@ export type {
   AlergiiAlimentare,
 } from "./onboarding";
 
+export type { Settings } from "./settings";
+
 export type { Country, City, County } from "./location";
 
 export type TypedSupabaseClient = SupabaseClient<Database>;

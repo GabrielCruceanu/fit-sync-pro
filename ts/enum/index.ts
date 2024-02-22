@@ -19,3 +19,4 @@ export {
   FoodAllergiesType,
   OnboardTrainerSteps,
 } from "./onboarding.enum";
+export { SettingsType } from "./settings.enum";

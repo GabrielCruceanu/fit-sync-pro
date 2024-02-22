@@ -39,6 +39,22 @@ export async function middleware(req: NextRequest) {
     );
   }
 
+  if (
+    user &&
+    usersProfile?.length &&
+    !usersProfile[0].hasOnboarding &&
+    (req.nextUrl.pathname === ApplicationLinks.dashboard.link ||
+      req.nextUrl.pathname === ApplicationLinks.profile.link ||
+      req.nextUrl.pathname === ApplicationLinks.messages.link ||
+      req.nextUrl.pathname === ApplicationLinks.clientProgress.link ||
+      req.nextUrl.pathname === ApplicationLinks.notifications.link ||
+      req.nextUrl.pathname === ApplicationLinks.settings.link)
+  ) {
+    return NextResponse.redirect(
+      new URL(ApplicationLinks.onboarding.link, req.url),
+    );
+  }
+
   // if user is not signed in and the current path is not / redirect the user to /
   if (
     (!user && req.nextUrl.pathname === ApplicationLinks.dashboard.link) ||

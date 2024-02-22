@@ -1,22 +1,31 @@
 import { create } from "zustand";
 import { createClient } from "@/utils/supabase/create-client";
-import { OnboardingClientDetails, TypedUserDetails } from "@/ts/types";
+import {
+  OnboardingClientDetails,
+  Settings,
+  TypedUserDetails,
+} from "@/ts/types";
 import { Onboarding, OnboardingTrainerDetails } from "@/ts/types/onboarding";
 import {
   OnboardClientSteps,
   OnboardingType,
   OnboardTrainerSteps,
+  SettingsType,
 } from "@/ts/enum";
 import { createJSONStorage, persist } from "zustand/middleware";
+import { useRouter } from "next/navigation";
 
 type State = {
   isLoading: boolean;
-  setLoading: (loading: boolean) => void;
+  setIsLoading: (loading: boolean) => void;
+  isGoogleLoading: boolean;
+  setIsGoogleLoading: (loading: boolean) => void;
+  isFacebookLoading: boolean;
+  setIsFacebookLoading: (loading: boolean) => void;
   user: TypedUserDetails | null;
-  userActions: {
-    updateUser: (updatedUser: any) => void;
-    fetchUser: () => Promise<void>;
-  };
+  setUser: (user: any) => void;
+  autoLogin: () => void;
+  signOut: () => void;
   trainers: any[];
   trainerActions: {
     fetchTrainers: () => Promise<void>;
@@ -29,47 +38,63 @@ type State = {
   updateOnboardingTrainerDetails: (
     onboardingDetails: OnboardingTrainerDetails,
   ) => void;
+  settings: Settings;
+  updateSettingsType: (settingsType: SettingsType) => void;
 };
 
+const supabase = createClient();
 export const useStore = create<State>()(
   persist(
-    (set) => ({
+    (set, state) => ({
+      ...state,
       isLoading: false,
-      setLoading: (loading) =>
-        set((state) => ({ ...state, isLoading: loading })),
+      setIsLoading: (isLoading) =>
+        set((state) => ({ ...state, isLoading: isLoading })),
+      isGoogleLoading: false,
+      setIsGoogleLoading: (loading) =>
+        set((state) => ({ ...state, isGoogleLoading: loading })),
+      isFacebookLoading: false,
+      setIsFacebookLoading: (loading) =>
+        set((state) => ({ ...state, isFacebookLoading: loading })),
       user: null,
-      userActions: {
-        updateUser: (updatedUser) =>
-          set((state) => ({
-            user: {
-              ...state.user,
-              ...updatedUser,
-            },
-          })),
-        fetchUser: async () => {
-          const supabase = createClient();
+      setUser: (user: TypedUserDetails) => set((state) => ({ ...state, user })),
+      autoLogin: async () => {
+        const canInitSupabaseClient = () => {
+          // This function is just for the interactive tutorial.
+          // Feel free to remove it once you have Supabase connected.
+          try {
+            createClient();
+            return true;
+          } catch (e) {
+            return false;
+          }
+        };
 
-          set((state) => ({
-            ...state,
-            isLoading: true,
-          }));
-
+        const isSupabaseConnected = canInitSupabaseClient();
+        if (isSupabaseConnected) {
           const { data: users, error } = await supabase
             .from("users")
             .select("*");
 
           if (users) {
-            set((state) => ({
-              ...state,
-              user: users[0],
-            }));
+            const user = users[0] as TypedUserDetails;
+            console.log("userDetails", user);
+            set((state) => ({ ...state, user }));
           }
-
-          set((state) => ({
-            ...state,
-            isLoading: false,
-          }));
-        },
+        } else {
+          const { error } = await supabase.auth.signOut();
+          if (error) throw error;
+          sessionStorage.removeItem("fit-sync-storage");
+          console.log("sign out");
+          window.location.reload();
+        }
+      },
+      signOut: async () => {
+        const { error } = await supabase.auth.signOut();
+        if (error) throw error;
+        sessionStorage.removeItem("fit-sync-storage");
+        console.log("sign out");
+        window.location.reload();
       },
       trainers: [],
       trainerActions: {
@@ -180,6 +205,17 @@ export const useStore = create<State>()(
               ...state.onboarding.onboardingTrainerDetails,
               ...updatedOnboardingDetails,
             },
+          },
+        })),
+      settings: {
+        settingsType: SettingsType.Profile,
+      },
+      updateSettingsType: (updatedSettingsType: SettingsType) =>
+        set((state) => ({
+          ...state,
+          settings: {
+            ...state.settings,
+            settingsType: updatedSettingsType,
           },
         })),
     }),
