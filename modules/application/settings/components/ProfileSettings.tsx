@@ -180,7 +180,7 @@ export function ProfileSettings() {
   };
   return (
     <div className="grid gap-2">
-      <div className="grid grid-cols-2 gap-x-3 gap-y-4">
+      <div className="grid md:grid-cols-2 gap-x-3 gap-y-4">
         {/*FirstName*/}
         <Input
           id="firstname"

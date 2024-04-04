@@ -16,6 +16,12 @@ export async function middleware(req: NextRequest) {
     .select("hasOnboarding")
     .eq("id", user?.id);
 
+  console.log("user", user);
+  console.log("req.nextUrl.pathname", req.nextUrl.pathname);
+  console.log(
+    "req.nextUrl.pathname === ApplicationLinks.login.link",
+    req.nextUrl.pathname === ApplicationLinks.login.link,
+  );
   // if user is signed in and the current path is / redirect the user to /account
   if (
     (user && req.nextUrl.pathname === ApplicationLinks.login.link) ||
@@ -73,9 +79,10 @@ export async function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
-    "/autentificare",
-    "/inregistrare",
-    "/resetare-parola",
+    "/login",
+    "/sign-up",
+    "/reset-password",
+    "/update-password",
     "/dashboard",
     "/progress",
     "/profile",
