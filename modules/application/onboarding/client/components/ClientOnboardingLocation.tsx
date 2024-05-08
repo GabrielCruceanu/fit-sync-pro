@@ -2,7 +2,7 @@
 import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
-import { OnboardClientSteps, OnboardingInputError } from "@/ts/enum";
+import { OnboardClientSteps, InputError } from "@/ts/enum";
 import { useState } from "react";
 import { handleInputRequired } from "@/helpers/helpers";
 import { Select, SelectItem } from "@nextui-org/react";
@@ -24,17 +24,17 @@ export function ClientOnboardingLocation() {
 
   const inputsAreOk = () => {
     if (!onboardingDetails.country) {
-      setCurrentCountryError(OnboardingInputError.InputRequired);
+      setCurrentCountryError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
     if (!onboardingDetails.county) {
-      setCurrentCountyError(OnboardingInputError.InputRequired);
+      setCurrentCountyError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
     if (!onboardingDetails.city) {
-      setCurrentCityError(OnboardingInputError.InputRequired);
+      setCurrentCityError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
@@ -108,7 +108,7 @@ export function ClientOnboardingLocation() {
               });
               setCurrentCountryError("");
               handleInputRequired(onboardingDetails.country)
-                ? setCurrentCountryError(OnboardingInputError.InputRequired)
+                ? setCurrentCountryError(InputError.InputRequired)
                 : null;
               setConfirmBtnDisable(false);
             }}
@@ -152,7 +152,7 @@ export function ClientOnboardingLocation() {
               });
               setCurrentCountyError("");
               handleInputRequired(onboardingDetails.county)
-                ? setCurrentCountyError(OnboardingInputError.InputRequired)
+                ? setCurrentCountyError(InputError.InputRequired)
                 : null;
               setConfirmBtnDisable(false);
             }}
@@ -191,7 +191,7 @@ export function ClientOnboardingLocation() {
               });
               setCurrentCityError("");
               handleInputRequired(onboardingDetails.city)
-                ? setCurrentCityError(OnboardingInputError.InputRequired)
+                ? setCurrentCityError(InputError.InputRequired)
                 : null;
               setConfirmBtnDisable(false);
             }}
@@ -225,7 +225,7 @@ export function ClientOnboardingLocation() {
           disabled={confirmBtnDisable}
           className="mb-3"
         >
-          Continuă
+          Next
         </Button>
         <Button
           onClick={() =>
@@ -239,7 +239,7 @@ export function ClientOnboardingLocation() {
           radius={"sm"}
           fullWidth
         >
-          Înapoi
+          Back
         </Button>
       </div>
     </OnboardingLayout>

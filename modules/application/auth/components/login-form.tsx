@@ -22,7 +22,7 @@ import { Provider } from "@supabase/gotrue-js";
 import { toast } from "@/components/use-toast";
 import { EyeFilledIcon, EyeSlashFilledIcon } from "@nextui-org/shared-icons";
 import { useStore } from "@/store";
-import { TypedUserDetails } from "@/ts/types";
+import { UserDetails } from "@/ts/types";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -76,7 +76,7 @@ export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
         const { data: users, error } = await supabase.from("users").select("*");
 
         if (users) {
-          const user = users[0] as TypedUserDetails;
+          const user = users[0] as UserDetails;
           console.log("userDetails", user);
           setUser(user);
         }

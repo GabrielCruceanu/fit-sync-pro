@@ -2,18 +2,19 @@ import { create } from "zustand";
 import { createClient } from "@/utils/supabase/create-client";
 import {
   OnboardingClientDetails,
-  Settings,
-  TypedUserDetails,
+  SettingsNavigation,
+  Client,
+  Trainer,
+  UserDetails,
 } from "@/ts/types";
 import { Onboarding, OnboardingTrainerDetails } from "@/ts/types/onboarding";
 import {
   OnboardClientSteps,
   OnboardingType,
   OnboardTrainerSteps,
-  SettingsType,
+  SettingsStep,
 } from "@/ts/enum";
 import { createJSONStorage, persist } from "zustand/middleware";
-import { useRouter } from "next/navigation";
 
 type State = {
   isLoading: boolean;
@@ -22,7 +23,7 @@ type State = {
   setIsGoogleLoading: (loading: boolean) => void;
   isFacebookLoading: boolean;
   setIsFacebookLoading: (loading: boolean) => void;
-  user: TypedUserDetails | null;
+  user: UserDetails | null;
   setUser: (user: any) => void;
   autoLogin: () => void;
   signOut: () => void;
@@ -38,8 +39,9 @@ type State = {
   updateOnboardingTrainerDetails: (
     onboardingDetails: OnboardingTrainerDetails,
   ) => void;
-  settings: Settings;
-  updateSettingsType: (settingsType: SettingsType) => void;
+  settings: SettingsNavigation;
+  updateSettingsStep: (settingsStep: SettingsStep) => void;
+  updateClientSettings: (profileSettings: Client) => void;
 };
 
 const supabase = createClient();
@@ -57,7 +59,7 @@ export const useStore = create<State>()(
       setIsFacebookLoading: (loading) =>
         set((state) => ({ ...state, isFacebookLoading: loading })),
       user: null,
-      setUser: (user: TypedUserDetails) => set((state) => ({ ...state, user })),
+      setUser: (user: UserDetails) => set((state) => ({ ...state, user })),
       autoLogin: async () => {
         const canInitSupabaseClient = () => {
           // This function is just for the interactive tutorial.
@@ -77,9 +79,43 @@ export const useStore = create<State>()(
             .select("*");
 
           if (users) {
-            const user = users[0] as TypedUserDetails;
+            const user = users[0] as UserDetails;
             console.log("userDetails", user);
-            set((state) => ({ ...state, user }));
+
+            let trainerSettings: Trainer;
+            let clientSettings: Client;
+
+            switch (user.userType) {
+              case "trainer":
+                const { data: trainers } = await supabase
+                  .from("trainers")
+                  .select("*")
+                  .eq("id", user.id);
+                console.log("trainers", trainers);
+
+                if (trainers?.length) trainerSettings = trainers[0];
+                break;
+
+              default:
+                const { data: clients } = await supabase
+                  .from("clients")
+                  .select("*")
+                  .eq("client_id", user.id);
+                console.log("clients", clients);
+
+                if (clients?.length) clientSettings = clients[0];
+                break;
+            }
+
+            set((state) => ({
+              ...state,
+              user,
+              settings: {
+                ...state.settings,
+                clientSettings: clientSettings,
+                trainerSettings: trainerSettings,
+              },
+            }));
           }
         } else {
           const { error } = await supabase.auth.signOut();
@@ -208,14 +244,97 @@ export const useStore = create<State>()(
           },
         })),
       settings: {
-        settingsType: SettingsType.Profile,
+        settingsStep: SettingsStep.Profile,
+        clientSettings: {
+          birthDate: null,
+          birthMonth: null,
+          birthYear: null,
+          city: null,
+          client_id: "",
+          country: null,
+          email: null,
+          firstName: null,
+          fitnessExperience: null,
+          foodAllergiesDescription: null,
+          foodAllergiesType: null,
+          foodPreferences: null,
+          gender: null,
+          goals: null,
+          haveFoodAllergies: null,
+          height: null,
+          joined: "",
+          lastName: null,
+          phone: null,
+          profilePictureUrl: null,
+          state: null,
+          trainingAvailabilityDays: null,
+          trainingAvailabilityTime: null,
+          trainingLocation: null,
+          trainingOnlinePreferences: null,
+          trainingPhysicalPreferences: null,
+          username: null,
+          userType: null,
+          weight: null,
+        },
+        trainerSettings: {
+          activeClients: null,
+          biography: null,
+          birthDate: null,
+          birthMonth: null,
+          birthYear: null,
+          certificate: null,
+          city: null,
+          completedClients: null,
+          country: null,
+          email: null,
+          facebook: null,
+          firstName: null,
+          gallery: null,
+          gender: null,
+          gymName: null,
+          gymStreet: null,
+          hasPremium: null,
+          id: "",
+          instagram: null,
+          isNutritionist: null,
+          joined: "",
+          lastName: null,
+          nutritionistDiets: null,
+          nutritionistExperience: null,
+          nutritionistType: null,
+          phoneNumber: null,
+          profilePictureUrl: null,
+          state: null,
+          trainerType: null,
+          trainingAvailabilityDays: null,
+          trainingAvailabilityTime: null,
+          trainingExperience: null,
+          trainingLocation: null,
+          trainingOnlinePreferences: null,
+          trainingPhysicalPreferences: null,
+          twitter: null,
+          type: null,
+          username: null,
+          website: null,
+        },
       },
-      updateSettingsType: (updatedSettingsType: SettingsType) =>
+      updateSettingsStep: (updatedSettingsStep: SettingsStep) =>
         set((state) => ({
           ...state,
           settings: {
             ...state.settings,
-            settingsType: updatedSettingsType,
+            settingsStep: updatedSettingsStep,
+          },
+        })),
+      updateClientSettings: (updatedClientSettings: Client) =>
+        set((state) => ({
+          ...state,
+          settings: {
+            ...state.settings,
+            clientSettings: {
+              ...state.settings?.clientSettings,
+              ...updatedClientSettings,
+            },
           },
         })),
     }),

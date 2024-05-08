@@ -6,11 +6,7 @@ import {
   validateOnlyLetter,
   validateUsername,
 } from "@/helpers/helpers";
-import {
-  OnboardClientSteps,
-  OnboardingInputError,
-  OnboardingType,
-} from "@/ts/enum";
+import { OnboardClientSteps, InputError, OnboardingType } from "@/ts/enum";
 import {
   Popover,
   PopoverContent,
@@ -22,21 +18,18 @@ import { format } from "date-fns";
 import { ro } from "date-fns/locale";
 import { CalendarIcon } from "lucide-react";
 import { Calendar } from "@/components/calendar";
-import { GenderList } from "@/constants/user";
+import { genderList } from "@/constants/user";
 import React, { useState } from "react";
 import { createClient } from "@/utils/supabase/create-client";
 import { useStore } from "@/store";
 import { Button } from "@nextui-org/button";
+import { updateClient } from "@/utils/supabase/client-service";
 
 export function ProfileSettings() {
   const supabase = createClient();
   const { user } = useStore((state) => state);
-  const onboardingDetails = useStore(
-    (state) => state.onboarding.onboardingClientDetails,
-  );
-  const updateOnboardingDetails = useStore(
-    (state) => state.updateOnboardingClientDetails,
-  );
+  const clientSettings = useStore((state) => state.settings.clientSettings);
+  const updateClientSettings = useStore((state) => state.updateClientSettings);
   const updateOnboardingType = useStore((state) => state.updateOnboardingType);
 
   const [firstNameError, setFirstNameError] = useState("");
@@ -44,6 +37,18 @@ export function ProfileSettings() {
   const [usernameError, setUsernameError] = useState("");
   const [genderError, setGenderError] = useState("");
   const [birthError, setBirthError] = useState("");
+
+  const birthDate = parseInt(
+    clientSettings.birthDate ? clientSettings.birthDate : "",
+  );
+  const birthMonth =
+    parseInt(clientSettings.birthMonth ? clientSettings.birthMonth : "") - 1; // Months are zero-based in JavaScript Date object
+  const birthYear = parseInt(
+    clientSettings.birthYear ? clientSettings.birthYear : "",
+  );
+
+  const birthDateFull = new Date(birthYear, birthMonth, birthDate);
+
   const [phoneError, setPhoneError] = useState("");
   const [heightError, setHeightError] = useState("");
   const [weightError, setWeightError] = useState("");
@@ -51,14 +56,15 @@ export function ProfileSettings() {
   const [isCalendarOpen, setCalendarIsOpen] = React.useState(false);
 
   const [confirmBtnDisable, setConfirmBtnDisable] = useState(false);
+
   const handleSearchUsername = async (username: string) => {
     if (handleInputRequired(username)) {
-      setUsernameError(OnboardingInputError.InputRequired);
+      setUsernameError(InputError.InputRequired);
       return;
     }
 
     if (!validateUsername(username)) {
-      setUsernameError(OnboardingInputError.UsernameInvalid);
+      setUsernameError(InputError.UsernameInvalid);
       return;
     }
 
@@ -67,7 +73,7 @@ export function ProfileSettings() {
     const found = usernames?.find((item) => item.username === username);
 
     if (found) {
-      setUsernameError(OnboardingInputError.UsernameIsNotAvailable);
+      setUsernameError(InputError.UsernameIsNotAvailable);
     }
   };
 
@@ -75,17 +81,17 @@ export function ProfileSettings() {
     const clearNumber = formatPhoneNumber(phoneNumber);
 
     setPhoneError("");
-    updateOnboardingDetails({
-      ...onboardingDetails,
-      phoneNumber: clearNumber,
+    updateClientSettings({
+      ...clientSettings,
+      phone: clearNumber,
     });
     setConfirmBtnDisable(false);
     if (handleInputRequired(clearNumber)) {
-      setPhoneError(OnboardingInputError.InputRequired);
+      setPhoneError(InputError.InputRequired);
       return;
     }
     if (!validateIsPhoneNumber(clearNumber)) {
-      setPhoneError(OnboardingInputError.OnlyNumbers);
+      setPhoneError(InputError.OnlyNumbers);
       return;
     }
   };
@@ -95,88 +101,62 @@ export function ProfileSettings() {
     const month = (dateLanding.getMonth() + 1).toString();
     const year = dateLanding.getFullYear().toString();
 
-    updateOnboardingDetails({
-      ...onboardingDetails,
-      birthdate: {
-        date,
-        month,
-        year,
-        full: dateLanding,
-      },
+    updateClientSettings({
+      ...clientSettings,
+      birthMonth: month,
+      birthDate: date,
+      birthYear: year,
     });
 
     handleInputRequired(newValue.startDate === null ? "" : newValue.startDate)
-      ? setBirthError(OnboardingInputError.InputRequired)
+      ? setBirthError(InputError.InputRequired)
       : null;
   };
 
   const inputsAreOk = () => {
-    if (!onboardingDetails?.firstname) {
-      setFirstNameError(OnboardingInputError.InputRequired);
+    if (!clientSettings?.firstName) {
+      setFirstNameError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
-    if (!onboardingDetails?.lastname) {
-      setLastNameError(OnboardingInputError.InputRequired);
+    if (!clientSettings?.lastName) {
+      setLastNameError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
-    if (!onboardingDetails?.username) {
-      setUsernameError(OnboardingInputError.InputRequired);
+    if (!clientSettings?.username) {
+      setUsernameError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
-    if (!onboardingDetails?.birthdate?.full) {
-      setBirthError(OnboardingInputError.InputRequired);
+    if (!clientSettings?.birthDate) {
+      setBirthError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
-    if (!onboardingDetails?.phoneNumber) {
-      setPhoneError(OnboardingInputError.InputRequired);
+    if (!clientSettings?.phone) {
+      setPhoneError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
-    if (!onboardingDetails?.gender) {
-      setGenderError(OnboardingInputError.InputRequired);
+    if (!clientSettings?.gender) {
+      setGenderError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
-    if (!GenderList.includes(onboardingDetails?.gender)) {
-      setGenderError(OnboardingInputError.InputRequired);
-      updateOnboardingDetails({
-        ...onboardingDetails,
-        gender: undefined,
+    if (!genderList.includes(clientSettings?.gender)) {
+      setGenderError(InputError.InputRequired);
+      updateClientSettings({
+        ...clientSettings,
+        gender: "",
       });
       setConfirmBtnDisable(true);
       return;
     }
-    if (!onboardingDetails?.height) {
-      setHeightError(OnboardingInputError.InputRequired);
-      setConfirmBtnDisable(true);
-      return;
-    }
-    if (onboardingDetails.height && onboardingDetails.height <= 50) {
-      setHeightError(OnboardingInputError.HeightGreater);
-      setConfirmBtnDisable(true);
-      return;
-    }
-    if (!onboardingDetails?.weight) {
-      setWeightError(OnboardingInputError.InputRequired);
-      setConfirmBtnDisable(true);
-      return;
-    }
-    if (onboardingDetails.weight && onboardingDetails.weight <= 30) {
-      setWeightError(OnboardingInputError.WeightGreater);
-      setConfirmBtnDisable(true);
-      return;
-    }
+
+    updateClient({ client: clientSettings, supabase });
 
     setConfirmBtnDisable(false);
-
-    updateOnboardingDetails({
-      ...onboardingDetails,
-      clientSteps: OnboardClientSteps.Goals,
-    });
   };
   return (
     <div className="grid gap-2">
@@ -187,19 +167,19 @@ export function ProfileSettings() {
           placeholder="Jon"
           type="text"
           label="Prenume"
-          value={onboardingDetails.firstname}
+          value={clientSettings.firstName ? clientSettings.firstName : ""}
           autoCapitalize="none"
           autoComplete="false"
           autoCorrect="off"
           variant="bordered"
           isRequired
           onValueChange={(e) => {
-            updateOnboardingDetails({
-              ...onboardingDetails,
-              firstname: e,
+            updateClientSettings({
+              ...clientSettings,
+              firstName: e,
             });
             setFirstNameError("");
-            !validateOnlyLetter(onboardingDetails.firstname!);
+            !validateOnlyLetter(clientSettings.firstName!);
             setConfirmBtnDisable(false);
           }}
           color={firstNameError ? "danger" : "default"}
@@ -207,10 +187,10 @@ export function ProfileSettings() {
           isInvalid={!!firstNameError}
           onFocusChange={(e) => {
             if (!e) {
-              handleInputRequired(onboardingDetails.firstname!)
-                ? setFirstNameError(OnboardingInputError.InputRequired)
-                : !validateOnlyLetter(onboardingDetails.firstname!)
-                  ? setFirstNameError(OnboardingInputError.OnlyLetter)
+              handleInputRequired(clientSettings.firstName!)
+                ? setFirstNameError(InputError.InputRequired)
+                : !validateOnlyLetter(clientSettings.firstName!)
+                  ? setFirstNameError(InputError.OnlyLetter)
                   : null;
             }
           }}
@@ -221,19 +201,19 @@ export function ProfileSettings() {
           placeholder="Doe"
           type="text"
           label="Nume"
-          value={onboardingDetails.lastname}
+          value={clientSettings.lastName ? clientSettings.lastName : ""}
           autoCapitalize="none"
           autoComplete="false"
           autoCorrect="off"
           variant="bordered"
           isRequired
           onValueChange={(e) => {
-            updateOnboardingDetails({
-              ...onboardingDetails,
-              lastname: e,
+            updateClientSettings({
+              ...clientSettings,
+              lastName: e,
             });
             setLastNameError("");
-            !validateOnlyLetter(onboardingDetails.lastname!);
+            !validateOnlyLetter(clientSettings.lastName!);
             setConfirmBtnDisable(false);
           }}
           color={lastNameError ? "danger" : "default"}
@@ -241,10 +221,10 @@ export function ProfileSettings() {
           isInvalid={!!lastNameError}
           onFocusChange={(e) => {
             if (!e) {
-              handleInputRequired(onboardingDetails.firstname!)
-                ? setLastNameError(OnboardingInputError.InputRequired)
-                : !validateOnlyLetter(onboardingDetails.lastname!)
-                  ? setLastNameError(OnboardingInputError.OnlyLetter)
+              handleInputRequired(clientSettings.lastName!)
+                ? setLastNameError(InputError.InputRequired)
+                : !validateOnlyLetter(clientSettings.lastName!)
+                  ? setLastNameError(InputError.OnlyLetter)
                   : null;
             }
           }}
@@ -255,19 +235,19 @@ export function ProfileSettings() {
           placeholder="jon_doe"
           type="text"
           label="Nume de utilizator"
-          value={onboardingDetails.username}
+          value={clientSettings.username ? clientSettings.username : ""}
           autoCapitalize="none"
           autoComplete="false"
           autoCorrect="off"
           variant="bordered"
           isRequired
           onValueChange={(e) => {
-            updateOnboardingDetails({
-              ...onboardingDetails,
+            updateClientSettings({
+              ...clientSettings,
               username: e.toLowerCase(),
             });
             setUsernameError("");
-            !validateUsername(onboardingDetails.username!);
+            !validateUsername(clientSettings.username!);
             setConfirmBtnDisable(false);
           }}
           color={usernameError ? "danger" : "default"}
@@ -275,12 +255,12 @@ export function ProfileSettings() {
           isInvalid={!!usernameError}
           onFocusChange={(e) => {
             if (!e) {
-              handleInputRequired(onboardingDetails.username!)
-                ? setUsernameError(OnboardingInputError.InputRequired)
-                : !validateUsername(onboardingDetails.username!)
-                  ? setUsernameError(OnboardingInputError.UsernameInvalid)
+              handleInputRequired(clientSettings.username!)
+                ? setUsernameError(InputError.InputRequired)
+                : !validateUsername(clientSettings.username!)
+                  ? setUsernameError(InputError.UsernameInvalid)
                   : null;
-              handleSearchUsername(onboardingDetails.username!);
+              handleSearchUsername(clientSettings.username!);
             }
           }}
         />
@@ -296,8 +276,8 @@ export function ProfileSettings() {
                 placeholder="Alege o data"
                 type="date"
                 value={
-                  onboardingDetails.birthdate?.full
-                    ? format(onboardingDetails.birthdate.full, "PPP", {
+                  birthDateFull
+                    ? format(birthDateFull, "PPP", {
                         locale: ro,
                       })
                     : "Data nașterii"
@@ -316,10 +296,8 @@ export function ProfileSettings() {
                 onFocusChange={(e) => {
                   if (!e) {
                     setBirthError("");
-                    handleInputRequired(
-                      onboardingDetails.birthdate?.full?.toString(),
-                    )
-                      ? setBirthError(OnboardingInputError.InputRequired)
+                    handleInputRequired(birthDateFull.toString())
+                      ? setBirthError(InputError.InputRequired)
                       : null;
                     setConfirmBtnDisable(false);
                   }
@@ -329,7 +307,7 @@ export function ProfileSettings() {
             <PopoverContent className="w-auto p-0 bg-background">
               <Calendar
                 mode="single"
-                selected={onboardingDetails.birthdate?.full}
+                selected={birthDateFull}
                 onSelect={($event) => {
                   handleBirthChange($event);
                   setCalendarIsOpen(false);
@@ -349,17 +327,19 @@ export function ProfileSettings() {
           placeholder="Alege"
           isRequired
           defaultSelectedKeys={
-            onboardingDetails.gender ? [onboardingDetails.gender] : []
+            clientSettings.gender ? [clientSettings.gender] : []
           }
-          value={onboardingDetails.gender}
+          value={clientSettings.gender ? clientSettings.gender : ""}
           onChange={(e) => {
-            updateOnboardingDetails({
-              ...onboardingDetails,
+            updateClientSettings({
+              ...clientSettings,
               gender: e.target.value,
             });
             setGenderError("");
-            handleInputRequired(onboardingDetails.gender)
-              ? setGenderError(OnboardingInputError.InputRequired)
+            handleInputRequired(
+              clientSettings.gender ? clientSettings.gender : undefined,
+            )
+              ? setGenderError(InputError.InputRequired)
               : null;
             setConfirmBtnDisable(false);
           }}
@@ -367,7 +347,7 @@ export function ProfileSettings() {
           errorMessage={genderError}
           isInvalid={!!genderError}
         >
-          {GenderList.map((gen) => (
+          {genderList.map((gen) => (
             <SelectItem
               key={gen}
               value={gen}
@@ -388,7 +368,7 @@ export function ProfileSettings() {
           placeholder="0770212948"
           type="text"
           label="Telefon"
-          value={onboardingDetails.phoneNumber}
+          value={clientSettings.phone ? clientSettings.phone : ""}
           autoCapitalize="none"
           autoComplete="false"
           autoCorrect="off"
@@ -402,7 +382,7 @@ export function ProfileSettings() {
           isInvalid={!!phoneError}
         />
         {/*Înălțime*/}
-        <Input
+        {/* <Input
           id="height"
           placeholder="173 cm"
           type="number"
@@ -428,16 +408,16 @@ export function ProfileSettings() {
           onFocusChange={(e) => {
             if (!e) {
               handleInputRequired(onboardingDetails.height?.toString())
-                ? setHeightError(OnboardingInputError.InputRequired)
+                ? setHeightError(InputError.InputRequired)
                 : onboardingDetails.height && onboardingDetails.height <= 50
-                  ? setHeightError(OnboardingInputError.HeightGreater)
+                  ? setHeightError(InputError.HeightGreater)
                   : null;
             }
           }}
-        />
+        /> */}
 
         {/*Greutate*/}
-        <Input
+        {/* <Input
           id="weight"
           placeholder="75 Kg"
           type="number"
@@ -463,13 +443,13 @@ export function ProfileSettings() {
           onFocusChange={(e) => {
             if (!e) {
               handleInputRequired(onboardingDetails.weight?.toString())
-                ? setWeightError(OnboardingInputError.InputRequired)
+                ? setWeightError(InputError.InputRequired)
                 : onboardingDetails.weight && onboardingDetails.weight <= 30
-                  ? setWeightError(OnboardingInputError.WeightGreater)
+                  ? setWeightError(InputError.WeightGreater)
                   : null;
             }
           }}
-        />
+        /> */}
       </div>
       <Button
         onClick={() => inputsAreOk()}

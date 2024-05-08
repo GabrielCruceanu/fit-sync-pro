@@ -2,11 +2,7 @@
 import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
-import {
-  OnboardClientSteps,
-  OnboardingInputError,
-  OnboardTrainerSteps,
-} from "@/ts/enum";
+import { OnboardClientSteps, InputError, OnboardTrainerSteps } from "@/ts/enum";
 import * as React from "react";
 import { useState } from "react";
 import { Checkbox, CheckboxGroup, cn } from "@nextui-org/react";
@@ -33,7 +29,7 @@ export function TrainerOnboardingTrainingAvailability() {
       (onboardingDetails?.trainingAvailabilityDays &&
         onboardingDetails?.trainingAvailabilityDays?.length === 0)
     ) {
-      setTrainingAvailabilityError(OnboardingInputError.NeedOnlyOne);
+      setTrainingAvailabilityError(InputError.NeedOnlyOne);
       setConfirmBtnDisable(true);
       return;
     }
@@ -42,7 +38,7 @@ export function TrainerOnboardingTrainingAvailability() {
       (onboardingDetails?.trainingAvailabilityTime &&
         onboardingDetails?.trainingAvailabilityTime?.length === 0)
     ) {
-      setTrainingAvailabilityTimeError(OnboardingInputError.NeedOnlyOne);
+      setTrainingAvailabilityTimeError(InputError.NeedOnlyOne);
       setConfirmBtnDisable(true);
       return;
     }
@@ -52,7 +48,7 @@ export function TrainerOnboardingTrainingAvailability() {
     updateOnboardingDetails({
       ...onboardingDetails,
       trainerSteps: onboardingDetails.trainingLocation?.includes(
-        TrainingLocation.Fizic,
+        TrainingLocation.Physic,
       )
         ? OnboardTrainerSteps.Location
         : OnboardTrainerSteps.Overview,
@@ -158,7 +154,7 @@ export function TrainerOnboardingTrainingAvailability() {
           disabled={confirmBtnDisable}
           className="mb-3"
         >
-          Continuă
+          Next
         </Button>
         <Button
           onClick={() =>
@@ -172,7 +168,7 @@ export function TrainerOnboardingTrainingAvailability() {
           color={"default"}
           fullWidth
         >
-          Înapoi
+          Back
         </Button>
       </div>
     </OnboardingLayout>

@@ -2,7 +2,7 @@
 import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
-import { OnboardClientSteps, OnboardingInputError } from "@/ts/enum";
+import { OnboardClientSteps, InputError } from "@/ts/enum";
 import * as React from "react";
 import { useState } from "react";
 import { Checkbox, CheckboxGroup, cn } from "@nextui-org/react";
@@ -28,7 +28,7 @@ export function ClientOnboardingTrainingAvailability() {
       (onboardingDetails?.trainingAvailabilityDays &&
         onboardingDetails?.trainingAvailabilityDays?.length === 0)
     ) {
-      setTrainingAvailabilityError(OnboardingInputError.NeedOnlyOne);
+      setTrainingAvailabilityError(InputError.NeedOnlyOne);
       setConfirmBtnDisable(true);
       return;
     }
@@ -37,7 +37,7 @@ export function ClientOnboardingTrainingAvailability() {
       (onboardingDetails?.trainingAvailabilityTime &&
         onboardingDetails?.trainingAvailabilityTime?.length === 0)
     ) {
-      setTrainingAvailabilityTimeError(OnboardingInputError.NeedOnlyOne);
+      setTrainingAvailabilityTimeError(InputError.NeedOnlyOne);
       setConfirmBtnDisable(true);
       return;
     }
@@ -149,7 +149,7 @@ export function ClientOnboardingTrainingAvailability() {
           disabled={confirmBtnDisable}
           className="mb-3"
         >
-          Continuă
+          Next
         </Button>
         <Button
           onClick={() =>
@@ -163,7 +163,7 @@ export function ClientOnboardingTrainingAvailability() {
           color={"default"}
           fullWidth
         >
-          Înapoi
+          Back
         </Button>
       </div>
     </OnboardingLayout>

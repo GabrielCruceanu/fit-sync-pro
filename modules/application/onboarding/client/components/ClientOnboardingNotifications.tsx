@@ -185,7 +185,7 @@ export function ClientOnboardingNotifications() {
           disabled={confirmBtnDisable}
           className="mb-3"
         >
-          Continuă
+          Next
         </Button>
         <Button
           onClick={() =>
@@ -199,7 +199,7 @@ export function ClientOnboardingNotifications() {
           radius={"sm"}
           fullWidth
         >
-          Înapoi
+          Back
         </Button>
       </div>
     </OnboardingLayout>

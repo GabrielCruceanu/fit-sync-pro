@@ -2,7 +2,7 @@
 import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
-import { OnboardClientSteps, OnboardingInputError } from "@/ts/enum";
+import { OnboardClientSteps, InputError } from "@/ts/enum";
 import * as React from "react";
 import { useState } from "react";
 import { RadioGroup } from "@nextui-org/radio";
@@ -23,7 +23,7 @@ export function ClientOnboardingTrainingPhysical() {
 
   const inputsAreOk = () => {
     if (!onboardingDetails?.trainingPhysicalPreferences) {
-      setTrainingPhysicalError(OnboardingInputError.NeedOnlyOne);
+      setTrainingPhysicalError(InputError.NeedOnlyOne);
       setConfirmBtnDisable(true);
       return;
     }
@@ -59,7 +59,7 @@ export function ClientOnboardingTrainingPhysical() {
               setTrainingPhysicalError("");
               setConfirmBtnDisable(false);
               handleInputRequired(e)
-                ? setTrainingPhysicalError(OnboardingInputError.NeedOnlyOne)
+                ? setTrainingPhysicalError(InputError.NeedOnlyOne)
                 : null;
             }}
             isRequired
@@ -68,12 +68,12 @@ export function ClientOnboardingTrainingPhysical() {
             isInvalid={!!trainingPhysicalError}
             value={onboardingDetails.trainingPhysicalPreferences}
           >
-            <RadioButton value={TrainingPhysic.UnuLaUnu}>
-              {TrainingPhysic.UnuLaUnu}
+            <RadioButton value={TrainingPhysic.OneToOne}>
+              {TrainingPhysic.OneToOne}
             </RadioButton>
 
-            <RadioButton value={TrainingPhysic.Grup}>
-              {TrainingPhysic.Grup}
+            <RadioButton value={TrainingPhysic.Group}>
+              {TrainingPhysic.Group}
             </RadioButton>
           </RadioGroup>
         </div>
@@ -88,7 +88,7 @@ export function ClientOnboardingTrainingPhysical() {
           disabled={confirmBtnDisable}
           className="mb-3"
         >
-          Continuă
+          Next
         </Button>
         <Button
           onClick={() =>
@@ -102,7 +102,7 @@ export function ClientOnboardingTrainingPhysical() {
           radius={"sm"}
           fullWidth
         >
-          Înapoi
+          Back
         </Button>
       </div>
     </OnboardingLayout>

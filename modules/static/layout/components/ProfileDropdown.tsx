@@ -8,7 +8,6 @@ import {
 } from "@nextui-org/react";
 import { ApplicationLinks } from "@/constants/links";
 import Link from "next/link";
-import { TypedUserDetails } from "@/ts/types";
 import { useStore } from "@/store";
 
 const ProfileDropDown = () => {

@@ -1,24 +1,9 @@
-export enum OnboardingInputError {
-  UsernameInvalid = 'Caractere invalide, poti folosi doar "a-z", "0-9" si "_"',
-  UsernameIsNotAvailable = "Numele de utilizator este luat.",
-  InputRequired = "Acest camp este obligatoriu",
-  NeedOnlyOne = "Este necesar sa selectati unul din aceste campuri",
-  OnlyLetter = 'Caractere invalide sau prea putine, foloseste doar "a-z"',
-  OnlyNumbers = 'Caractere invalide sau prea putine, foloseste doar "0-9"',
-  HeightGreater = "Inaltimea treabuie sa fie mai mare de 50 cm",
-  WeightGreater = "Greutatea treabuie sa fie mai mare de 30 Kg",
-  Website = "Link-ul trebuie se fie www.example.ro",
-  Facebook = "Link-ul trebuie se fie www.facebook.ro/username",
-  Twitter = "Link-ul trebuie se fie www.twitter.ro/username",
-  Instagram = "Link-ul trebuie se fie www.instagram.ro/username",
-}
-
 export enum OnboardingType {
   Welcome = "Welcome",
-  Client = "Client",
-  Trainer = "Trainer",
-  Nutritionist = "Nutritionist",
-  Gym = "Sala",
+  Client = "client",
+  Trainer = "trainer",
+  Nutritionist = "nutritionist",
+  Gym = "gym",
 }
 
 export enum OnboardClientSteps {
@@ -36,33 +21,57 @@ export enum OnboardClientSteps {
 }
 
 export enum ClientFitnessGoals {
-  PierdereInGreutate = "Pierdere în greutate",
-  CrestereMusculara = "Creștere musculară",
-  FlexibilitateSiMobilitate = "Flexibilitate și mobilitate",
-  ImbunatatireaSanatatii = "Îmbunătățirea sănătății",
-  IntretinereGeneralaDeFitness = "Întreținere generală de fitness",
+  WeightLoss = "Weight Loss",
+  MuscleGain = "Muscle Gain",
+  Flexibility = "Flexibility",
+  HealthImprovement = "Health Improvement",
+  GeneralFitness = "General Fitness",
 }
 
 export enum FitnessExperience {
-  Incepator = "Începător (Pana intr-un an)",
-  Intermediar = "Intermediar (1-2 ani de sala)",
-  Avansat = "Avansat (peste 2 ani)",
+  Beginner = "Beginner (Up to a year)",
+  Intermediate = "Intermediate (1-2 years)",
+  Advanced = "Advanced (Over 2 years)",
+}
+
+export enum FitnessPreferences {
+  Home = "Home",
+  Gym = "Gym",
+  Outdoor = "Outdoor",
+  GroupClass = "Group Class",
+  OneToOne = "One To One",
 }
 
 export enum TrainingLocation {
   Online = "Online",
-  Fizic = "Fizic",
+  Physic = "Physic",
 }
 
 export enum TrainingOnline {
-  Acasa = "Acasă",
-  Gym = "La o sală",
-  Outdoor = "Activități în aer liber",
+  Home = "Home",
+  Gym = "Gym",
+  Outdoor = "Outdoor",
 }
 
 export enum TrainingPhysic {
-  UnuLaUnu = "Antrenament unu-la-unu",
-  Grup = "Antrenamente de grup",
+  OneToOne = "One to One",
+  Group = "Group",
+}
+
+export enum AvailabilityDays {
+  Monday = "Monday",
+  Tuesday = "Tuesday",
+  Wednesday = "Wednesday",
+  Thursday = "Thursday",
+  Friday = "Friday",
+  Saturday = "Saturday",
+  Sunday = "Sunday",
+}
+
+export enum AvailabilityTime {
+  Morning = "Morning",
+  Afternoon = "Afternoon",
+  Evening = "Evening",
 }
 
 export enum FoodPreferences {
@@ -73,50 +82,26 @@ export enum FoodPreferences {
 }
 
 export enum FoodAllergiesType {
-  CerealeCareContinGluten = "Cereale care contin gluten",
-  Crustacee = "Crustacee",
-  Oua = "Ouă",
-  Peste = "Peste",
-  Arahide = "Arahide",
-  Soia = "Soia",
-  LapteSiProduseDerivate = "Lapte și produse derivate",
-  FructeCuCoaja = "Fructe cu coajă",
-  MustarSiProduseDerivate = "Muștar și produse derivate",
-  SeminţeDeSusanSiProduseDerivate = "Seminţe de susan și produse derivate",
-  DioxidDeSulfSiSulfiti = "Dioxid de sulf și sulfiţi",
-  LupinSiProduseDerivate = "Lupin și produse derivate",
-  MolușteSiProduseDerivate = "Moluște și produse derivate",
-  TelinaSiProduseDerivate = "Telina și produse derivate",
-  Altele = "Altele",
-}
-
-export enum FitnessPreferences {
-  Home = "HOME",
-  Gym = "GYM",
-  Outdoor = "OUTDOOR",
-  GroupClass = "GROUP_CLASS",
-  OneToOne = "ONE_TO_ONE",
-}
-
-export enum AvailabilityDays {
-  Monday = "MONDAY",
-  Tuesday = "TUESDAY",
-  Wednesday = "WEDNESDAY",
-  Thursday = "THURSDAY",
-  Friday = "FRIDAY",
-  Saturday = "SATURDAY",
-  Sunday = "SUNDAY",
-}
-
-export enum AvailabilityTime {
-  Morning = "MORNING",
-  Afternoon = "AFTERNOON",
-  Evening = "EVENING",
+  CerealsContainingGluten = "Cereals containing gluten",
+  Crustaceans = "Crustaceans",
+  Eggs = "Eggs",
+  Fish = "Fish",
+  Peanuts = "Peanuts",
+  Soybeans = "Soybeans",
+  MilkAndDairyProducts = "Milk and dairy products",
+  Nuts = "Nuts",
+  MustardAndDerivedProducts = "Mustard and derived products",
+  SesameSeedsAndDerivedProducts = "Sesame seeds and derived products",
+  SulfurDioxideAndSulfites = "Sulfur dioxide and sulfites",
+  LupineAndDerivedProducts = "Lupine and derived products",
+  MolluscsAndDerivedProducts = "Molluscs and derived products",
+  CeleryAndDerivedProducts = "Celery and derived products",
+  Others = "Others",
 }
 
 export enum OnboardTrainerSteps {
   PersonalDetails = "PERSONAL_DETAILS",
-  Contact = "Contact",
+  Contact = "CONTACT",
   NutritionExperience = "NUTRITION_EXPERIENCE",
   FitnessExperience = "FITNESS_EXPERIENCE",
   TrainingLocation = "TRAINING_LOCATION",
@@ -128,7 +113,7 @@ export enum OnboardTrainerSteps {
   Overview = "OVERVIEW",
 }
 
-export enum IsOrNot {
-  Is = "Da",
-  Not = "Nu",
+export enum IsNutritionist {
+  Is = "Is",
+  Not = "Not",
 }

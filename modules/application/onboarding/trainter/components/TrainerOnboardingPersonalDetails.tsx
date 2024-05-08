@@ -6,12 +6,8 @@ import {
   validateOnlyLetter,
   validateUsername,
 } from "@/helpers/helpers";
-import {
-  OnboardingInputError,
-  OnboardingType,
-  OnboardTrainerSteps,
-} from "@/ts/enum";
-import { GenderList } from "@/constants/user";
+import { InputError, OnboardingType, OnboardTrainerSteps } from "@/ts/enum";
+import { genderList } from "@/constants/user";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Input } from "@nextui-org/input";
 import {
@@ -26,6 +22,7 @@ import { ro } from "date-fns/locale";
 import { CalendarIcon } from "lucide-react";
 import { Calendar } from "@/components/calendar";
 import { Button } from "@nextui-org/button";
+import { GenderType } from "@/ts/types";
 
 export function TrainerOnboardingPersonalDetails() {
   const supabase = createClient();
@@ -49,12 +46,12 @@ export function TrainerOnboardingPersonalDetails() {
 
   const handleSearchUsername = async (username: string) => {
     if (handleInputRequired(username)) {
-      setUsernameError(OnboardingInputError.InputRequired);
+      setUsernameError(InputError.InputRequired);
       return;
     }
 
     if (!validateUsername(username)) {
-      setUsernameError(OnboardingInputError.UsernameInvalid);
+      setUsernameError(InputError.UsernameInvalid);
       return;
     }
 
@@ -63,7 +60,7 @@ export function TrainerOnboardingPersonalDetails() {
     const found = usernames?.find((item) => item.username === username);
 
     if (found) {
-      setUsernameError(OnboardingInputError.UsernameIsNotAvailable);
+      setUsernameError(InputError.UsernameIsNotAvailable);
     }
   };
 
@@ -84,38 +81,38 @@ export function TrainerOnboardingPersonalDetails() {
     });
 
     handleInputRequired(newValue.startDate === null ? "" : newValue.startDate)
-      ? setBirthError(OnboardingInputError.InputRequired)
+      ? setBirthError(InputError.InputRequired)
       : null;
   };
 
   const inputsAreOk = () => {
     if (!onboardingDetails?.firstname) {
-      setFirstNameError(OnboardingInputError.InputRequired);
+      setFirstNameError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
     if (!onboardingDetails?.lastname) {
-      setLastNameError(OnboardingInputError.InputRequired);
+      setLastNameError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
     if (!onboardingDetails?.username) {
-      setUsernameError(OnboardingInputError.InputRequired);
+      setUsernameError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
     if (!onboardingDetails?.birthdate?.full) {
-      setBirthError(OnboardingInputError.InputRequired);
+      setBirthError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
     if (!onboardingDetails?.gender) {
-      setGenderError(OnboardingInputError.InputRequired);
+      setGenderError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
-    if (!GenderList.includes(onboardingDetails?.gender)) {
-      setGenderError(OnboardingInputError.InputRequired);
+    if (!genderList.includes(onboardingDetails?.gender)) {
+      setGenderError(InputError.InputRequired);
       updateOnboardingDetails({
         ...onboardingDetails,
         gender: undefined,
@@ -170,9 +167,9 @@ export function TrainerOnboardingPersonalDetails() {
             onFocusChange={(e) => {
               if (!e) {
                 handleInputRequired(onboardingDetails.firstname!)
-                  ? setFirstNameError(OnboardingInputError.InputRequired)
+                  ? setFirstNameError(InputError.InputRequired)
                   : !validateOnlyLetter(onboardingDetails.firstname!)
-                    ? setFirstNameError(OnboardingInputError.OnlyLetter)
+                    ? setFirstNameError(InputError.OnlyLetter)
                     : null;
               }
             }}
@@ -204,9 +201,9 @@ export function TrainerOnboardingPersonalDetails() {
             onFocusChange={(e) => {
               if (!e) {
                 handleInputRequired(onboardingDetails.firstname!)
-                  ? setLastNameError(OnboardingInputError.InputRequired)
+                  ? setLastNameError(InputError.InputRequired)
                   : !validateOnlyLetter(onboardingDetails.lastname!)
-                    ? setLastNameError(OnboardingInputError.OnlyLetter)
+                    ? setLastNameError(InputError.OnlyLetter)
                     : null;
               }
             }}
@@ -238,9 +235,9 @@ export function TrainerOnboardingPersonalDetails() {
             onFocusChange={(e) => {
               if (!e) {
                 handleInputRequired(onboardingDetails.username!)
-                  ? setUsernameError(OnboardingInputError.InputRequired)
+                  ? setUsernameError(InputError.InputRequired)
                   : !validateUsername(onboardingDetails.username!)
-                    ? setUsernameError(OnboardingInputError.UsernameInvalid)
+                    ? setUsernameError(InputError.UsernameInvalid)
                     : null;
                 handleSearchUsername(onboardingDetails.username!);
               }
@@ -281,7 +278,7 @@ export function TrainerOnboardingPersonalDetails() {
                       handleInputRequired(
                         onboardingDetails.birthdate?.full?.toString(),
                       )
-                        ? setBirthError(OnboardingInputError.InputRequired)
+                        ? setBirthError(InputError.InputRequired)
                         : null;
                       setConfirmBtnDisable(false);
                     }
@@ -317,11 +314,11 @@ export function TrainerOnboardingPersonalDetails() {
             onChange={(e) => {
               updateOnboardingDetails({
                 ...onboardingDetails,
-                gender: e.target.value,
+                gender: e.target.value as GenderType,
               });
               setGenderError("");
               handleInputRequired(onboardingDetails.gender)
-                ? setGenderError(OnboardingInputError.InputRequired)
+                ? setGenderError(InputError.InputRequired)
                 : null;
               setConfirmBtnDisable(false);
             }}
@@ -329,7 +326,7 @@ export function TrainerOnboardingPersonalDetails() {
             errorMessage={genderError}
             isInvalid={!!genderError}
           >
-            {GenderList.map((gen) => (
+            {genderList.map((gen: string) => (
               <SelectItem
                 key={gen}
                 value={gen}
@@ -354,7 +351,7 @@ export function TrainerOnboardingPersonalDetails() {
         fullWidth
         disabled={confirmBtnDisable}
       >
-        Continuă
+        Next
       </Button>
       <Button
         onClick={() => updateOnboardingType(OnboardingType.Welcome)}
@@ -363,7 +360,7 @@ export function TrainerOnboardingPersonalDetails() {
         radius={"sm"}
         fullWidth
       >
-        Înapoi
+        Back
       </Button>
     </OnboardingLayout>
   );

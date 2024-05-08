@@ -7,6 +7,9 @@ import {
   OnboardTrainerSteps,
 } from "@/ts/enum";
 import { ClientFitnessGoals, FoodPreferences } from "@/ts/enum/onboarding.enum";
+import { GenderType, UserType } from "./user";
+import { NutritionistType } from "./nutritionist";
+import { TrainerType } from "./trainer";
 
 export type Birthdate = {
   date?: string;
@@ -48,7 +51,7 @@ export type OnboardingClientDetails = {
   username?: string;
   phoneNumber?: string;
   birthdate?: Birthdate;
-  gender?: string;
+  gender?: GenderType;
   country?: string;
   county?: string;
   city?: string;
@@ -77,24 +80,24 @@ export type OnboardingTrainerDetails = {
   username?: string;
   phoneNumber?: string;
   birthdate?: Birthdate;
-  gender?: string;
+  gender?: GenderType;
   country?: string;
   county?: string;
   city?: string;
   gymStreet?: string;
   gymName?: string;
-  type?: string;
+  type?: UserType;
   website?: string;
   facebook?: string;
   twitter?: string;
   instagram?: string;
   isNutritionist?: boolean;
-  nutritionistType?: string;
+  nutritionistType?: NutritionistType;
   nutritionistExperience?: string;
   nutritionistDiets?: string[];
   trainingLocation?: string[];
   trainingExperience?: string;
-  trainingType?: string;
+  trainerType?: TrainerType;
   trainingPhysicalPreferences?: string[];
   trainingOnlinePreferences?: string[];
   trainingAvailabilityDays?: string[];

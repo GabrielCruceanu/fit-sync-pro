@@ -1,6 +1,6 @@
-export enum SettingsType {
-  Profile = "Profil",
-  Preference = "Preferinte",
-  Notifications = "Notificari",
-  Password = "Parola",
+export enum SettingsStep {
+  Profile = "Profile",
+  Account = "Account",
+  Preferences = "Preferences",
+  Notifications = "Notifications",
 }

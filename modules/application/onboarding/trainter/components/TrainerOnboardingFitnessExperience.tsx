@@ -2,7 +2,7 @@
 import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
-import { OnboardingInputError, OnboardTrainerSteps } from "@/ts/enum";
+import { InputError, OnboardTrainerSteps } from "@/ts/enum";
 import * as React from "react";
 import { useState } from "react";
 import {
@@ -13,8 +13,9 @@ import {
   SelectItem,
 } from "@nextui-org/react";
 import { TrainingLocation } from "@/ts/enum/onboarding.enum";
-import { ExperienceList } from "@/constants/user";
-import { TrainerTypeList } from "@/constants/trainer";
+import { experienceList } from "@/constants/user";
+import trainerTypes from "@/constants/trainer";
+import { TrainerType } from "@/ts/types";
 
 export function TrainerOnboardingFitnessExperience() {
   const onboardingDetails = useStore(
@@ -31,17 +32,17 @@ export function TrainerOnboardingFitnessExperience() {
 
   const inputsAreOk = () => {
     if (!onboardingDetails.trainingLocation) {
-      setTrainerLocationError(OnboardingInputError.InputRequired);
+      setTrainerLocationError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
     if (!onboardingDetails.trainingExperience) {
-      setTrainerExperienceError(OnboardingInputError.InputRequired);
+      setTrainerExperienceError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
-    if (!onboardingDetails.trainingType) {
-      setTrainerTypeError(OnboardingInputError.InputRequired);
+    if (!onboardingDetails.trainerType) {
+      setTrainerTypeError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
@@ -79,19 +80,19 @@ export function TrainerOnboardingFitnessExperience() {
               placeholder="Alege"
               isRequired
               value={
-                onboardingDetails.trainingType
-                  ? onboardingDetails.trainingType
+                onboardingDetails.trainerType
+                  ? onboardingDetails.trainerType
                   : ""
               }
               defaultSelectedKeys={
-                onboardingDetails.trainingType
-                  ? [onboardingDetails.trainingType]
+                onboardingDetails.trainerType
+                  ? [onboardingDetails.trainerType]
                   : []
               }
               onChange={(event) => {
                 updateOnboardingDetails({
                   ...onboardingDetails,
-                  trainingType: event.target.value,
+                  trainerType: event.target.value as TrainerType,
                 });
                 setTrainerTypeError("");
                 setConfirmBtnDisable(false);
@@ -100,7 +101,7 @@ export function TrainerOnboardingFitnessExperience() {
               errorMessage={trainerTypeError}
               isInvalid={!!trainerTypeError}
             >
-              {TrainerTypeList.map((trainer) => (
+              {trainerTypes.map((trainer: TrainerType) => (
                 <SelectItem
                   key={trainer}
                   value={trainer}
@@ -139,7 +140,7 @@ export function TrainerOnboardingFitnessExperience() {
               errorMessage={trainerExperienceError}
               isInvalid={!!trainerExperienceError}
             >
-              {ExperienceList.map((experience) => (
+              {experienceList.map((experience) => (
                 <SelectItem
                   key={experience}
                   value={experience}
@@ -187,14 +188,14 @@ export function TrainerOnboardingFitnessExperience() {
                 className={cn(
                   "w-full border-2 rounded p-2",
                   onboardingDetails?.trainingLocation?.includes(
-                    TrainingLocation.Fizic,
+                    TrainingLocation.Physic,
                   )
                     ? "border-primary"
                     : "border-default",
                 )}
               >
-                <Checkbox value={TrainingLocation.Fizic}>
-                  {TrainingLocation.Fizic}
+                <Checkbox value={TrainingLocation.Physic}>
+                  {TrainingLocation.Physic}
                 </Checkbox>
               </div>
             </div>
@@ -211,7 +212,7 @@ export function TrainerOnboardingFitnessExperience() {
           disabled={confirmBtnDisable}
           className="mb-3"
         >
-          Continuă
+          Next
         </Button>
         <Button
           onClick={() =>
@@ -225,7 +226,7 @@ export function TrainerOnboardingFitnessExperience() {
           radius={"sm"}
           fullWidth
         >
-          Înapoi
+          Back
         </Button>
       </div>
     </OnboardingLayout>

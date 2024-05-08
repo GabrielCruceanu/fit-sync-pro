@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRightIcon } from "@nextui-org/shared-icons";
+import { GymType, NutritionistType, TrainerType } from "@/ts/types";
 
 export default function ProItem({
   link,
@@ -16,7 +17,7 @@ export default function ProItem({
   certificate: boolean;
   name: string;
   type: string;
-  proType: string;
+  proType: TrainerType | NutritionistType | GymType;
   city: string | null;
   photoSrc?: string;
   reviews?: any[];

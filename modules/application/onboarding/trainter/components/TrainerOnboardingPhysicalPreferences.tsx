@@ -2,7 +2,7 @@
 import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
-import { OnboardingInputError, OnboardTrainerSteps } from "@/ts/enum";
+import { InputError, OnboardTrainerSteps } from "@/ts/enum";
 import * as React from "react";
 import { useState } from "react";
 import { Checkbox, CheckboxGroup, cn } from "@nextui-org/react";
@@ -24,10 +24,10 @@ export function TrainerOnboardingPhysicalPreferences() {
 
   const inputsAreOk = () => {
     if (
-      onboardingDetails.trainingLocation?.includes(TrainingLocation.Fizic) &&
+      onboardingDetails.trainingLocation?.includes(TrainingLocation.Physic) &&
       !onboardingDetails.trainingPhysicalPreferences
     ) {
-      setTrainingPhysicalPreferencesError(OnboardingInputError.InputRequired);
+      setTrainingPhysicalPreferencesError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
@@ -75,14 +75,14 @@ export function TrainerOnboardingPhysicalPreferences() {
                 className={cn(
                   "w-full border-2 rounded p-2",
                   onboardingDetails?.trainingPhysicalPreferences?.includes(
-                    TrainingPhysic.UnuLaUnu,
+                    TrainingPhysic.OneToOne,
                   )
                     ? "border-primary"
                     : "border-default",
                 )}
               >
-                <Checkbox value={TrainingPhysic.UnuLaUnu}>
-                  {TrainingPhysic.UnuLaUnu}
+                <Checkbox value={TrainingPhysic.OneToOne}>
+                  {TrainingPhysic.OneToOne}
                 </Checkbox>
               </div>
 
@@ -90,14 +90,14 @@ export function TrainerOnboardingPhysicalPreferences() {
                 className={cn(
                   "w-full border-2 rounded p-2",
                   onboardingDetails?.trainingPhysicalPreferences?.includes(
-                    TrainingPhysic.Grup,
+                    TrainingPhysic.Group,
                   )
                     ? "border-primary"
                     : "border-default",
                 )}
               >
-                <Checkbox value={TrainingPhysic.Grup}>
-                  {TrainingPhysic.Grup}
+                <Checkbox value={TrainingPhysic.Group}>
+                  {TrainingPhysic.Group}
                 </Checkbox>
               </div>
             </div>
@@ -114,7 +114,7 @@ export function TrainerOnboardingPhysicalPreferences() {
           disabled={confirmBtnDisable}
           className="mb-3"
         >
-          Continuă
+          Next
         </Button>
         <Button
           onClick={() =>
@@ -132,7 +132,7 @@ export function TrainerOnboardingPhysicalPreferences() {
           radius={"sm"}
           fullWidth
         >
-          Înapoi
+          Back
         </Button>
       </div>
     </OnboardingLayout>

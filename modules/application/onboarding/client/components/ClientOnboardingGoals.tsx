@@ -6,11 +6,7 @@ import { useState } from "react";
 import { RadioGroup } from "@nextui-org/radio";
 import { RadioButton } from "@/components/ratio-button";
 import { handleInputRequired } from "@/helpers/helpers";
-import {
-  ClientFitnessGoals,
-  OnboardClientSteps,
-  OnboardingInputError,
-} from "@/ts/enum";
+import { ClientFitnessGoals, OnboardClientSteps, InputError } from "@/ts/enum";
 
 export function ClientOnboardingGoals() {
   const onboardingDetails = useStore(
@@ -26,7 +22,7 @@ export function ClientOnboardingGoals() {
 
   const inputsAreOk = () => {
     if (!onboardingDetails?.goals) {
-      setGoalsError(OnboardingInputError.NeedOnlyOne);
+      setGoalsError(InputError.NeedOnlyOne);
       setConfirmBtnDisable(true);
       return;
     }
@@ -60,7 +56,7 @@ export function ClientOnboardingGoals() {
               setGoalsError("");
               setConfirmBtnDisable(false);
               handleInputRequired(e)
-                ? setGoalsError(OnboardingInputError.NeedOnlyOne)
+                ? setGoalsError(InputError.NeedOnlyOne)
                 : null;
             }}
             isRequired
@@ -69,22 +65,20 @@ export function ClientOnboardingGoals() {
             isInvalid={!!goalsError}
             value={onboardingDetails.goals}
           >
-            <RadioButton value={ClientFitnessGoals.PierdereInGreutate}>
-              {ClientFitnessGoals.PierdereInGreutate}
+            <RadioButton value={ClientFitnessGoals.WeightLoss}>
+              {ClientFitnessGoals.WeightLoss}
             </RadioButton>
-            <RadioButton value={ClientFitnessGoals.CrestereMusculara}>
-              {ClientFitnessGoals.CrestereMusculara}
+            <RadioButton value={ClientFitnessGoals.MuscleGain}>
+              {ClientFitnessGoals.MuscleGain}
             </RadioButton>
-            <RadioButton value={ClientFitnessGoals.FlexibilitateSiMobilitate}>
-              {ClientFitnessGoals.FlexibilitateSiMobilitate}
+            <RadioButton value={ClientFitnessGoals.Flexibility}>
+              {ClientFitnessGoals.Flexibility}
             </RadioButton>
-            <RadioButton value={ClientFitnessGoals.ImbunatatireaSanatatii}>
-              {ClientFitnessGoals.ImbunatatireaSanatatii}
+            <RadioButton value={ClientFitnessGoals.HealthImprovement}>
+              {ClientFitnessGoals.HealthImprovement}
             </RadioButton>
-            <RadioButton
-              value={ClientFitnessGoals.IntretinereGeneralaDeFitness}
-            >
-              {ClientFitnessGoals.IntretinereGeneralaDeFitness}
+            <RadioButton value={ClientFitnessGoals.GeneralFitness}>
+              {ClientFitnessGoals.GeneralFitness}
             </RadioButton>
           </RadioGroup>
         </div>
@@ -99,7 +93,7 @@ export function ClientOnboardingGoals() {
           disabled={confirmBtnDisable}
           className="mb-3"
         >
-          Continuă
+          Next
         </Button>
         <Button
           onClick={() =>
@@ -113,7 +107,7 @@ export function ClientOnboardingGoals() {
           radius={"sm"}
           fullWidth
         >
-          Înapoi
+          Back
         </Button>
       </div>
     </OnboardingLayout>

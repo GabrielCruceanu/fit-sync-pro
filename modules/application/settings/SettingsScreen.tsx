@@ -2,16 +2,16 @@
 import { useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/create-client";
 import { SettingsSkeleton } from "@/modules/application/settings/components/SettingsSkeleton";
-import { SettingsType } from "@/ts/enum";
+import { SettingsStep } from "@/ts/enum";
 import { Tab, Tabs } from "@nextui-org/tabs";
 import { Card, CardBody } from "@nextui-org/card";
-import { ProfileSettings } from "@/modules/application/settings/components/ProfileSettings";
+import { ProfileSettings } from "@/modules/application/settings/components/ClientSettings";
 
 export function SettingsScreen() {
   const supabase = createClient();
   const [isClient, setIsClient] = useState(false);
-  const [settingsType, setSettingsType] = useState<SettingsType>(
-    SettingsType.Profile,
+  const [settingsType, setSettingsType] = useState<SettingsStep>(
+    SettingsStep.Profile,
   );
   const getUser = async () => {
     const {
@@ -31,9 +31,9 @@ export function SettingsScreen() {
       <Tabs
         aria-label="Settings"
         selectedKey={settingsType}
-        onSelectionChange={(e) => setSettingsType(e as SettingsType)}
+        onSelectionChange={(e) => setSettingsType(e as SettingsStep)}
       >
-        <Tab key={SettingsType.Profile} title={SettingsType.Profile}>
+        <Tab key={SettingsStep.Profile} title={SettingsStep.Profile}>
           <Card>
             <CardBody>
               <ProfileSettings />
@@ -41,24 +41,18 @@ export function SettingsScreen() {
           </Card>
         </Tab>
 
-        <Tab key={SettingsType.Preference} title={SettingsType.Preference}>
+        <Tab key={SettingsStep.Preferences} title={SettingsStep.Preferences}>
           <Card>
-            <CardBody>{SettingsType.Preference}</CardBody>
+            <CardBody>{SettingsStep.Preferences}</CardBody>
           </Card>
         </Tab>
 
         <Tab
-          key={SettingsType.Notifications}
-          title={SettingsType.Notifications}
+          key={SettingsStep.Notifications}
+          title={SettingsStep.Notifications}
         >
           <Card>
-            <CardBody>{SettingsType.Notifications}</CardBody>
-          </Card>
-        </Tab>
-
-        <Tab key={SettingsType.Password} title={SettingsType.Password}>
-          <Card>
-            <CardBody>{SettingsType.Password}</CardBody>
+            <CardBody>{SettingsStep.Notifications}</CardBody>
           </Card>
         </Tab>
       </Tabs>

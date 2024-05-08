@@ -1,22 +1,28 @@
 export {
   AuthProvider,
-  AuthResponseError,
-  AuthInputError,
-  UserType,
   AuthType,
+  AuthInputError,
+  AuthResponseError,
+  UserType,
 } from "./auth.enum";
 export { ToastVariant } from "./toast";
 export {
-  OnboardingInputError,
   OnboardingType,
   OnboardClientSteps,
+  ClientFitnessGoals,
   FitnessExperience,
   FitnessPreferences,
+  TrainingLocation,
+  TrainingOnline,
+  TrainingPhysic,
   AvailabilityDays,
   AvailabilityTime,
-  ClientFitnessGoals,
   FoodPreferences,
   FoodAllergiesType,
   OnboardTrainerSteps,
+  IsNutritionist,
 } from "./onboarding.enum";
-export { SettingsType } from "./settings.enum";
+
+export { InputError } from "./error.enum";
+
+export { SettingsStep } from "./settings.enum";

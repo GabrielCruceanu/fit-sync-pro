@@ -2,7 +2,7 @@
 import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
-import { OnboardingInputError, OnboardTrainerSteps } from "@/ts/enum";
+import { InputError, OnboardTrainerSteps } from "@/ts/enum";
 import * as React from "react";
 import { useState } from "react";
 import { Checkbox, CheckboxGroup, cn } from "@nextui-org/react";
@@ -26,7 +26,7 @@ export function TrainerOnboardingOnlinePreferences() {
       onboardingDetails.trainingLocation?.includes(TrainingLocation.Online) &&
       !onboardingDetails.trainingOnlinePreferences
     ) {
-      setTrainingOnlinePreferencesError(OnboardingInputError.InputRequired);
+      setTrainingOnlinePreferencesError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
@@ -36,7 +36,7 @@ export function TrainerOnboardingOnlinePreferences() {
     updateOnboardingDetails({
       ...onboardingDetails,
       trainerSteps: onboardingDetails.trainingLocation?.includes(
-        TrainingLocation.Fizic,
+        TrainingLocation.Physic,
       )
         ? OnboardTrainerSteps.TrainingPhysicalPreferences
         : OnboardTrainerSteps.Availability,
@@ -78,14 +78,14 @@ export function TrainerOnboardingOnlinePreferences() {
                 className={cn(
                   "w-full border-2 rounded p-2",
                   onboardingDetails?.trainingOnlinePreferences?.includes(
-                    TrainingOnline.Acasa,
+                    TrainingOnline.Home,
                   )
                     ? "border-primary"
                     : "border-default",
                 )}
               >
-                <Checkbox value={TrainingOnline.Acasa}>
-                  {TrainingOnline.Acasa}
+                <Checkbox value={TrainingOnline.Home}>
+                  {TrainingOnline.Home}
                 </Checkbox>
               </div>
 
@@ -132,7 +132,7 @@ export function TrainerOnboardingOnlinePreferences() {
           disabled={confirmBtnDisable}
           className="mb-3"
         >
-          Continuă
+          Next
         </Button>
         <Button
           onClick={() =>
@@ -146,7 +146,7 @@ export function TrainerOnboardingOnlinePreferences() {
           radius={"sm"}
           fullWidth
         >
-          Înapoi
+          Back
         </Button>
       </div>
     </OnboardingLayout>
