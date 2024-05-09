@@ -2,14 +2,20 @@
 import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
-import { FoodPreferences, OnboardClientSteps, InputError } from "@/ts/enum";
+import { OnboardClientSteps, InputError } from "@/ts/enum";
 import * as React from "react";
 import { useState } from "react";
-import { RadioGroup } from "@nextui-org/radio";
-import { RadioButton } from "@/components/shared/ratio-button";
-import { handleInputRequired } from "@/helpers/helpers";
-import { Select, SelectItem, Switch } from "@nextui-org/react";
-import { FoodAllergies } from "@/constants/foods";
+import {
+  Checkbox,
+  CheckboxGroup,
+  Select,
+  SelectItem,
+  Switch,
+} from "@nextui-org/react";
+import { clientFoodAllergies } from "@/constants/client";
+import { cn } from "@/lib/utils";
+import { FoodPreferences } from "@/ts/types";
+import { foodPreferences } from "@/constants/foods";
 
 export function ClientOnboardingFoodPreferences() {
   const onboardingDetails = useStore(
@@ -24,8 +30,11 @@ export function ClientOnboardingFoodPreferences() {
   const [confirmBtnDisable, setConfirmBtnDisable] = useState(false);
 
   const inputsAreOk = () => {
-    if (!onboardingDetails?.foodPreferences) {
-      setFoodPreferencesError(InputError.NeedOnlyOne);
+    if (
+      !onboardingDetails?.foodPreferences ||
+      onboardingDetails.foodPreferences?.length === 0
+    ) {
+      setFoodPreferencesError(InputError.NeedLeastOne);
       setConfirmBtnDisable(true);
       return;
     }
@@ -52,24 +61,23 @@ export function ClientOnboardingFoodPreferences() {
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
       }
-      title={"Preferințe alimentare"}
-      body={"Există preferințe alimentare pe care ar trebui să le cunoaștem?"}
+      title={"Food Preferences"}
+      body={"Select your food preferences and allergies if you have any."}
     >
       <div className="grid gap-2">
         <div className="grid grid-cols-1 gap-x-3 gap-y-4">
           {/*FoodPreferences*/}
-          <RadioGroup
+          <CheckboxGroup
+            label="Diets"
+            orientation="horizontal"
             name={"food-preferences"}
             onValueChange={(e) => {
               updateOnboardingDetails({
                 ...onboardingDetails,
-                foodPreferences: e as FoodPreferences,
+                foodPreferences: e as FoodPreferences[],
               });
               setFoodPreferencesError("");
               setConfirmBtnDisable(false);
-              handleInputRequired(e)
-                ? setFoodPreferencesError(InputError.NeedOnlyOne)
-                : null;
             }}
             isRequired
             color={foodPreferencesError ? "danger" : "primary"}
@@ -77,22 +85,22 @@ export function ClientOnboardingFoodPreferences() {
             isInvalid={!!foodPreferencesError}
             value={onboardingDetails.foodPreferences}
           >
-            <RadioButton value={FoodPreferences.Omnivor}>
-              {FoodPreferences.Omnivor}
-            </RadioButton>
-
-            <RadioButton value={FoodPreferences.Vegetarian}>
-              {FoodPreferences.Vegetarian}
-            </RadioButton>
-
-            <RadioButton value={FoodPreferences.Vegan}>
-              {FoodPreferences.Vegan}
-            </RadioButton>
-
-            <RadioButton value={FoodPreferences.Keto}>
-              {FoodPreferences.Keto}
-            </RadioButton>
-          </RadioGroup>
+            <div className="grid grid-cols-2 gap-2 w-full">
+              {foodPreferences.map((preference) => (
+                <div
+                  key={preference}
+                  className={cn(
+                    "w-full border-2 rounded p-2",
+                    onboardingDetails.foodPreferences?.includes(preference)
+                      ? "border-primary"
+                      : "border-default",
+                  )}
+                >
+                  <Checkbox value={preference}>{preference}</Checkbox>
+                </div>
+              ))}
+            </div>
+          </CheckboxGroup>
           <Switch
             isSelected={onboardingDetails.haveFoodAllergies}
             onValueChange={(e) => {
@@ -104,16 +112,16 @@ export function ClientOnboardingFoodPreferences() {
               setConfirmBtnDisable(false);
             }}
           >
-            Am alergii
+            Have food allergies?
           </Switch>
 
-          {/*Alergii*/}
+          {/*Allergies*/}
           {onboardingDetails.haveFoodAllergies && (
             <Select
-              label="Alergii"
+              label="Allergies"
               className="bg-background"
               variant="bordered"
-              placeholder="Alege"
+              placeholder="Select your allergies"
               isRequired
               value={
                 onboardingDetails.foodAllergiesType
@@ -128,26 +136,23 @@ export function ClientOnboardingFoodPreferences() {
               color={foodAllergiesError ? "danger" : "primary"}
               errorMessage={foodAllergiesError}
               isInvalid={!!foodAllergiesError}
+              selectionMode="multiple"
+              onChange={(event) => {
+                updateOnboardingDetails({
+                  ...onboardingDetails,
+                  foodAllergiesType: event.target.value,
+                });
+                setFoodAllergiesError("");
+                setConfirmBtnDisable(false);
+              }}
             >
-              {FoodAllergies.map((alergie) => (
+              {clientFoodAllergies.map((alergy) => (
                 <SelectItem
-                  key={alergie.tip_alergie}
-                  value={alergie.tip_alergie}
+                  key={alergy}
+                  value={alergy}
                   className="bg-background"
-                  onClick={() => {
-                    updateOnboardingDetails({
-                      ...onboardingDetails,
-                      foodAllergiesType: alergie.tip_alergie,
-                      foodAllergiesDescription:
-                        alergie.exemplu_alimente_asociate,
-                    });
-                    setFoodAllergiesError("");
-                    handleInputRequired(onboardingDetails.foodAllergiesType)
-                      ? setFoodAllergiesError(InputError.InputRequired)
-                      : null;
-                  }}
                 >
-                  {alergie.tip_alergie}
+                  {alergy}
                 </SelectItem>
               ))}
             </Select>

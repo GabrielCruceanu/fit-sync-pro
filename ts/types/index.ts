@@ -29,7 +29,8 @@ export type {
   Birthdate,
   FitnessAvailability,
   Notifications,
-  AlergiiAlimentare,
+  FoodAllergies as AlergiiAlimentare,
+  FoodPreferences,
 } from "./onboarding";
 
 export type { SettingsNavigation } from "./settings";

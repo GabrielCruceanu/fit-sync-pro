@@ -22,7 +22,7 @@ export function ClientOnboardingGoals() {
 
   const inputsAreOk = () => {
     if (!onboardingDetails?.goals || onboardingDetails.goals?.length === 0) {
-      setGoalsError(InputError.NeedOnlyOne);
+      setGoalsError(InputError.NeedLeastOne);
       setConfirmBtnDisable(true);
       return;
     }
@@ -50,7 +50,6 @@ export function ClientOnboardingGoals() {
             label="Goals"
             orientation="horizontal"
             onValueChange={(e) => {
-              console.log(e);
               updateOnboardingDetails({
                 ...onboardingDetails,
                 goals: e,

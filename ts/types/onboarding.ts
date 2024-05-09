@@ -6,7 +6,6 @@ import {
   OnboardingType,
   OnboardTrainerSteps,
 } from "@/ts/enum";
-import { FoodPreferences } from "@/ts/enum/onboarding.enum";
 import { GenderType, UserType } from "./user";
 import { NutritionistType } from "./nutritionist";
 import { TrainerType } from "./trainer";
@@ -17,6 +16,8 @@ export type ClientFitnessGoalsType =
   | "Flexibility"
   | "Health Improvement"
   | "General Fitness";
+
+export type FoodPreferences = "Omnivor" | "Vegetarian" | "Vegan" | "Keto";
 
 export type Birthdate = {
   date?: string;
@@ -65,7 +66,7 @@ export type OnboardingClientDetails = {
   height?: number;
   weight?: number;
   goals?: string[];
-  foodPreferences?: FoodPreferences;
+  foodPreferences?: FoodPreferences[];
   haveFoodAllergies?: boolean;
   foodAllergiesType?: string;
   foodAllergiesDescription?: string;
@@ -115,7 +116,7 @@ export type OnboardingTrainerDetails = {
   offersAndPromotions?: boolean;
 };
 
-export type AlergiiAlimentare = {
+export type FoodAllergies = {
   id: number;
   tip_alergie: string;
   exemplu_alimente_asociate: string;
