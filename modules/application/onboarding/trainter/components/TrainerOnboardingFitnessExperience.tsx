@@ -188,14 +188,14 @@ export function TrainerOnboardingFitnessExperience() {
                 className={cn(
                   "w-full border-2 rounded p-2",
                   onboardingDetails?.trainingLocation?.includes(
-                    TrainingLocation.Physic,
+                    TrainingLocation.InPerson,
                   )
                     ? "border-primary"
                     : "border-default",
                 )}
               >
-                <Checkbox value={TrainingLocation.Physic}>
-                  {TrainingLocation.Physic}
+                <Checkbox value={TrainingLocation.InPerson}>
+                  {TrainingLocation.InPerson}
                 </Checkbox>
               </div>
             </div>

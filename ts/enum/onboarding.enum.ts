@@ -44,7 +44,8 @@ export enum FitnessPreferences {
 
 export enum TrainingLocation {
   Online = "Online",
-  Physic = "Physic",
+  InPerson = "In-Person",
+  Both = "Both",
 }
 
 export enum TrainingOnline {

@@ -48,7 +48,7 @@ export function TrainerOnboardingTrainingAvailability() {
     updateOnboardingDetails({
       ...onboardingDetails,
       trainerSteps: onboardingDetails.trainingLocation?.includes(
-        TrainingLocation.Physic,
+        TrainingLocation.InPerson,
       )
         ? OnboardTrainerSteps.Location
         : OnboardTrainerSteps.Overview,

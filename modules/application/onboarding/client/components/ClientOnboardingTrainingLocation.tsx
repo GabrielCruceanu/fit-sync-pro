@@ -45,8 +45,8 @@ export function ClientOnboardingTrainingLocation() {
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
       }
-      title={"Preferințe de antrenament"}
-      body={"Cum preferați să vă antrenați?"}
+      title={"Training Location"}
+      body={"Where would you like to train?"}
     >
       <div className="grid gap-2">
         <div className="grid grid-cols-1 gap-x-3 gap-y-4">
@@ -74,8 +74,12 @@ export function ClientOnboardingTrainingLocation() {
               {TrainingLocation.Online}
             </RadioButton>
 
-            <RadioButton value={TrainingLocation.Physic}>
-              {TrainingLocation.Physic}
+            <RadioButton value={TrainingLocation.InPerson}>
+              {TrainingLocation.InPerson}
+            </RadioButton>
+
+            <RadioButton value={TrainingLocation.Both}>
+              {TrainingLocation.Both}
             </RadioButton>
           </RadioGroup>
         </div>
