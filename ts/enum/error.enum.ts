@@ -4,7 +4,7 @@ export enum InputError {
   InputRequired = "Input required",
   NeedOnlyOne = "You need to select only one",
   OnlyLetter = 'Character invalid or too few, use only "a-z" ',
-  OnlyNumbers = 'Character invalid or too few, use only "0-9" ',
+  OnlyNumbers = 'Character invalid or too few, use only "0-9" and "+" ',
   HeightGreater = "The height must be greater than 100 cm",
   WeightGreater = "The weight must be greater than 30 kg",
   Website = "The link must be www.example.ro",
