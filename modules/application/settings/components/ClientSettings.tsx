@@ -24,6 +24,7 @@ import { createClient } from "@/utils/supabase/create-client";
 import { useStore } from "@/store";
 import { Button } from "@nextui-org/button";
 import { updateClient } from "@/utils/supabase/client-service";
+import { GenderType } from "@/ts/types";
 
 export function ProfileSettings() {
   const supabase = createClient();
@@ -148,7 +149,7 @@ export function ProfileSettings() {
       setGenderError(InputError.InputRequired);
       updateClientSettings({
         ...clientSettings,
-        gender: "",
+        gender: null,
       });
       setConfirmBtnDisable(true);
       return;
@@ -333,7 +334,7 @@ export function ProfileSettings() {
           onChange={(e) => {
             updateClientSettings({
               ...clientSettings,
-              gender: e.target.value,
+              gender: e.target.value as GenderType,
             });
             setGenderError("");
             handleInputRequired(

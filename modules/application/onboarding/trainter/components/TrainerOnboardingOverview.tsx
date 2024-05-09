@@ -98,7 +98,7 @@ export function TrainerOnboardingOverview() {
       };
 
       // CREATE TRAINER PROFILE
-      await createTrainerProfile(user, trainer, supabase).then(() => {
+      await createTrainerProfile(trainer, supabase).then(() => {
         toast({
           title: OnboardingMessage.Trainer.Success.title,
           description: OnboardingMessage.Trainer.Success.description,

@@ -2,7 +2,7 @@ import {
   createClientComponentClient,
   User,
 } from "@supabase/auth-helpers-nextjs";
-import { TypedClientDetails, TypedSupabaseClient } from "@/ts/types";
+import { Client, TypedSupabaseClient } from "@/ts/types";
 import { Database } from "@/ts/supabase";
 
 export const supabaseClient = createClientComponentClient<Database>();
@@ -10,8 +10,7 @@ export const supabaseClient = createClientComponentClient<Database>();
 // CREATE ------------------------
 
 export const createClientProfile = async (
-  user: User,
-  client: TypedClientDetails,
+  client: Client,
   supabase: TypedSupabaseClient,
 ) => {
   const { error } = await supabase.from("clients").upsert([client]);
@@ -29,7 +28,7 @@ export const updateClient = async ({
   client,
 }: {
   supabase: TypedSupabaseClient;
-  client: TypedClientDetails;
+  client: Client;
 }) => {
   const { error } = await supabase
     .from("clients")

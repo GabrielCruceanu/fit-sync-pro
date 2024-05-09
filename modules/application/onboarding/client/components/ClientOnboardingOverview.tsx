@@ -88,7 +88,7 @@ export function ClientOnboardingOverview() {
       };
 
       // CREATE CLIENT PROFILE
-      await createClientProfile(user, client, supabase).then(() => {
+      await createClientProfile(client, supabase).then(() => {
         toast({
           title: OnboardingMessage.Client.Success.title,
           description: OnboardingMessage.Client.Success.description,
