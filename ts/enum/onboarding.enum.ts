@@ -13,7 +13,7 @@ export enum OnboardClientSteps {
   FitnessExperience = "FITNESS_EXPERIENCE",
   TrainingLocation = "TRAINING_LOCATION",
   TrainingOnlinePreferences = "TRAINING_ONLINE_PREFERENCES",
-  TrainingPhysicalPreferences = "TRAINING_PHYSICAL_PREFERENCES",
+  TrainingInPersonPreferences = "TRAINING_IN_PERSON_PREFERENCES",
   Availability = "AVAILABILITY",
   Location = "LOCATION",
   Notifications = "NOTIFICATIONS",

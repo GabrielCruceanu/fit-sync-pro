@@ -54,7 +54,7 @@ export function ClientOnboardingTrainingOnline() {
               updateOnboardingDetails({
                 ...onboardingDetails,
                 trainingOnlinePreferences: e,
-                trainingPhysicalPreferences: undefined,
+                trainingInPersonPreferences: undefined,
               });
               setTrainingOnlineError("");
               setConfirmBtnDisable(false);

@@ -165,7 +165,7 @@ export const useStore = create<State>()(
           foodAllergiesDescription: undefined,
           fitnessExperience: undefined,
           trainingLocation: undefined,
-          trainingPhysicalPreferences: undefined,
+          trainingInPersonPreferences: undefined,
           trainingOnlinePreferences: undefined,
           trainingAvailabilityDays: undefined,
           trainingAvailabilityTime: undefined,

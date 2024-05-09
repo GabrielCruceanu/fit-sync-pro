@@ -35,7 +35,7 @@ export function ClientOnboardingTrainingLocation() {
       clientSteps:
         onboardingDetails?.trainingLocation === TrainingLocation.Online
           ? OnboardClientSteps.TrainingOnlinePreferences
-          : OnboardClientSteps.TrainingPhysicalPreferences,
+          : OnboardClientSteps.TrainingInPersonPreferences,
     });
   };
   return (

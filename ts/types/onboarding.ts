@@ -72,7 +72,7 @@ export type OnboardingClientDetails = {
   foodAllergiesDescription?: string;
   fitnessExperience?: FitnessExperience;
   trainingLocation?: string;
-  trainingPhysicalPreferences?: string;
+  trainingInPersonPreferences?: string;
   trainingOnlinePreferences?: string;
   trainingAvailabilityDays?: string[];
   trainingAvailabilityTime?: string[];

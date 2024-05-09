@@ -10,7 +10,7 @@ import { RadioButton } from "@/components/shared/ratio-button";
 import { handleInputRequired } from "@/helpers/helpers";
 import { TrainingPhysic } from "@/ts/enum/onboarding.enum";
 
-export function ClientOnboardingTrainingPhysical() {
+export function ClientOnboardingTrainingInPerson() {
   const onboardingDetails = useStore(
     (state) => state.onboarding.onboardingClientDetails,
   );
@@ -22,7 +22,7 @@ export function ClientOnboardingTrainingPhysical() {
   const [confirmBtnDisable, setConfirmBtnDisable] = useState(false);
 
   const inputsAreOk = () => {
-    if (!onboardingDetails?.trainingPhysicalPreferences) {
+    if (!onboardingDetails?.trainingInPersonPreferences) {
       setTrainingPhysicalError(InputError.NeedOnlyOne);
       setConfirmBtnDisable(true);
       return;
@@ -42,8 +42,8 @@ export function ClientOnboardingTrainingPhysical() {
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
       }
-      title={"Preferințe de antrenament fizic"}
-      body={"Cum preferi să te antrenezi fizic?"}
+      title={"Training In Person"}
+      body={"How would you like to train in person?"}
     >
       <div className="grid gap-2">
         <div className="grid grid-cols-1 gap-x-3 gap-y-4">
@@ -53,7 +53,7 @@ export function ClientOnboardingTrainingPhysical() {
             onValueChange={(e) => {
               updateOnboardingDetails({
                 ...onboardingDetails,
-                trainingPhysicalPreferences: e,
+                trainingInPersonPreferences: e,
                 trainingOnlinePreferences: undefined,
               });
               setTrainingPhysicalError("");
@@ -66,7 +66,7 @@ export function ClientOnboardingTrainingPhysical() {
             color={trainingPhysicalError ? "danger" : "primary"}
             errorMessage={trainingPhysicalError}
             isInvalid={!!trainingPhysicalError}
-            value={onboardingDetails.trainingPhysicalPreferences}
+            value={onboardingDetails.trainingInPersonPreferences}
           >
             <RadioButton value={TrainingPhysic.OneToOne}>
               {TrainingPhysic.OneToOne}

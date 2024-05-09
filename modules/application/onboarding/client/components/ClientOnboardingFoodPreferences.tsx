@@ -68,7 +68,7 @@ export function ClientOnboardingFoodPreferences() {
         <div className="grid grid-cols-1 gap-x-3 gap-y-4">
           {/*FoodPreferences*/}
           <CheckboxGroup
-            label="Diets"
+            label="Food Preferences"
             orientation="horizontal"
             name={"food-preferences"}
             onValueChange={(e) => {

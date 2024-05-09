@@ -80,9 +80,9 @@ export function ClientOnboardingOverview() {
         fitnessExperience: onboardingDetails.fitnessExperience!,
         trainingLocation: onboardingDetails.trainingLocation!,
         trainingOnlinePreferences:
-          onboardingDetails.trainingPhysicalPreferences!,
+          onboardingDetails.trainingInPersonPreferences!,
         trainingPhysicalPreferences:
-          onboardingDetails.trainingPhysicalPreferences!,
+          onboardingDetails.trainingInPersonPreferences!,
         trainingAvailabilityDays: onboardingDetails.trainingAvailabilityDays!,
         trainingAvailabilityTime: onboardingDetails.trainingAvailabilityTime!,
       };
@@ -207,7 +207,7 @@ export function ClientOnboardingOverview() {
             Tip: <br />
             <strong className="text-medium">
               {onboardingDetails.trainingLocation === "Fizic"
-                ? onboardingDetails.trainingPhysicalPreferences
+                ? onboardingDetails.trainingInPersonPreferences
                 : onboardingDetails.trainingOnlinePreferences}
             </strong>
           </p>
