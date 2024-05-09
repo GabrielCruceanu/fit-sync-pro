@@ -77,10 +77,6 @@ export function ClientOnboardingTrainingLocation() {
             <RadioButton value={TrainingLocation.InPerson}>
               {TrainingLocation.InPerson}
             </RadioButton>
-
-            <RadioButton value={TrainingLocation.Both}>
-              {TrainingLocation.Both}
-            </RadioButton>
           </RadioGroup>
         </div>
       </div>
