@@ -12,16 +12,16 @@ export enum AuthType {
 }
 
 export enum AuthInputError {
-  UserAlreadyRegistered = "Userul exista deja",
-  EmailAlreadyRegistered = "Adresa de email exista deja",
-  UsernameInvalid = 'Caractere invalide, poti folosi doar "a-z", "0-9" si "_"',
-  UsernameIsNotAvailable = "Numele de utilizator este luat.",
-  InputRequired = "Acest camp este obligatoriu",
-  NeedOnlyOne = "Este necesar sa selectati unul din aceste campuri",
-  OnlyLetter = 'Caractere invalide sau prea putine, foloseste doar "a-z"',
-  OnlyNumbers = 'Caractere invalide sau prea putine, foloseste doar "0-9"',
-  HeightGreater = "Inaltimea treabuie sa fie mai mare de 50 cm",
-  WeightGreater = "Greutatea treabuie sa fie mai mare de 30 Kg",
+  UserAlreadyRegistered = "User already registered",
+  EmailAlreadyRegistered = "Email already registered",
+  UsernameInvalid = 'Character invalid or too few, use only "a-z", "0-9" and "_"',
+  UsernameIsNotAvailable = "Username is not available",
+  InputRequired = "Input required",
+  NeedOnlyOne = "You need to select only one",
+  OnlyLetter = 'Character invalid or too few, use only "a-z" ',
+  OnlyNumbers = 'Character invalid or too few, use only "0-9" ',
+  HeightGreater = "The height must be greater than 100 cm",
+  WeightGreater = "The weight must be greater than 30 kg",
 }
 
 export enum AuthResponseError {

@@ -7,7 +7,7 @@ import { createClient } from "@/utils/supabase/create-client";
 import { useRouter } from "next/navigation";
 import { toast } from "@/components/use-toast";
 import { createClientProfile } from "@/utils/supabase/client-service";
-import { TypedClientDetails } from "@/ts/types";
+import { Client } from "@/ts/types";
 import { createUserName, updateUser } from "@/utils/supabase/user-service";
 import { OnboardingMessage } from "@/lib/validations/error-check";
 import { UserType } from "@/ts/enum/user.enum";
@@ -53,7 +53,7 @@ export function ClientOnboardingOverview() {
         supabase: supabase,
       });
 
-      const client: TypedClientDetails = {
+      const client: Client = {
         client_id: id,
         firstName: onboardingDetails.firstname!,
         lastName: onboardingDetails.lastname!,
@@ -88,7 +88,7 @@ export function ClientOnboardingOverview() {
       };
 
       // CREATE CLIENT PROFILE
-      await createClientProfile(user, client, supabase).then(() => {
+      await createClientProfile(client, supabase).then(() => {
         toast({
           title: OnboardingMessage.Client.Success.title,
           description: OnboardingMessage.Client.Success.description,
@@ -281,7 +281,7 @@ export function ClientOnboardingOverview() {
             radius={"sm"}
             fullWidth
           >
-            Înapoi
+            Back
           </Button>
         </div>
       </div>

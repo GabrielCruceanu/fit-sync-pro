@@ -16,6 +16,12 @@ export async function middleware(req: NextRequest) {
     .select("hasOnboarding")
     .eq("id", user?.id);
 
+  console.log("user", user);
+  console.log("req.nextUrl.pathname", req.nextUrl.pathname);
+  console.log(
+    "req.nextUrl.pathname === ApplicationLinks.login.link",
+    req.nextUrl.pathname === ApplicationLinks.login.link,
+  );
   // if user is signed in and the current path is / redirect the user to /account
   if (
     (user && req.nextUrl.pathname === ApplicationLinks.login.link) ||
@@ -39,6 +45,22 @@ export async function middleware(req: NextRequest) {
     );
   }
 
+  if (
+    user &&
+    usersProfile?.length &&
+    !usersProfile[0].hasOnboarding &&
+    (req.nextUrl.pathname === ApplicationLinks.dashboard.link ||
+      req.nextUrl.pathname === ApplicationLinks.profile.link ||
+      req.nextUrl.pathname === ApplicationLinks.messages.link ||
+      req.nextUrl.pathname === ApplicationLinks.clientProgress.link ||
+      req.nextUrl.pathname === ApplicationLinks.notifications.link ||
+      req.nextUrl.pathname === ApplicationLinks.settings.link)
+  ) {
+    return NextResponse.redirect(
+      new URL(ApplicationLinks.onboarding.link, req.url),
+    );
+  }
+
   // if user is not signed in and the current path is not / redirect the user to /
   if (
     (!user && req.nextUrl.pathname === ApplicationLinks.dashboard.link) ||
@@ -57,9 +79,10 @@ export async function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
-    "/autentificare",
-    "/inregistrare",
-    "/resetare-parola",
+    "/login",
+    "/sign-up",
+    "/reset-password",
+    "/update-password",
     "/dashboard",
     "/progress",
     "/profile",

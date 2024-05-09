@@ -2,7 +2,7 @@
 import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
-import { OnboardClientSteps, OnboardingInputError } from "@/ts/enum";
+import { OnboardClientSteps, InputError } from "@/ts/enum";
 import * as React from "react";
 import { useState } from "react";
 import { RadioGroup } from "@nextui-org/radio";
@@ -23,7 +23,7 @@ export function ClientOnboardingTrainingLocation() {
 
   const inputsAreOk = () => {
     if (!onboardingDetails?.trainingLocation) {
-      setTrainingLocationError(OnboardingInputError.NeedOnlyOne);
+      setTrainingLocationError(InputError.NeedOnlyOne);
       setConfirmBtnDisable(true);
       return;
     }
@@ -61,7 +61,7 @@ export function ClientOnboardingTrainingLocation() {
               setTrainingLocationError("");
               setConfirmBtnDisable(false);
               handleInputRequired(e)
-                ? setTrainingLocationError(OnboardingInputError.NeedOnlyOne)
+                ? setTrainingLocationError(InputError.NeedOnlyOne)
                 : null;
             }}
             isRequired
@@ -74,8 +74,8 @@ export function ClientOnboardingTrainingLocation() {
               {TrainingLocation.Online}
             </RadioButton>
 
-            <RadioButton value={TrainingLocation.Fizic}>
-              {TrainingLocation.Fizic}
+            <RadioButton value={TrainingLocation.Physic}>
+              {TrainingLocation.Physic}
             </RadioButton>
           </RadioGroup>
         </div>
@@ -90,7 +90,7 @@ export function ClientOnboardingTrainingLocation() {
           disabled={confirmBtnDisable}
           className="mb-3"
         >
-          Continuă
+          Next
         </Button>
         <Button
           onClick={() =>
@@ -104,7 +104,7 @@ export function ClientOnboardingTrainingLocation() {
           color={"default"}
           fullWidth
         >
-          Înapoi
+          Back
         </Button>
       </div>
     </OnboardingLayout>

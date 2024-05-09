@@ -2,7 +2,7 @@
 import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
-import { OnboardingInputError, OnboardTrainerSteps } from "@/ts/enum";
+import { InputError, OnboardTrainerSteps } from "@/ts/enum";
 import React, { useState } from "react";
 import { handleInputRequired, validateOnlyLetter } from "@/helpers/helpers";
 import { Select, SelectItem } from "@nextui-org/react";
@@ -27,27 +27,27 @@ export function TrainerOnboardingPhysicalLocation() {
 
   const inputsAreOk = () => {
     if (!onboardingDetails.country) {
-      setCurrentCountryError(OnboardingInputError.InputRequired);
+      setCurrentCountryError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
     if (!onboardingDetails.county) {
-      setCurrentCountyError(OnboardingInputError.InputRequired);
+      setCurrentCountyError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
     if (!onboardingDetails.city) {
-      setCurrentCityError(OnboardingInputError.InputRequired);
+      setCurrentCityError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
     if (!onboardingDetails.gymStreet) {
-      setGymStreetError(OnboardingInputError.InputRequired);
+      setGymStreetError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
     if (!onboardingDetails.gymName) {
-      setGymNameError(OnboardingInputError.InputRequired);
+      setGymNameError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
@@ -119,7 +119,7 @@ export function TrainerOnboardingPhysicalLocation() {
               });
               setCurrentCountryError("");
               handleInputRequired(onboardingDetails.country)
-                ? setCurrentCountryError(OnboardingInputError.InputRequired)
+                ? setCurrentCountryError(InputError.InputRequired)
                 : null;
               setConfirmBtnDisable(false);
             }}
@@ -163,7 +163,7 @@ export function TrainerOnboardingPhysicalLocation() {
               });
               setCurrentCountyError("");
               handleInputRequired(onboardingDetails.county)
-                ? setCurrentCountyError(OnboardingInputError.InputRequired)
+                ? setCurrentCountyError(InputError.InputRequired)
                 : null;
               setConfirmBtnDisable(false);
             }}
@@ -202,7 +202,7 @@ export function TrainerOnboardingPhysicalLocation() {
               });
               setCurrentCityError("");
               handleInputRequired(onboardingDetails.city)
-                ? setCurrentCityError(OnboardingInputError.InputRequired)
+                ? setCurrentCityError(InputError.InputRequired)
                 : null;
               setConfirmBtnDisable(false);
             }}
@@ -250,7 +250,7 @@ export function TrainerOnboardingPhysicalLocation() {
             onFocusChange={(e) => {
               if (!e) {
                 handleInputRequired(onboardingDetails.gymStreet!)
-                  ? setGymStreetError(OnboardingInputError.InputRequired)
+                  ? setGymStreetError(InputError.InputRequired)
                   : null;
               }
             }}
@@ -281,9 +281,9 @@ export function TrainerOnboardingPhysicalLocation() {
             onFocusChange={(e) => {
               if (!e) {
                 handleInputRequired(onboardingDetails.gymName!)
-                  ? setGymNameError(OnboardingInputError.InputRequired)
+                  ? setGymNameError(InputError.InputRequired)
                   : !validateOnlyLetter(onboardingDetails.gymName!)
-                    ? setGymNameError(OnboardingInputError.OnlyLetter)
+                    ? setGymNameError(InputError.OnlyLetter)
                     : null;
               }
             }}
@@ -300,7 +300,7 @@ export function TrainerOnboardingPhysicalLocation() {
           disabled={confirmBtnDisable}
           className="mb-3"
         >
-          Continuă
+          Next
         </Button>
         <Button
           onClick={() =>
@@ -314,7 +314,7 @@ export function TrainerOnboardingPhysicalLocation() {
           radius={"sm"}
           fullWidth
         >
-          Înapoi
+          Back
         </Button>
       </div>
     </OnboardingLayout>

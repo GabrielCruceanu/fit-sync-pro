@@ -17,7 +17,7 @@ export function Welcome() {
       body={"Ce tip de cont ați dori să aveți?"}
     >
       <ul className="md:container px-3 mb-6 flex flex-wrap items-center justify-center">
-        <li className="mt-3 h-fit w-full md:w-6/12 md:pr-1">
+        <li className="mt-3 h-fit w-full">
           <Button
             onClick={() => updateOnboardingType(OnboardingType.Client)}
             type="button"
@@ -28,7 +28,7 @@ export function Welcome() {
             {OnboardingType.Client.toLowerCase()}
           </Button>
         </li>
-        <li className="mt-3 h-fit w-full md:w-6/12 md:pl-1">
+        <li className="mt-3 h-fit w-full">
           <Button
             onClick={() => updateOnboardingType(OnboardingType.Trainer)}
             type="button"
@@ -39,28 +39,28 @@ export function Welcome() {
             {OnboardingType.Trainer.toLowerCase()}
           </Button>
         </li>
-        <li className="mt-3 h-fit w-full md:w-6/12 md:pr-1">
-          <Button
-            onClick={() => updateOnboardingType(OnboardingType.Nutritionist)}
-            type="button"
-            color={"primary"}
-            fullWidth
-            className="capitalize"
-          >
-            {OnboardingType.Nutritionist.toLowerCase()}
-          </Button>
-        </li>
-        <li className="mt-3 h-fit w-full md:w-6/12 md:pl-1">
-          <Button
-            onClick={() => updateOnboardingType(OnboardingType.Gym)}
-            type="button"
-            color={"primary"}
-            fullWidth
-            className="capitalize"
-          >
-            {OnboardingType.Gym.toLowerCase()}
-          </Button>
-        </li>
+        {/*<li className="mt-3 h-fit w-full md:w-6/12 md:pr-1">*/}
+        {/*  <Button*/}
+        {/*    onClick={() => updateOnboardingType(OnboardingType.Nutritionist)}*/}
+        {/*    type="button"*/}
+        {/*    color={"primary"}*/}
+        {/*    fullWidth*/}
+        {/*    className="capitalize"*/}
+        {/*  >*/}
+        {/*    {OnboardingType.Nutritionist.toLowerCase()}*/}
+        {/*  </Button>*/}
+        {/*</li>*/}
+        {/*<li className="mt-3 h-fit w-full md:w-6/12 md:pl-1">*/}
+        {/*  <Button*/}
+        {/*    onClick={() => updateOnboardingType(OnboardingType.Gym)}*/}
+        {/*    type="button"*/}
+        {/*    color={"primary"}*/}
+        {/*    fullWidth*/}
+        {/*    className="capitalize"*/}
+        {/*  >*/}
+        {/*    {OnboardingType.Gym.toLowerCase()}*/}
+        {/*  </Button>*/}
+        {/*</li>*/}
       </ul>
     </OnboardingLayout>
   );

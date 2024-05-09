@@ -62,7 +62,7 @@ export default function CookiesPage() {
         <p>
           Un cookie este un fișier text care conține informații descărcate pe
           dispozitivul dumneavoastră atunci când vizitați (pentru prima dată) un
-          site web. Acel cookie este trimis înapoi la fiecare vizită ulterioară
+          site web. Acel cookie este trimis Back la fiecare vizită ulterioară
           către site-ul web de origine sau către alt site web care îl
           recunoaște. Cookie-urile sunt utile deoarece permit unui site web să
           recunoască un dispozitiv și vă oferă o experiență mai eficientă și

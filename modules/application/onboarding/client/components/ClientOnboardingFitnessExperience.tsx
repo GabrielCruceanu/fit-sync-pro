@@ -2,11 +2,7 @@
 import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
-import {
-  FitnessExperience,
-  OnboardClientSteps,
-  OnboardingInputError,
-} from "@/ts/enum";
+import { FitnessExperience, OnboardClientSteps, InputError } from "@/ts/enum";
 import * as React from "react";
 import { useState } from "react";
 import { RadioGroup } from "@nextui-org/radio";
@@ -26,7 +22,7 @@ export function ClientOnboardingFitnessExperience() {
 
   const inputsAreOk = () => {
     if (!onboardingDetails?.fitnessExperience) {
-      setFitnessExperienceError(OnboardingInputError.NeedOnlyOne);
+      setFitnessExperienceError(InputError.NeedOnlyOne);
       setConfirmBtnDisable(true);
       return;
     }
@@ -61,7 +57,7 @@ export function ClientOnboardingFitnessExperience() {
               setFitnessExperienceError("");
               setConfirmBtnDisable(false);
               handleInputRequired(e)
-                ? setFitnessExperienceError(OnboardingInputError.NeedOnlyOne)
+                ? setFitnessExperienceError(InputError.NeedOnlyOne)
                 : null;
             }}
             isRequired
@@ -70,16 +66,16 @@ export function ClientOnboardingFitnessExperience() {
             isInvalid={!!fitnessExperienceError}
             value={onboardingDetails.fitnessExperience}
           >
-            <RadioButton value={FitnessExperience.Incepator}>
-              {FitnessExperience.Incepator}
+            <RadioButton value={FitnessExperience.Beginner}>
+              {FitnessExperience.Beginner}
             </RadioButton>
 
-            <RadioButton value={FitnessExperience.Intermediar}>
-              {FitnessExperience.Intermediar}
+            <RadioButton value={FitnessExperience.Intermediate}>
+              {FitnessExperience.Intermediate}
             </RadioButton>
 
-            <RadioButton value={FitnessExperience.Avansat}>
-              {FitnessExperience.Avansat}
+            <RadioButton value={FitnessExperience.Advanced}>
+              {FitnessExperience.Advanced}
             </RadioButton>
           </RadioGroup>
         </div>
@@ -94,7 +90,7 @@ export function ClientOnboardingFitnessExperience() {
           disabled={confirmBtnDisable}
           className="mb-3"
         >
-          Continuă
+          Next
         </Button>
         <Button
           onClick={() =>
@@ -108,7 +104,7 @@ export function ClientOnboardingFitnessExperience() {
           radius={"sm"}
           fullWidth
         >
-          Înapoi
+          Back
         </Button>
       </div>
     </OnboardingLayout>

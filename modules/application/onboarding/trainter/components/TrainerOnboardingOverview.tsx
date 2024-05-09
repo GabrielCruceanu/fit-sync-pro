@@ -6,7 +6,7 @@ import { OnboardTrainerSteps } from "@/ts/enum";
 import { createClient } from "@/utils/supabase/create-client";
 import { useRouter } from "next/navigation";
 import { toast } from "@/components/use-toast";
-import { TypedTrainerDetails } from "@/ts/types";
+import { Trainer } from "@/ts/types";
 import { createUserName, updateUser } from "@/utils/supabase/user-service";
 import { OnboardingMessage } from "@/lib/validations/error-check";
 import { UserType } from "@/ts/enum/user.enum";
@@ -53,7 +53,7 @@ export function TrainerOnboardingOverview() {
         supabase: supabase,
       });
 
-      const trainer: TypedTrainerDetails = {
+      const trainer: Trainer = {
         id: id,
         type: onboardingDetails.type!,
         firstName: onboardingDetails.firstname!,
@@ -70,7 +70,7 @@ export function TrainerOnboardingOverview() {
         gender: onboardingDetails.gender!,
         joined: today,
         profilePictureUrl: null,
-        description: null,
+        biography: null,
         completedClients: null,
         activeClients: null,
         certificate: null,
@@ -94,11 +94,11 @@ export function TrainerOnboardingOverview() {
         gymStreet: onboardingDetails.gymStreet!,
         gymName: onboardingDetails.gymName!,
         trainingExperience: onboardingDetails.trainingExperience!,
-        trainerType: onboardingDetails.trainingType!,
+        trainerType: onboardingDetails.trainerType!,
       };
 
       // CREATE TRAINER PROFILE
-      await createTrainerProfile(user, trainer, supabase).then(() => {
+      await createTrainerProfile(trainer, supabase).then(() => {
         toast({
           title: OnboardingMessage.Trainer.Success.title,
           description: OnboardingMessage.Trainer.Success.description,
@@ -222,7 +222,7 @@ export function TrainerOnboardingOverview() {
           <p className="text-sm">
             Tip Antrenor: <br />
             <strong className="text-medium">
-              {onboardingDetails.trainingType}
+              {onboardingDetails.trainerType}
             </strong>
           </p>
 
@@ -316,7 +316,7 @@ export function TrainerOnboardingOverview() {
             radius={"sm"}
             fullWidth
           >
-            Înapoi
+            Back
           </Button>
         </div>
       </div>

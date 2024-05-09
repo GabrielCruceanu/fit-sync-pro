@@ -7,7 +7,7 @@ import {
   validateIsPhoneNumber,
   validateIsWebsiteLink,
 } from "@/helpers/helpers";
-import { OnboardingInputError, OnboardTrainerSteps } from "@/ts/enum";
+import { InputError, OnboardTrainerSteps } from "@/ts/enum";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
@@ -40,18 +40,18 @@ export function TrainerOnboardingPersonalContact() {
     });
     setConfirmBtnDisable(false);
     if (handleInputRequired(clearNumber)) {
-      setPhoneError(OnboardingInputError.InputRequired);
+      setPhoneError(InputError.InputRequired);
       return;
     }
     if (!validateIsPhoneNumber(clearNumber)) {
-      setPhoneError(OnboardingInputError.OnlyNumbers);
+      setPhoneError(InputError.OnlyNumbers);
       return;
     }
   };
 
   const inputsAreOk = () => {
     if (!onboardingDetails?.phoneNumber) {
-      setPhoneError(OnboardingInputError.InputRequired);
+      setPhoneError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
@@ -119,7 +119,7 @@ export function TrainerOnboardingPersonalContact() {
             onFocusChange={(e) => {
               if (!e) {
                 !validateIsWebsiteLink(onboardingDetails.website!)
-                  ? setWebsiteError(OnboardingInputError.Website)
+                  ? setWebsiteError(InputError.Website)
                   : null;
               }
             }}
@@ -150,7 +150,7 @@ export function TrainerOnboardingPersonalContact() {
             onFocusChange={(e) => {
               if (!e) {
                 !validateIsWebsiteLink(onboardingDetails.facebook!)
-                  ? setFacebookError(OnboardingInputError.Facebook)
+                  ? setFacebookError(InputError.Facebook)
                   : null;
               }
             }}
@@ -182,7 +182,7 @@ export function TrainerOnboardingPersonalContact() {
             onFocusChange={(e) => {
               if (!e) {
                 !validateIsWebsiteLink(onboardingDetails.twitter!)
-                  ? setTwitterError(OnboardingInputError.Twitter)
+                  ? setTwitterError(InputError.Twitter)
                   : null;
               }
             }}
@@ -214,7 +214,7 @@ export function TrainerOnboardingPersonalContact() {
             onFocusChange={(e) => {
               if (!e) {
                 !validateIsWebsiteLink(onboardingDetails.instagram!)
-                  ? setInstagramError(OnboardingInputError.Instagram)
+                  ? setInstagramError(InputError.Instagram)
                   : null;
               }
             }}
@@ -230,7 +230,7 @@ export function TrainerOnboardingPersonalContact() {
         fullWidth
         disabled={confirmBtnDisable}
       >
-        Continuă
+        Next
       </Button>
       <Button
         onClick={() =>
@@ -244,7 +244,7 @@ export function TrainerOnboardingPersonalContact() {
         radius={"sm"}
         fullWidth
       >
-        Înapoi
+        Back
       </Button>
     </OnboardingLayout>
   );

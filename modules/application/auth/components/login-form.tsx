@@ -21,6 +21,8 @@ import { Icons } from "@/components/icons";
 import { Provider } from "@supabase/gotrue-js";
 import { toast } from "@/components/use-toast";
 import { EyeFilledIcon, EyeSlashFilledIcon } from "@nextui-org/shared-icons";
+import { useStore } from "@/store";
+import { UserDetails } from "@/ts/types";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -32,7 +34,15 @@ export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
   const [passwordIsVisible, setPasswordIsVisible] = React.useState(false);
   const [emailValue, setEmailValue] = React.useState("");
   const [passwordValue, setPasswordValue] = React.useState("");
-
+  const {
+    isLoading,
+    setIsLoading,
+    isGoogleLoading,
+    setIsGoogleLoading,
+    isFacebookLoading,
+    setIsFacebookLoading,
+    setUser,
+  } = useStore((state) => state);
   const validateEmail = (value: string) =>
     value.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i);
 
@@ -50,11 +60,6 @@ export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(LoginSchema) });
 
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
-  const [isGoogleLoading, setIsGoogleLoading] = React.useState<boolean>(false);
-  const [isFacebookLoading, setIsFacebookLoading] =
-    React.useState<boolean>(false);
-
   async function onSubmit(data: FormData) {
     setIsLoading(true);
 
@@ -67,6 +72,15 @@ export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
         password: data.password,
       });
 
+      if (user) {
+        const { data: users, error } = await supabase.from("users").select("*");
+
+        if (users) {
+          const user = users[0] as UserDetails;
+          console.log("userDetails", user);
+          setUser(user);
+        }
+      }
       setIsLoading(false);
 
       if (!error && !user) {

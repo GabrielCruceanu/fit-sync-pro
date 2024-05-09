@@ -1,6 +1,6 @@
 import { User } from "@supabase/auth-helpers-nextjs";
 import { Json } from "@/ts/supabase";
-import { TypedSupabaseClient, TypedUserDetails } from "@/ts/types";
+import { TypedSupabaseClient, UserDetails } from "@/ts/types";
 import { supabaseClient } from "@/utils/supabase/client-service";
 
 // CREATE
@@ -56,7 +56,7 @@ export const updateUser = async ({
   paymentMethod?: Json;
   email: string;
   profile_picture_url: string | null;
-  userType: TypedUserDetails["userType"];
+  userType: UserDetails["userType"];
   supabase: TypedSupabaseClient;
 }) => {
   await supabase

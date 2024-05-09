@@ -8,15 +8,11 @@ import {
 } from "@nextui-org/react";
 import { ApplicationLinks } from "@/constants/links";
 import Link from "next/link";
-import { TypedUserDetails } from "@/ts/types";
+import { useStore } from "@/store";
 
-const ProfileDropDown = ({
-  children,
-  user,
-}: {
-  children: React.ReactNode;
-  user: TypedUserDetails | null;
-}) => {
+const ProfileDropDown = () => {
+  const { user, signOut } = useStore((state) => state);
+
   return (
     <div className="flex items-center gap-4">
       {user ? (
@@ -44,7 +40,9 @@ const ProfileDropDown = ({
               {ApplicationLinks.settings.name}
             </DropdownItem>
             <DropdownItem key="logout" color="danger">
-              {children}
+              <button onClick={() => signOut()}>
+                {ApplicationLinks.logout.name}
+              </button>
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>

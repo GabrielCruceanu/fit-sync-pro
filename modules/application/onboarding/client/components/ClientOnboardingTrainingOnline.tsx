@@ -2,7 +2,7 @@
 import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
-import { OnboardClientSteps, OnboardingInputError } from "@/ts/enum";
+import { OnboardClientSteps, InputError } from "@/ts/enum";
 import * as React from "react";
 import { useState } from "react";
 import { RadioGroup } from "@nextui-org/radio";
@@ -23,7 +23,7 @@ export function ClientOnboardingTrainingOnline() {
 
   const inputsAreOk = () => {
     if (!onboardingDetails?.trainingOnlinePreferences) {
-      setTrainingOnlineError(OnboardingInputError.NeedOnlyOne);
+      setTrainingOnlineError(InputError.NeedOnlyOne);
       setConfirmBtnDisable(true);
       return;
     }
@@ -59,7 +59,7 @@ export function ClientOnboardingTrainingOnline() {
               setTrainingOnlineError("");
               setConfirmBtnDisable(false);
               handleInputRequired(e)
-                ? setTrainingOnlineError(OnboardingInputError.NeedOnlyOne)
+                ? setTrainingOnlineError(InputError.NeedOnlyOne)
                 : null;
             }}
             isRequired
@@ -68,8 +68,8 @@ export function ClientOnboardingTrainingOnline() {
             isInvalid={!!trainingOnlineError}
             value={onboardingDetails.trainingOnlinePreferences}
           >
-            <RadioButton value={TrainingOnline.Acasa}>
-              {TrainingOnline.Acasa}
+            <RadioButton value={TrainingOnline.Home}>
+              {TrainingOnline.Home}
             </RadioButton>
 
             <RadioButton value={TrainingOnline.Gym}>
@@ -92,7 +92,7 @@ export function ClientOnboardingTrainingOnline() {
           disabled={confirmBtnDisable}
           className="mb-3"
         >
-          Continuă
+          Next
         </Button>
         <Button
           onClick={() =>
@@ -106,7 +106,7 @@ export function ClientOnboardingTrainingOnline() {
           radius={"sm"}
           fullWidth
         >
-          Înapoi
+          Back
         </Button>
       </div>
     </OnboardingLayout>

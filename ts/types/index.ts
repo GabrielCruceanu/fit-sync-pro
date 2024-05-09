@@ -3,11 +3,23 @@ import { Database } from "@/ts/supabase";
 
 export type { AuthState, AuthUser, AuthError } from "./auth";
 
+export type { UserDetails, UsersDetails, UserType, GenderType } from "./user";
+
+export type { Client, Clients, PhysicalDetails } from "./client";
+
+export type {
+  Nutritionist,
+  Nutritionists,
+  NutritionistType,
+} from "./nutritionist";
+
+export type { Trainer, Trainers, TrainerType } from "./trainer";
+
+export type { Gym, Gyms, GymType } from "./gym";
+
 export type { DashboardConfig, UserLayout } from "./dashboard";
 
 export type { NavItem, SidebarNavItem, MainNavItem } from "./navigation";
-
-export type { TrainerDetails, NutritionistDetails } from "./details";
 
 export type {
   OnboardingClientDetails,
@@ -19,21 +31,11 @@ export type {
   AlergiiAlimentare,
 } from "./onboarding";
 
+export type { SettingsNavigation } from "./settings";
+
 export type { Country, City, County } from "./location";
 
 export type TypedSupabaseClient = SupabaseClient<Database>;
-
-export type TypedUserDetails = Database["public"]["Tables"]["users"]["Row"];
-
-export type TypedClientDetails = Database["public"]["Tables"]["clients"]["Row"];
-
-export type TypedTrainerDetails =
-  Database["public"]["Tables"]["trainers"]["Row"];
-
-export type TypedNutritionistDetails =
-  Database["public"]["Tables"]["nutritionists"]["Row"];
-
-export type TypedGymDetails = Database["public"]["Tables"]["gyms"]["Row"];
 
 export type TypedPhysicalDetails =
   Database["public"]["Tables"]["physical_details"]["Row"];

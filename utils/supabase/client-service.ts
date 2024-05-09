@@ -2,7 +2,7 @@ import {
   createClientComponentClient,
   User,
 } from "@supabase/auth-helpers-nextjs";
-import { TypedClientDetails, TypedSupabaseClient } from "@/ts/types";
+import { Client, TypedSupabaseClient } from "@/ts/types";
 import { Database } from "@/ts/supabase";
 
 export const supabaseClient = createClientComponentClient<Database>();
@@ -10,8 +10,7 @@ export const supabaseClient = createClientComponentClient<Database>();
 // CREATE ------------------------
 
 export const createClientProfile = async (
-  user: User,
-  client: TypedClientDetails,
+  client: Client,
   supabase: TypedSupabaseClient,
 ) => {
   const { error } = await supabase.from("clients").upsert([client]);
@@ -23,10 +22,25 @@ export const createClientProfile = async (
 };
 
 // UPDATE ------------------------
+// UPDATE ALL ROWS
+export const updateClient = async ({
+  supabase,
+  client,
+}: {
+  supabase: TypedSupabaseClient;
+  client: Client;
+}) => {
+  const { error } = await supabase
+    .from("clients")
+    .update({ ...client })
+    .eq("client_id", client.client_id)
+    .select();
 
+  if (error) console.log("update client error:", error.message);
+};
 // READ ------------------------
 // READ ALL ROWS
-export const getClient = async ({
+export const getClients = async ({
   supabase,
 }: {
   supabase: TypedSupabaseClient;

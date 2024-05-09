@@ -5,7 +5,7 @@ import { Button } from "@nextui-org/button";
 import {
   FoodPreferences,
   OnboardClientSteps,
-  OnboardingInputError,
+  InputError,
   OnboardTrainerSteps,
 } from "@/ts/enum";
 import * as React from "react";
@@ -23,9 +23,10 @@ import {
 } from "@nextui-org/react";
 import { FoodAllergies, FoodDiets } from "@/constants/foods";
 import { AvailabilityDays } from "@/constants/availability";
-import { IsOrNot } from "@/ts/enum/onboarding.enum";
-import { NutritionistTypeList } from "@/constants/nutritionists";
-import { ExperienceList } from "@/constants/user";
+import { IsNutritionist } from "@/ts/enum/onboarding.enum";
+import { experienceList } from "@/constants/user";
+import nutritionistTypes from "@/constants/nutritionists";
+import { NutritionistType } from "@/ts/types";
 
 export function TrainerOnboardingNutritionExperience() {
   const onboardingDetails = useStore(
@@ -47,7 +48,7 @@ export function TrainerOnboardingNutritionExperience() {
       onboardingDetails?.isNutritionist &&
       !onboardingDetails.nutritionistType
     ) {
-      setNutritionistTypeError(OnboardingInputError.InputRequired);
+      setNutritionistTypeError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
@@ -55,7 +56,7 @@ export function TrainerOnboardingNutritionExperience() {
       onboardingDetails?.isNutritionist &&
       !onboardingDetails.nutritionistExperience
     ) {
-      setNutritionistExperienceError(OnboardingInputError.InputRequired);
+      setNutritionistExperienceError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
@@ -65,7 +66,7 @@ export function TrainerOnboardingNutritionExperience() {
       (onboardingDetails?.isNutritionist &&
         onboardingDetails.nutritionistDiets?.length === 0)
     ) {
-      setNutritionistDietsError(OnboardingInputError.NeedOnlyOne);
+      setNutritionistDietsError(InputError.NeedOnlyOne);
       setConfirmBtnDisable(true);
       return;
     }
@@ -101,26 +102,34 @@ export function TrainerOnboardingNutritionExperience() {
               setNutritionistDietsError("");
               updateOnboardingDetails({
                 ...onboardingDetails,
-                isNutritionist: e === IsOrNot.Is,
+                isNutritionist: e === IsNutritionist.Is,
                 nutritionistType: undefined,
                 nutritionistExperience: undefined,
                 nutritionistDiets: undefined,
               });
               setConfirmBtnDisable(false);
               handleInputRequired(e)
-                ? setIsNutritionistError(OnboardingInputError.NeedOnlyOne)
+                ? setIsNutritionistError(InputError.NeedOnlyOne)
                 : null;
             }}
             isRequired
             color={isNutritionistError ? "danger" : "primary"}
             errorMessage={isNutritionistError}
             isInvalid={!!isNutritionistError}
-            value={onboardingDetails.isNutritionist ? IsOrNot.Is : IsOrNot.Not}
+            value={
+              onboardingDetails.isNutritionist
+                ? IsNutritionist.Is
+                : IsNutritionist.Not
+            }
           >
             <div className="grid grid-cols-2 gap-3">
-              <RadioButton value={IsOrNot.Is}>{IsOrNot.Is}</RadioButton>
+              <RadioButton value={IsNutritionist.Is}>
+                {IsNutritionist.Is}
+              </RadioButton>
 
-              <RadioButton value={IsOrNot.Not}>{IsOrNot.Not}</RadioButton>
+              <RadioButton value={IsNutritionist.Not}>
+                {IsNutritionist.Not}
+              </RadioButton>
             </div>
           </RadioGroup>
 
@@ -147,7 +156,7 @@ export function TrainerOnboardingNutritionExperience() {
                   onChange={(event) => {
                     updateOnboardingDetails({
                       ...onboardingDetails,
-                      nutritionistType: event.target.value,
+                      nutritionistType: event.target.value as NutritionistType,
                     });
                     setNutritionistTypeError("");
                     setConfirmBtnDisable(false);
@@ -156,7 +165,7 @@ export function TrainerOnboardingNutritionExperience() {
                   errorMessage={nutritionistTypeError}
                   isInvalid={!!nutritionistTypeError}
                 >
-                  {NutritionistTypeList.map((nutritionist) => (
+                  {nutritionistTypes.map((nutritionist: NutritionistType) => (
                     <SelectItem
                       key={nutritionist}
                       value={nutritionist}
@@ -195,7 +204,7 @@ export function TrainerOnboardingNutritionExperience() {
                   errorMessage={nutritionistExperienceError}
                   isInvalid={!!nutritionistExperienceError}
                 >
-                  {ExperienceList.map((experience) => (
+                  {experienceList.map((experience) => (
                     <SelectItem
                       key={experience}
                       value={experience}
@@ -254,7 +263,7 @@ export function TrainerOnboardingNutritionExperience() {
           disabled={confirmBtnDisable}
           className="mb-3"
         >
-          Continuă
+          Next
         </Button>
         <Button
           onClick={() =>
@@ -268,7 +277,7 @@ export function TrainerOnboardingNutritionExperience() {
           radius={"sm"}
           fullWidth
         >
-          Înapoi
+          Back
         </Button>
       </div>
     </OnboardingLayout>

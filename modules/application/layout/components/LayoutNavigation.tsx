@@ -1,6 +1,6 @@
 "use client";
 import { Button, cn, Link } from "@nextui-org/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Bell,
   Menu,
@@ -13,26 +13,31 @@ import {
 import { UserNavigation } from "@/modules/application/layout";
 import { LogoutButton } from "@/modules/application/layout/components/LogoutButton";
 import { ApplicationLinks } from "@/constants/links";
-import { TypedUserDetails } from "@/ts/types";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import FitSyncLogo from "@/components/FitSyncLogo";
+import isSmallScreen from "@/helpers/is-small-screen";
+import { usePathname } from "next/navigation";
+import { useStore } from "@/store";
 
-export function LayoutNavigation({
-  children,
-  user,
-}: {
-  children: React.ReactNode;
-  user: TypedUserDetails | null;
-}) {
+export function LayoutNavigation({ children }: { children: React.ReactNode }) {
   const [drawerNavigation, setDrawerNavigation] = useState(true);
+  const pathname = usePathname();
+  const { user, autoLogin } = useStore((state) => state);
+  useEffect(() => {
+    const drawerState = isSmallScreen();
+    setDrawerNavigation(drawerState);
+    autoLogin();
+  }, []);
+
   const toggleDrawerNavigation = () => {
     setDrawerNavigation(!drawerNavigation);
   };
+
   return (
-    <div className="antialiased bg-gray-50 dark:bg-background">
+    <div className="antialiased bg-white dark:bg-background">
       <nav className="bg-white border-b border-gray-200 px-4 py-2.5 dark:bg-background dark:border-gray-700 fixed left-0 right-0 top-0 z-50">
-        <div className="flex flex-wrap justify-between items-center">
-          <div className="flex justify-start items-center">
+        <div className="flex flex-wrap justify-between items-center max-w-screen-xl mx-auto">
+          <div className="flex justify-start items-center lg:hidden">
             <Button
               isIconOnly
               variant={"light"}
@@ -56,11 +61,13 @@ export function LayoutNavigation({
         </div>
       </nav>
 
-      <div className="relative flex h-full w-full flex-1">
+      <div className="relative flex h-full w-full flex-1 max-w-screen-xl mx-auto bg-gray-50">
         <aside
           className={cn(
-            "fixed top-0 left-0 z-40 w-64 h-screen pt-14 transition-transform bg-white border-r border-gray-200  dark:bg-background dark:border-gray-700",
-            drawerNavigation ? " -translate-x-full" : "translate-x-0",
+            "fixed lg:relative top-0 left-0 z-40 w-64 h-screen pt-14 transition-transform bg-white border-r border-gray-200  dark:bg-background dark:border-gray-700",
+            drawerNavigation
+              ? "-translate-x-full lg:translate-x-0"
+              : "translate-x-0",
           )}
           aria-label="Sidenav"
           id="drawer-navigation"
@@ -83,7 +90,12 @@ export function LayoutNavigation({
               <li>
                 <Link
                   href={ApplicationLinks.dashboard.link}
-                  className="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  className={cn(
+                    "flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group",
+                    pathname === ApplicationLinks.dashboard.link
+                      ? "text-primary-500"
+                      : "text-foreground",
+                  )}
                 >
                   <Presentation className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
 
@@ -95,7 +107,12 @@ export function LayoutNavigation({
               <li>
                 <Link
                   href={ApplicationLinks.profile.link}
-                  className="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  className={cn(
+                    "flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group",
+                    pathname === ApplicationLinks.profile.link
+                      ? "text-primary-500"
+                      : "text-foreground",
+                  )}
                 >
                   <SquareUserRound className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                   <span className="ml-3">{ApplicationLinks.profile.name}</span>
@@ -104,7 +121,12 @@ export function LayoutNavigation({
               <li>
                 <Link
                   href={ApplicationLinks.messages.link}
-                  className="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  className={cn(
+                    "flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group",
+                    pathname === ApplicationLinks.messages.link
+                      ? "text-primary-500"
+                      : "text-foreground",
+                  )}
                 >
                   <MessageSquare className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                   <span className="flex-1 ml-3 whitespace-nowrap">
@@ -120,7 +142,12 @@ export function LayoutNavigation({
               <li>
                 <Link
                   href={ApplicationLinks.notifications.link}
-                  className="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  className={cn(
+                    "flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group",
+                    pathname === ApplicationLinks.notifications.link
+                      ? "text-primary-500"
+                      : "text-foreground",
+                  )}
                 >
                   <Bell className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                   <span className="flex-1 ml-3 whitespace-nowrap">
@@ -134,7 +161,12 @@ export function LayoutNavigation({
               <li>
                 <Link
                   href={ApplicationLinks.settings.link}
-                  className="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  className={cn(
+                    "flex items-center p-2 text-base font-medium rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group",
+                    pathname === ApplicationLinks.settings.link
+                      ? "text-primary-500"
+                      : "text-foreground",
+                  )}
                 >
                   <Settings className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                   <span className="ml-3">{ApplicationLinks.settings.name}</span>
@@ -147,10 +179,8 @@ export function LayoutNavigation({
           </div>
         </aside>
 
-        <main className="dark:bg-background w-full flex-1 p-4 flex flex-col items-stretch h-full space-y-4 lg:mx-64 pt-20 lg:pt-14">
-          <div className="border-2 border-dashed border-gray-300 rounded-xl dark:border-gray-600 h-96">
-            {children}
-          </div>
+        <main className="dark:bg-background w-full flex-1 p-4 flex flex-col items-stretch h-full space-y-4 lg:max-w-screen-xl lg:mx-auto pt-20 lg:pt-14 min-h-screen">
+          {children}
         </main>
       </div>
     </div>

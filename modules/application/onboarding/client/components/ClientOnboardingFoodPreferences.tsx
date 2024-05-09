@@ -2,11 +2,7 @@
 import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
-import {
-  FoodPreferences,
-  OnboardClientSteps,
-  OnboardingInputError,
-} from "@/ts/enum";
+import { FoodPreferences, OnboardClientSteps, InputError } from "@/ts/enum";
 import * as React from "react";
 import { useState } from "react";
 import { RadioGroup } from "@nextui-org/radio";
@@ -29,7 +25,7 @@ export function ClientOnboardingFoodPreferences() {
 
   const inputsAreOk = () => {
     if (!onboardingDetails?.foodPreferences) {
-      setFoodPreferencesError(OnboardingInputError.NeedOnlyOne);
+      setFoodPreferencesError(InputError.NeedOnlyOne);
       setConfirmBtnDisable(true);
       return;
     }
@@ -37,7 +33,7 @@ export function ClientOnboardingFoodPreferences() {
       onboardingDetails?.haveFoodAllergies &&
       !onboardingDetails.foodAllergiesType
     ) {
-      setFoodAllergiesError(OnboardingInputError.NeedOnlyOne);
+      setFoodAllergiesError(InputError.NeedOnlyOne);
       setConfirmBtnDisable(true);
       return;
     }
@@ -72,7 +68,7 @@ export function ClientOnboardingFoodPreferences() {
               setFoodPreferencesError("");
               setConfirmBtnDisable(false);
               handleInputRequired(e)
-                ? setFoodPreferencesError(OnboardingInputError.NeedOnlyOne)
+                ? setFoodPreferencesError(InputError.NeedOnlyOne)
                 : null;
             }}
             isRequired
@@ -147,9 +143,7 @@ export function ClientOnboardingFoodPreferences() {
                     });
                     setFoodAllergiesError("");
                     handleInputRequired(onboardingDetails.foodAllergiesType)
-                      ? setFoodAllergiesError(
-                          OnboardingInputError.InputRequired,
-                        )
+                      ? setFoodAllergiesError(InputError.InputRequired)
                       : null;
                   }}
                 >
@@ -170,7 +164,7 @@ export function ClientOnboardingFoodPreferences() {
           disabled={confirmBtnDisable}
           className="mb-3"
         >
-          Continuă
+          Next
         </Button>
         <Button
           onClick={() =>
@@ -184,7 +178,7 @@ export function ClientOnboardingFoodPreferences() {
           radius={"sm"}
           fullWidth
         >
-          Înapoi
+          Back
         </Button>
       </div>
     </OnboardingLayout>

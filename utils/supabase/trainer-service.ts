@@ -1,9 +1,7 @@
-import { TypedSupabaseClient, TypedTrainerDetails } from "@/ts/types";
-import { User } from "@supabase/auth-helpers-nextjs";
+import { TypedSupabaseClient, Trainer, Trainers } from "@/ts/types";
 
 export const createTrainerProfile = async (
-  user: User,
-  trainer: TypedTrainerDetails,
+  trainer: Trainer,
   supabase: TypedSupabaseClient,
 ) => {
   const { error } = await supabase.from("trainers").upsert([trainer]);
@@ -24,7 +22,7 @@ export const getAllTrainers = async (supabase: TypedSupabaseClient) => {
   }
 
   console.log("select trainers data:", trainers);
-  return trainers as unknown as TypedTrainerDetails[];
+  return trainers as unknown as Trainers;
 };
 
 export const getTrainerProfile = async (
@@ -42,17 +40,17 @@ export const getTrainerProfile = async (
   }
 
   console.log("select trainer profile data:", trainers);
-  return trainers as unknown as TypedTrainerDetails;
+  return trainers as unknown as Trainer;
 };
 
 export const getTrainerProfileByUserName = async (
-  usernamr: string,
+  username: string,
   supabase: TypedSupabaseClient,
 ) => {
   const { data: trainers, error } = await supabase
     .from("trainers")
     .select("*")
-    .eq("username", usernamr)
+    .eq("username", username)
     .single();
 
   if (error) {
@@ -60,5 +58,5 @@ export const getTrainerProfileByUserName = async (
   }
 
   console.log("select trainer profile by username data:", trainers);
-  return trainers as unknown as TypedTrainerDetails;
+  return trainers as unknown as Trainer;
 };

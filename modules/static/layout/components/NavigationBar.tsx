@@ -29,7 +29,7 @@ export default function NavigationBar({
   return (
     <Navbar
       isBordered
-      maxWidth={"2xl"}
+      maxWidth={"xl"}
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
     >
