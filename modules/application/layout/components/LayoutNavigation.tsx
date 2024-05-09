@@ -13,8 +13,8 @@ import {
 import { UserNavigation } from "@/modules/application/layout";
 import { LogoutButton } from "@/modules/application/layout/components/LogoutButton";
 import { ApplicationLinks } from "@/constants/links";
-import { ThemeSwitcher } from "@/components/ThemeSwitcher";
-import FitSyncLogo from "@/components/FitSyncLogo";
+import { ThemeSwitcher } from "@/components/shared/ThemeSwitcher";
+import FitSyncLogo from "@/components/fit-sync-logo";
 import isSmallScreen from "@/helpers/is-small-screen";
 import { usePathname } from "next/navigation";
 import { useStore } from "@/store";

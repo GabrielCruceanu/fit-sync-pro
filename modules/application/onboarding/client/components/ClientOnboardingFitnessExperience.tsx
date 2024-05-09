@@ -6,7 +6,7 @@ import { FitnessExperience, OnboardClientSteps, InputError } from "@/ts/enum";
 import * as React from "react";
 import { useState } from "react";
 import { RadioGroup } from "@nextui-org/radio";
-import { RadioButton } from "@/components/ratio-button";
+import { RadioButton } from "@/components/shared/ratio-button";
 import { handleInputRequired } from "@/helpers/helpers";
 
 export function ClientOnboardingFitnessExperience() {

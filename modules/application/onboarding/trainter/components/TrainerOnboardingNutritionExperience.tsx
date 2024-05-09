@@ -11,7 +11,7 @@ import {
 import * as React from "react";
 import { useState } from "react";
 import { RadioGroup } from "@nextui-org/radio";
-import { RadioButton } from "@/components/ratio-button";
+import { RadioButton } from "@/components/shared/ratio-button";
 import { handleInputRequired } from "@/helpers/helpers";
 import {
   Checkbox,
@@ -21,8 +21,7 @@ import {
   SelectItem,
   Switch,
 } from "@nextui-org/react";
-import { FoodAllergies, FoodDiets } from "@/constants/foods";
-import { AvailabilityDays } from "@/constants/availability";
+import { FoodDiets } from "@/constants/foods";
 import { IsNutritionist } from "@/ts/enum/onboarding.enum";
 import { experienceList } from "@/constants/user";
 import nutritionistTypes from "@/constants/nutritionists";

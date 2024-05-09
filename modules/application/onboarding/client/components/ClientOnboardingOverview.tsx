@@ -5,7 +5,7 @@ import { useState } from "react";
 import { OnboardClientSteps } from "@/ts/enum";
 import { createClient } from "@/utils/supabase/create-client";
 import { useRouter } from "next/navigation";
-import { toast } from "@/components/use-toast";
+import { toast } from "@/components/shared/toast/use-toast";
 import { createClientProfile } from "@/utils/supabase/client-service";
 import { Client } from "@/ts/types";
 import { createUserName, updateUser } from "@/utils/supabase/user-service";

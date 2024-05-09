@@ -3,8 +3,8 @@
 import { NextUIProvider } from "@nextui-org/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import React from "react";
-import { Toaster } from "@/components/toaster";
-import { Analytics } from "@/components/analytics";
+import { Toaster } from "@/components/shared/toast/toaster";
+import { Analytics } from "@/components/shared/analytics";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (

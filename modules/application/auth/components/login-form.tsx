@@ -19,7 +19,7 @@ import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/react";
 import { Icons } from "@/components/icons";
 import { Provider } from "@supabase/gotrue-js";
-import { toast } from "@/components/use-toast";
+import { toast } from "@/components/shared/toast/use-toast";
 import { EyeFilledIcon, EyeSlashFilledIcon } from "@nextui-org/shared-icons";
 import { useStore } from "@/store";
 import { UserDetails } from "@/ts/types";

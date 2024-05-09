@@ -14,7 +14,7 @@ import {
 } from "@/lib/validations/error-check";
 import { ApplicationLinks } from "@/constants/links";
 import { createClient } from "@/utils/supabase/create-client";
-import { toast } from "@/components/use-toast";
+import { toast } from "@/components/shared/toast/use-toast";
 import { AuthProvider } from "@/ts/enum";
 import { Provider } from "@supabase/gotrue-js";
 import { Input } from "@nextui-org/input";

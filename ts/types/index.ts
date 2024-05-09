@@ -22,6 +22,7 @@ export type { DashboardConfig, UserLayout } from "./dashboard";
 export type { NavItem, SidebarNavItem, MainNavItem } from "./navigation";
 
 export type {
+  ClientFitnessGoalsType,
   OnboardingClientDetails,
   Location,
   LocationDetails,

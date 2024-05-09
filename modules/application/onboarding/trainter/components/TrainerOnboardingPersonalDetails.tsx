@@ -20,7 +20,7 @@ import {
 import { format } from "date-fns";
 import { ro } from "date-fns/locale";
 import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/calendar";
+import { Calendar } from "@/components/shared/calendar";
 import { Button } from "@nextui-org/button";
 import { GenderType } from "@/ts/types";
 

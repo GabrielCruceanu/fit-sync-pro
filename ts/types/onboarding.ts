@@ -6,10 +6,17 @@ import {
   OnboardingType,
   OnboardTrainerSteps,
 } from "@/ts/enum";
-import { ClientFitnessGoals, FoodPreferences } from "@/ts/enum/onboarding.enum";
+import { FoodPreferences } from "@/ts/enum/onboarding.enum";
 import { GenderType, UserType } from "./user";
 import { NutritionistType } from "./nutritionist";
 import { TrainerType } from "./trainer";
+
+export type ClientFitnessGoalsType =
+  | "Weight Loss"
+  | "Muscle Gain"
+  | "Flexibility"
+  | "Health Improvement"
+  | "General Fitness";
 
 export type Birthdate = {
   date?: string;
@@ -57,7 +64,7 @@ export type OnboardingClientDetails = {
   city?: string;
   height?: number;
   weight?: number;
-  goals?: ClientFitnessGoals;
+  goals?: string[];
   foodPreferences?: FoodPreferences;
   haveFoodAllergies?: boolean;
   foodAllergiesType?: string;

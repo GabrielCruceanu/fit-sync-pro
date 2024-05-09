@@ -3,10 +3,10 @@ import { OnboardingLayout } from "@/modules/application/onboarding/components/On
 import { Button } from "@nextui-org/button";
 import * as React from "react";
 import { useState } from "react";
-import { RadioGroup } from "@nextui-org/radio";
-import { RadioButton } from "@/components/ratio-button";
-import { handleInputRequired } from "@/helpers/helpers";
-import { ClientFitnessGoals, OnboardClientSteps, InputError } from "@/ts/enum";
+import { OnboardClientSteps, InputError } from "@/ts/enum";
+import { Checkbox, CheckboxGroup } from "@nextui-org/react";
+import { cn } from "@/lib/utils";
+import { clientFitnessGoalsType } from "@/constants/client";
 
 export function ClientOnboardingGoals() {
   const onboardingDetails = useStore(
@@ -21,7 +21,7 @@ export function ClientOnboardingGoals() {
   const [confirmBtnDisable, setConfirmBtnDisable] = useState(false);
 
   const inputsAreOk = () => {
-    if (!onboardingDetails?.goals) {
+    if (!onboardingDetails?.goals || onboardingDetails.goals?.length === 0) {
       setGoalsError(InputError.NeedOnlyOne);
       setConfirmBtnDisable(true);
       return;
@@ -40,24 +40,23 @@ export function ClientOnboardingGoals() {
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
       }
-      title={"Stabilește obiective de fitness"}
-      body={"Care sunt obiectivele tale de fitness?"}
+      title={"Your Fitness Goals"}
+      body={"What are your fitness goals? Select one or more options below."}
     >
       <div className="grid gap-2">
         <div className="grid grid-cols-1 gap-x-3 gap-y-4">
           {/*Goals*/}
-          <RadioGroup
-            name={"goals"}
+          <CheckboxGroup
+            label="Goals"
+            orientation="horizontal"
             onValueChange={(e) => {
+              console.log(e);
               updateOnboardingDetails({
                 ...onboardingDetails,
-                goals: e as ClientFitnessGoals,
+                goals: e,
               });
               setGoalsError("");
               setConfirmBtnDisable(false);
-              handleInputRequired(e)
-                ? setGoalsError(InputError.NeedOnlyOne)
-                : null;
             }}
             isRequired
             color={goalsError ? "danger" : "primary"}
@@ -65,22 +64,22 @@ export function ClientOnboardingGoals() {
             isInvalid={!!goalsError}
             value={onboardingDetails.goals}
           >
-            <RadioButton value={ClientFitnessGoals.WeightLoss}>
-              {ClientFitnessGoals.WeightLoss}
-            </RadioButton>
-            <RadioButton value={ClientFitnessGoals.MuscleGain}>
-              {ClientFitnessGoals.MuscleGain}
-            </RadioButton>
-            <RadioButton value={ClientFitnessGoals.Flexibility}>
-              {ClientFitnessGoals.Flexibility}
-            </RadioButton>
-            <RadioButton value={ClientFitnessGoals.HealthImprovement}>
-              {ClientFitnessGoals.HealthImprovement}
-            </RadioButton>
-            <RadioButton value={ClientFitnessGoals.GeneralFitness}>
-              {ClientFitnessGoals.GeneralFitness}
-            </RadioButton>
-          </RadioGroup>
+            <div className="grid grid-cols-2 gap-2 w-full">
+              {clientFitnessGoalsType.map((goal) => (
+                <div
+                  key={goal}
+                  className={cn(
+                    "w-full border-2 rounded p-2",
+                    onboardingDetails.goals?.includes(goal)
+                      ? "border-primary"
+                      : "border-default",
+                  )}
+                >
+                  <Checkbox value={goal}>{goal}</Checkbox>
+                </div>
+              ))}
+            </div>
+          </CheckboxGroup>
         </div>
       </div>
       <div>

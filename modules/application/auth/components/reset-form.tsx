@@ -15,7 +15,7 @@ import { createClient } from "@/utils/supabase/create-client";
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
 import { Icons } from "@/components/icons";
-import { toast } from "@/components/use-toast";
+import { toast } from "@/components/shared/toast/use-toast";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
