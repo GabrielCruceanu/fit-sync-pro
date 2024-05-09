@@ -6,7 +6,7 @@ import { OnboardClientSteps, InputError, OnboardTrainerSteps } from "@/ts/enum";
 import * as React from "react";
 import { useState } from "react";
 import { Checkbox, CheckboxGroup, cn } from "@nextui-org/react";
-import { AvailabilityDays, AvailabilityTime } from "@/constants/availability";
+import { availabilityDays, AvailabilityTime } from "@/constants/availability";
 import { TrainingLocation } from "@/ts/enum/onboarding.enum";
 
 export function TrainerOnboardingTrainingAvailability() {
@@ -85,7 +85,7 @@ export function TrainerOnboardingTrainingAvailability() {
             value={onboardingDetails.trainingAvailabilityDays}
           >
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 w-full">
-              {AvailabilityDays.map((availability) => (
+              {availabilityDays.map((availability) => (
                 <div
                   key={availability.value}
                   className={cn(

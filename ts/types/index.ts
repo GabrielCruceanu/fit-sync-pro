@@ -31,6 +31,8 @@ export type {
   Notifications,
   FoodAllergies as AlergiiAlimentare,
   FoodPreferences,
+  TrainingAvailabilityDays,
+  TrainingAvailabilityTime,
 } from "./onboarding";
 
 export type { SettingsNavigation } from "./settings";

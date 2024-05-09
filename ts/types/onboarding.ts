@@ -132,3 +132,14 @@ export type TrainingAvailability = {
   title: string;
   value: string;
 };
+
+export type TrainingAvailabilityDays =
+  | "Monday"
+  | "Tuesday"
+  | "Wednesday"
+  | "Thursday"
+  | "Friday"
+  | "Saturday"
+  | "Sunday";
+
+export type TrainingAvailabilityTime = "Morning" | "Lunch" | "Evening";

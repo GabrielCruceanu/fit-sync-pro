@@ -1,6 +1,10 @@
-import { TrainingAvailability } from "@/ts/types/onboarding";
+import {
+  TrainingAvailability,
+  TrainingAvailabilityDays,
+  TrainingAvailabilityTime,
+} from "@/ts/types/onboarding";
 
-export const AvailabilityDays: TrainingAvailability[] = [
+export const availabilityDays: TrainingAvailability[] = [
   {
     value: "luni",
     title: "Luni",
@@ -43,4 +47,20 @@ export const AvailabilityTime: TrainingAvailability[] = [
     value: "seara",
     title: "Seara",
   },
+];
+
+export const trainingAvailabilityDays: TrainingAvailabilityDays[] = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
+];
+
+export const trainingAvailabilityTime: TrainingAvailabilityTime[] = [
+  "Morning",
+  "Lunch",
+  "Evening",
 ];
