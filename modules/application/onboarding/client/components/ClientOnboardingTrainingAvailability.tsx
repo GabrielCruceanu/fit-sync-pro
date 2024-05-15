@@ -7,8 +7,6 @@ import * as React from "react";
 import { useState } from "react";
 import { Checkbox, CheckboxGroup, cn } from "@nextui-org/react";
 import {
-  availabilityDays,
-  AvailabilityTime,
   trainingAvailabilityDays,
   trainingAvailabilityTime,
 } from "@/constants/availability";

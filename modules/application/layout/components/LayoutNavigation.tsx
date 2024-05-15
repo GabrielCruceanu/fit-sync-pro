@@ -13,11 +13,11 @@ import {
 import { UserNavigation } from "@/modules/application/layout";
 import { LogoutButton } from "@/modules/application/layout/components/LogoutButton";
 import { ApplicationLinks } from "@/constants/links";
-import { ThemeSwitcher } from "@/components/shared/ThemeSwitcher";
-import FitSyncLogo from "@/components/fit-sync-logo";
 import isSmallScreen from "@/helpers/is-small-screen";
 import { usePathname } from "next/navigation";
 import { useStore } from "@/store";
+import FitSyncLogo from "@/components/shared/fit-sync-logo";
+import { ThemeSwitcher } from "@/components/shared/theme-switcher";
 
 export function LayoutNavigation({ children }: { children: React.ReactNode }) {
   const [drawerNavigation, setDrawerNavigation] = useState(true);
