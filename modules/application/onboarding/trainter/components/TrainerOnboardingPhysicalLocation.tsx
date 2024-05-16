@@ -95,16 +95,16 @@ export function TrainerOnboardingPhysicalLocation() {
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
       }
-      title={"Locație anternament fizic"}
-      body={"Selectați locația unde va pot găsi clienții."}
+      title={"Location Details"}
+      body={"Enter the location details where you will train your clients."}
     >
       <div className="grid gap-2">
         <div className="grid md:grid-cols-2 gap-x-3 gap-y-4">
           {/*Country*/}
           <Select
-            label="Tara"
+            label="Country"
             variant="bordered"
-            placeholder="Alege"
+            placeholder="Choose"
             isRequired
             defaultSelectedKeys={
               onboardingDetails.country ? [onboardingDetails.country] : []
@@ -145,9 +145,9 @@ export function TrainerOnboardingPhysicalLocation() {
           </Select>
           {/*County*/}
           <Select
-            label="Judet"
+            label="State/County"
             variant="bordered"
-            placeholder="Alege"
+            placeholder="Choose"
             isRequired
             defaultSelectedKeys={
               onboardingDetails.county ? [onboardingDetails.county] : []
@@ -187,9 +187,9 @@ export function TrainerOnboardingPhysicalLocation() {
           </Select>
           {/*City*/}
           <Select
-            label="Oras"
+            label="City"
             variant="bordered"
-            placeholder="Alege"
+            placeholder="Choose"
             isRequired
             defaultSelectedKeys={
               onboardingDetails.city ? [onboardingDetails.city] : []
@@ -229,7 +229,7 @@ export function TrainerOnboardingPhysicalLocation() {
             id="gymStreet"
             placeholder="Unirii, Nr. 14"
             type="text"
-            label="Strada completă"
+            label="Complete address of the gym"
             value={onboardingDetails.gymStreet}
             autoCapitalize="none"
             autoComplete="false"
@@ -260,7 +260,7 @@ export function TrainerOnboardingPhysicalLocation() {
             id="gymname"
             placeholder="Doe Gym"
             type="text"
-            label="Numele sală"
+            label="Name of the gym"
             value={onboardingDetails.gymName}
             autoCapitalize="none"
             autoComplete="false"
