@@ -2,11 +2,14 @@
 import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
-import { OnboardClientSteps, InputError, OnboardTrainerSteps } from "@/ts/enum";
+import { InputError, OnboardTrainerSteps } from "@/ts/enum";
 import * as React from "react";
 import { useState } from "react";
 import { Checkbox, CheckboxGroup, cn } from "@nextui-org/react";
-import { availabilityDays, AvailabilityTime } from "@/constants/availability";
+import {
+  trainingAvailabilityDays,
+  trainingAvailabilityTime,
+} from "@/constants/availability";
 import { TrainingLocation } from "@/ts/enum/onboarding.enum";
 
 export function TrainerOnboardingTrainingAvailability() {
@@ -61,14 +64,14 @@ export function TrainerOnboardingTrainingAvailability() {
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
       }
-      title={"Disponibilitate"}
-      body={"Când sunteți cel mai disponibil pentru antrenamente?"}
+      title={"Training Availability"}
+      body={"Select the days and time you are available to train clients."}
     >
       <div className="grid gap-2">
         <div className="grid grid-cols-1 gap-x-3 gap-y-4">
           {/*Training Days*/}
           <CheckboxGroup
-            label="Zile în care puteți antrena"
+            label="Days you are available to train clients"
             orientation="horizontal"
             onValueChange={(e) => {
               updateOnboardingDetails({
@@ -85,28 +88,26 @@ export function TrainerOnboardingTrainingAvailability() {
             value={onboardingDetails.trainingAvailabilityDays}
           >
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 w-full">
-              {availabilityDays.map((availability) => (
+              {trainingAvailabilityDays.map((availability) => (
                 <div
-                  key={availability.value}
+                  key={availability}
                   className={cn(
                     "w-full border-2 rounded p-2",
                     onboardingDetails?.trainingAvailabilityDays?.includes(
-                      availability.value,
+                      availability,
                     )
                       ? "border-primary"
                       : "border-default",
                   )}
                 >
-                  <Checkbox value={availability.value}>
-                    {availability.title}
-                  </Checkbox>
+                  <Checkbox value={availability}>{availability}</Checkbox>
                 </div>
               ))}
             </div>
           </CheckboxGroup>
           {/*Training time*/}
           <CheckboxGroup
-            label="Perioada în care puteți antrena"
+            label="Time you are available to train clients"
             orientation="horizontal"
             onValueChange={(e) => {
               updateOnboardingDetails({
@@ -123,21 +124,19 @@ export function TrainerOnboardingTrainingAvailability() {
             value={onboardingDetails.trainingAvailabilityTime}
           >
             <div className="grid grid-cols-2 md:grid-cols-3 w-full gap-2">
-              {AvailabilityTime.map((availability) => (
+              {trainingAvailabilityTime.map((availability) => (
                 <div
-                  key={availability.value}
+                  key={availability}
                   className={cn(
                     "w-full border-2 rounded p-2",
                     onboardingDetails?.trainingAvailabilityTime?.includes(
-                      availability.value,
+                      availability,
                     )
                       ? "border-primary"
                       : "border-default",
                   )}
                 >
-                  <Checkbox value={availability.value}>
-                    {availability.title}
-                  </Checkbox>
+                  <Checkbox value={availability}>{availability}</Checkbox>
                 </div>
               ))}
             </div>
