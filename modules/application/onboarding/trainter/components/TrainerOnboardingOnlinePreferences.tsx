@@ -49,9 +49,9 @@ export function TrainerOnboardingOnlinePreferences() {
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
       }
-      title={"Antrenament Online"}
+      title={"Training Online Preferences"}
       body={
-        "Selectați locul pentru care puteți ajută clienții să se antreneze online."
+        "Select the location where you would like to train your clients. You can select multiple options."
       }
     >
       <div className="grid gap-2">
