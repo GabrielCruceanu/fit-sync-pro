@@ -46,9 +46,9 @@ export function TrainerOnboardingPhysicalPreferences() {
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
       }
-      title={"Antrenament Fizic"}
+      title={"One-on-One or Group Training"}
       body={
-        "Selectați modul în care puteți ajuta clienții să se antreneze fizic."
+        "Would you like to train one-on-one or in a group? Select one or both."
       }
     >
       <div className="grid gap-2">
