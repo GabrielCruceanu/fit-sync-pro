@@ -1,4 +1,3 @@
-import { createClient } from "@/utils/supabase/create-client";
 import { useStore } from "@/store";
 import React, { useState } from "react";
 import {
@@ -13,14 +12,12 @@ import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
 
 export function TrainerOnboardingPersonalContact() {
-  const supabase = createClient();
   const onboardingDetails = useStore(
     (state) => state.onboarding.onboardingTrainerDetails,
   );
   const updateOnboardingDetails = useStore(
     (state) => state.updateOnboardingTrainerDetails,
   );
-  const updateOnboardingType = useStore((state) => state.updateOnboardingType);
 
   const [phoneError, setPhoneError] = useState("");
   const [websiteError, setWebsiteError] = useState("");
@@ -31,19 +28,18 @@ export function TrainerOnboardingPersonalContact() {
   const [confirmBtnDisable, setConfirmBtnDisable] = useState(false);
 
   const handleSetPhoneNumber = (phoneNumber: string) => {
-    const clearNumber = formatPhoneNumber(phoneNumber);
 
     setPhoneError("");
     updateOnboardingDetails({
       ...onboardingDetails,
-      phoneNumber: clearNumber,
+      phoneNumber: phoneNumber,
     });
     setConfirmBtnDisable(false);
-    if (handleInputRequired(clearNumber)) {
+    if (handleInputRequired(phoneNumber)) {
       setPhoneError(InputError.InputRequired);
       return;
     }
-    if (!validateIsPhoneNumber(clearNumber)) {
+    if (!validateIsPhoneNumber(phoneNumber)) {
       setPhoneError(InputError.OnlyNumbers);
       return;
     }
@@ -70,17 +66,17 @@ export function TrainerOnboardingPersonalContact() {
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
       }
-      title={"Detalii de contact"}
-      body={"Completeaza campurile de contact pentru o vizibilitate mai buna."}
+      title={"Contact Details"}
+      body={"Please provide your contact details below."}
     >
       <div className="grid gap-2">
         <div className="grid md:grid-cols-2 gap-x-3 gap-y-4">
-          {/*Telefon*/}
+          {/*PhoneNumber*/}
           <Input
             id="phone"
-            placeholder="0770212948"
+            placeholder="+40770212948"
             type="text"
-            label="Telefon"
+            label="Phone Number"
             value={onboardingDetails.phoneNumber}
             autoCapitalize="none"
             autoComplete="false"
@@ -97,7 +93,7 @@ export function TrainerOnboardingPersonalContact() {
           {/*website*/}
           <Input
             id="website"
-            placeholder="www.jon-doe.ro"
+            placeholder="www.jon-doe.com"
             type="text"
             label="Website"
             value={onboardingDetails.website}
@@ -127,7 +123,7 @@ export function TrainerOnboardingPersonalContact() {
           {/*Facebook*/}
           <Input
             id="facebook"
-            placeholder="Doe"
+            placeholder="https://www.facebook.com/jonDoe"
             type="text"
             label="Facebook"
             value={onboardingDetails.facebook}
@@ -159,7 +155,7 @@ export function TrainerOnboardingPersonalContact() {
           {/*Twitter*/}
           <Input
             id="twitter"
-            placeholder="Doe"
+            placeholder="https://www.twitter.com/jonDoe"
             type="text"
             label="Twitter"
             value={onboardingDetails.twitter}
@@ -191,7 +187,7 @@ export function TrainerOnboardingPersonalContact() {
           {/*Instagram*/}
           <Input
             id="instagram"
-            placeholder="Doe"
+            placeholder="https://www.instagram.com/jonDoe"
             type="text"
             label="Instagram"
             value={onboardingDetails.instagram}
