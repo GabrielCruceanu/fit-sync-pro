@@ -117,3 +117,13 @@ export enum IsNutritionist {
   Yes = "Yes",
   No = "No",
 }
+
+export enum OnboardNutritionistSteps {
+  PersonalDetails = "PERSONAL_DETAILS",
+  Contact = "CONTACT",
+  NutritionExperience = "NUTRITION_EXPERIENCE",
+  Availability = "AVAILABILITY",
+  Location = "LOCATION",
+  Notifications = "NOTIFICATIONS",
+  Overview = "OVERVIEW",
+}

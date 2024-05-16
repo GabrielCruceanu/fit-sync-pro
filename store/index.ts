@@ -7,10 +7,15 @@ import {
   Trainer,
   UserDetails,
 } from "@/ts/types";
-import { Onboarding, OnboardingTrainerDetails } from "@/ts/types/onboarding";
+import {
+  Onboarding,
+  OnboardingNutritionistDetails,
+  OnboardingTrainerDetails,
+} from "@/ts/types/onboarding";
 import {
   OnboardClientSteps,
   OnboardingType,
+  OnboardNutritionistSteps,
   OnboardTrainerSteps,
   SettingsStep,
 } from "@/ts/enum";
@@ -38,6 +43,9 @@ type State = {
   ) => void;
   updateOnboardingTrainerDetails: (
     onboardingDetails: OnboardingTrainerDetails,
+  ) => void;
+  updateOnboardingNutritionistDetails: (
+    onboardingDetails: OnboardingNutritionistDetails,
   ) => void;
   settings: SettingsNavigation;
   updateSettingsStep: (settingsStep: SettingsStep) => void;
@@ -208,6 +216,9 @@ export const useStore = create<State>()(
           newsAndActualizations: true,
           offersAndPromotions: true,
         },
+        onboardingNutritionistDetails: {
+          nutritionistSteps: OnboardNutritionistSteps.PersonalDetails,
+        },
       },
       updateOnboardingType: (updatedOnboardingType) =>
         set((state) => ({
@@ -239,6 +250,19 @@ export const useStore = create<State>()(
             ...state.onboarding,
             onboardingTrainerDetails: {
               ...state.onboarding.onboardingTrainerDetails,
+              ...updatedOnboardingDetails,
+            },
+          },
+        })),
+      updateOnboardingNutritionistDetails: (
+        updatedOnboardingDetails: OnboardingNutritionistDetails,
+      ) =>
+        set((state) => ({
+          ...state,
+          onboarding: {
+            ...state.onboarding,
+            onboardingNutritionistDetails: {
+              ...state.onboarding.onboardingNutritionistDetails,
               ...updatedOnboardingDetails,
             },
           },

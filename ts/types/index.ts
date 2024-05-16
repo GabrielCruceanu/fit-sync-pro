@@ -33,6 +33,7 @@ export type {
   FoodPreferences,
   TrainingAvailabilityDays,
   TrainingAvailabilityTime,
+  OnboardingNutritionistDetails,
 } from "./onboarding";
 
 export type { SettingsNavigation } from "./settings";

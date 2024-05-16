@@ -4,6 +4,7 @@ import {
   FitnessExperience,
   OnboardClientSteps,
   OnboardingType,
+  OnboardNutritionistSteps,
   OnboardTrainerSteps,
 } from "@/ts/enum";
 import { GenderType, UserType } from "./user";
@@ -116,16 +117,50 @@ export type OnboardingTrainerDetails = {
   offersAndPromotions?: boolean;
 };
 
+export type OnboardingNutritionistDetails = {
+  nutritionistSteps: OnboardNutritionistSteps;
+  firstname?: string;
+  lastname?: string;
+  username?: string;
+  phoneNumber?: string;
+  birthdate?: Birthdate;
+  gender?: GenderType;
+  country?: string;
+  county?: string;
+  city?: string;
+  type?: UserType;
+  website?: string;
+  facebook?: string;
+  twitter?: string;
+  instagram?: string;
+  nutritionistType?: NutritionistType;
+  nutritionistExperience?: string;
+  nutritionistDiets?: string[];
+  nutritionLocation?: string[];
+  nutritionPhysicalPreferences?: string[];
+  nutritionOnlinePreferences?: string[];
+  nutritionAvailabilityDays?: string[];
+  nutritionAvailabilityTime?: string[];
+  cabinetStreet?: string;
+  cabinetName?: string;
+  notificationsWorkout?: boolean;
+  notificationsNutrition?: boolean;
+  newsAndActualizations?: boolean;
+  offersAndPromotions?: boolean;
+};
+
 export type FoodAllergies = {
   id: number;
   tip_alergie: string;
   exemplu_alimente_asociate: string;
   alimente_sigure: string;
 };
+
 export type Onboarding = {
   onboardingType: OnboardingType;
   onboardingClientDetails: OnboardingClientDetails;
   onboardingTrainerDetails: OnboardingTrainerDetails;
+  onboardingNutritionistDetails: OnboardingNutritionistDetails;
 };
 
 export type TrainingAvailability = {

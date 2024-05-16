@@ -1,6 +1,20 @@
 {
+  "name": "fitsync",
+  "version": "1.0.0",
+  "description": "Fitsync is a fitness and nutrition tracking app that helps you stay on top of your fitness goals. Fitsync is built with Next.js, Tailwind CSS, and Supabase.",
   "private": true,
-  "license": "MIT License",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaapo-studio/fitsync.git"
+  },
+  "keywords": [
+    "fitness",
+    "personal training",
+    "nutrition",
+    "gym"
+  ],
+  "author": "Kaapo Studio <contact@kaapo.studio>",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
