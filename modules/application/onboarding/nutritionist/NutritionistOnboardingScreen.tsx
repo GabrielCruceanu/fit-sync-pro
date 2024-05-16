@@ -1,6 +1,7 @@
 import { useStore } from "@/store";
 import { OnboardNutritionistSteps } from "@/ts/enum";
-import { NutritionistOnboardingPersonalDetails } from "./components/NutritionistOnboardingPersonalDetails";
+import { NutritionistOnboardingPersonalDetails } from "@/modules/application/onboarding/nutritionist/components/NutritionistOnboardingPersonalDetails";
+import { NutritionistOnboardingPersonalContact } from "@/modules/application/onboarding/nutritionist/components/NutritionistOnboardingPersonalContact";
 
 export function NutritionistOnboardingScreen() {
   const nutritionistSteps = useStore(
@@ -10,6 +11,8 @@ export function NutritionistOnboardingScreen() {
   switch (nutritionistSteps) {
     case OnboardNutritionistSteps.PersonalDetails:
       return <NutritionistOnboardingPersonalDetails />;
+    case OnboardNutritionistSteps.Contact:
+      return <NutritionistOnboardingPersonalContact />;
     default:
       return <>Nutritionist Default</>;
   }
