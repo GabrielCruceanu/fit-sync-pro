@@ -6,7 +6,7 @@ import { OnboardClientSteps, InputError } from "@/ts/enum";
 import * as React from "react";
 import { useState } from "react";
 import { RadioGroup } from "@nextui-org/radio";
-import { RadioButton } from "@/components/ratio-button";
+import { RadioButton } from "@/components/shared/ratio-button";
 import { handleInputRequired } from "@/helpers/helpers";
 import { TrainingOnline } from "@/ts/enum/onboarding.enum";
 
@@ -42,8 +42,8 @@ export function ClientOnboardingTrainingOnline() {
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
       }
-      title={"Preferințe de antrenament online"}
-      body={"Cum preferi să te antrenezi online?"}
+      title={"Training Online"}
+      body={"Where would you like to train online?"}
     >
       <div className="grid gap-2">
         <div className="grid grid-cols-1 gap-x-3 gap-y-4">
@@ -54,7 +54,7 @@ export function ClientOnboardingTrainingOnline() {
               updateOnboardingDetails({
                 ...onboardingDetails,
                 trainingOnlinePreferences: e,
-                trainingPhysicalPreferences: undefined,
+                trainingInPersonPreferences: undefined,
               });
               setTrainingOnlineError("");
               setConfirmBtnDisable(false);

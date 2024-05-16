@@ -20,7 +20,7 @@ import {
 import { format } from "date-fns";
 import { ro } from "date-fns/locale";
 import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/calendar";
+import { Calendar } from "@/components/shared/calendar";
 import { Button } from "@nextui-org/button";
 import { GenderType } from "@/ts/types";
 
@@ -135,8 +135,10 @@ export function TrainerOnboardingPersonalDetails() {
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
       }
-      title={"Detalii personale"}
-      body={"Povestește-ne mai multe despre tine."}
+      title={"Personal Details"}
+      body={
+        "Let's get to know you better! Please fill in the following details."
+      }
     >
       <div className="grid gap-2">
         <div className="grid grid-cols-2 gap-x-3 gap-y-4">
@@ -145,7 +147,7 @@ export function TrainerOnboardingPersonalDetails() {
             id="firstname"
             placeholder="Jon"
             type="text"
-            label="Prenume"
+            label="First Name"
             value={onboardingDetails.firstname}
             autoCapitalize="none"
             autoComplete="false"
@@ -179,7 +181,7 @@ export function TrainerOnboardingPersonalDetails() {
             id="lastname"
             placeholder="Doe"
             type="text"
-            label="Nume"
+            label="Last Name"
             value={onboardingDetails.lastname}
             autoCapitalize="none"
             autoComplete="false"
@@ -213,7 +215,7 @@ export function TrainerOnboardingPersonalDetails() {
             id="username"
             placeholder="jon_doe"
             type="text"
-            label="Nume de utilizator"
+            label="Username"
             value={onboardingDetails.username}
             autoCapitalize="none"
             autoComplete="false"
@@ -252,14 +254,12 @@ export function TrainerOnboardingPersonalDetails() {
               <PopoverTrigger>
                 <Input
                   id="birth"
-                  placeholder="Alege o data"
+                  placeholder="Choose a date"
                   type="date"
                   value={
                     onboardingDetails.birthdate?.full
-                      ? format(onboardingDetails.birthdate.full, "PPP", {
-                          locale: ro,
-                        })
-                      : "Data nașterii"
+                      ? format(onboardingDetails.birthdate.full, "PPP")
+                      : "Birthday"
                   }
                   autoCapitalize="none"
                   autoComplete="false"
@@ -302,10 +302,10 @@ export function TrainerOnboardingPersonalDetails() {
           </div>
           {/*Gender*/}
           <Select
-            label="Gen"
+            label="Gender"
             className="bg-background"
             variant="bordered"
-            placeholder="Alege"
+            placeholder="Choose"
             isRequired
             defaultSelectedKeys={
               onboardingDetails.gender ? [onboardingDetails.gender] : []
@@ -326,17 +326,17 @@ export function TrainerOnboardingPersonalDetails() {
             errorMessage={genderError}
             isInvalid={!!genderError}
           >
-            {genderList.map((gen: string) => (
+            {genderList.map((gender: string) => (
               <SelectItem
-                key={gen}
-                value={gen}
+                key={gender}
+                value={gender}
                 className="bg-background"
                 onClick={() => {
                   setGenderError("");
                   setConfirmBtnDisable(false);
                 }}
               >
-                {gen}
+                {gender}
               </SelectItem>
             ))}
           </Select>

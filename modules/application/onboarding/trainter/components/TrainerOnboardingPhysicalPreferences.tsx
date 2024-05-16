@@ -24,7 +24,7 @@ export function TrainerOnboardingPhysicalPreferences() {
 
   const inputsAreOk = () => {
     if (
-      onboardingDetails.trainingLocation?.includes(TrainingLocation.Physic) &&
+      onboardingDetails.trainingLocation?.includes(TrainingLocation.InPerson) &&
       !onboardingDetails.trainingPhysicalPreferences
     ) {
       setTrainingPhysicalPreferencesError(InputError.InputRequired);

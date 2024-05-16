@@ -6,10 +6,18 @@ import {
   OnboardingType,
   OnboardTrainerSteps,
 } from "@/ts/enum";
-import { ClientFitnessGoals, FoodPreferences } from "@/ts/enum/onboarding.enum";
 import { GenderType, UserType } from "./user";
 import { NutritionistType } from "./nutritionist";
 import { TrainerType } from "./trainer";
+
+export type ClientFitnessGoalsType =
+  | "Weight Loss"
+  | "Muscle Gain"
+  | "Flexibility"
+  | "Health Improvement"
+  | "General Fitness";
+
+export type FoodPreferences = "Omnivor" | "Vegetarian" | "Vegan" | "Keto";
 
 export type Birthdate = {
   date?: string;
@@ -57,14 +65,14 @@ export type OnboardingClientDetails = {
   city?: string;
   height?: number;
   weight?: number;
-  goals?: ClientFitnessGoals;
-  foodPreferences?: FoodPreferences;
+  goals?: string[];
+  foodPreferences?: FoodPreferences[];
   haveFoodAllergies?: boolean;
   foodAllergiesType?: string;
   foodAllergiesDescription?: string;
   fitnessExperience?: FitnessExperience;
   trainingLocation?: string;
-  trainingPhysicalPreferences?: string;
+  trainingInPersonPreferences?: string;
   trainingOnlinePreferences?: string;
   trainingAvailabilityDays?: string[];
   trainingAvailabilityTime?: string[];
@@ -108,7 +116,7 @@ export type OnboardingTrainerDetails = {
   offersAndPromotions?: boolean;
 };
 
-export type AlergiiAlimentare = {
+export type FoodAllergies = {
   id: number;
   tip_alergie: string;
   exemplu_alimente_asociate: string;
@@ -124,3 +132,14 @@ export type TrainingAvailability = {
   title: string;
   value: string;
 };
+
+export type TrainingAvailabilityDays =
+  | "Monday"
+  | "Tuesday"
+  | "Wednesday"
+  | "Thursday"
+  | "Friday"
+  | "Saturday"
+  | "Sunday";
+
+export type TrainingAvailabilityTime = "Morning" | "Lunch" | "Evening";

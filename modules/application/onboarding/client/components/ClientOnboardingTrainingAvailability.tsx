@@ -6,7 +6,10 @@ import { OnboardClientSteps, InputError } from "@/ts/enum";
 import * as React from "react";
 import { useState } from "react";
 import { Checkbox, CheckboxGroup, cn } from "@nextui-org/react";
-import { AvailabilityDays, AvailabilityTime } from "@/constants/availability";
+import {
+  trainingAvailabilityDays,
+  trainingAvailabilityTime,
+} from "@/constants/availability";
 
 export function ClientOnboardingTrainingAvailability() {
   const onboardingDetails = useStore(
@@ -56,14 +59,14 @@ export function ClientOnboardingTrainingAvailability() {
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
       }
-      title={"Disponibilitate"}
-      body={"Când sunteți cel mai disponibil pentru antrenamente?"}
+      title={"Availability"}
+      body={"Please select the days and time you are available for training"}
     >
       <div className="grid gap-2">
         <div className="grid grid-cols-1 gap-x-3 gap-y-4">
           {/*Training Days*/}
           <CheckboxGroup
-            label="Zile în care vă puteți antrena"
+            label="Days you are available for training"
             orientation="horizontal"
             onValueChange={(e) => {
               updateOnboardingDetails({
@@ -79,29 +82,27 @@ export function ClientOnboardingTrainingAvailability() {
             isInvalid={!!trainingAvailabilityError}
             value={onboardingDetails.trainingAvailabilityDays}
           >
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 w-full">
-              {AvailabilityDays.map((availability) => (
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 w-full">
+              {trainingAvailabilityDays.map((availability) => (
                 <div
-                  key={availability.value}
+                  key={availability}
                   className={cn(
                     "w-full border-2 rounded p-2",
                     onboardingDetails?.trainingAvailabilityDays?.includes(
-                      availability.value,
+                      availability,
                     )
                       ? "border-primary"
                       : "border-default",
                   )}
                 >
-                  <Checkbox value={availability.value}>
-                    {availability.title}
-                  </Checkbox>
+                  <Checkbox value={availability}>{availability}</Checkbox>
                 </div>
               ))}
             </div>
           </CheckboxGroup>
           {/*Training time*/}
           <CheckboxGroup
-            label="Perioada în care vă puteți antrena"
+            label="Time you are available for training"
             orientation="horizontal"
             onValueChange={(e) => {
               updateOnboardingDetails({
@@ -118,21 +119,19 @@ export function ClientOnboardingTrainingAvailability() {
             value={onboardingDetails.trainingAvailabilityTime}
           >
             <div className="grid grid-cols-2 md:grid-cols-3 w-full gap-2">
-              {AvailabilityTime.map((availability) => (
+              {trainingAvailabilityTime.map((availability) => (
                 <div
-                  key={availability.value}
+                  key={availability}
                   className={cn(
                     "w-full border-2 rounded p-2",
                     onboardingDetails?.trainingAvailabilityTime?.includes(
-                      availability.value,
+                      availability,
                     )
                       ? "border-primary"
                       : "border-default",
                   )}
                 >
-                  <Checkbox value={availability.value}>
-                    {availability.title}
-                  </Checkbox>
+                  <Checkbox value={availability}>{availability}</Checkbox>
                 </div>
               ))}
             </div>

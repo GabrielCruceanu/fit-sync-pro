@@ -1,4 +1,4 @@
-import { AlergiiAlimentare } from "@/ts/types";
+import { AlergiiAlimentare, FoodPreferences } from "@/ts/types";
 
 export const FoodAllergies: AlergiiAlimentare[] = [
   {
@@ -98,4 +98,9 @@ export const FoodAllergies: AlergiiAlimentare[] = [
   },
 ];
 
-export const FoodDiets = ["Omnivor", "Vegetarian", "Vegan", "Keto"];
+export const foodPreferences: FoodPreferences[] = [
+  "Omnivor",
+  "Vegetarian",
+  "Vegan",
+  "Keto",
+];

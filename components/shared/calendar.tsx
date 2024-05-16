@@ -4,7 +4,7 @@ import * as React from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 import { DayPicker } from "react-day-picker";
 
-import { ro } from "date-fns/locale";
+import { enUS, ro } from "date-fns/locale";
 import { cn } from "@nextui-org/react";
 
 export type CalendarProps = React.ComponentProps<typeof DayPicker>;
@@ -22,7 +22,7 @@ function Calendar({
       toYear={new Date().getFullYear()}
       defaultMonth={new Date(1980, 0)}
       weekStartsOn={0}
-      locale={ro}
+      locale={enUS}
       showOutsideDays={showOutsideDays}
       className={cn("p-3", className)}
       classNames={{

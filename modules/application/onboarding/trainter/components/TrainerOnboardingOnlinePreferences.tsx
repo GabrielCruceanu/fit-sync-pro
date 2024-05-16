@@ -36,7 +36,7 @@ export function TrainerOnboardingOnlinePreferences() {
     updateOnboardingDetails({
       ...onboardingDetails,
       trainerSteps: onboardingDetails.trainingLocation?.includes(
-        TrainingLocation.Physic,
+        TrainingLocation.InPerson,
       )
         ? OnboardTrainerSteps.TrainingPhysicalPreferences
         : OnboardTrainerSteps.Availability,

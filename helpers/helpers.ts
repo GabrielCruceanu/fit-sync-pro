@@ -38,12 +38,14 @@ export const validateIsWebsiteLink = (input: string) => {
   return regex.test(input);
 };
 export const validateIsPhoneNumber = (input: string) => {
-  if (input.length !== 10) {
-    return false;
-  }
-  const validUsernameRegex =
-    /^(\+4|)?(07[0-8]{1}[0-9]{1}|02[0-9]{2}|03[0-9]{2}){1}?(\s|\.|\-)?([0-9]{3}(\s|\.|\-|)){2}$/;
-  return validUsernameRegex.test(input);
+  // Remove any non-numeric characters
+  const numericInput = input.replace(/\D/g, "");
+
+  // Define a regex pattern for international phone numbers
+  const validPhoneNumberRegex =
+    /^(\+?\d{1,3}[\s-]?)?(\d{3,4}[\s-]?)?\d{3,4}[\s-]?\d{4}$/;
+
+  return validPhoneNumberRegex.test(numericInput);
 };
 
 export const handleInputRequired = (value?: string) => {

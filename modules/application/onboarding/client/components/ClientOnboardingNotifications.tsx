@@ -30,8 +30,8 @@ export function ClientOnboardingNotifications() {
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
       }
-      title={"Preferințe de notificare"}
-      body={"Fii la curent cu noutățile!"}
+      title={"Notification"}
+      body={"Select the notifications you want to receive"}
     >
       <div className="grid gap-2">
         <div className="grid grid-cols-1 gap-x-3 gap-y-4">
@@ -63,9 +63,9 @@ export function ClientOnboardingNotifications() {
             }}
           >
             <div className="flex flex-col gap-1">
-              <p className="text-medium">Antrenament</p>
+              <p className="text-medium">Workout</p>
               <p className="text-tiny text-default-400">
-                Primește notificari de antrenament
+                Receive notifications about workout
               </p>
             </div>
           </Switch>
@@ -97,9 +97,9 @@ export function ClientOnboardingNotifications() {
             }}
           >
             <div className="flex flex-col gap-1">
-              <p className="text-medium">Nutritie</p>
+              <p className="text-medium">Nutrition</p>
               <p className="text-tiny text-default-400">
-                Primește notificari de la nutritip
+                Receive notifications about nutrition
               </p>
             </div>
           </Switch>
@@ -131,9 +131,9 @@ export function ClientOnboardingNotifications() {
             }}
           >
             <div className="flex flex-col gap-1">
-              <p className="text-medium">Noutăți și actualizări</p>
+              <p className="text-medium">News and actualizations</p>
               <p className="text-tiny text-default-400">
-                Primește notificari despre noutăți și actualizări
+                Receive notifications about news and actualizations
               </p>
             </div>
           </Switch>
@@ -166,10 +166,9 @@ export function ClientOnboardingNotifications() {
             }}
           >
             <div className="flex flex-col gap-1">
-              <p className="text-medium">Oferte speciale și promoții</p>
+              <p className="text-medium">Offers and promotions</p>
               <p className="text-tiny text-default-400">
-                Primește notificari despre oferte speciale și promoții
-                personalizate
+                Receive notifications about offers and promotions
               </p>
             </div>
           </Switch>

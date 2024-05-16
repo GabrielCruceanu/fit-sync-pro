@@ -11,12 +11,12 @@ import {
   NavbarMenuToggle,
 } from "@nextui-org/react";
 import NavItems from "./NavItems";
-import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { ApplicationLinks } from "@/constants/links";
 import { CircleUserRound } from "lucide-react";
 import React from "react";
 import { usePathname } from "next/navigation";
-import FitSyncLogo from "@/components/FitSyncLogo";
+import FitSyncLogo from "@/components/shared/fit-sync-logo";
+import { ThemeSwitcher } from "@/components/shared/theme-switcher";
 
 export default function NavigationBar({
   children,

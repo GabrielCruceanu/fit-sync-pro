@@ -2,9 +2,9 @@ import { Metadata } from "next";
 import { OnboardingScreen } from "@/modules/application/onboarding";
 
 export const metadata: Metadata = {
-  title: "Integrare | FitSync",
+  title: "Onboarding | FitSync",
   description:
-    "FitSync este o platformă care dorește să îmbunătățească experiența clienților cu antrenorii și să facă munca antrenorilor mai ușoară oferindu-le mai multe unelte prin care își pot gestiona clienții mai ușor.",
+    "Welcome to FitSync! Get started by creating an account and setting up your profile.",
 };
 export default function OnboardingPage() {
   return <OnboardingScreen />;

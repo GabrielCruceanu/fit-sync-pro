@@ -17,12 +17,12 @@ import { createClient } from "@/utils/supabase/create-client";
 import { ApplicationLinks } from "@/constants/links";
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/react";
-import { Icons } from "@/components/icons";
 import { Provider } from "@supabase/gotrue-js";
-import { toast } from "@/components/use-toast";
+import { toast } from "@/components/shared/toast/use-toast";
 import { EyeFilledIcon, EyeSlashFilledIcon } from "@nextui-org/shared-icons";
 import { useStore } from "@/store";
 import { UserDetails } from "@/ts/types";
+import { Icons } from "@/components/icons/icons";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -148,7 +148,7 @@ export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
           <div className="grid gap-1">
             <Input
               id="email"
-              placeholder="nume@domeniu.ro"
+              placeholder="jon@domain.com"
               type="email"
               label="Email"
               value={emailValue}
@@ -169,7 +169,7 @@ export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
           <div className="grid gap-1">
             <Input
               id="password"
-              label="Parola"
+              label="Password"
               placeholder="••••••••"
               autoCapitalize="none"
               autoComplete="password"
@@ -202,7 +202,7 @@ export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
-            Autentificare
+            Log in
           </Button>
           {/*Social Login*/}
           <div className="relative">
@@ -211,7 +211,7 @@ export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
             </div>
             <div className="relative flex justify-center text-xs uppercase">
               <span className="bg-background px-2 text-muted-foreground">
-                sau
+                or
               </span>
             </div>
           </div>
@@ -226,7 +226,7 @@ export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
-            Conectați-vă prin Google
+            Connect with Google
           </Button>
           <Button
             variant="bordered"
@@ -239,7 +239,7 @@ export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
-            Conectați-vă prin Facebook
+            Connect with Facebook
           </Button>
         </div>
       </form>

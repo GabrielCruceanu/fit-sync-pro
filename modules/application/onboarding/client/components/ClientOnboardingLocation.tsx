@@ -3,7 +3,7 @@ import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
 import { OnboardClientSteps, InputError } from "@/ts/enum";
-import { useState } from "react";
+import {  useState } from "react";
 import { handleInputRequired } from "@/helpers/helpers";
 import { Select, SelectItem } from "@nextui-org/react";
 import { CitiesData } from "@/constants/location";
@@ -21,6 +21,7 @@ export function ClientOnboardingLocation() {
   const [currentCityError, setCurrentCityError] = useState("");
 
   const [confirmBtnDisable, setConfirmBtnDisable] = useState(false);
+
 
   const inputsAreOk = () => {
     if (!onboardingDetails.country) {
@@ -82,18 +83,18 @@ export function ClientOnboardingLocation() {
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
       }
-      title={"Locație preferată"}
+      title={"Location"}
       body={
-        "Stabilește locația preferată pentru a găsi cea mai bună sală de sport și cei mai buni antrenori din apropierea ta."
+        "Please provide your location details. This will help us to provide you with the best services."
       }
     >
       <div className="grid gap-2">
         <div className="grid grid-cols-1 gap-x-3 gap-y-4">
           {/*Country*/}
           <Select
-            label="Tara"
+            label="Country"
             variant="bordered"
-            placeholder="Alege"
+            placeholder="Choose a country"
             isRequired
             defaultSelectedKeys={
               onboardingDetails.country ? [onboardingDetails.country] : []
@@ -116,11 +117,12 @@ export function ClientOnboardingLocation() {
             errorMessage={currentCountryError}
             isInvalid={!!currentCountryError}
           >
-            {countries.map((gen) => (
+            {countries.map((country) => (
               <SelectItem
                 color={"primary"}
-                key={gen}
-                value={gen}
+                key={country}
+                value={country}
+                textValue={country}
                 onClick={() => {
                   currentCounties = [];
                   currentCites = [];
@@ -128,15 +130,15 @@ export function ClientOnboardingLocation() {
                   setConfirmBtnDisable(false);
                 }}
               >
-                {gen}
+                {country}
               </SelectItem>
             ))}
           </Select>
           {/*County*/}
           <Select
-            label="Judet"
+            label="State/County"
             variant="bordered"
-            placeholder="Alege"
+            placeholder="Choose a state/county"
             isRequired
             defaultSelectedKeys={
               onboardingDetails.county ? [onboardingDetails.county] : []
@@ -169,6 +171,7 @@ export function ClientOnboardingLocation() {
                   setCurrentCountyError("");
                   setConfirmBtnDisable(false);
                 }}
+                textValue={county}
               >
                 {county}
               </SelectItem>
@@ -176,9 +179,9 @@ export function ClientOnboardingLocation() {
           </Select>
           {/*City*/}
           <Select
-            label="Oras"
+            label="City"
             variant="bordered"
-            placeholder="Alege"
+            placeholder="Choose a city"
             isRequired
             defaultSelectedKeys={
               onboardingDetails.city ? [onboardingDetails.city] : []
@@ -208,6 +211,7 @@ export function ClientOnboardingLocation() {
                   setCurrentCityError("");
                   setConfirmBtnDisable(false);
                 }}
+                textValue={city}
               >
                 {city}
               </SelectItem>

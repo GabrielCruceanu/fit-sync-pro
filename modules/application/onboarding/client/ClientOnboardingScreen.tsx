@@ -8,7 +8,7 @@ import {
   ClientOnboardingFitnessExperience,
   ClientOnboardingTrainingLocation,
   ClientOnboardingTrainingOnline,
-  ClientOnboardingTrainingPhysical,
+  ClientOnboardingTrainingInPerson,
   ClientOnboardingTrainingAvailability,
   ClientOnboardingLocation,
 } from "@/modules/application/onboarding/client";
@@ -31,8 +31,8 @@ export function ClientOnboardingScreen() {
       return <ClientOnboardingTrainingLocation />;
     case OnboardClientSteps.TrainingOnlinePreferences:
       return <ClientOnboardingTrainingOnline />;
-    case OnboardClientSteps.TrainingPhysicalPreferences:
-      return <ClientOnboardingTrainingPhysical />;
+    case OnboardClientSteps.TrainingInPersonPreferences:
+      return <ClientOnboardingTrainingInPerson />;
     case OnboardClientSteps.Availability:
       return <ClientOnboardingTrainingAvailability />;
     case OnboardClientSteps.Location:

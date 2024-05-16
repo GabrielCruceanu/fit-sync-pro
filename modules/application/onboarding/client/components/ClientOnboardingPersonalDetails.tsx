@@ -13,7 +13,7 @@ import {
   validateUsername,
 } from "@/helpers/helpers";
 import { genderList } from "@/constants/user";
-import { Calendar } from "@/components/calendar";
+import { Calendar } from "@/components/shared/calendar";
 import {
   Popover,
   PopoverContent,
@@ -23,7 +23,7 @@ import {
 } from "@nextui-org/react";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
-import { ro } from "date-fns/locale";
+import { enUS, ro } from "date-fns/locale";
 import { GenderType } from "@/ts/types";
 
 export function ClientOnboardingPersonalDetails() {
@@ -70,22 +70,22 @@ export function ClientOnboardingPersonalDetails() {
   };
 
   const handleSetPhoneNumber = (phoneNumber: string) => {
-    const clearNumber = formatPhoneNumber(phoneNumber);
+    // const clearNumber = formatPhoneNumber(phoneNumber);
 
     setPhoneError("");
-    updateOnboardingDetails({
-      ...onboardingDetails,
-      phoneNumber: clearNumber,
-    });
     setConfirmBtnDisable(false);
-    if (handleInputRequired(clearNumber)) {
+    if (handleInputRequired(phoneNumber)) {
       setPhoneError(InputError.InputRequired);
       return;
     }
-    if (!validateIsPhoneNumber(clearNumber)) {
+    if (!validateIsPhoneNumber(phoneNumber)) {
       setPhoneError(InputError.OnlyNumbers);
       return;
     }
+    updateOnboardingDetails({
+      ...onboardingDetails,
+      phoneNumber: phoneNumber,
+    });
   };
   const handleBirthChange = (newValue: any) => {
     const dateLanding = new Date(newValue);
@@ -183,9 +183,9 @@ export function ClientOnboardingPersonalDetails() {
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
       }
-      title={"Detalii personale"}
+      title={"Personal Details"}
       body={
-        "Povestește-ne mai multe despre tine pentru o experiență de fitness personalizată."
+        "Let's get to know you better! Please fill in the following details."
       }
     >
       <div className="grid gap-2">
@@ -195,7 +195,7 @@ export function ClientOnboardingPersonalDetails() {
             id="firstname"
             placeholder="Jon"
             type="text"
-            label="Prenume"
+            label="First Name"
             value={onboardingDetails.firstname}
             autoCapitalize="none"
             autoComplete="false"
@@ -224,12 +224,12 @@ export function ClientOnboardingPersonalDetails() {
               }
             }}
           />
-          {/*FirstName*/}
+          {/*LastName*/}
           <Input
             id="lastname"
             placeholder="Doe"
             type="text"
-            label="Nume"
+            label="Last Name"
             value={onboardingDetails.lastname}
             autoCapitalize="none"
             autoComplete="false"
@@ -263,7 +263,7 @@ export function ClientOnboardingPersonalDetails() {
             id="username"
             placeholder="jon_doe"
             type="text"
-            label="Nume de utilizator"
+            label="Username"
             value={onboardingDetails.username}
             autoCapitalize="none"
             autoComplete="false"
@@ -302,14 +302,12 @@ export function ClientOnboardingPersonalDetails() {
               <PopoverTrigger>
                 <Input
                   id="birth"
-                  placeholder="Alege o data"
+                  placeholder="Choose a date"
                   type="date"
                   value={
                     onboardingDetails.birthdate?.full
-                      ? format(onboardingDetails.birthdate.full, "PPP", {
-                          locale: ro,
-                        })
-                      : "Data nașterii"
+                      ? format(onboardingDetails.birthdate.full, "PPP")
+                      : "Birthday"
                   }
                   autoCapitalize="none"
                   autoComplete="false"
@@ -352,10 +350,9 @@ export function ClientOnboardingPersonalDetails() {
           </div>
           {/*Gender*/}
           <Select
-            label="Gen"
+            label="Gender"
             className="bg-background"
             variant="bordered"
-            placeholder="Alege"
             isRequired
             defaultSelectedKeys={
               onboardingDetails.gender ? [onboardingDetails.gender] : []
@@ -391,12 +388,12 @@ export function ClientOnboardingPersonalDetails() {
             ))}
           </Select>
 
-          {/*Telefon*/}
+          {/*PhoneNumber*/}
           <Input
             id="phone"
             placeholder="0770212948"
             type="text"
-            label="Telefon"
+            label="Phone Number"
             value={onboardingDetails.phoneNumber}
             autoCapitalize="none"
             autoComplete="false"
@@ -410,12 +407,12 @@ export function ClientOnboardingPersonalDetails() {
             errorMessage={phoneError}
             isInvalid={!!phoneError}
           />
-          {/*Înălțime*/}
+          {/*Height*/}
           <Input
             id="height"
             placeholder="173 cm"
             type="number"
-            label="Înălțime"
+            label="Height"
             value={onboardingDetails.height?.toString()}
             autoCapitalize="none"
             autoComplete="false"
@@ -445,12 +442,12 @@ export function ClientOnboardingPersonalDetails() {
             }}
           />
 
-          {/*Greutate*/}
+          {/*Weight*/}
           <Input
             id="weight"
             placeholder="75 Kg"
             type="number"
-            label="Greutate"
+            label="Weight"
             value={onboardingDetails.weight?.toString()}
             autoCapitalize="none"
             autoComplete="false"

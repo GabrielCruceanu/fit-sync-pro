@@ -30,6 +30,27 @@ export type Database = {
         }
         Relationships: []
       }
+      cities: {
+        Row: {
+          country: string | null
+          geonameid: number
+          name: string | null
+          subcountry: string | null
+        }
+        Insert: {
+          country?: string | null
+          geonameid?: number
+          name?: string | null
+          subcountry?: string | null
+        }
+        Update: {
+          country?: string | null
+          geonameid?: number
+          name?: string | null
+          subcountry?: string | null
+        }
+        Relationships: []
+      }
       clients: {
         Row: {
           birthDate: string | null
@@ -43,9 +64,9 @@ export type Database = {
           fitnessExperience: string | null
           foodAllergiesDescription: string | null
           foodAllergiesType: string | null
-          foodPreferences: string | null
+          foodPreferences: string[] | null
           gender: Database["public"]["Enums"]["gender_type"] | null
-          goals: string | null
+          goals: string[] | null
           haveFoodAllergies: boolean | null
           height: number | null
           joined: string
@@ -74,9 +95,9 @@ export type Database = {
           fitnessExperience?: string | null
           foodAllergiesDescription?: string | null
           foodAllergiesType?: string | null
-          foodPreferences?: string | null
+          foodPreferences?: string[] | null
           gender?: Database["public"]["Enums"]["gender_type"] | null
-          goals?: string | null
+          goals?: string[] | null
           haveFoodAllergies?: boolean | null
           height?: number | null
           joined?: string
@@ -105,9 +126,9 @@ export type Database = {
           fitnessExperience?: string | null
           foodAllergiesDescription?: string | null
           foodAllergiesType?: string | null
-          foodPreferences?: string | null
+          foodPreferences?: string[] | null
           gender?: Database["public"]["Enums"]["gender_type"] | null
-          goals?: string | null
+          goals?: string[] | null
           haveFoodAllergies?: boolean | null
           height?: number | null
           joined?: string

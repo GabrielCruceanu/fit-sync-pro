@@ -2,10 +2,10 @@ import { useStore } from "@/store";
 import { Button } from "@nextui-org/button";
 import * as React from "react";
 import { useState } from "react";
-import { OnboardClientSteps } from "@/ts/enum";
+import { OnboardClientSteps, TrainingLocation } from "@/ts/enum";
 import { createClient } from "@/utils/supabase/create-client";
 import { useRouter } from "next/navigation";
-import { toast } from "@/components/use-toast";
+import { toast } from "@/components/shared/toast/use-toast";
 import { createClientProfile } from "@/utils/supabase/client-service";
 import { Client } from "@/ts/types";
 import { createUserName, updateUser } from "@/utils/supabase/user-service";
@@ -80,21 +80,21 @@ export function ClientOnboardingOverview() {
         fitnessExperience: onboardingDetails.fitnessExperience!,
         trainingLocation: onboardingDetails.trainingLocation!,
         trainingOnlinePreferences:
-          onboardingDetails.trainingPhysicalPreferences!,
+          onboardingDetails.trainingInPersonPreferences!,
         trainingPhysicalPreferences:
-          onboardingDetails.trainingPhysicalPreferences!,
+          onboardingDetails.trainingInPersonPreferences!,
         trainingAvailabilityDays: onboardingDetails.trainingAvailabilityDays!,
         trainingAvailabilityTime: onboardingDetails.trainingAvailabilityTime!,
       };
 
       // CREATE CLIENT PROFILE
       await createClientProfile(client, supabase).then(() => {
+        router.push("/dashboard", { scroll: false });
         toast({
           title: OnboardingMessage.Client.Success.title,
           description: OnboardingMessage.Client.Success.description,
           variant: OnboardingMessage.Client.Success.variant,
         });
-        router.push("/dashboard", { scroll: false });
       });
     } else {
       router.refresh();
@@ -112,41 +112,41 @@ export function ClientOnboardingOverview() {
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
       }
-      title={"Ești pregătit!"}
-      body={"Iată un rezumat al preferințelor tale."}
+      title={"Get Started"}
+      body={"Please review your details before you continue"}
     >
       <div className="grid gap-2 gap-y-4 pb-[100px] md:pb-0">
         <div className="grid grid-cols-2 gap-x-3 gap-y-3">
           <p className="text-sm">
-            Tip utilizator: <br />
+            User type: <br />
             <strong className="text-medium">Client</strong>
           </p>
           <p className="text-sm">
-            Nume de utilizator: <br />
+            Username: <br />
             <strong className="text-medium">
               {onboardingDetails.username}
             </strong>
           </p>
           <p className="text-sm">
-            Prenume: <br />
+            Firstname: <br />
             <strong className="text-medium">
               {onboardingDetails.firstname}
             </strong>
           </p>
           <p className="text-sm">
-            Nume: <br />
+            Lastname: <br />
             <strong className="text-medium">
               {onboardingDetails.lastname}
             </strong>
           </p>
           <p className="text-sm">
-            Telefon: <br />
+            Phone number: <br />
             <strong className="text-medium">
               {onboardingDetails.phoneNumber}
             </strong>
           </p>
           <p className="text-sm">
-            Data nasterii: <br />
+            Birthday: <br />
             <strong className="text-medium">
               {onboardingDetails.birthdate?.date}.
               {onboardingDetails.birthdate?.month}.
@@ -154,37 +154,47 @@ export function ClientOnboardingOverview() {
             </strong>
           </p>
           <p className="text-sm">
-            Gen: <br />
+            Gender: <br />
             <strong className="text-medium">{onboardingDetails.gender}</strong>
           </p>
           <p className="text-sm">
-            Adresa: <br />
+            Location: <br />
             <strong className="text-medium">
               {onboardingDetails.city} / {onboardingDetails.county} /{" "}
               {onboardingDetails.country}
             </strong>
           </p>
           <p className="text-sm">
-            Înălțime: <br />
+            Height: <br />
             <strong className="text-medium">{onboardingDetails.height}</strong>
           </p>
           <p className="text-sm">
-            Greutate: <br />
+            Weight: <br />
             <strong className="text-medium">{onboardingDetails.weight}</strong>
           </p>
           <p className="text-sm">
-            Scop: <br />
-            <strong className="text-medium">{onboardingDetails.goals}</strong>
+            Goals: <br />
+            <span className="flex flex-wrap capitalize">
+              {onboardingDetails.goals?.map((goal) => (
+                <strong className="text-medium mr-2" key={goal}>
+                  {goal}
+                </strong>
+              ))}
+            </span>
           </p>
           <p className="text-sm">
-            Preferințe alimentare: <br />
-            <strong className="text-medium">
-              {onboardingDetails.foodPreferences}
-            </strong>
+            Food preferences: <br />
+            <span className="flex flex-wrap capitalize">
+              {onboardingDetails.foodPreferences?.map((pref) => (
+                <strong className="text-medium mr-2" key={pref}>
+                  {pref}
+                </strong>
+              ))}
+            </span>
           </p>
           {onboardingDetails.haveFoodAllergies && (
             <p className="text-sm">
-              Alergii: <br />
+              Allergies: <br />
               <strong className="text-medium">
                 {onboardingDetails.foodAllergiesType}
               </strong>
@@ -192,27 +202,27 @@ export function ClientOnboardingOverview() {
           )}
 
           <p className="text-sm">
-            Experiența: <br />
+            Fitness Experience: <br />
             <strong className="text-medium">
               {onboardingDetails.fitnessExperience}
             </strong>
           </p>
           <p className="text-sm">
-            Locatie: <br />
+            Training Location: <br />
             <strong className="text-medium">
               {onboardingDetails.trainingLocation}
             </strong>
           </p>
           <p className="text-sm">
-            Tip: <br />
+            Training Type: <br />
             <strong className="text-medium">
-              {onboardingDetails.trainingLocation === "Fizic"
-                ? onboardingDetails.trainingPhysicalPreferences
+              {onboardingDetails.trainingLocation === TrainingLocation.InPerson
+                ? onboardingDetails.trainingInPersonPreferences
                 : onboardingDetails.trainingOnlinePreferences}
             </strong>
           </p>
           <p className="text-sm">
-            Zile antrenament: <br />
+            Training Availability Days: <br />
             <span className="flex flex-wrap capitalize">
               {onboardingDetails.trainingAvailabilityDays?.map((day) => (
                 <strong className="text-medium mr-2" key={day}>
@@ -222,7 +232,7 @@ export function ClientOnboardingOverview() {
             </span>
           </p>
           <p className="text-sm">
-            Perioada antrenament: <br />
+            Training Availability Time: <br />
             <span className="flex flex-wrap capitalize">
               {onboardingDetails.trainingAvailabilityTime?.map((time) => (
                 <strong className="text-medium mr-2" key={time}>
@@ -232,27 +242,33 @@ export function ClientOnboardingOverview() {
             </span>
           </p>
           <p className="text-sm">
-            Notificari Antrenament: <br />
+            Notifications Workout: <br />
             <strong className="text-medium mr-2">
-              {onboardingDetails.notificationsWorkout ? "Da" : "Nu"}
+              {onboardingDetails.notificationsWorkout
+                ? "I agree"
+                : "I disagree"}
             </strong>
           </p>
           <p className="text-sm">
             Notificari Nutritie: <br />
             <strong className="text-medium mr-2">
-              {onboardingDetails.notificationsNutrition ? "Da" : "Nu"}
+              {onboardingDetails.notificationsNutrition
+                ? "I agree"
+                : "I disagree"}
             </strong>
           </p>
           <p className="text-sm">
             Notificari Noutati: <br />
             <strong className="text-medium mr-2">
-              {onboardingDetails.newsAndActualizations ? "Da" : "Nu"}
+              {onboardingDetails.newsAndActualizations
+                ? "I agree"
+                : "I disagree"}
             </strong>
           </p>
           <p className="text-sm">
             Notificari Oferte: <br />
             <strong className="text-medium mr-2">
-              {onboardingDetails.offersAndPromotions ? "Da" : "Nu"}
+              {onboardingDetails.offersAndPromotions ? "I agree" : "I disagree"}
             </strong>
           </p>
         </div>

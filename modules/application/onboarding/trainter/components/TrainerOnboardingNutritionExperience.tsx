@@ -11,7 +11,7 @@ import {
 import * as React from "react";
 import { useState } from "react";
 import { RadioGroup } from "@nextui-org/radio";
-import { RadioButton } from "@/components/ratio-button";
+import { RadioButton } from "@/components/shared/ratio-button";
 import { handleInputRequired } from "@/helpers/helpers";
 import {
   Checkbox,
@@ -21,8 +21,7 @@ import {
   SelectItem,
   Switch,
 } from "@nextui-org/react";
-import { FoodAllergies, FoodDiets } from "@/constants/foods";
-import { AvailabilityDays } from "@/constants/availability";
+import { foodPreferences } from "@/constants/foods";
 import { IsNutritionist } from "@/ts/enum/onboarding.enum";
 import { experienceList } from "@/constants/user";
 import nutritionistTypes from "@/constants/nutritionists";
@@ -234,7 +233,7 @@ export function TrainerOnboardingNutritionExperience() {
                 value={onboardingDetails.nutritionistDiets}
               >
                 <div className="grid grid-cols-2 gap-2 w-full">
-                  {FoodDiets.map((diet) => (
+                  {foodPreferences.map((diet) => (
                     <div
                       key={diet}
                       className={cn(

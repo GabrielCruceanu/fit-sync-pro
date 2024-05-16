@@ -6,7 +6,7 @@ import { FitnessExperience, OnboardClientSteps, InputError } from "@/ts/enum";
 import * as React from "react";
 import { useState } from "react";
 import { RadioGroup } from "@nextui-org/radio";
-import { RadioButton } from "@/components/ratio-button";
+import { RadioButton } from "@/components/shared/ratio-button";
 import { handleInputRequired } from "@/helpers/helpers";
 
 export function ClientOnboardingFitnessExperience() {
@@ -41,8 +41,8 @@ export function ClientOnboardingFitnessExperience() {
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
       }
-      title={"Experiența anterioară de fitness"}
-      body={"Selectați experiența dvs. de fitness."}
+      title={"Fitness Experience"}
+      body={"How would you describe your fitness experience level?"}
     >
       <div className="grid gap-2">
         <div className="grid grid-cols-1 gap-x-3 gap-y-4">

@@ -5,7 +5,7 @@ import { useState } from "react";
 import { OnboardTrainerSteps } from "@/ts/enum";
 import { createClient } from "@/utils/supabase/create-client";
 import { useRouter } from "next/navigation";
-import { toast } from "@/components/use-toast";
+import { toast } from "@/components/shared/toast/use-toast";
 import { Trainer } from "@/ts/types";
 import { createUserName, updateUser } from "@/utils/supabase/user-service";
 import { OnboardingMessage } from "@/lib/validations/error-check";

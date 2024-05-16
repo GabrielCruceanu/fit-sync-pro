@@ -1,11 +1,11 @@
 import { z } from "zod";
 export const PersonalDetailsSchema = z.object({
   username: z.string().min(4, {
-    message: "Numele de utilizator trebuie sa contină minimum 4 caractere.",
+    message: "Username needs to be at least 4 characters long.",
   }),
   phone: z
     .string()
-    .min(10, { message: "Numărul trebuie sa contină minimum 10 caractere." })
+    .min(10, { message: "Phone number" })
     .max(10, { message: "Numărul trebuie sa contină maximum 10 caractere." }),
   day: z.string(),
   mouth: z.string(),
