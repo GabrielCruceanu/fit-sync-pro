@@ -1,20 +1,20 @@
 import { z } from 'zod';
 
 export const LoginSchema = z.object({
-  email: z.string().email({ message: 'Adresa de e-mail nu este validă.' }),
+  email: z.string().email({ message: "Email address invalid" }),
   password: z
     .string()
-    .min(8, { message: 'Parola trebuie sa contină minimum 8 caractere.' }),
+    .min(8, { message: 'Password need to have minumum 8 characters' }),
 });
 export const ForgotPasswordSchema = z.object({
-  email: z.string().email({ message: 'Adresa de e-mail nu este validă.' }),
+  email: z.string().email({ message: "Email address invalid" }),
 });
 export const RegisterSchema = z.object({
-  email: z.string().email({ message: 'Adresa de e-mail nu este validă.' }),
+  email: z.string().email({ message: "Email address invalid" }),
   password: z
     .string()
-    .min(8, { message: 'Parola trebuie sa contină minimum 8 caractere.' }),
+    .min(8, { message: "Password need to have minumum 8 characters" }),
   confirmPassword: z
     .string()
-    .min(8, { message: 'Parola trebuie sa contină minimum 8 caractere.' }),
+    .min(8, { message: "Password need to have minumum 8 characters" }),
 });

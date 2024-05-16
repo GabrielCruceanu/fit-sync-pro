@@ -14,7 +14,7 @@ import {
 import { createClient } from "@/utils/supabase/create-client";
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
-import { Icons } from "@/components/icons";
+import { Icons } from "@/components/icons/icons";
 import { toast } from "@/components/shared/toast/use-toast";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
@@ -79,7 +79,7 @@ export function UserResetPasswordForm({
           <div className="grid gap-1">
             <Input
               id="email"
-              placeholder="nume@domeniu.ro"
+              placeholder="jon@domain.com"
               type="email"
               label="Email"
               value={emailValue}
@@ -100,7 +100,7 @@ export function UserResetPasswordForm({
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
-            Resetare parolă
+            Reset Password
           </Button>
         </div>
       </form>

@@ -19,7 +19,7 @@ import { AuthProvider } from "@/ts/enum";
 import { Provider } from "@supabase/gotrue-js";
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
-import { Icons } from "@/components/icons";
+import { Icons } from "@/components/icons/icons";
 import { EyeFilledIcon, EyeSlashFilledIcon } from "@nextui-org/shared-icons";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
@@ -151,7 +151,7 @@ export function UserSignUpForm({ className, ...props }: UserAuthFormProps) {
           <div className="grid gap-1">
             <Input
               id="email"
-              placeholder="nume@domeniu.ro"
+              placeholder="jon@domain.com"
               type="email"
               label="Email"
               value={emailValue}
@@ -172,7 +172,7 @@ export function UserSignUpForm({ className, ...props }: UserAuthFormProps) {
           <div className="grid gap-1">
             <Input
               id="password"
-              label="Parola"
+              label="Password"
               placeholder="••••••••"
               autoCapitalize="none"
               autoComplete="password"
@@ -205,7 +205,7 @@ export function UserSignUpForm({ className, ...props }: UserAuthFormProps) {
           <div className="grid gap-1">
             <Input
               id="confirmPassword"
-              label="Confirma Parola"
+              label="Confirm Password"
               placeholder="••••••••"
               variant="bordered"
               value={confirmPasswordValue}
@@ -238,7 +238,7 @@ export function UserSignUpForm({ className, ...props }: UserAuthFormProps) {
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
-            Creaza cont
+            Create Account
           </Button>
 
           {/*Social Login*/}
@@ -248,7 +248,7 @@ export function UserSignUpForm({ className, ...props }: UserAuthFormProps) {
             </div>
             <div className="relative flex justify-center text-xs uppercase">
               <span className="bg-background px-2 text-muted-foreground">
-                sau
+                or
               </span>
             </div>
           </div>
@@ -263,7 +263,7 @@ export function UserSignUpForm({ className, ...props }: UserAuthFormProps) {
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
-            Conecteaza-te prin Google
+            Connect with Google
           </Button>
           <Button
             variant="bordered"
@@ -276,7 +276,7 @@ export function UserSignUpForm({ className, ...props }: UserAuthFormProps) {
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
-            Conecteaza-te prin Facebook
+            Connect with Facebook
           </Button>
         </div>
       </form>

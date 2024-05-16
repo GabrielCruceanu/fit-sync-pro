@@ -2,39 +2,39 @@ import { AuthResponseError, ToastVariant } from "@/ts/enum";
 
 export const AuthErrorMessage = {
   CheckTheEmail: {
-    title: "Verifica e-mailul",
-    description: "Verifica-ti e-mailul pentru linkul de autentificare!",
+    title: "Check your email",
+    description: "Check your email for the confirmation link.",
     variant: ToastVariant.default,
   },
   ResetPassword: {
-    title: "Link paronala noua",
-    description: "E-mailul de recuperare a parolei a fost trimis.",
+    title: "Password reset",
+    description: "Check your email for the password reset link.",
     variant: ToastVariant.default,
   },
   SuccessSignUp: {
-    title: "Inregistrare cu success",
-    description: "Verifica-ti e-mailul pentru linkul de confirmare!",
+    title: "Success",
+    description: "Account created successfully",
     variant: ToastVariant.default,
   },
   DifferentPassword: {
-    title: "Parole diferite",
-    description: "Parolele trebuie sa fie identice.",
+    title: "Different passwords",
+    description: "The passwords are different",
     variant: ToastVariant.destructive,
   },
   InvalidLoginCredentials: {
-    title: "Credentiale invalide",
-    description: "Adresa de email sau parola nu este valida",
+    title: "Invalid login credentials",
+    description: "Invalid email or password",
     variant: ToastVariant.destructive,
   },
   EmailNotConfirmed: {
-    title: "Adresa de email neconfirmata",
-    description: "Adresa de email nu a fost confirmata, verifica in spam",
+    title: "Email not confirmed",
+    description: "Please confirm your email",
     variant: ToastVariant.destructive,
   },
   EmailUsedToMuch: {
-    title: "Incercari multiple",
+    title: "Email used to much",
     description:
-      "Ai facut prea multe cerereri de resetare. Incearca mai tarziu.",
+      "This email is already used. Please use another email or reset your password",
     variant: ToastVariant.destructive,
   },
 };
@@ -42,31 +42,30 @@ export const AuthErrorMessage = {
 export const OnboardingMessage = {
   Client: {
     Success: {
-      title: "Profil client",
-      description: "Profilul de client creat cu success",
+      title: "Client profile",
+      description: "Client profile created successfully",
       variant: ToastVariant.default,
     },
     Error: {
-      title: "Eroare",
-      description: "Ne pare rau, a intervenit o problema",
+      title: "Error",
+      description: "Sorry, an error occurred",
       variant: ToastVariant.destructive,
     },
   },
   Trainer: {
     Success: {
-      title: "Profil antrenor",
-      description: "Profilul de antrenor creat cu success",
+      title: "Trainer profile",
+      description: "Trainer profile created successfully",
       variant: ToastVariant.default,
     },
     Error: {
-      title: "Eroare",
-      description: "Ne pare rau, a intervenit o problema",
+      title: "Error",
+      description: "Sorry, an error occurred",
       variant: ToastVariant.destructive,
     },
   },
 };
 export function checkErrorMessage(error: any) {
-  console.log("error?.message", error?.message);
   switch (error?.message) {
     case AuthResponseError.InvalidLoginCredentials:
       return {

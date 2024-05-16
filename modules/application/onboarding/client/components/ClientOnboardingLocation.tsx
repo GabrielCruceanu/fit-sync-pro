@@ -3,7 +3,7 @@ import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
 import { OnboardClientSteps, InputError } from "@/ts/enum";
-import { useState } from "react";
+import {  useState } from "react";
 import { handleInputRequired } from "@/helpers/helpers";
 import { Select, SelectItem } from "@nextui-org/react";
 import { CitiesData } from "@/constants/location";
@@ -21,6 +21,7 @@ export function ClientOnboardingLocation() {
   const [currentCityError, setCurrentCityError] = useState("");
 
   const [confirmBtnDisable, setConfirmBtnDisable] = useState(false);
+
 
   const inputsAreOk = () => {
     if (!onboardingDetails.country) {
@@ -121,6 +122,7 @@ export function ClientOnboardingLocation() {
                 color={"primary"}
                 key={country}
                 value={country}
+                textValue={country}
                 onClick={() => {
                   currentCounties = [];
                   currentCites = [];
@@ -169,6 +171,7 @@ export function ClientOnboardingLocation() {
                   setCurrentCountyError("");
                   setConfirmBtnDisable(false);
                 }}
+                textValue={county}
               >
                 {county}
               </SelectItem>
@@ -208,6 +211,7 @@ export function ClientOnboardingLocation() {
                   setCurrentCityError("");
                   setConfirmBtnDisable(false);
                 }}
+                textValue={city}
               >
                 {city}
               </SelectItem>
