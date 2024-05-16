@@ -6,7 +6,6 @@ import { Input } from "@nextui-org/input";
 import React, { useState } from "react";
 import { createClient } from "@/utils/supabase/create-client";
 import {
-  formatPhoneNumber,
   handleInputRequired,
   validateIsPhoneNumber,
   validateOnlyLetter,
@@ -23,7 +22,6 @@ import {
 } from "@nextui-org/react";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
-import { enUS, ro } from "date-fns/locale";
 import { GenderType } from "@/ts/types";
 
 export function ClientOnboardingPersonalDetails() {
@@ -354,6 +352,7 @@ export function ClientOnboardingPersonalDetails() {
             className="bg-background"
             variant="bordered"
             isRequired
+            placeholder="Choose"
             defaultSelectedKeys={
               onboardingDetails.gender ? [onboardingDetails.gender] : []
             }
@@ -373,17 +372,17 @@ export function ClientOnboardingPersonalDetails() {
             errorMessage={genderError}
             isInvalid={!!genderError}
           >
-            {genderList.map((gen) => (
+            {genderList.map((gender) => (
               <SelectItem
-                key={gen}
-                value={gen}
+                key={gender}
+                value={gender}
                 className="bg-background"
                 onClick={() => {
                   setGenderError("");
                   setConfirmBtnDisable(false);
                 }}
               >
-                {gen}
+                {gender}
               </SelectItem>
             ))}
           </Select>
@@ -391,7 +390,7 @@ export function ClientOnboardingPersonalDetails() {
           {/*PhoneNumber*/}
           <Input
             id="phone"
-            placeholder="0770212948"
+            placeholder="+40770212948"
             type="text"
             label="Phone Number"
             value={onboardingDetails.phoneNumber}

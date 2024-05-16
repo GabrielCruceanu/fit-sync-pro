@@ -2,12 +2,7 @@
 import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
-import {
-  FoodPreferences,
-  OnboardClientSteps,
-  InputError,
-  OnboardTrainerSteps,
-} from "@/ts/enum";
+import { InputError, OnboardTrainerSteps } from "@/ts/enum";
 import * as React from "react";
 import { useState } from "react";
 import { RadioGroup } from "@nextui-org/radio";
@@ -19,7 +14,6 @@ import {
   cn,
   Select,
   SelectItem,
-  Switch,
 } from "@nextui-org/react";
 import { foodPreferences } from "@/constants/foods";
 import { IsNutritionist } from "@/ts/enum/onboarding.enum";
@@ -84,9 +78,9 @@ export function TrainerOnboardingNutritionExperience() {
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
       }
-      title={"Despre Nutriție"}
+      title={"Nutrition Experience"}
       body={
-        'Ați studiat nutriția? Selectați "Da" dacă aveți experiență în analiza și interpretarea nevoilor nutriționale ale clienților.'
+        'Please provide information about your nutritionist experience. If you are not a nutritionist, please select "No".'
       }
     >
       <div className="grid gap-2">
@@ -101,7 +95,7 @@ export function TrainerOnboardingNutritionExperience() {
               setNutritionistDietsError("");
               updateOnboardingDetails({
                 ...onboardingDetails,
-                isNutritionist: e === IsNutritionist.Is,
+                isNutritionist: e === IsNutritionist.Yes,
                 nutritionistType: undefined,
                 nutritionistExperience: undefined,
                 nutritionistDiets: undefined,
@@ -117,17 +111,17 @@ export function TrainerOnboardingNutritionExperience() {
             isInvalid={!!isNutritionistError}
             value={
               onboardingDetails.isNutritionist
-                ? IsNutritionist.Is
-                : IsNutritionist.Not
+                ? IsNutritionist.Yes
+                : IsNutritionist.No
             }
           >
             <div className="grid grid-cols-2 gap-3">
-              <RadioButton value={IsNutritionist.Is}>
-                {IsNutritionist.Is}
+              <RadioButton value={IsNutritionist.Yes}>
+                {IsNutritionist.Yes}
               </RadioButton>
 
-              <RadioButton value={IsNutritionist.Not}>
-                {IsNutritionist.Not}
+              <RadioButton value={IsNutritionist.No}>
+                {IsNutritionist.No}
               </RadioButton>
             </div>
           </RadioGroup>
@@ -137,10 +131,10 @@ export function TrainerOnboardingNutritionExperience() {
               <div className="grid grid-cols-2 gap-3">
                 {/*NutritionistType*/}
                 <Select
-                  label="Tip nutriționist"
+                  label="Nutritionist Type"
                   className="bg-background"
                   variant="bordered"
-                  placeholder="Alege"
+                  placeholder="Choose"
                   isRequired
                   value={
                     onboardingDetails.nutritionistType
@@ -176,10 +170,10 @@ export function TrainerOnboardingNutritionExperience() {
                 </Select>
                 {/*NutritionistExperience*/}
                 <Select
-                  label="Ani de experiență"
+                  label="Experience (years)"
                   className="bg-background"
                   variant="bordered"
-                  placeholder="Alege"
+                  placeholder="Choose"
                   isRequired
                   value={
                     onboardingDetails.nutritionistExperience
@@ -216,7 +210,7 @@ export function TrainerOnboardingNutritionExperience() {
               </div>
               {/*NutritionistDiets*/}
               <CheckboxGroup
-                label="Selectați următoarele moduri de alimentație pentru care puteți oferii diete:"
+                label="Diets you can provide"
                 orientation="horizontal"
                 onValueChange={(e) => {
                   updateOnboardingDetails({

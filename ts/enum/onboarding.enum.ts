@@ -114,6 +114,6 @@ export enum OnboardTrainerSteps {
 }
 
 export enum IsNutritionist {
-  Is = "Is",
-  Not = "Not",
+  Yes = "Yes",
+  No = "No",
 }
