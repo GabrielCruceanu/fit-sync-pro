@@ -27,8 +27,17 @@ import { Calendar } from "@/components/shared/calendar";
 import { Button } from "@nextui-org/button";
 import { GenderType } from "@/ts/types";
 
+/**
+ * This component handles the onboarding process for a nutritionist's personal contact details.
+ * It collects information about the nutritionist's first name, last name, username, birthdate, and gender.
+ * The component uses the `useStore` hook to get and update onboarding details.
+ * It also uses local state for error handling and to disable the confirm button when necessary.
+ * The component returns a form for the nutritionist to fill out their personal details.
+ */
 export function NutritionistOnboardingPersonalDetails() {
   const supabase = createClient();
+
+  // Using the store to get and update onboarding details
   const onboardingDetails = useStore(
     (state) => state.onboarding.onboardingNutritionistDetails,
   );
@@ -37,16 +46,24 @@ export function NutritionistOnboardingPersonalDetails() {
   );
   const updateOnboardingType = useStore((state) => state.updateOnboardingType);
 
+  // State variables for error handling
   const [firstNameError, setFirstNameError] = useState("");
   const [lastNameError, setLastNameError] = useState("");
   const [usernameError, setUsernameError] = useState("");
   const [genderError, setGenderError] = useState("");
   const [birthError, setBirthError] = useState("");
 
+  // State variable to open and close the calendar
   const [isCalendarOpen, setCalendarIsOpen] = React.useState(false);
 
+  // State variable to disable the confirm button
   const [confirmBtnDisable, setConfirmBtnDisable] = useState(false);
 
+  /**
+   * This function handles the input of the username.
+   * It validates the input and updates the onboarding details accordingly.
+   * @param {string} username - The input username.
+   */
   const handleSearchUsername = async (username: string) => {
     if (handleInputRequired(username)) {
       setUsernameError(InputError.InputRequired);
@@ -67,6 +84,11 @@ export function NutritionistOnboardingPersonalDetails() {
     }
   };
 
+  /**
+   * This function handles the input of the birthdate.
+   * It validates the input and updates the onboarding details accordingly.
+   * @param {any} newValue - The input birthdate.
+   */
   const handleBirthChange = (newValue: any) => {
     const dateLanding = new Date(newValue);
     const date = dateLanding.getDate().toString();
@@ -88,6 +110,9 @@ export function NutritionistOnboardingPersonalDetails() {
       : null;
   };
 
+  /**
+   * This function checks if the inputs are valid and updates the onboarding details accordingly.
+   */
   const inputsAreOk = () => {
     if (!onboardingDetails?.firstname) {
       setFirstNameError(InputError.InputRequired);
@@ -131,6 +156,8 @@ export function NutritionistOnboardingPersonalDetails() {
       nutritionistSteps: OnboardNutritionistSteps.Contact,
     });
   };
+
+  // The component returns a form for the nutritionist to fill out their personal details
   return (
     <OnboardingLayout
       image={"/images/onboarding/details.jpg"}

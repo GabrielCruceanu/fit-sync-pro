@@ -10,7 +10,16 @@ import { OnboardingLayout } from "@/modules/application/onboarding/components/On
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
 
+/**
+ * This component handles the onboarding process for a nutritionist's personal contact details.
+ * It collects information about the nutritionist's phone number, website, and social media links.
+ * The component uses the `useStore` hook to get and update onboarding details.
+ * It also uses local state for error handling and to disable the confirm button when necessary.
+ * The component returns a form for the nutritionist to fill out their contact details.
+ */
+
 export function NutritionistOnboardingPersonalContact() {
+  // Using the store to get and update onboarding details
   const onboardingDetails = useStore(
     (state) => state.onboarding.onboardingNutritionistDetails,
   );
@@ -18,14 +27,21 @@ export function NutritionistOnboardingPersonalContact() {
     (state) => state.updateOnboardingNutritionistDetails,
   );
 
+  // State variables for error handling
   const [phoneError, setPhoneError] = useState("");
   const [websiteError, setWebsiteError] = useState("");
   const [facebookError, setFacebookError] = useState("");
   const [instagramError, setInstagramError] = useState("");
   const [twitterError, setTwitterError] = useState("");
 
+  // State variable to disable the confirm button
   const [confirmBtnDisable, setConfirmBtnDisable] = useState(false);
 
+  /**
+   * This function handles the input of the phone number.
+   * It validates the input and updates the onboarding details accordingly.
+   * @param {string} phoneNumber - The input phone number.
+   */
   const handleSetPhoneNumber = (phoneNumber: string) => {
     setPhoneError("");
     updateOnboardingDetails({
@@ -43,13 +59,18 @@ export function NutritionistOnboardingPersonalContact() {
     }
   };
 
+  /**
+   * This function checks if the inputs are valid and updates the onboarding details accordingly.
+   */
   const inputsAreOk = () => {
+    // Error handling for phone number
     if (!onboardingDetails?.phoneNumber) {
       setPhoneError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
 
+    // If inputs are valid, update the onboarding details and enable the confirm button
     setConfirmBtnDisable(false);
 
     updateOnboardingDetails({
@@ -57,6 +78,8 @@ export function NutritionistOnboardingPersonalContact() {
       nutritionistSteps: OnboardNutritionistSteps.NutritionExperience,
     });
   };
+
+  // The component returns a form for the nutritionist to fill out their contact details
   return (
     <OnboardingLayout
       image={"/images/onboarding/contact.jpg"}
