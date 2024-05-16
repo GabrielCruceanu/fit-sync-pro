@@ -21,6 +21,7 @@ import { foodPreferences } from "@/constants/foods";
 import { experienceList } from "@/constants/user";
 import nutritionistTypes from "@/constants/nutritionists";
 import { NutritionistType } from "@/ts/types";
+import { NutritionistLocation } from "@/ts/enum/onboarding.enum";
 
 /**
  * This function component handles the onboarding process for a nutritionist.
@@ -40,6 +41,8 @@ export function NutritionistOnboardingNutritionExperience() {
   const [nutritionistDietsError, setNutritionistDietsError] = useState("");
   const [nutritionistExperienceError, setNutritionistExperienceError] =
     useState("");
+  const [nutritionistLocationError, setNutritionistLocationError] =
+    useState("");
   const [confirmBtnDisable, setConfirmBtnDisable] = useState(false);
 
   /**
@@ -57,6 +60,12 @@ export function NutritionistOnboardingNutritionExperience() {
       onboardingDetails.nutritionistDiets?.length === 0
     ) {
       setNutritionistDietsError(InputError.NeedOnlyOne);
+      setConfirmBtnDisable(true);
+      return;
+    }
+
+    if (!onboardingDetails.nutritionLocation) {
+      setNutritionistLocationError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
@@ -196,6 +205,55 @@ export function NutritionistOnboardingNutritionExperience() {
                     <Checkbox value={diet}>{diet}</Checkbox>
                   </div>
                 ))}
+              </div>
+            </CheckboxGroup>
+            {/*TrainingLocation*/}
+            <CheckboxGroup
+              label="Choose how you would like to consult your clients."
+              orientation="horizontal"
+              onValueChange={(e) => {
+                updateOnboardingDetails({
+                  ...onboardingDetails,
+                  nutritionLocation: e,
+                });
+                setNutritionistLocationError("");
+                setConfirmBtnDisable(false);
+              }}
+              isRequired
+              color={nutritionistLocationError ? "danger" : "primary"}
+              errorMessage={nutritionistLocationError}
+              isInvalid={!!nutritionistLocationError}
+              value={onboardingDetails.nutritionLocation}
+            >
+              <div className="grid grid-cols-2 gap-2 w-full">
+                <div
+                  className={cn(
+                    "w-full border-2 rounded p-2",
+                    onboardingDetails?.nutritionLocation?.includes(
+                      NutritionistLocation.Online,
+                    )
+                      ? "border-primary"
+                      : "border-default",
+                  )}
+                >
+                  <Checkbox value={NutritionistLocation.Online}>
+                    {NutritionistLocation.Online}
+                  </Checkbox>
+                </div>{" "}
+                <div
+                  className={cn(
+                    "w-full border-2 rounded p-2",
+                    onboardingDetails?.nutritionLocation?.includes(
+                      NutritionistLocation.AtCabinet,
+                    )
+                      ? "border-primary"
+                      : "border-default",
+                  )}
+                >
+                  <Checkbox value={NutritionistLocation.AtCabinet}>
+                    {NutritionistLocation.AtCabinet}
+                  </Checkbox>
+                </div>
               </div>
             </CheckboxGroup>
           </>

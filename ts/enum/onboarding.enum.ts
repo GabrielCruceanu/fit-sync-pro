@@ -47,6 +47,11 @@ export enum TrainingLocation {
   InPerson = "In-Person",
 }
 
+export enum NutritionistLocation {
+  Online = "Online",
+  AtCabinet = "At-Cabinet",
+}
+
 export enum TrainingOnline {
   Home = "Home",
   Gym = "Gym",
@@ -122,9 +127,6 @@ export enum OnboardNutritionistSteps {
   PersonalDetails = "PERSONAL_DETAILS",
   Contact = "CONTACT",
   NutritionExperience = "NUTRITION_EXPERIENCE",
-  NutritionLocation = "NUTRITION_LOCATION",
-  NutritionOnlinePreferences = "NUTRITION_ONLINE_PREFERENCES",
-  NutritionPhysicalPreferences = "NUTRITION_PHYSICAL_PREFERENCES",
   Availability = "AVAILABILITY",
   Location = "LOCATION",
   Notifications = "NOTIFICATIONS",
