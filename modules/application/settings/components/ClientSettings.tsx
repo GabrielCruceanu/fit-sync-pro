@@ -17,7 +17,7 @@ import {
 import { format } from "date-fns";
 import { ro } from "date-fns/locale";
 import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/calendar";
+import { Calendar } from "@/components/shared/calendar";
 import { genderList } from "@/constants/user";
 import React, { useState } from "react";
 import { createClient } from "@/utils/supabase/create-client";
