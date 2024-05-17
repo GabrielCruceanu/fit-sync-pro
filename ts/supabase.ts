@@ -180,7 +180,9 @@ export type Database = {
       }
       gyms: {
         Row: {
-          activePersonalTrainers: number | null
+          activePersonalTrainers: string | null
+          availabilityDays: string[] | null
+          availabilityTime: string[] | null
           biography: string | null
           certificate: boolean | null
           city: string | null
@@ -204,7 +206,9 @@ export type Database = {
           website: string | null
         }
         Insert: {
-          activePersonalTrainers?: number | null
+          activePersonalTrainers?: string | null
+          availabilityDays?: string[] | null
+          availabilityTime?: string[] | null
           biography?: string | null
           certificate?: boolean | null
           city?: string | null
@@ -228,7 +232,9 @@ export type Database = {
           website?: string | null
         }
         Update: {
-          activePersonalTrainers?: number | null
+          activePersonalTrainers?: string | null
+          availabilityDays?: string[] | null
+          availabilityTime?: string[] | null
           biography?: string | null
           certificate?: boolean | null
           city?: string | null

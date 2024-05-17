@@ -8,6 +8,7 @@ import { OnboardingSkeleton } from "@/modules/application/onboarding/components/
 import { TrainerOnboardingScreen } from "@/modules/application/onboarding/trainter";
 import { createClient } from "@/utils/supabase/create-client";
 import { NutritionistOnboardingScreen } from "./nutritionist/NutritionistOnboardingScreen";
+import { GymOnboardingScreen } from "@/modules/application/onboarding/gym/GymOnboardingScreen";
 
 export function OnboardingScreen() {
   const supabase = createClient();
@@ -45,6 +46,8 @@ export function OnboardingSwitch({
       return <TrainerOnboardingScreen />;
     case OnboardingType.Nutritionist:
       return <NutritionistOnboardingScreen />;
+    case OnboardingType.Gym:
+      return <GymOnboardingScreen />;
     default:
       return <Welcome />;
   }

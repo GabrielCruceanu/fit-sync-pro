@@ -14,6 +14,7 @@ export default function ProfileSettingsPage() {
         onClick={() => updateSettingsType(SettingsStep.Preferences)}
         type="button"
         color={"default"}
+        variant={"ghost"}
         radius={"sm"}
         fullWidth
       >

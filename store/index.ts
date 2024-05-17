@@ -9,6 +9,7 @@ import {
 } from "@/ts/types";
 import {
   Onboarding,
+  OnboardingGymDetails,
   OnboardingNutritionistDetails,
   OnboardingTrainerDetails,
 } from "@/ts/types/onboarding";
@@ -20,6 +21,7 @@ import {
   SettingsStep,
 } from "@/ts/enum";
 import { createJSONStorage, persist } from "zustand/middleware";
+import { OnboardGymSteps } from "@/ts/enum/onboarding.enum";
 
 type State = {
   isLoading: boolean;
@@ -47,6 +49,7 @@ type State = {
   updateOnboardingNutritionistDetails: (
     onboardingDetails: OnboardingNutritionistDetails,
   ) => void;
+  updateOnboardingGymDetails: (onboardingDetails: OnboardingGymDetails) => void;
   settings: SettingsNavigation;
   updateSettingsStep: (settingsStep: SettingsStep) => void;
   updateClientSettings: (profileSettings: Client) => void;
@@ -237,6 +240,14 @@ export const useStore = create<State>()(
           newsAndActualizations: true,
           offersAndPromotions: true,
         },
+        onboardingGymDetails: {
+          gymSteps: OnboardGymSteps.PersonalDetails,
+          type: OnboardingType.Gym,
+          notificationsWorkout: true,
+          notificationsNutrition: true,
+          newsAndActualizations: true,
+          offersAndPromotions: true,
+        },
       },
       updateOnboardingType: (updatedOnboardingType) =>
         set((state) => ({
@@ -281,6 +292,19 @@ export const useStore = create<State>()(
             ...state.onboarding,
             onboardingNutritionistDetails: {
               ...state.onboarding.onboardingNutritionistDetails,
+              ...updatedOnboardingDetails,
+            },
+          },
+        })),
+      updateOnboardingGymDetails: (
+        updatedOnboardingDetails: OnboardingGymDetails,
+      ) =>
+        set((state) => ({
+          ...state,
+          onboarding: {
+            ...state.onboarding,
+            onboardingGymDetails: {
+              ...state.onboarding.onboardingGymDetails,
               ...updatedOnboardingDetails,
             },
           },

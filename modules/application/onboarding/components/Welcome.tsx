@@ -22,6 +22,7 @@ export function Welcome() {
             onClick={() => updateOnboardingType(OnboardingType.Client)}
             type="button"
             color={"primary"}
+            variant={"ghost"}
             fullWidth
             className="capitalize"
           >
@@ -33,6 +34,7 @@ export function Welcome() {
             onClick={() => updateOnboardingType(OnboardingType.Trainer)}
             type="button"
             color={"primary"}
+            variant={"ghost"}
             fullWidth
             className="capitalize"
           >
@@ -44,23 +46,25 @@ export function Welcome() {
             onClick={() => updateOnboardingType(OnboardingType.Nutritionist)}
             type="button"
             color={"primary"}
+            variant={"ghost"}
             fullWidth
             className="capitalize"
           >
             {OnboardingType.Nutritionist.toLowerCase()}
           </Button>
         </li>
-        {/*<li className="mt-3 h-fit w-full md:w-6/12 md:pl-1">*/}
-        {/*  <Button*/}
-        {/*    onClick={() => updateOnboardingType(OnboardingType.Gym)}*/}
-        {/*    type="button"*/}
-        {/*    color={"primary"}*/}
-        {/*    fullWidth*/}
-        {/*    className="capitalize"*/}
-        {/*  >*/}
-        {/*    {OnboardingType.Gym.toLowerCase()}*/}
-        {/*  </Button>*/}
-        {/*</li>*/}
+        <li className="mt-3 h-fit w-full">
+          <Button
+            onClick={() => updateOnboardingType(OnboardingType.Gym)}
+            type="button"
+            color={"primary"}
+            variant={"ghost"}
+            fullWidth
+            className="capitalize"
+          >
+            {OnboardingType.Gym.toLowerCase()}
+          </Button>
+        </li>
       </ul>
     </OnboardingLayout>
   );

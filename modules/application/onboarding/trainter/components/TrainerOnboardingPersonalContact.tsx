@@ -235,6 +235,7 @@ export function TrainerOnboardingPersonalContact() {
         }
         type="button"
         color={"default"}
+        variant={"ghost"}
         radius={"sm"}
         fullWidth
       >

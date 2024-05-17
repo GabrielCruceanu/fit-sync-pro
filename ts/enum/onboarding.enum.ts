@@ -132,3 +132,13 @@ export enum OnboardNutritionistSteps {
   Notifications = "NOTIFICATIONS",
   Overview = "OVERVIEW",
 }
+
+export enum OnboardGymSteps {
+  PersonalDetails = "PERSONAL_DETAILS",
+  Contact = "CONTACT",
+  NutritionExperience = "NUTRITION_EXPERIENCE",
+  Availability = "AVAILABILITY",
+  Location = "LOCATION",
+  Notifications = "NOTIFICATIONS",
+  Overview = "OVERVIEW",
+}

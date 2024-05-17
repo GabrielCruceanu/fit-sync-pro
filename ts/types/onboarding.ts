@@ -10,6 +10,8 @@ import {
 import { GenderType, UserType } from "./user";
 import { NutritionistType } from "./nutritionist";
 import { TrainerType } from "./trainer";
+import { OnboardGymSteps } from "@/ts/enum/onboarding.enum";
+import { GymType } from "@/ts/types/gym";
 
 export type ClientFitnessGoalsType =
   | "Weight Loss"
@@ -150,6 +152,29 @@ export type OnboardingNutritionistDetails = {
   offersAndPromotions?: boolean;
 };
 
+export type OnboardingGymDetails = {
+  gymSteps: OnboardGymSteps;
+  username?: string;
+  phoneNumber?: string;
+  country?: string;
+  county?: string;
+  city?: string;
+  street?: string;
+  type?: UserType;
+  website?: string;
+  facebook?: string;
+  twitter?: string;
+  instagram?: string;
+  activePersonalTrainers?: string;
+  availabilityDays?: string[];
+  availabilityTime?: string[];
+  gymName?: string;
+  gymType?: GymType;
+  notificationsWorkout?: boolean;
+  notificationsNutrition?: boolean;
+  newsAndActualizations?: boolean;
+  offersAndPromotions?: boolean;
+};
 export type FoodAllergies = {
   id: number;
   tip_alergie: string;
@@ -162,6 +187,7 @@ export type Onboarding = {
   onboardingClientDetails: OnboardingClientDetails;
   onboardingTrainerDetails: OnboardingTrainerDetails;
   onboardingNutritionistDetails: OnboardingNutritionistDetails;
+  onboardingGymDetails: OnboardingGymDetails;
 };
 
 export type TrainingAvailability = {

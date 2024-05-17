@@ -258,6 +258,7 @@ export function NutritionistOnboardingPersonalContact() {
         }
         type="button"
         color={"default"}
+        variant={"ghost"}
         radius={"sm"}
         fullWidth
       >

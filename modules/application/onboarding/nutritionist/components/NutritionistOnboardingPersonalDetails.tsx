@@ -388,6 +388,7 @@ export function NutritionistOnboardingPersonalDetails() {
         onClick={() => updateOnboardingType(OnboardingType.Welcome)}
         type="button"
         color={"default"}
+        variant={"ghost"}
         radius={"sm"}
         fullWidth
       >
