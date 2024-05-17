@@ -3,6 +3,7 @@ import { OnboardGymSteps } from "@/ts/enum/onboarding.enum";
 import { GymOnboardingPersonalDetails } from "@/modules/application/onboarding/gym/components/GymOnboardingPersonalDetails";
 import { GymOnboardingOverview } from "@/modules/application/onboarding/gym/components/GymOnboardingOverview";
 import { GymOnboardingPersonalContact } from "@/modules/application/onboarding/gym/components/GymOnboardingPersonalContact";
+import { GymOnboardingLocation } from "@/modules/application/onboarding/gym/components/GymOnboardingLocation";
 
 export function GymOnboardingScreen() {
   const gymSteps = useStore(
@@ -14,8 +15,8 @@ export function GymOnboardingScreen() {
       return <GymOnboardingPersonalDetails />;
     case OnboardGymSteps.Contact:
       return <GymOnboardingPersonalContact />;
-    // case OnboardGymSteps.Location:
-    //   return <GymOnboardingPhysicalLocation />;
+    case OnboardGymSteps.Location:
+      return <GymOnboardingLocation />;
     default:
       return <GymOnboardingOverview />;
   }

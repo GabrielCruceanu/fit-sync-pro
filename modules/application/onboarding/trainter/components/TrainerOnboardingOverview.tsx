@@ -312,7 +312,7 @@ export function TrainerOnboardingOverview() {
             onClick={() =>
               updateOnboardingDetails({
                 ...onboardingDetails,
-                trainerSteps: OnboardTrainerSteps.Availability,
+                trainerSteps: OnboardTrainerSteps.Location,
               })
             }
             type="button"

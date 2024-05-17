@@ -269,7 +269,7 @@ export function NutritionistOnboardingOverview() {
             onClick={() =>
               updateOnboardingDetails({
                 ...onboardingDetails,
-                nutritionistSteps: OnboardNutritionistSteps.Availability,
+                nutritionistSteps: OnboardNutritionistSteps.Location,
               })
             }
             type="button"
