@@ -91,6 +91,7 @@ export const useStore = create<State>()(
             console.log("userDetails", user);
 
             let trainerSettings: Trainer;
+            let nutritionistSettings: Trainer;
             let clientSettings: Client;
 
             switch (user.userType) {
@@ -102,6 +103,17 @@ export const useStore = create<State>()(
                 console.log("trainers", trainers);
 
                 if (trainers?.length) trainerSettings = trainers[0];
+                break;
+
+              case "nutritionist":
+                const { data: nutritionists } = await supabase
+                  .from("nutritionists")
+                  .select("*")
+                  .eq("id", user.id);
+                console.log("nutritionists", nutritionists);
+
+                if (nutritionists?.length)
+                  nutritionistSettings = nutritionists[0];
                 break;
 
               default:

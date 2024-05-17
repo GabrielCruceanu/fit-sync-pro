@@ -1,7 +1,6 @@
 import { useStore } from "@/store";
 import React, { useState } from "react";
 import {
-  formatPhoneNumber,
   handleInputRequired,
   validateIsPhoneNumber,
   validateIsWebsiteLink,
@@ -28,7 +27,6 @@ export function TrainerOnboardingPersonalContact() {
   const [confirmBtnDisable, setConfirmBtnDisable] = useState(false);
 
   const handleSetPhoneNumber = (phoneNumber: string) => {
-
     setPhoneError("");
     updateOnboardingDetails({
       ...onboardingDetails,
@@ -61,7 +59,7 @@ export function TrainerOnboardingPersonalContact() {
   };
   return (
     <OnboardingLayout
-      image={"/images/onboarding/contact.jpg"}
+      image={"/images/onboarding/trainer.jpg"}
       author={"Ray Lewis, American Football Player"}
       quote={
         "But effort? Nobody can judge that because effort is between you and you."

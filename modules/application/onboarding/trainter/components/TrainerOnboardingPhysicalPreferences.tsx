@@ -41,7 +41,7 @@ export function TrainerOnboardingPhysicalPreferences() {
   };
   return (
     <OnboardingLayout
-      image={"/images/client/trainer-desktop.jpg"}
+      image={"/images/client/trainer.jpg"}
       author={"Ray Lewis, American Football Player"}
       quote={
         "But effort? Nobody can judge that because effort is between you and you."

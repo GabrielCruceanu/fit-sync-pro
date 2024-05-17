@@ -1,7 +1,7 @@
 import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
-import { OnboardClientSteps, InputError, OnboardingType } from "@/ts/enum";
+import { InputError, OnboardClientSteps, OnboardingType } from "@/ts/enum";
 import { Input } from "@nextui-org/input";
 import React, { useState } from "react";
 import { createClient } from "@/utils/supabase/create-client";
@@ -176,7 +176,7 @@ export function ClientOnboardingPersonalDetails() {
   };
   return (
     <OnboardingLayout
-      image={"/images/onboarding/details.jpg"}
+      image={"/images/onboarding/client.jpg"}
       author={"Ray Lewis, American Football Player"}
       quote={
         "But effort? Nobody can judge that because effort is between you and you."

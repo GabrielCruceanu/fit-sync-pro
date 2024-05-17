@@ -82,7 +82,7 @@ export function NutritionistOnboardingPersonalContact() {
   // The component returns a form for the nutritionist to fill out their contact details
   return (
     <OnboardingLayout
-      image={"/images/onboarding/contact.jpg"}
+      image={"/images/onboarding/nutritionist.jpg"}
       author={"Ray Lewis, American Football Player"}
       quote={
         "But effort? Nobody can judge that because effort is between you and you."

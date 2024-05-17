@@ -59,7 +59,7 @@ export function TrainerOnboardingFitnessExperience() {
   };
   return (
     <OnboardingLayout
-      image={"/images/onboarding/fitness.jpg"}
+      image={"/images/onboarding/trainer.jpg"}
       author={"Ray Lewis, American Football Player"}
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
