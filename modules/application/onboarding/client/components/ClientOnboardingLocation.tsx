@@ -2,8 +2,8 @@
 import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
-import { OnboardClientSteps, InputError } from "@/ts/enum";
-import {  useState } from "react";
+import { InputError, OnboardClientSteps } from "@/ts/enum";
+import { useState } from "react";
 import { handleInputRequired } from "@/helpers/helpers";
 import { Select, SelectItem } from "@nextui-org/react";
 import { CitiesData } from "@/constants/location";
@@ -21,7 +21,6 @@ export function ClientOnboardingLocation() {
   const [currentCityError, setCurrentCityError] = useState("");
 
   const [confirmBtnDisable, setConfirmBtnDisable] = useState(false);
-
 
   const inputsAreOk = () => {
     if (!onboardingDetails.country) {
@@ -78,7 +77,7 @@ export function ClientOnboardingLocation() {
 
   return (
     <OnboardingLayout
-      image={"/images/onboarding/location.jpg"}
+      image={"/images/onboarding/client.jpg"}
       author={"Ray Lewis, American Football Player"}
       quote={
         "But effort? Nobody can judge that because effort is between you and you."

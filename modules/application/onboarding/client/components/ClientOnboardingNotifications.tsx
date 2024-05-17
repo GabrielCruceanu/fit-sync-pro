@@ -25,7 +25,7 @@ export function ClientOnboardingNotifications() {
   };
   return (
     <OnboardingLayout
-      image={"/images/onboarding/contact.jpg"}
+      image={"/images/onboarding/client.jpg"}
       author={"Ray Lewis, American Football Player"}
       quote={
         "But effort? Nobody can judge that because effort is between you and you."

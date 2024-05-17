@@ -5,27 +5,44 @@ import {
   validateIsPhoneNumber,
   validateIsWebsiteLink,
 } from "@/helpers/helpers";
-import { InputError, OnboardTrainerSteps } from "@/ts/enum";
+import { InputError } from "@/ts/enum";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
+import { OnboardGymSteps } from "@/ts/enum/onboarding.enum";
 
-export function TrainerOnboardingPersonalContact() {
+/**
+ * This component handles the onboarding process for a nutritionist's personal contact details.
+ * It collects information about the nutritionist's phone number, website, and social media links.
+ * The component uses the `useStore` hook to get and update onboarding details.
+ * It also uses local state for error handling and to disable the confirm button when necessary.
+ * The component returns a form for the nutritionist to fill out their contact details.
+ */
+
+export function GymOnboardingPersonalContact() {
+  // Using the store to get and update onboarding details
   const onboardingDetails = useStore(
-    (state) => state.onboarding.onboardingTrainerDetails,
+    (state) => state.onboarding.onboardingGymDetails,
   );
   const updateOnboardingDetails = useStore(
-    (state) => state.updateOnboardingTrainerDetails,
+    (state) => state.updateOnboardingGymDetails,
   );
 
+  // State variables for error handling
   const [phoneError, setPhoneError] = useState("");
   const [websiteError, setWebsiteError] = useState("");
   const [facebookError, setFacebookError] = useState("");
   const [instagramError, setInstagramError] = useState("");
   const [twitterError, setTwitterError] = useState("");
 
+  // State variable to disable the confirm button
   const [confirmBtnDisable, setConfirmBtnDisable] = useState(false);
 
+  /**
+   * This function handles the input of the phone number.
+   * It validates the input and updates the onboarding details accordingly.
+   * @param {string} phoneNumber - The input phone number.
+   */
   const handleSetPhoneNumber = (phoneNumber: string) => {
     setPhoneError("");
     updateOnboardingDetails({
@@ -43,23 +60,30 @@ export function TrainerOnboardingPersonalContact() {
     }
   };
 
+  /**
+   * This function checks if the inputs are valid and updates the onboarding details accordingly.
+   */
   const inputsAreOk = () => {
+    // Error handling for phone number
     if (!onboardingDetails?.phoneNumber) {
       setPhoneError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
 
+    // If inputs are valid, update the onboarding details and enable the confirm button
     setConfirmBtnDisable(false);
 
     updateOnboardingDetails({
       ...onboardingDetails,
-      trainerSteps: OnboardTrainerSteps.NutritionExperience,
+      gymSteps: OnboardGymSteps.Availability,
     });
   };
+
+  // The component returns a form for the nutritionist to fill out their contact details
   return (
     <OnboardingLayout
-      image={"/images/onboarding/trainer.jpg"}
+      image={"/images/onboarding/gym.jpg"}
       author={"Ray Lewis, American Football Player"}
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
@@ -230,7 +254,7 @@ export function TrainerOnboardingPersonalContact() {
         onClick={() =>
           updateOnboardingDetails({
             ...onboardingDetails,
-            trainerSteps: OnboardTrainerSteps.PersonalDetails,
+            gymSteps: OnboardGymSteps.PersonalDetails,
           })
         }
         type="button"

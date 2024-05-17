@@ -1,19 +1,20 @@
-import { useStore } from "@/store";
-import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
-import { Button } from "@nextui-org/button";
-import { InputError, OnboardClientSteps, OnboardingType } from "@/ts/enum";
-import { Input } from "@nextui-org/input";
-import React, { useState } from "react";
 import { createClient } from "@/utils/supabase/create-client";
+import { useStore } from "@/store";
+import React, { useState } from "react";
 import {
   handleInputRequired,
-  validateIsPhoneNumber,
   validateOnlyLetter,
   validateUsername,
 } from "@/helpers/helpers";
-import { genderList } from "@/constants/user";
-import { Calendar } from "@/components/shared/calendar";
 import {
+  InputError,
+  OnboardingType,
+  OnboardNutritionistSteps,
+} from "@/ts/enum";
+import { genderList } from "@/constants/user";
+import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
+import {
+  Input,
   Popover,
   PopoverContent,
   PopoverTrigger,
@@ -22,31 +23,47 @@ import {
 } from "@nextui-org/react";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
+import { Calendar } from "@/components/shared/calendar";
+import { Button } from "@nextui-org/button";
 import { GenderType } from "@/ts/types";
 
-export function ClientOnboardingPersonalDetails() {
+/**
+ * This component handles the onboarding process for a nutritionist's personal contact details.
+ * It collects information about the nutritionist's first name, last name, username, birthdate, and gender.
+ * The component uses the `useStore` hook to get and update onboarding details.
+ * It also uses local state for error handling and to disable the confirm button when necessary.
+ * The component returns a form for the nutritionist to fill out their personal details.
+ */
+export function NutritionistOnboardingPersonalDetails() {
   const supabase = createClient();
+
+  // Using the store to get and update onboarding details
   const onboardingDetails = useStore(
-    (state) => state.onboarding.onboardingClientDetails,
+    (state) => state.onboarding.onboardingNutritionistDetails,
   );
   const updateOnboardingDetails = useStore(
-    (state) => state.updateOnboardingClientDetails,
+    (state) => state.updateOnboardingNutritionistDetails,
   );
   const updateOnboardingType = useStore((state) => state.updateOnboardingType);
 
+  // State variables for error handling
   const [firstNameError, setFirstNameError] = useState("");
   const [lastNameError, setLastNameError] = useState("");
   const [usernameError, setUsernameError] = useState("");
   const [genderError, setGenderError] = useState("");
   const [birthError, setBirthError] = useState("");
-  const [phoneError, setPhoneError] = useState("");
-  const [heightError, setHeightError] = useState("");
-  const [weightError, setWeightError] = useState("");
 
+  // State variable to open and close the calendar
   const [isCalendarOpen, setCalendarIsOpen] = React.useState(false);
 
+  // State variable to disable the confirm button
   const [confirmBtnDisable, setConfirmBtnDisable] = useState(false);
 
+  /**
+   * This function handles the input of the username.
+   * It validates the input and updates the onboarding details accordingly.
+   * @param {string} username - The input username.
+   */
   const handleSearchUsername = async (username: string) => {
     if (handleInputRequired(username)) {
       setUsernameError(InputError.InputRequired);
@@ -67,24 +84,11 @@ export function ClientOnboardingPersonalDetails() {
     }
   };
 
-  const handleSetPhoneNumber = (phoneNumber: string) => {
-    // const clearNumber = formatPhoneNumber(phoneNumber);
-
-    setPhoneError("");
-    setConfirmBtnDisable(false);
-    if (handleInputRequired(phoneNumber)) {
-      setPhoneError(InputError.InputRequired);
-      return;
-    }
-    if (!validateIsPhoneNumber(phoneNumber)) {
-      setPhoneError(InputError.OnlyNumbers);
-      return;
-    }
-    updateOnboardingDetails({
-      ...onboardingDetails,
-      phoneNumber: phoneNumber,
-    });
-  };
+  /**
+   * This function handles the input of the birthdate.
+   * It validates the input and updates the onboarding details accordingly.
+   * @param {any} newValue - The input birthdate.
+   */
   const handleBirthChange = (newValue: any) => {
     const dateLanding = new Date(newValue);
     const date = dateLanding.getDate().toString();
@@ -106,6 +110,9 @@ export function ClientOnboardingPersonalDetails() {
       : null;
   };
 
+  /**
+   * This function checks if the inputs are valid and updates the onboarding details accordingly.
+   */
   const inputsAreOk = () => {
     if (!onboardingDetails?.firstname) {
       setFirstNameError(InputError.InputRequired);
@@ -127,11 +134,6 @@ export function ClientOnboardingPersonalDetails() {
       setConfirmBtnDisable(true);
       return;
     }
-    if (!onboardingDetails?.phoneNumber) {
-      setPhoneError(InputError.InputRequired);
-      setConfirmBtnDisable(true);
-      return;
-    }
     if (!onboardingDetails?.gender) {
       setGenderError(InputError.InputRequired);
       setConfirmBtnDisable(true);
@@ -146,37 +148,19 @@ export function ClientOnboardingPersonalDetails() {
       setConfirmBtnDisable(true);
       return;
     }
-    if (!onboardingDetails?.height) {
-      setHeightError(InputError.InputRequired);
-      setConfirmBtnDisable(true);
-      return;
-    }
-    if (onboardingDetails.height && onboardingDetails.height <= 50) {
-      setHeightError(InputError.HeightGreater);
-      setConfirmBtnDisable(true);
-      return;
-    }
-    if (!onboardingDetails?.weight) {
-      setWeightError(InputError.InputRequired);
-      setConfirmBtnDisable(true);
-      return;
-    }
-    if (onboardingDetails.weight && onboardingDetails.weight <= 30) {
-      setWeightError(InputError.WeightGreater);
-      setConfirmBtnDisable(true);
-      return;
-    }
 
     setConfirmBtnDisable(false);
 
     updateOnboardingDetails({
       ...onboardingDetails,
-      clientSteps: OnboardClientSteps.Goals,
+      nutritionistSteps: OnboardNutritionistSteps.Contact,
     });
   };
+
+  // The component returns a form for the nutritionist to fill out their personal details
   return (
     <OnboardingLayout
-      image={"/images/onboarding/client.jpg"}
+      image={"/images/onboarding/nutritionist.jpg"}
       author={"Ray Lewis, American Football Player"}
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
@@ -222,7 +206,7 @@ export function ClientOnboardingPersonalDetails() {
               }
             }}
           />
-          {/*LastName*/}
+          {/*FirstName*/}
           <Input
             id="lastname"
             placeholder="Doe"
@@ -292,7 +276,7 @@ export function ClientOnboardingPersonalDetails() {
             }}
           />
           {/*Birthday*/}
-          <div>
+          <div className="group flex flex-col w-full h-full">
             <Popover
               isOpen={isCalendarOpen}
               onOpenChange={(open) => setCalendarIsOpen(open)}
@@ -317,6 +301,7 @@ export function ClientOnboardingPersonalDetails() {
                   }
                   color={birthError ? "danger" : "default"}
                   errorMessage={birthError}
+                  className="h-full"
                   isInvalid={!!birthError}
                   onFocusChange={(e) => {
                     if (!e) {
@@ -351,8 +336,8 @@ export function ClientOnboardingPersonalDetails() {
             label="Gender"
             className="bg-background"
             variant="bordered"
-            isRequired
             placeholder="Choose"
+            isRequired
             defaultSelectedKeys={
               onboardingDetails.gender ? [onboardingDetails.gender] : []
             }
@@ -372,7 +357,7 @@ export function ClientOnboardingPersonalDetails() {
             errorMessage={genderError}
             isInvalid={!!genderError}
           >
-            {genderList.map((gender) => (
+            {genderList.map((gender: string) => (
               <SelectItem
                 key={gender}
                 value={gender}
@@ -386,95 +371,6 @@ export function ClientOnboardingPersonalDetails() {
               </SelectItem>
             ))}
           </Select>
-
-          {/*PhoneNumber*/}
-          <Input
-            id="phone"
-            placeholder="+40770212948"
-            type="text"
-            label="Phone Number"
-            value={onboardingDetails.phoneNumber}
-            autoCapitalize="none"
-            autoComplete="false"
-            autoCorrect="off"
-            variant="bordered"
-            isRequired
-            onValueChange={(e) => {
-              handleSetPhoneNumber(e);
-            }}
-            color={phoneError ? "danger" : "default"}
-            errorMessage={phoneError}
-            isInvalid={!!phoneError}
-          />
-          {/*Height*/}
-          <Input
-            id="height"
-            placeholder="173 cm"
-            type="number"
-            label="Height"
-            value={onboardingDetails.height?.toString()}
-            autoCapitalize="none"
-            autoComplete="false"
-            autoCorrect="off"
-            variant="bordered"
-            isRequired
-            endContent={"cm"}
-            onValueChange={(e) => {
-              updateOnboardingDetails({
-                ...onboardingDetails,
-                height: Number(e),
-              });
-              setHeightError("");
-              setConfirmBtnDisable(false);
-            }}
-            color={heightError ? "danger" : "default"}
-            errorMessage={heightError}
-            isInvalid={!!heightError}
-            onFocusChange={(e) => {
-              if (!e) {
-                handleInputRequired(onboardingDetails.height?.toString())
-                  ? setHeightError(InputError.InputRequired)
-                  : onboardingDetails.height && onboardingDetails.height <= 50
-                    ? setHeightError(InputError.HeightGreater)
-                    : null;
-              }
-            }}
-          />
-
-          {/*Weight*/}
-          <Input
-            id="weight"
-            placeholder="75 Kg"
-            type="number"
-            label="Weight"
-            value={onboardingDetails.weight?.toString()}
-            autoCapitalize="none"
-            autoComplete="false"
-            autoCorrect="off"
-            variant="bordered"
-            isRequired
-            endContent={"Kg"}
-            onValueChange={(e) => {
-              updateOnboardingDetails({
-                ...onboardingDetails,
-                weight: Number(e),
-              });
-              setWeightError("");
-              setConfirmBtnDisable(false);
-            }}
-            color={weightError ? "danger" : "default"}
-            errorMessage={weightError}
-            isInvalid={!!weightError}
-            onFocusChange={(e) => {
-              if (!e) {
-                handleInputRequired(onboardingDetails.weight?.toString())
-                  ? setWeightError(InputError.InputRequired)
-                  : onboardingDetails.weight && onboardingDetails.weight <= 30
-                    ? setWeightError(InputError.WeightGreater)
-                    : null;
-              }
-            }}
-          />
         </div>
       </div>
 

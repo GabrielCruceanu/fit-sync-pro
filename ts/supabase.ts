@@ -35,19 +35,19 @@ export type Database = {
           country: string | null
           geonameid: number
           name: string | null
-          subcountry: string | null
+          state: string | null
         }
         Insert: {
           country?: string | null
           geonameid?: number
           name?: string | null
-          subcountry?: string | null
+          state?: string | null
         }
         Update: {
           country?: string | null
           geonameid?: number
           name?: string | null
-          subcountry?: string | null
+          state?: string | null
         }
         Relationships: []
       }
@@ -180,7 +180,9 @@ export type Database = {
       }
       gyms: {
         Row: {
-          activePersonalTrainers: number | null
+          activePersonalTrainers: string | null
+          availabilityDays: string[] | null
+          availabilityTime: string[] | null
           biography: string | null
           certificate: boolean | null
           city: string | null
@@ -204,7 +206,9 @@ export type Database = {
           website: string | null
         }
         Insert: {
-          activePersonalTrainers?: number | null
+          activePersonalTrainers?: string | null
+          availabilityDays?: string[] | null
+          availabilityTime?: string[] | null
           biography?: string | null
           certificate?: boolean | null
           city?: string | null
@@ -228,7 +232,9 @@ export type Database = {
           website?: string | null
         }
         Update: {
-          activePersonalTrainers?: number | null
+          activePersonalTrainers?: string | null
+          availabilityDays?: string[] | null
+          availabilityTime?: string[] | null
           biography?: string | null
           certificate?: boolean | null
           city?: string | null
@@ -286,14 +292,14 @@ export type Database = {
           lastName: string | null
           nutritionAvailabilityDays: string[] | null
           nutritionAvailabilityTime: string[] | null
-          nutritionistDiets: string | null
+          nutritionistDiets: string[] | null
           nutritionistExperience: string | null
           nutritionistType:
             | Database["public"]["Enums"]["nutritionist_type"]
             | null
-          nutritionLocation: string | null
-          nutritionOnlinePreferences: string | null
-          nutritionPhysicalPreferences: string | null
+          nutritionLocation: string[] | null
+          nutritionOnlinePreferences: string[] | null
+          nutritionPhysicalPreferences: string[] | null
           phoneNumber: string | null
           profilePictureUrl: string | null
           state: string | null
@@ -326,14 +332,14 @@ export type Database = {
           lastName?: string | null
           nutritionAvailabilityDays?: string[] | null
           nutritionAvailabilityTime?: string[] | null
-          nutritionistDiets?: string | null
+          nutritionistDiets?: string[] | null
           nutritionistExperience?: string | null
           nutritionistType?:
             | Database["public"]["Enums"]["nutritionist_type"]
             | null
-          nutritionLocation?: string | null
-          nutritionOnlinePreferences?: string | null
-          nutritionPhysicalPreferences?: string | null
+          nutritionLocation?: string[] | null
+          nutritionOnlinePreferences?: string[] | null
+          nutritionPhysicalPreferences?: string[] | null
           phoneNumber?: string | null
           profilePictureUrl?: string | null
           state?: string | null
@@ -366,14 +372,14 @@ export type Database = {
           lastName?: string | null
           nutritionAvailabilityDays?: string[] | null
           nutritionAvailabilityTime?: string[] | null
-          nutritionistDiets?: string | null
+          nutritionistDiets?: string[] | null
           nutritionistExperience?: string | null
           nutritionistType?:
             | Database["public"]["Enums"]["nutritionist_type"]
             | null
-          nutritionLocation?: string | null
-          nutritionOnlinePreferences?: string | null
-          nutritionPhysicalPreferences?: string | null
+          nutritionLocation?: string[] | null
+          nutritionOnlinePreferences?: string[] | null
+          nutritionPhysicalPreferences?: string[] | null
           phoneNumber?: string | null
           profilePictureUrl?: string | null
           state?: string | null

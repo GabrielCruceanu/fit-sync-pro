@@ -47,6 +47,11 @@ export enum TrainingLocation {
   InPerson = "In-Person",
 }
 
+export enum NutritionistLocation {
+  Online = "Online",
+  AtCabinet = "At-Cabinet",
+}
+
 export enum TrainingOnline {
   Home = "Home",
   Gym = "Gym",
@@ -114,6 +119,25 @@ export enum OnboardTrainerSteps {
 }
 
 export enum IsNutritionist {
-  Is = "Is",
-  Not = "Not",
+  Yes = "Yes",
+  No = "No",
+}
+
+export enum OnboardNutritionistSteps {
+  PersonalDetails = "PERSONAL_DETAILS",
+  Contact = "CONTACT",
+  NutritionExperience = "NUTRITION_EXPERIENCE",
+  Availability = "AVAILABILITY",
+  Location = "LOCATION",
+  Notifications = "NOTIFICATIONS",
+  Overview = "OVERVIEW",
+}
+
+export enum OnboardGymSteps {
+  PersonalDetails = "PERSONAL_DETAILS",
+  Contact = "CONTACT",
+  Availability = "AVAILABILITY",
+  Location = "LOCATION",
+  Notifications = "NOTIFICATIONS",
+  Overview = "OVERVIEW",
 }

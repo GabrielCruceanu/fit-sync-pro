@@ -1,20 +1,27 @@
 import { create } from "zustand";
 import { createClient } from "@/utils/supabase/create-client";
 import {
+  Client,
   OnboardingClientDetails,
   SettingsNavigation,
-  Client,
   Trainer,
   UserDetails,
 } from "@/ts/types";
-import { Onboarding, OnboardingTrainerDetails } from "@/ts/types/onboarding";
+import {
+  Onboarding,
+  OnboardingGymDetails,
+  OnboardingNutritionistDetails,
+  OnboardingTrainerDetails,
+} from "@/ts/types/onboarding";
 import {
   OnboardClientSteps,
   OnboardingType,
+  OnboardNutritionistSteps,
   OnboardTrainerSteps,
   SettingsStep,
 } from "@/ts/enum";
 import { createJSONStorage, persist } from "zustand/middleware";
+import { OnboardGymSteps } from "@/ts/enum/onboarding.enum";
 
 type State = {
   isLoading: boolean;
@@ -39,6 +46,10 @@ type State = {
   updateOnboardingTrainerDetails: (
     onboardingDetails: OnboardingTrainerDetails,
   ) => void;
+  updateOnboardingNutritionistDetails: (
+    onboardingDetails: OnboardingNutritionistDetails,
+  ) => void;
+  updateOnboardingGymDetails: (onboardingDetails: OnboardingGymDetails) => void;
   settings: SettingsNavigation;
   updateSettingsStep: (settingsStep: SettingsStep) => void;
   updateClientSettings: (profileSettings: Client) => void;
@@ -83,6 +94,7 @@ export const useStore = create<State>()(
             console.log("userDetails", user);
 
             let trainerSettings: Trainer;
+            let nutritionistSettings: Trainer;
             let clientSettings: Client;
 
             switch (user.userType) {
@@ -94,6 +106,17 @@ export const useStore = create<State>()(
                 console.log("trainers", trainers);
 
                 if (trainers?.length) trainerSettings = trainers[0];
+                break;
+
+              case "nutritionist":
+                const { data: nutritionists } = await supabase
+                  .from("nutritionists")
+                  .select("*")
+                  .eq("id", user.id);
+                console.log("nutritionists", nutritionists);
+
+                if (nutritionists?.length)
+                  nutritionistSettings = nutritionists[0];
                 break;
 
               default:
@@ -147,6 +170,7 @@ export const useStore = create<State>()(
         onboardingType: OnboardingType.Welcome,
         onboardingClientDetails: {
           clientSteps: OnboardClientSteps.PersonalDetails,
+          type: OnboardingType.Client,
           firstname: undefined,
           lastname: undefined,
           username: undefined,
@@ -208,6 +232,22 @@ export const useStore = create<State>()(
           newsAndActualizations: true,
           offersAndPromotions: true,
         },
+        onboardingNutritionistDetails: {
+          nutritionistSteps: OnboardNutritionistSteps.PersonalDetails,
+          type: OnboardingType.Nutritionist,
+          notificationsWorkout: true,
+          notificationsNutrition: true,
+          newsAndActualizations: true,
+          offersAndPromotions: true,
+        },
+        onboardingGymDetails: {
+          gymSteps: OnboardGymSteps.PersonalDetails,
+          type: OnboardingType.Gym,
+          notificationsWorkout: true,
+          notificationsNutrition: true,
+          newsAndActualizations: true,
+          offersAndPromotions: true,
+        },
       },
       updateOnboardingType: (updatedOnboardingType) =>
         set((state) => ({
@@ -239,6 +279,32 @@ export const useStore = create<State>()(
             ...state.onboarding,
             onboardingTrainerDetails: {
               ...state.onboarding.onboardingTrainerDetails,
+              ...updatedOnboardingDetails,
+            },
+          },
+        })),
+      updateOnboardingNutritionistDetails: (
+        updatedOnboardingDetails: OnboardingNutritionistDetails,
+      ) =>
+        set((state) => ({
+          ...state,
+          onboarding: {
+            ...state.onboarding,
+            onboardingNutritionistDetails: {
+              ...state.onboarding.onboardingNutritionistDetails,
+              ...updatedOnboardingDetails,
+            },
+          },
+        })),
+      updateOnboardingGymDetails: (
+        updatedOnboardingDetails: OnboardingGymDetails,
+      ) =>
+        set((state) => ({
+          ...state,
+          onboarding: {
+            ...state.onboarding,
+            onboardingGymDetails: {
+              ...state.onboarding.onboardingGymDetails,
               ...updatedOnboardingDetails,
             },
           },

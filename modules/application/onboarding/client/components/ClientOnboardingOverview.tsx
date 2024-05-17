@@ -50,6 +50,10 @@ export function ClientOnboardingOverview() {
         name: null,
         profile_picture_url: null,
         userType: UserType.CLIENT,
+        newsAndActualizations: onboardingDetails.newsAndActualizations!,
+        notificationsWorkout: onboardingDetails.notificationsWorkout!,
+        offersAndPromotions: onboardingDetails.offersAndPromotions!,
+        notificationsNutrition: onboardingDetails.notificationsNutrition!,
         supabase: supabase,
       });
 

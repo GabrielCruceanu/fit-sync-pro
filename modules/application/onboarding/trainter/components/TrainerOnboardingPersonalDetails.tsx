@@ -18,7 +18,6 @@ import {
   SelectItem,
 } from "@nextui-org/react";
 import { format } from "date-fns";
-import { ro } from "date-fns/locale";
 import { CalendarIcon } from "lucide-react";
 import { Calendar } from "@/components/shared/calendar";
 import { Button } from "@nextui-org/button";
@@ -130,7 +129,7 @@ export function TrainerOnboardingPersonalDetails() {
   };
   return (
     <OnboardingLayout
-      image={"/images/onboarding/details.jpg"}
+      image={"/images/onboarding/trainer.jpg"}
       author={"Ray Lewis, American Football Player"}
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
@@ -357,6 +356,7 @@ export function TrainerOnboardingPersonalDetails() {
         onClick={() => updateOnboardingType(OnboardingType.Welcome)}
         type="button"
         color={"default"}
+        variant={"ghost"}
         radius={"sm"}
         fullWidth
       >

@@ -2,26 +2,26 @@
 import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
-import { InputError, OnboardTrainerSteps } from "@/ts/enum";
+import { InputError, OnboardNutritionistSteps } from "@/ts/enum";
 import React, { useState } from "react";
 import { handleInputRequired, validateOnlyLetter } from "@/helpers/helpers";
 import { Select, SelectItem } from "@nextui-org/react";
 import { CitiesData } from "@/constants/location";
 import { Input } from "@nextui-org/input";
 
-export function TrainerOnboardingPhysicalLocation() {
+export function NutritionistOnboardingLocation() {
   const onboardingDetails = useStore(
-    (state) => state.onboarding.onboardingTrainerDetails,
+    (state) => state.onboarding.onboardingNutritionistDetails,
   );
   const updateOnboardingDetails = useStore(
-    (state) => state.updateOnboardingTrainerDetails,
+    (state) => state.updateOnboardingNutritionistDetails,
   );
 
   const [currentCountryError, setCurrentCountryError] = useState("");
   const [currentCountyError, setCurrentCountyError] = useState("");
   const [currentCityError, setCurrentCityError] = useState("");
-  const [gymStreetError, setGymStreetError] = useState("");
-  const [gymNameError, setGymNameError] = useState("");
+  const [cabinetStreetError, setCabinetStreetError] = useState("");
+  const [cabinetNameError, setCabinetNameError] = useState("");
 
   const [confirmBtnDisable, setConfirmBtnDisable] = useState(false);
 
@@ -41,13 +41,13 @@ export function TrainerOnboardingPhysicalLocation() {
       setConfirmBtnDisable(true);
       return;
     }
-    if (!onboardingDetails.gymStreet) {
-      setGymStreetError(InputError.InputRequired);
+    if (!onboardingDetails.cabinetStreet) {
+      setCabinetStreetError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
-    if (!onboardingDetails.gymName) {
-      setGymNameError(InputError.InputRequired);
+    if (!onboardingDetails.cabinetName) {
+      setCabinetNameError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
@@ -56,7 +56,7 @@ export function TrainerOnboardingPhysicalLocation() {
 
     updateOnboardingDetails({
       ...onboardingDetails,
-      trainerSteps: OnboardTrainerSteps.Overview,
+      nutritionistSteps: OnboardNutritionistSteps.Overview,
     });
   };
 
@@ -90,13 +90,13 @@ export function TrainerOnboardingPhysicalLocation() {
 
   return (
     <OnboardingLayout
-      image={"/images/onboarding/trainer.jpg"}
+      image={"/images/onboarding/nutritionist.jpg"}
       author={"Ray Lewis, American Football Player"}
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
       }
       title={"Location Details"}
-      body={"Enter the location details where you will train your clients."}
+      body={"Enter the location details where you will consult your clients."}
     >
       <div className="grid gap-2">
         <div className="grid md:grid-cols-2 gap-x-3 gap-y-4">
@@ -132,6 +132,7 @@ export function TrainerOnboardingPhysicalLocation() {
                 color={"primary"}
                 key={gen}
                 value={gen}
+                textValue={gen}
                 onClick={() => {
                   currentCounties = [];
                   currentCites = [];
@@ -176,6 +177,7 @@ export function TrainerOnboardingPhysicalLocation() {
                 color={"primary"}
                 key={county}
                 value={county}
+                textValue={county}
                 onClick={() => {
                   setCurrentCountyError("");
                   setConfirmBtnDisable(false);
@@ -215,6 +217,7 @@ export function TrainerOnboardingPhysicalLocation() {
                 color={"primary"}
                 key={city}
                 value={city}
+                textValue={city}
                 onClick={() => {
                   setCurrentCityError("");
                   setConfirmBtnDisable(false);
@@ -229,8 +232,8 @@ export function TrainerOnboardingPhysicalLocation() {
             id="gymStreet"
             placeholder="Unirii, Nr. 14"
             type="text"
-            label="Complete address of the gym"
-            value={onboardingDetails.gymStreet}
+            label="Complete address"
+            value={onboardingDetails.cabinetStreet}
             autoCapitalize="none"
             autoComplete="false"
             autoCorrect="off"
@@ -239,29 +242,29 @@ export function TrainerOnboardingPhysicalLocation() {
             onValueChange={(e) => {
               updateOnboardingDetails({
                 ...onboardingDetails,
-                gymStreet: e,
+                cabinetStreet: e,
               });
-              setGymStreetError("");
+              setCabinetStreetError("");
               setConfirmBtnDisable(false);
             }}
-            color={gymStreetError ? "danger" : "primary"}
-            errorMessage={gymStreetError}
-            isInvalid={!!gymStreetError}
+            color={cabinetStreetError ? "danger" : "primary"}
+            errorMessage={cabinetStreetError}
+            isInvalid={!!cabinetStreetError}
             onFocusChange={(e) => {
               if (!e) {
-                handleInputRequired(onboardingDetails.gymStreet!)
-                  ? setGymStreetError(InputError.InputRequired)
+                handleInputRequired(onboardingDetails.cabinetStreet!)
+                  ? setCabinetStreetError(InputError.InputRequired)
                   : null;
               }
             }}
           />
           {/*GymName*/}
           <Input
-            id="gymname"
-            placeholder="Doe Gym"
+            id="cabinetname"
+            placeholder="Doe Cabinet"
             type="text"
-            label="Name of the gym"
-            value={onboardingDetails.gymName}
+            label="Name of the cabinet"
+            value={onboardingDetails.cabinetName}
             autoCapitalize="none"
             autoComplete="false"
             autoCorrect="off"
@@ -270,20 +273,20 @@ export function TrainerOnboardingPhysicalLocation() {
             onValueChange={(e) => {
               updateOnboardingDetails({
                 ...onboardingDetails,
-                gymName: e,
+                cabinetName: e,
               });
-              setGymNameError("");
+              setCabinetNameError("");
               setConfirmBtnDisable(false);
             }}
-            color={gymNameError ? "danger" : "primary"}
-            errorMessage={gymNameError}
-            isInvalid={!!gymNameError}
+            color={cabinetNameError ? "danger" : "primary"}
+            errorMessage={cabinetNameError}
+            isInvalid={!!cabinetNameError}
             onFocusChange={(e) => {
               if (!e) {
-                handleInputRequired(onboardingDetails.gymName!)
-                  ? setGymNameError(InputError.InputRequired)
-                  : !validateOnlyLetter(onboardingDetails.gymName!)
-                    ? setGymNameError(InputError.OnlyLetter)
+                handleInputRequired(onboardingDetails.cabinetName!)
+                  ? setCabinetNameError(InputError.InputRequired)
+                  : !validateOnlyLetter(onboardingDetails.cabinetName!)
+                    ? setCabinetNameError(InputError.OnlyLetter)
                     : null;
               }
             }}
@@ -306,7 +309,7 @@ export function TrainerOnboardingPhysicalLocation() {
           onClick={() =>
             updateOnboardingDetails({
               ...onboardingDetails,
-              trainerSteps: OnboardTrainerSteps.Availability,
+              nutritionistSteps: OnboardNutritionistSteps.Availability,
             })
           }
           type="button"

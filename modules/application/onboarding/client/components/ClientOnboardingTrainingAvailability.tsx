@@ -2,7 +2,7 @@
 import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
-import { OnboardClientSteps, InputError } from "@/ts/enum";
+import { InputError, OnboardClientSteps } from "@/ts/enum";
 import * as React from "react";
 import { useState } from "react";
 import { Checkbox, CheckboxGroup, cn } from "@nextui-org/react";
@@ -54,13 +54,15 @@ export function ClientOnboardingTrainingAvailability() {
   };
   return (
     <OnboardingLayout
-      image={"/images/onboarding/availability.jpg"}
+      image={"/images/onboarding/client.jpg"}
       author={"Ray Lewis, American Football Player"}
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
       }
       title={"Availability"}
-      body={"Please select the days and time you are available for training"}
+      body={
+        "Please select the days and time when you are available for training"
+      }
     >
       <div className="grid gap-2">
         <div className="grid grid-cols-1 gap-x-3 gap-y-4">

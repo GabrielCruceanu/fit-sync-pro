@@ -45,6 +45,10 @@ export const updateUser = async ({
   email,
   profile_picture_url,
   userType,
+  newsAndActualizations,
+  notificationsWorkout,
+  offersAndPromotions,
+  notificationsNutrition,
   supabase,
 }: {
   user: User;
@@ -57,6 +61,10 @@ export const updateUser = async ({
   email: string;
   profile_picture_url: string | null;
   userType: UserDetails["userType"];
+  newsAndActualizations: boolean;
+  notificationsWorkout: boolean;
+  offersAndPromotions: boolean;
+  notificationsNutrition: boolean;
   supabase: TypedSupabaseClient;
 }) => {
   await supabase
@@ -72,6 +80,10 @@ export const updateUser = async ({
       name: name,
       userType: userType,
       hasOnboarding: true,
+      newsAndActualizations: newsAndActualizations,
+      notificationsWorkout: notificationsWorkout,
+      offersAndPromotions: offersAndPromotions,
+      notificationsNutrition: notificationsNutrition,
     })
     .eq("id", user.id);
 };

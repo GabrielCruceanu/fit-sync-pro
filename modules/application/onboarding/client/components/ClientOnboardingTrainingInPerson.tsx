@@ -2,7 +2,7 @@
 import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
-import { OnboardClientSteps, InputError } from "@/ts/enum";
+import { InputError, OnboardClientSteps } from "@/ts/enum";
 import * as React from "react";
 import { useState } from "react";
 import { RadioGroup } from "@nextui-org/radio";
@@ -37,7 +37,7 @@ export function ClientOnboardingTrainingInPerson() {
   };
   return (
     <OnboardingLayout
-      image={"/images/onboarding/physical.jpg"}
+      image={"/images/onboarding/client.jpg"}
       author={"Ray Lewis, American Football Player"}
       quote={
         "But effort? Nobody can judge that because effort is between you and you."

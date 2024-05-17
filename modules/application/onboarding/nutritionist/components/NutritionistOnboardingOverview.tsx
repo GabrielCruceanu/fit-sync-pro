@@ -1,29 +1,26 @@
 import { useStore } from "@/store";
 import { Button } from "@nextui-org/button";
 import * as React from "react";
-import { useState } from "react";
-import { OnboardTrainerSteps } from "@/ts/enum";
+import { OnboardNutritionistSteps } from "@/ts/enum";
 import { createClient } from "@/utils/supabase/create-client";
 import { useRouter } from "next/navigation";
 import { toast } from "@/components/shared/toast/use-toast";
-import { Trainer } from "@/ts/types";
+import { Nutritionist } from "@/ts/types";
 import { createUserName, updateUser } from "@/utils/supabase/user-service";
 import { OnboardingMessage } from "@/lib/validations/error-check";
 import { UserType } from "@/ts/enum/user.enum";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
-import { createTrainerProfile } from "@/utils/supabase/trainer-service";
+import { createNutritionistProfile } from "@/utils/supabase/nutritionist-service";
 
-export function TrainerOnboardingOverview() {
+export function NutritionistOnboardingOverview() {
   const supabase = createClient();
   const router = useRouter();
   const onboardingDetails = useStore(
-    (state) => state.onboarding.onboardingTrainerDetails,
+    (state) => state.onboarding.onboardingNutritionistDetails,
   );
   const updateOnboardingDetails = useStore(
-    (state) => state.updateOnboardingTrainerDetails,
+    (state) => state.updateOnboardingNutritionistDetails,
   );
-
-  const [confirmBtnDisable, setConfirmBtnDisable] = useState(false);
 
   const handleConfirm = async () => {
     const today = new Date().toISOString();
@@ -49,7 +46,7 @@ export function TrainerOnboardingOverview() {
         lastName: onboardingDetails.lastname!,
         name: null,
         profile_picture_url: null,
-        userType: UserType.TRAINER,
+        userType: UserType.NUTRITIONIST,
         newsAndActualizations: onboardingDetails.newsAndActualizations!,
         notificationsWorkout: onboardingDetails.notificationsWorkout!,
         offersAndPromotions: onboardingDetails.offersAndPromotions!,
@@ -57,7 +54,7 @@ export function TrainerOnboardingOverview() {
         supabase: supabase,
       });
 
-      const trainer: Trainer = {
+      const nutritionist: Nutritionist = {
         id: id,
         type: onboardingDetails.type!,
         firstName: onboardingDetails.firstname!,
@@ -84,38 +81,35 @@ export function TrainerOnboardingOverview() {
         twitter: onboardingDetails.twitter!,
         gallery: null,
         hasPremium: false,
-        isNutritionist: onboardingDetails.isNutritionist!,
+        nutritionAvailabilityDays: onboardingDetails.nutritionAvailabilityDays!,
+        nutritionAvailabilityTime: onboardingDetails.nutritionAvailabilityTime!,
+        nutritionLocation: onboardingDetails.nutritionLocation!,
+        nutritionOnlinePreferences:
+          onboardingDetails.nutritionOnlinePreferences!,
         nutritionistDiets: onboardingDetails.nutritionistDiets!,
+        cabinetName: onboardingDetails.cabinetName!,
+        cabinetStreet: onboardingDetails.cabinetStreet!,
         nutritionistExperience: onboardingDetails.nutritionistExperience!,
         nutritionistType: onboardingDetails.nutritionistType!,
-        trainingLocation: onboardingDetails.trainingLocation!,
-        trainingOnlinePreferences:
-          onboardingDetails.trainingPhysicalPreferences!,
-        trainingPhysicalPreferences:
-          onboardingDetails.trainingPhysicalPreferences!,
-        trainingAvailabilityDays: onboardingDetails.trainingAvailabilityDays!,
-        trainingAvailabilityTime: onboardingDetails.trainingAvailabilityTime!,
-        gymStreet: onboardingDetails.gymStreet!,
-        gymName: onboardingDetails.gymName!,
-        trainingExperience: onboardingDetails.trainingExperience!,
-        trainerType: onboardingDetails.trainerType!,
+        nutritionPhysicalPreferences:
+          onboardingDetails.nutritionPhysicalPreferences!,
       };
 
-      // CREATE TRAINER PROFILE
-      await createTrainerProfile(trainer, supabase).then(() => {
+      // CREATE NUTRITIONIST PROFILE
+      await createNutritionistProfile(nutritionist, supabase).then(() => {
         router.push("/dashboard", { scroll: false });
         toast({
-          title: OnboardingMessage.Trainer.Success.title,
-          description: OnboardingMessage.Trainer.Success.description,
-          variant: OnboardingMessage.Trainer.Success.variant,
+          title: OnboardingMessage.Gym.Success.title,
+          description: OnboardingMessage.Gym.Success.description,
+          variant: OnboardingMessage.Gym.Success.variant,
         });
       });
     } else {
       router.refresh();
       return toast({
-        title: OnboardingMessage.Trainer.Error.title,
-        description: OnboardingMessage.Trainer.Error.description,
-        variant: OnboardingMessage.Trainer.Error.variant,
+        title: OnboardingMessage.Gym.Error.title,
+        description: OnboardingMessage.Gym.Error.description,
+        variant: OnboardingMessage.Gym.Error.variant,
       });
     }
   };
@@ -186,62 +180,46 @@ export function TrainerOnboardingOverview() {
             <strong className="text-medium">{onboardingDetails.city}</strong>
           </p>
           <p className="text-sm">
-            Gym Street: <br />
+            Cabinet Street: <br />
             <strong className="text-medium">
-              {onboardingDetails.gymStreet}
+              {onboardingDetails.cabinetStreet}
             </strong>
           </p>
           <p className="text-sm">
-            Gym Name: <br />
-            <strong className="text-medium">{onboardingDetails.gymName}</strong>
+            Cabinet Name: <br />
+            <strong className="text-medium">
+              {onboardingDetails.cabinetName}
+            </strong>
           </p>
-          {onboardingDetails.isNutritionist && (
-            <>
-              <p className="text-sm">
-                Nutritionist Type: <br />
-                <strong className="text-medium">
-                  {onboardingDetails.nutritionistType}
+          <p className="text-sm">
+            Nutritionist Type: <br />
+            <strong className="text-medium">
+              {onboardingDetails.nutritionistType}
+            </strong>
+          </p>
+          <p className="text-sm">
+            Nutritionist Experience: <br />
+            <strong className="text-medium">
+              {onboardingDetails.nutritionistExperience}
+            </strong>
+          </p>
+
+          <p className="text-sm">
+            Diets can provide: <br />
+            <span className="flex flex-wrap capitalize">
+              {onboardingDetails.nutritionistDiets?.map((diets) => (
+                <strong className="text-medium mr-2" key={diets}>
+                  {diets}
                 </strong>
-              </p>
-              <p className="text-sm">
-                Nutritionist Experience: <br />
-                <strong className="text-medium">
-                  {onboardingDetails.nutritionistExperience}
-                </strong>
-              </p>
-
-              <p className="text-sm">
-                Diets can provide: <br />
-                <span className="flex flex-wrap capitalize">
-                  {onboardingDetails.nutritionistDiets?.map((diets) => (
-                    <strong className="text-medium mr-2" key={diets}>
-                      {diets}
-                    </strong>
-                  ))}
-                </span>
-              </p>
-            </>
-          )}
-
-          <p className="text-sm">
-            Trainer Type: <br />
-            <strong className="text-medium">
-              {onboardingDetails.trainerType}
-            </strong>
+              ))}
+            </span>
           </p>
 
           <p className="text-sm">
-            Trainer Experience: <br />
-            <strong className="text-medium">
-              {onboardingDetails.trainingExperience} years
-            </strong>
-          </p>
-
-          <p className="text-sm">
-            Training mode: <br />
+            Consult mode: <br />
             <strong className="text-medium">
               <span className="flex flex-wrap capitalize">
-                {onboardingDetails.trainingLocation?.map((location) => (
+                {onboardingDetails.nutritionLocation?.map((location) => (
                   <strong className="text-medium mr-2" key={location}>
                     {location}
                   </strong>
@@ -250,34 +228,10 @@ export function TrainerOnboardingOverview() {
             </strong>
           </p>
 
-          {onboardingDetails.trainingPhysicalPreferences && (
-            <p className="text-sm">
-              Training in Person: <br />
-              {onboardingDetails.trainingPhysicalPreferences?.map(
-                (physical) => (
-                  <strong className="text-medium mr-2 block" key={physical}>
-                    {physical}
-                  </strong>
-                ),
-              )}
-            </p>
-          )}
-
-          {onboardingDetails.trainingOnlinePreferences && (
-            <p className="text-sm">
-              Training Online: <br />
-              {onboardingDetails.trainingOnlinePreferences?.map((online) => (
-                <strong className="text-medium mr-2 block" key={online}>
-                  {online}
-                </strong>
-              ))}
-            </p>
-          )}
-
           <p className="text-sm">
-            Training Days: <br />
+            Availability Days: <br />
             <span className="flex flex-wrap capitalize">
-              {onboardingDetails.trainingAvailabilityDays?.map((day) => (
+              {onboardingDetails.nutritionAvailabilityDays?.map((day) => (
                 <strong className="text-medium mr-2" key={day}>
                   {day}
                 </strong>
@@ -285,9 +239,9 @@ export function TrainerOnboardingOverview() {
             </span>
           </p>
           <p className="text-sm">
-            Training Time: <br />
+            Availability Time: <br />
             <span className="flex flex-wrap capitalize">
-              {onboardingDetails.trainingAvailabilityTime?.map((time) => (
+              {onboardingDetails.nutritionAvailabilityTime?.map((time) => (
                 <strong className="text-medium mr-2" key={time}>
                   {time}
                 </strong>
@@ -304,7 +258,6 @@ export function TrainerOnboardingOverview() {
             color={"primary"}
             radius={"sm"}
             fullWidth
-            disabled={confirmBtnDisable}
           >
             Confirm
           </Button>
@@ -312,7 +265,7 @@ export function TrainerOnboardingOverview() {
             onClick={() =>
               updateOnboardingDetails({
                 ...onboardingDetails,
-                trainerSteps: OnboardTrainerSteps.Location,
+                nutritionistSteps: OnboardNutritionistSteps.Location,
               })
             }
             type="button"

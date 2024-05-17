@@ -77,9 +77,11 @@ export function LayoutNavigation({ children }: { children: React.ReactNode }) {
               <UserNavigation
                 imgUrl={user?.profilePictureUrl}
                 fullName={
-                  user?.firstName && user?.lastName
-                    ? user?.firstName + " " + user?.lastName
-                    : "Anonymous"
+                  user?.name
+                    ? user.name
+                    : user?.firstName && user?.lastName
+                      ? user?.firstName + " " + user?.lastName
+                      : "Anonymous"
                 }
                 username={user?.username ? user?.username : "anonymous"}
                 userType={user?.userType ? user?.userType : "Client"}

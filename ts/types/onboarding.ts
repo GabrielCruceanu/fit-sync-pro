@@ -4,11 +4,14 @@ import {
   FitnessExperience,
   OnboardClientSteps,
   OnboardingType,
+  OnboardNutritionistSteps,
   OnboardTrainerSteps,
 } from "@/ts/enum";
 import { GenderType, UserType } from "./user";
 import { NutritionistType } from "./nutritionist";
 import { TrainerType } from "./trainer";
+import { OnboardGymSteps } from "@/ts/enum/onboarding.enum";
+import { GymType } from "@/ts/types/gym";
 
 export type ClientFitnessGoalsType =
   | "Weight Loss"
@@ -66,6 +69,7 @@ export type OnboardingClientDetails = {
   height?: number;
   weight?: number;
   goals?: string[];
+  type?: UserType;
   foodPreferences?: FoodPreferences[];
   haveFoodAllergies?: boolean;
   foodAllergiesType?: string;
@@ -116,16 +120,74 @@ export type OnboardingTrainerDetails = {
   offersAndPromotions?: boolean;
 };
 
+export type OnboardingNutritionistDetails = {
+  nutritionistSteps: OnboardNutritionistSteps;
+  firstname?: string;
+  lastname?: string;
+  username?: string;
+  phoneNumber?: string;
+  birthdate?: Birthdate;
+  gender?: GenderType;
+  country?: string;
+  county?: string;
+  city?: string;
+  type?: UserType;
+  website?: string;
+  facebook?: string;
+  twitter?: string;
+  instagram?: string;
+  nutritionistType?: NutritionistType;
+  nutritionistExperience?: string;
+  nutritionistDiets?: string[];
+  nutritionLocation?: string[];
+  nutritionPhysicalPreferences?: string[];
+  nutritionOnlinePreferences?: string[];
+  nutritionAvailabilityDays?: string[];
+  nutritionAvailabilityTime?: string[];
+  cabinetStreet?: string;
+  cabinetName?: string;
+  notificationsWorkout?: boolean;
+  notificationsNutrition?: boolean;
+  newsAndActualizations?: boolean;
+  offersAndPromotions?: boolean;
+};
+
+export type OnboardingGymDetails = {
+  gymSteps: OnboardGymSteps;
+  username?: string;
+  phoneNumber?: string;
+  country?: string;
+  county?: string;
+  city?: string;
+  street?: string;
+  type?: UserType;
+  website?: string;
+  facebook?: string;
+  twitter?: string;
+  instagram?: string;
+  activePersonalTrainers?: string;
+  availabilityDays?: string[];
+  availabilityTime?: string[];
+  gymName?: string;
+  gymType?: GymType;
+  notificationsWorkout?: boolean;
+  notificationsNutrition?: boolean;
+  newsAndActualizations?: boolean;
+  offersAndPromotions?: boolean;
+};
 export type FoodAllergies = {
   id: number;
   tip_alergie: string;
   exemplu_alimente_asociate: string;
   alimente_sigure: string;
 };
+
 export type Onboarding = {
   onboardingType: OnboardingType;
   onboardingClientDetails: OnboardingClientDetails;
   onboardingTrainerDetails: OnboardingTrainerDetails;
+  onboardingNutritionistDetails: OnboardingNutritionistDetails;
+  onboardingGymDetails: OnboardingGymDetails;
 };
 
 export type TrainingAvailability = {

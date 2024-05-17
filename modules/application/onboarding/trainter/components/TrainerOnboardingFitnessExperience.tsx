@@ -59,14 +59,14 @@ export function TrainerOnboardingFitnessExperience() {
   };
   return (
     <OnboardingLayout
-      image={"/images/onboarding/fitness.jpg"}
+      image={"/images/onboarding/trainer.jpg"}
       author={"Ray Lewis, American Football Player"}
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
       }
-      title={"Despre Fitness"}
+      title={"Fitness Experience"}
       body={
-        "Spuneți-ne mai multe despre experiența dumneavoastră în fitness și cum puteți ajuta clienții."
+        "Please provide your fitness experience below. This will help us match you with the right clients."
       }
     >
       <div className="grid gap-2">
@@ -74,10 +74,10 @@ export function TrainerOnboardingFitnessExperience() {
           <div className="grid grid-cols-2 gap-3">
             {/*TrainingType*/}
             <Select
-              label="Tip antrenor"
+              label="Training Type"
               className="bg-background"
               variant="bordered"
-              placeholder="Alege"
+              placeholder="Choose"
               isRequired
               value={
                 onboardingDetails.trainerType
@@ -113,10 +113,10 @@ export function TrainerOnboardingFitnessExperience() {
             </Select>
             {/*NutritionistExperience*/}
             <Select
-              label="Ani de experiență"
+              label="Experience (years)"
               className="bg-background"
               variant="bordered"
-              placeholder="Alege"
+              placeholder="Choose"
               isRequired
               value={
                 onboardingDetails.trainingExperience
@@ -153,7 +153,7 @@ export function TrainerOnboardingFitnessExperience() {
           </div>
           {/*TrainingLocation*/}
           <CheckboxGroup
-            label="Selectați modul în care vreți să antrenați clienții:"
+            label="Choose how you would like to train your clients."
             orientation="horizontal"
             onValueChange={(e) => {
               updateOnboardingDetails({

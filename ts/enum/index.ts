@@ -21,6 +21,7 @@ export {
   FoodAllergiesType,
   OnboardTrainerSteps,
   IsNutritionist,
+  OnboardNutritionistSteps,
 } from "./onboarding.enum";
 
 export { InputError } from "./error.enum";
