@@ -4,6 +4,7 @@ import { GymOnboardingPersonalDetails } from "@/modules/application/onboarding/g
 import { GymOnboardingOverview } from "@/modules/application/onboarding/gym/components/GymOnboardingOverview";
 import { GymOnboardingPersonalContact } from "@/modules/application/onboarding/gym/components/GymOnboardingPersonalContact";
 import { GymOnboardingLocation } from "@/modules/application/onboarding/gym/components/GymOnboardingLocation";
+import { GymOnboardingAvailability } from "@/modules/application/onboarding/gym/components/GymOnboardingAvailability";
 
 export function GymOnboardingScreen() {
   const gymSteps = useStore(
@@ -15,6 +16,8 @@ export function GymOnboardingScreen() {
       return <GymOnboardingPersonalDetails />;
     case OnboardGymSteps.Contact:
       return <GymOnboardingPersonalContact />;
+    case OnboardGymSteps.Availability:
+      return <GymOnboardingAvailability />;
     case OnboardGymSteps.Location:
       return <GymOnboardingLocation />;
     default:

@@ -76,7 +76,7 @@ export function GymOnboardingPersonalContact() {
 
     updateOnboardingDetails({
       ...onboardingDetails,
-      gymSteps: OnboardGymSteps.Location,
+      gymSteps: OnboardGymSteps.Availability,
     });
   };
 

@@ -251,7 +251,7 @@ export function GymOnboardingOverview() {
             onClick={() =>
               updateOnboardingDetails({
                 ...onboardingDetails,
-                gymSteps: OnboardGymSteps.Availability,
+                gymSteps: OnboardGymSteps.Location,
               })
             }
             type="button"
