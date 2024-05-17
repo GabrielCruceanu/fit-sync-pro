@@ -49,7 +49,11 @@ export function NutritionistOnboardingOverview() {
         lastName: onboardingDetails.lastname!,
         name: null,
         profile_picture_url: null,
-        userType: UserType.TRAINER,
+        userType: UserType.NUTRITIONIST,
+        newsAndActualizations: onboardingDetails.newsAndActualizations!,
+        notificationsWorkout: onboardingDetails.notificationsWorkout!,
+        offersAndPromotions: onboardingDetails.offersAndPromotions!,
+        notificationsNutrition: onboardingDetails.notificationsNutrition!,
         supabase: supabase,
       });
 

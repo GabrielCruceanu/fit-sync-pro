@@ -50,6 +50,10 @@ export function TrainerOnboardingOverview() {
         name: null,
         profile_picture_url: null,
         userType: UserType.TRAINER,
+        newsAndActualizations: onboardingDetails.newsAndActualizations!,
+        notificationsWorkout: onboardingDetails.notificationsWorkout!,
+        offersAndPromotions: onboardingDetails.offersAndPromotions!,
+        notificationsNutrition: onboardingDetails.notificationsNutrition!,
         supabase: supabase,
       });
 
