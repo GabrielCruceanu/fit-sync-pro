@@ -64,6 +64,32 @@ export const OnboardingMessage = {
       variant: ToastVariant.destructive,
     },
   },
+
+  Nutritionist: {
+    Success: {
+      title: "Nutritionist profile",
+      description: "Nutritionist profile created successfully",
+      variant: ToastVariant.default,
+    },
+    Error: {
+      title: "Error",
+      description: "Sorry, an error occurred",
+      variant: ToastVariant.destructive,
+    },
+  },
+
+  Gym: {
+    Success: {
+      title: "Gym profile",
+      description: "Gym profile created successfully",
+      variant: ToastVariant.default,
+    },
+    Error: {
+      title: "Error",
+      description: "Sorry, an error occurred",
+      variant: ToastVariant.destructive,
+    },
+  },
 };
 export function checkErrorMessage(error: any) {
   switch (error?.message) {

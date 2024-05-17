@@ -1,7 +1,6 @@
 import { useStore } from "@/store";
 import { Button } from "@nextui-org/button";
 import * as React from "react";
-import { useState } from "react";
 import { createClient } from "@/utils/supabase/create-client";
 import { useRouter } from "next/navigation";
 import { toast } from "@/components/shared/toast/use-toast";
@@ -22,8 +21,6 @@ export function GymOnboardingOverview() {
   const updateOnboardingDetails = useStore(
     (state) => state.updateOnboardingGymDetails,
   );
-
-  const [confirmBtnDisable, setConfirmBtnDisable] = useState(false);
 
   const handleConfirm = async () => {
     const today = new Date().toISOString();
@@ -88,17 +85,17 @@ export function GymOnboardingOverview() {
       await createGymProfile(gym, supabase).then(() => {
         router.push("/dashboard", { scroll: false });
         toast({
-          title: OnboardingMessage.Trainer.Success.title,
-          description: OnboardingMessage.Trainer.Success.description,
-          variant: OnboardingMessage.Trainer.Success.variant,
+          title: OnboardingMessage.Gym.Success.title,
+          description: OnboardingMessage.Gym.Success.description,
+          variant: OnboardingMessage.Gym.Success.variant,
         });
       });
     } else {
       router.refresh();
       return toast({
-        title: OnboardingMessage.Trainer.Error.title,
-        description: OnboardingMessage.Trainer.Error.description,
-        variant: OnboardingMessage.Trainer.Error.variant,
+        title: OnboardingMessage.Gym.Error.title,
+        description: OnboardingMessage.Gym.Error.description,
+        variant: OnboardingMessage.Gym.Error.variant,
       });
     }
   };
@@ -135,105 +132,78 @@ export function GymOnboardingOverview() {
             <strong className="text-medium">{onboardingDetails.gymType}</strong>
           </p>
           <p className="text-sm">
+            Active Personal Trainers: <br />
+            <strong className="text-medium">
+              {onboardingDetails.activePersonalTrainers}
+            </strong>
+          </p>
+          <p className="text-sm">
             Phone number: <br />
             <strong className="text-medium">
               {onboardingDetails.phoneNumber}
             </strong>
           </p>
-          {/*<p className="text-sm">*/}
-          {/*  Birthday: <br />*/}
-          {/*  <strong className="text-medium">*/}
-          {/*    {onboardingDetails.birthdate?.date}.*/}
-          {/*    {onboardingDetails.birthdate?.month}.*/}
-          {/*    {onboardingDetails.birthdate?.year}*/}
-          {/*  </strong>*/}
-          {/*</p>*/}
-          {/*<p className="text-sm">*/}
-          {/*  Gender: <br />*/}
-          {/*  <strong className="text-medium">{onboardingDetails.gender}</strong>*/}
-          {/*</p>*/}
-          {/*<p className="text-sm">*/}
-          {/*  Country: <br />*/}
-          {/*  <strong className="text-medium">{onboardingDetails.country}</strong>*/}
-          {/*</p>*/}
-          {/*<p className="text-sm">*/}
-          {/*  State: <br />*/}
-          {/*  <strong className="text-medium">{onboardingDetails.county}</strong>*/}
-          {/*</p>*/}
-          {/*<p className="text-sm">*/}
-          {/*  City: <br />*/}
-          {/*  <strong className="text-medium">{onboardingDetails.city}</strong>*/}
-          {/*</p>*/}
-          {/*<p className="text-sm">*/}
-          {/*  Cabinet Street: <br />*/}
-          {/*  <strong className="text-medium">*/}
-          {/*    {onboardingDetails.cabinetStreet}*/}
-          {/*  </strong>*/}
-          {/*</p>*/}
-          {/*<p className="text-sm">*/}
-          {/*  Cabinet Name: <br />*/}
-          {/*  <strong className="text-medium">*/}
-          {/*    {onboardingDetails.cabinetName}*/}
-          {/*  </strong>*/}
-          {/*</p>*/}
-          {/*<p className="text-sm">*/}
-          {/*  Nutritionist Type: <br />*/}
-          {/*  <strong className="text-medium">*/}
-          {/*    {onboardingDetails.nutritionistType}*/}
-          {/*  </strong>*/}
-          {/*</p>*/}
-          {/*<p className="text-sm">*/}
-          {/*  Nutritionist Experience: <br />*/}
-          {/*  <strong className="text-medium">*/}
-          {/*    {onboardingDetails.nutritionistExperience}*/}
-          {/*  </strong>*/}
-          {/*</p>*/}
-
-          {/*<p className="text-sm">*/}
-          {/*  Diets can provide: <br />*/}
-          {/*  <span className="flex flex-wrap capitalize">*/}
-          {/*    {onboardingDetails.nutritionistDiets?.map((diets) => (*/}
-          {/*      <strong className="text-medium mr-2" key={diets}>*/}
-          {/*        {diets}*/}
-          {/*      </strong>*/}
-          {/*    ))}*/}
-          {/*  </span>*/}
-          {/*</p>*/}
-
-          {/*<p className="text-sm">*/}
-          {/*  Consult mode: <br />*/}
-          {/*  <strong className="text-medium">*/}
-          {/*    <span className="flex flex-wrap capitalize">*/}
-          {/*      {onboardingDetails.nutritionLocation?.map((location) => (*/}
-          {/*        <strong className="text-medium mr-2" key={location}>*/}
-          {/*          {location}*/}
-          {/*        </strong>*/}
-          {/*      ))}*/}
-          {/*    </span>*/}
-          {/*  </strong>*/}
-          {/*</p>*/}
-
-          {/*<p className="text-sm">*/}
-          {/*  Availability Days: <br />*/}
-          {/*  <span className="flex flex-wrap capitalize">*/}
-          {/*    {onboardingDetails.nutritionAvailabilityDays?.map((day) => (*/}
-          {/*      <strong className="text-medium mr-2" key={day}>*/}
-          {/*        {day}*/}
-          {/*      </strong>*/}
-          {/*    ))}*/}
-          {/*  </span>*/}
-          {/*</p>*/}
-          {/*<p className="text-sm">*/}
-          {/*  Availability Time: <br />*/}
-          {/*  <span className="flex flex-wrap capitalize">*/}
-          {/*    {onboardingDetails.nutritionAvailabilityTime?.map((time) => (*/}
-          {/*      <strong className="text-medium mr-2" key={time}>*/}
-          {/*        {time}*/}
-          {/*      </strong>*/}
-          {/*    ))}*/}
-          {/*  </span>*/}
-          {/*</p>*/}
+          <p className="text-sm">
+            Country: <br />
+            <strong className="text-medium">{onboardingDetails.country}</strong>
+          </p>
+          <p className="text-sm">
+            State: <br />
+            <strong className="text-medium">{onboardingDetails.county}</strong>
+          </p>
+          <p className="text-sm">
+            City: <br />
+            <strong className="text-medium">{onboardingDetails.city}</strong>
+          </p>
+          <p className="text-sm">
+            Gym Street: <br />
+            <strong className="text-medium">{onboardingDetails.street}</strong>
+          </p>
         </div>
+        <p className="text-sm">
+          Availability Days: <br />
+          <span className="flex flex-wrap capitalize">
+            {onboardingDetails.availabilityDays?.map((day) => (
+              <strong className="text-medium mr-2" key={day}>
+                {day}
+              </strong>
+            ))}
+          </span>
+        </p>
+        <p className="text-sm">
+          Availability Time: <br />
+          <span className="flex flex-wrap capitalize">
+            {onboardingDetails.availabilityTime?.map((time) => (
+              <strong className="text-medium mr-2" key={time}>
+                {time}
+              </strong>
+            ))}
+          </span>
+        </p>
+        <p className="text-sm">
+          Website: <br />
+          <strong className="text-medium">
+            {onboardingDetails.website}
+          </strong>{" "}
+        </p>
+        <p className="text-sm">
+          Facebook: <br />
+          <strong className="text-medium">
+            {onboardingDetails.facebook}
+          </strong>{" "}
+        </p>
+        <p className="text-sm">
+          Instagram: <br />
+          <strong className="text-medium">
+            {onboardingDetails.instagram}
+          </strong>{" "}
+        </p>
+        <p className="text-sm">
+          Twitter: <br />
+          <strong className="text-medium">
+            {onboardingDetails.twitter}
+          </strong>{" "}
+        </p>
       </div>
       <div className="fixed md:relative bottom-0 left-0 w-full bg-background pt-2 pb-6 px-3 md:p-0">
         <div className="grid grid-cols-1 gap-x-3 gap-y-3">
@@ -243,7 +213,6 @@ export function GymOnboardingOverview() {
             color={"primary"}
             radius={"sm"}
             fullWidth
-            disabled={confirmBtnDisable}
           >
             Confirm
           </Button>

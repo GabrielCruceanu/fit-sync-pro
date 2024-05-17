@@ -1,7 +1,6 @@
 import { useStore } from "@/store";
 import { Button } from "@nextui-org/button";
 import * as React from "react";
-import { useState } from "react";
 import { OnboardNutritionistSteps } from "@/ts/enum";
 import { createClient } from "@/utils/supabase/create-client";
 import { useRouter } from "next/navigation";
@@ -22,8 +21,6 @@ export function NutritionistOnboardingOverview() {
   const updateOnboardingDetails = useStore(
     (state) => state.updateOnboardingNutritionistDetails,
   );
-
-  const [confirmBtnDisable, setConfirmBtnDisable] = useState(false);
 
   const handleConfirm = async () => {
     const today = new Date().toISOString();
@@ -102,17 +99,17 @@ export function NutritionistOnboardingOverview() {
       await createNutritionistProfile(nutritionist, supabase).then(() => {
         router.push("/dashboard", { scroll: false });
         toast({
-          title: OnboardingMessage.Trainer.Success.title,
-          description: OnboardingMessage.Trainer.Success.description,
-          variant: OnboardingMessage.Trainer.Success.variant,
+          title: OnboardingMessage.Gym.Success.title,
+          description: OnboardingMessage.Gym.Success.description,
+          variant: OnboardingMessage.Gym.Success.variant,
         });
       });
     } else {
       router.refresh();
       return toast({
-        title: OnboardingMessage.Trainer.Error.title,
-        description: OnboardingMessage.Trainer.Error.description,
-        variant: OnboardingMessage.Trainer.Error.variant,
+        title: OnboardingMessage.Gym.Error.title,
+        description: OnboardingMessage.Gym.Error.description,
+        variant: OnboardingMessage.Gym.Error.variant,
       });
     }
   };
@@ -261,7 +258,6 @@ export function NutritionistOnboardingOverview() {
             color={"primary"}
             radius={"sm"}
             fullWidth
-            disabled={confirmBtnDisable}
           >
             Confirm
           </Button>
