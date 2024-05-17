@@ -17,12 +17,12 @@ import { createClient } from "@/utils/supabase/create-client";
 import { ApplicationLinks } from "@/constants/links";
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/react";
-import { Provider } from "@supabase/gotrue-js";
 import { toast } from "@/components/shared/toast/use-toast";
 import { EyeFilledIcon, EyeSlashFilledIcon } from "@nextui-org/shared-icons";
 import { useStore } from "@/store";
 import { UserDetails } from "@/ts/types";
 import { Icons } from "@/components/icons/icons";
+import { Provider } from "@supabase/auth-js";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
