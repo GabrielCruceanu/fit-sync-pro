@@ -67,6 +67,7 @@ export type OnboardingClientDetails = {
   height?: number;
   weight?: number;
   goals?: string[];
+  type?: UserType;
   foodPreferences?: FoodPreferences[];
   haveFoodAllergies?: boolean;
   foodAllergiesType?: string;

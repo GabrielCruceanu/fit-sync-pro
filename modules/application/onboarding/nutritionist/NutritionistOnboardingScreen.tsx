@@ -5,6 +5,7 @@ import { NutritionistOnboardingPersonalContact } from "@/modules/application/onb
 import { NutritionistOnboardingNutritionExperience } from "@/modules/application/onboarding/nutritionist/components/NutritionistOnboardingNutritionExperience";
 import { NutritionistOnboardingAvailability } from "@/modules/application/onboarding/nutritionist/components/NutritionistOnboardingAvailability";
 import { NutritionistOnboardingLocation } from "@/modules/application/onboarding/nutritionist/components/NutritionistOnboardingLocation";
+import { NutritionistOnboardingOverview } from "@/modules/application/onboarding/nutritionist/components/NutritionistOnboardingOverview";
 
 export function NutritionistOnboardingScreen() {
   const nutritionistSteps = useStore(
@@ -23,6 +24,6 @@ export function NutritionistOnboardingScreen() {
     case OnboardNutritionistSteps.Location:
       return <NutritionistOnboardingLocation />;
     default:
-      return <h1>Default component</h1>;
+      return <NutritionistOnboardingOverview />;
   }
 }
