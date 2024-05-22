@@ -8,13 +8,13 @@ export function Footer() {
       <div className="container mx-auto flex flex-col lg:flex-row">
         <div className="mb-5 w-full lg:mb-0">
           <h3 className="mb-2 text-2xl font-semibold text-gray-900 dark:text-white">
-            Despre noi
+            About us
           </h3>
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            FitSync este o platformă care dorește să îmbunătățească experiența
-            clienților cu antrenorii și să facă munca antrenorilor mai ușoară
-            oferindu-le mai multe unelte prin care își pot gestiona clienții mai
-            ușor.
+            FitSyncPro is a platform that helps clients find the best personal
+            trainers and gyms in their area. We provide a wide range of
+            trainers, nutritionists, and gyms to help you achieve your fitness
+            goals.
           </p>
         </div>
         <div className="mb-5 w-full lg:mb-0">
@@ -59,18 +59,18 @@ export function Footer() {
           </h3>
           <div className="flex flex-col text-sm md:flex-row lg:justify-end">
             <Link
-              href={TermsLinks.termeniSiConditii.link}
+              href={TermsLinks.termsAndConditions.link}
               target="_blank"
               className="text-primary-500 hover:text-primary-700"
             >
-              {TermsLinks.termeniSiConditii.name}
+              {TermsLinks.termsAndConditions.name}
             </Link>
             <Link
-              href={TermsLinks.gdpr.link}
+              href={TermsLinks.privacyPolicy.link}
               target="_blank"
               className="text-primary-500 hover:text-primary-700 md:px-3"
             >
-              {TermsLinks.gdpr.name}
+              {TermsLinks.privacyPolicy.name}
             </Link>
             <Link
               href={TermsLinks.cookies.link}
@@ -82,7 +82,7 @@ export function Footer() {
           </div>
 
           <p className="mt-2 text-sm  text-gray-500 dark:text-gray-400 lg:text-right">
-            © 2023 FitSync. <br /> Toate drepturile rezervate.
+            © 2023 FitSyncPro. <br /> All rights reserved.
             <br />
             Powered by{" "}
             <Link

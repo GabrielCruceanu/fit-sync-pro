@@ -5,27 +5,29 @@ import NutritionistDesktop from "@/public/images/client/nutritionist-desktop.jpg
 import NutritionistMobile from "@/public/images/client/nutritionist-mobile.jpg";
 import GymDesktop from "@/public/images/client/gym-desktop.jpg";
 import GymMobile from "@/public/images/client/gym-mobile.jpg";
+import { ApplicationLinks } from "@/constants/links";
+import { Link } from "@nextui-org/react";
 
 export default function HomeFeatures() {
   return (
     <section className="bg-white dark:bg-background">
       <div className="py-8 px-4 mx-auto space-y-12 max-w-screen-xl lg:space-y-20 sm:py-16 lg:px-6">
-        <div className="gap-8 items-center lg:grid lg:grid-cols-2 xl:gap-16">
+        <div className="gap-8 items-center lg:grid lg:grid-cols-2 lg:gap-y-96">
           <div className="text-gray-500 sm:text-lg dark:text-gray-400">
             <Image
               className=" mb-4 w-full lg:mb-0 lg:hidden rounded-lg"
               src={NutritionistMobile}
-              alt="Experți nutriționiști"
+              alt="Our certified nutrition experts"
             />
             <h2 className="mb-4 text-2xl md:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
-              Experți nutriționiști la îndemâna dumneavoastră
+              Connect with certified nutrition experts
             </h2>
             <p className="mb-8 font-light lg:text-xl">
-              Descoperiți o gamă largă de îndrumări nutriționale personalizate
-              cu experții noștri nutriționiști. Fie că doriți să vă revizuiți
-              dieta, să vă gestionați o afecțiune sau să vă îmbunătățiți
-              performanța sportivă, profesioniștii noștri sunt aici pentru a vă
-              oferi sfaturi personalizate și planuri de acțiune.
+              Our certified nutritionists are dedicated to helping you achieve
+              your wellness goals. Whether you're looking to lose weight, gain
+              muscle, or simply improve your overall health, our nutritionists
+              provide the expertise, guidance, and personalized meal plans you
+              need to succeed.
             </p>
             <ul
               role="list"
@@ -45,7 +47,7 @@ export default function HomeFeatures() {
                   ></path>
                 </svg>
                 <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
-                  Planuri de dietă personalizate
+                  Personalized meal plans
                 </span>
               </li>
               <li className="flex space-x-3">
@@ -62,7 +64,7 @@ export default function HomeFeatures() {
                   ></path>
                 </svg>
                 <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
-                  Abordarea holistică a bunăstării
+                  Evidence-based guidance
                 </span>
               </li>
               <li className="flex space-x-3">
@@ -79,7 +81,7 @@ export default function HomeFeatures() {
                   ></path>
                 </svg>
                 <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
-                  Îndrumare bazată pe dovezi
+                  Continuous support
                 </span>
               </li>
               <li className="flex space-x-3">
@@ -96,21 +98,23 @@ export default function HomeFeatures() {
                   ></path>
                 </svg>
                 <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
-                  Suport continuu
+                  Flexible scheduling
                 </span>
               </li>
             </ul>
             <p className="mb-8 font-light lg:text-xl">
-              Sunteți gata să vă transformați obiceiurile alimentare și să vă
-              atingeți obiectivele de wellness? Înscrieți-vă astăzi la FitSync
-              pentru a intra în legătură cu nutriționiștii noștri certificați și
-              începeți călătoria spre o persoană mai sănătoasă!
+              Ready to take your nutrition journey to the next level?{" "}
+              <Link href={ApplicationLinks.signUp.link} className="lg:text-xl">
+                Sign up
+              </Link>{" "}
+              on FitSyncPro and connect with our expert nutritionists who can
+              guide you every step of the way towards your wellness goals!
             </p>
           </div>
           <Image
             className="hidden mb-4 w-full lg:mb-0 lg:flex rounded-lg"
             src={NutritionistDesktop}
-            alt="Experți nutriționiști"
+            alt="Our certified nutrition experts"
           />
         </div>
 
@@ -118,7 +122,7 @@ export default function HomeFeatures() {
           <Image
             className=" mb-4 w-full lg:mb-0 lg:hidden rounded-lg"
             src={TrainerMobile}
-            alt="antrenorii profesioniști de fitness"
+            alt="Our certified fitness trainers"
           />
           <Image
             className="hidden mb-4 w-full lg:mb-0 lg:flex rounded-lg"
@@ -127,14 +131,14 @@ export default function HomeFeatures() {
           />
           <div className="text-gray-500 sm:text-lg dark:text-gray-400">
             <h2 className="mb-4 text-2xl md:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
-              Conectați-vă cu antrenorii profesioniști de fitness
+              Connect with certified fitness trainers
             </h2>
             <p className="mb-8 font-light lg:text-xl">
-              Antrenorii noștri de fitness certificați se angajează să vă ajute
-              să vă atingeți obiectivele de fitness. Fie că sunteți nou în
-              exerciții fizice sau un atlet experimentat, antrenorii noștri vă
-              oferă expertiza, motivația și planurile de antrenament
-              personalizate de care aveți nevoie pentru a reuși.
+              Our certified fitness trainers are here to help you reach your
+              fitness goals. Whether you're looking to lose weight, build
+              muscle, or improve your overall health, our trainers provide the
+              expertise, motivation, and personalized training programs you need
+              to succeed.
             </p>
             <ul
               role="list"
@@ -154,7 +158,7 @@ export default function HomeFeatures() {
                   ></path>
                 </svg>
                 <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
-                  Regimuri de antrenament personalizate
+                  Personalized training programs
                 </span>
               </li>
               <li className="flex space-x-3">
@@ -171,7 +175,7 @@ export default function HomeFeatures() {
                   ></path>
                 </svg>
                 <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
-                  Atenție individuală
+                  Evidence-based guidance
                 </span>
               </li>
               <li className="flex space-x-3">
@@ -188,7 +192,7 @@ export default function HomeFeatures() {
                   ></path>
                 </svg>
                 <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
-                  Programare flexibilă
+                  Continuous support
                 </span>
               </li>
               <li className="flex space-x-3">
@@ -205,15 +209,17 @@ export default function HomeFeatures() {
                   ></path>
                 </svg>
                 <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
-                  Sprijin motivațional
+                  Flexible scheduling
                 </span>
               </li>
             </ul>
             <p className="font-light lg:text-xl">
-              Sunteți gata să vă ridicați călătoria de fitness? Înscrieți-vă la
-              FitSync și asociați-vă cu antrenorii noștri experți care vă pot
-              ghida la fiecare pas spre atingerea viselor dumneavoastră de
-              fitness!
+              Ready to take your fitness journey to the next level?{" "}
+              <Link href={ApplicationLinks.signUp.link} className="lg:text-xl">
+                Sign up
+              </Link>{" "}
+              on FitSyncPro and connect with our expert trainers who can guide
+              you every step of the way towards your fitness goals!
             </p>
           </div>
         </div>
@@ -223,17 +229,16 @@ export default function HomeFeatures() {
             <Image
               src={GymMobile}
               className="mb-4 w-full lg:mb-0 lg:hidden rounded-lg"
-              alt="spațiul ideal de fitness"
+              alt="Gym space"
             />
             <h2 className="mb-4 text-2xl md:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
-              Descoperiți spațiul ideal de fitness
+              Find the perfect fitness space
             </h2>
             <p className="mb-8 font-light lg:text-xl">
-              Explorați rețeaua noastră de săli de sport premium și găsiți
-              spațiul perfect pentru a vă antrena. De la echipamente de ultimă
-              generație până la o varietate de cursuri de fitness, sălile de
-              sport listate pe platformă oferă tot ce aveți nevoie pentru a
-              rămâne activi și implicați în rutina de fitness.
+              Our diverse selection of fitness centers offers a range of
+              amenities and classes to help you achieve your fitness goals. From
+              state-of-the-art equipment to group fitness classes, our fitness
+              spaces are designed to help you sweat, grow, and thrive.
             </p>
             <ul
               role="list"
@@ -253,7 +258,7 @@ export default function HomeFeatures() {
                   ></path>
                 </svg>
                 <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
-                  Facilități diverse
+                  State-of-the-art equipment
                 </span>
               </li>
               <li className="flex space-x-3">
@@ -270,7 +275,7 @@ export default function HomeFeatures() {
                   ></path>
                 </svg>
                 <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
-                  Clase de grup
+                  Clean and safe environment
                 </span>
               </li>
               <li className="flex space-x-3">
@@ -287,7 +292,7 @@ export default function HomeFeatures() {
                   ></path>
                 </svg>
                 <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
-                  Mediu curat și sigur
+                  Community and culture
                 </span>
               </li>
               <li className="flex space-x-3">
@@ -304,21 +309,23 @@ export default function HomeFeatures() {
                   ></path>
                 </svg>
                 <span className="text-base font-medium leading-tight text-gray-900 dark:text-white">
-                  Comunitate și cultură
+                  Group fitness classes
                 </span>
               </li>
             </ul>
             <p className="mb-8 font-light lg:text-xl">
-              Căutați o sală de sport care să se simtă ca acasă? Înscrieți-vă la
-              FitSync pentru a accesa selecția noastră diversă de centre de
-              fitness și găsiți astăzi comunitatea ideală de săli de sport.
-              Pregătiți-vă să transpirați, să creșteți și să prosperați cu noi!
+              Ready to find your perfect fitness space?{" "}
+              <Link href={ApplicationLinks.signUp.link} className="lg:text-xl">
+                Sign up
+              </Link>{" "}
+              on FitSyncPro and discover the best gyms and fitness centers in
+              your area!
             </p>
           </div>
           <Image
             src={GymDesktop}
             className="hidden mb-4 w-full lg:mb-0 lg:flex rounded-lg"
-            alt="spațiul ideal de fitness"
+            alt="Gym space"
           />
         </div>
       </div>

@@ -10,7 +10,7 @@ export const createNutritionistProfile = async (
     console.log("create nutritionist profile error: ", error.message);
     return false;
   }
-  console.log("create  nutritionist profile data:");
+
   location.reload();
 };
 
@@ -41,7 +41,6 @@ export const getNutritionistProfile = async (
     console.log("select nutritionist profile error: ", error.message);
   }
 
-  console.log("select nutritionist profile data:", nutritionist);
   return nutritionist as unknown as Nutritionist;
 };
 

@@ -5,7 +5,6 @@ import { SettingsSkeleton } from "@/modules/application/settings/components/Sett
 import { SettingsStep } from "@/ts/enum";
 import { Tab, Tabs } from "@nextui-org/tabs";
 import { Card, CardBody } from "@nextui-org/card";
-import { ProfileSettings } from "@/modules/application/settings/components/ClientSettings";
 
 export function SettingsScreen() {
   const supabase = createClient();
@@ -36,7 +35,8 @@ export function SettingsScreen() {
         <Tab key={SettingsStep.Profile} title={SettingsStep.Profile}>
           <Card>
             <CardBody>
-              <ProfileSettings />
+              {/*<ProfileSettings />*/}
+              {SettingsStep.Profile}
             </CardBody>
           </Card>
         </Tab>

@@ -18,40 +18,40 @@ export const SocialLinks = {
 };
 
 export const TermsLinks = {
-  termeniSiConditii: {
-    link: "/termeni-si-conditii",
-    name: "Termeni și condiții",
+  termsAndConditions: {
+    link: "/terms-and-conditions",
+    name: "Terms and Conditions",
   },
-  gdpr: {
-    link: "/politica-de-confidentialitate",
-    name: "Politică de confidențialitate",
+  privacyPolicy: {
+    link: "/privacy-policy",
+    name: "Privacy policy",
   },
   cookies: {
-    link: "/politica-cookie",
-    name: "Politică cookie",
+    link: "/cookie-policy",
+    name: "Cookie policy",
   },
 };
 
 export const WebsiteLinks = {
   homePage: {
     link: "/",
-    name: "Acasă",
+    name: "Home",
   },
   proPage: {
     link: "/pro",
     name: "PRO",
   },
   searchTrainerHomePage: {
-    link: "antrenori",
-    name: "Antrenori",
+    link: "/trainers",
+    name: "Trainers",
   },
   searchNutritionistHomePage: {
-    link: "nutritionisti",
-    name: "Nutriționiști",
+    link: "/nutritionists",
+    name: "Nutritionists",
   },
   searchGymHomePage: {
-    link: "sali-de-antrenament",
-    name: "Săli",
+    link: "/gyms",
+    name: "Gyms",
   },
   blog: {
     link: "/blog",
@@ -62,7 +62,7 @@ export const WebsiteLinks = {
 export const ApplicationLinks = {
   dashboard: {
     link: "/dashboard",
-    name: "Tabloul de bord",
+    name: "Dashboard",
   },
   clientProgress: {
     link: "/progress",
@@ -70,42 +70,42 @@ export const ApplicationLinks = {
   },
   profile: {
     link: "/profile",
-    name: "Profil",
+    name: "Profile",
   },
   messages: {
     link: "/messages",
-    name: "Mesaje",
+    name: "Messages",
   },
   notifications: {
     link: "/notifications",
-    name: "Notificări",
+    name: "Notification",
   },
   settings: {
     link: "/settings",
-    name: "Setări",
+    name: "Settings",
   },
   onboarding: {
     link: "/onboarding",
-    name: "Integrare",
+    name: "Onboarding",
   },
   login: {
     link: "/login",
-    name: "Autentificare",
+    name: "Login",
   },
   logout: {
     link: "/login",
-    name: "Iesire din cont",
+    name: "Logout",
   },
   signUp: {
     link: "/sign-up",
-    name: "Înregistrare",
+    name: "Sign Up",
   },
   forgotPassword: {
     link: "/reset-password",
-    name: "Resetare parolă",
+    name: "Forgot Password",
   },
   updatePassword: {
     link: "/update-password",
-    name: "Actualizare parolă",
+    name: "Update Password",
   },
 };

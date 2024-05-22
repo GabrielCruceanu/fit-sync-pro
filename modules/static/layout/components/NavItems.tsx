@@ -7,24 +7,24 @@ import { usePathname } from "next/navigation";
 
 const navItems = [
   {
-    title: "Acasă",
+    title: "Home",
     url: "/",
   },
   {
-    title: "Antrenori",
-    url: "/antrenori",
+    title: "Trainers",
+    url: "/trainers",
   },
   {
-    title: "Nutriționiști",
-    url: "/nutritionisti",
+    title: "Nutritionists",
+    url: "/nutritionists",
   },
   {
-    title: "Săli de antrenament",
-    url: "/sali-de-antrenament",
+    title: "Gyms",
+    url: "/gyms",
   },
   {
-    title: "PRO",
-    url: "/pro",
+    title: "Professional",
+    url: "/professional",
   },
 ];
 const NavItems = () => {
