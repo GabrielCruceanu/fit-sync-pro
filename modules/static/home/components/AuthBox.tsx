@@ -34,7 +34,7 @@ export default function AuthBox() {
         },
       },
     });
-    console.log("data", data);
+
     if (error) {
       return redirect("/login?message=Could not authenticate user");
     }

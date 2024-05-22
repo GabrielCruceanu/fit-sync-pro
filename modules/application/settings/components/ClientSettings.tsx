@@ -1,3 +1,4 @@
+"use client";
 import { Input } from "@nextui-org/input";
 import {
   formatPhoneNumber,
@@ -6,18 +7,8 @@ import {
   validateOnlyLetter,
   validateUsername,
 } from "@/helpers/helpers";
-import { OnboardClientSteps, InputError, OnboardingType } from "@/ts/enum";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  Select,
-  SelectItem,
-} from "@nextui-org/react";
-import { format } from "date-fns";
-import { ro } from "date-fns/locale";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/shared/calendar";
+import { InputError } from "@/ts/enum";
+import { Select, SelectItem } from "@nextui-org/react";
 import { genderList } from "@/constants/user";
 import React, { useState } from "react";
 import { createClient } from "@/utils/supabase/create-client";
@@ -40,12 +31,12 @@ export function ProfileSettings() {
   const [birthError, setBirthError] = useState("");
 
   const birthDate = parseInt(
-    clientSettings.birthDate ? clientSettings.birthDate : "",
+    clientSettings?.birthDate ? clientSettings.birthDate : "",
   );
   const birthMonth =
-    parseInt(clientSettings.birthMonth ? clientSettings.birthMonth : "") - 1; // Months are zero-based in JavaScript Date object
+    parseInt(clientSettings?.birthMonth ? clientSettings.birthMonth : "") - 1; // Months are zero-based in JavaScript Date object
   const birthYear = parseInt(
-    clientSettings.birthYear ? clientSettings.birthYear : "",
+    clientSettings?.birthYear ? clientSettings.birthYear : "",
   );
 
   const birthDateFull = new Date(birthYear, birthMonth, birthDate);
@@ -168,7 +159,7 @@ export function ProfileSettings() {
           placeholder="Jon"
           type="text"
           label="Prenume"
-          value={clientSettings.firstName ? clientSettings.firstName : ""}
+          value={clientSettings?.firstName ? clientSettings.firstName : ""}
           autoCapitalize="none"
           autoComplete="false"
           autoCorrect="off"
@@ -202,7 +193,7 @@ export function ProfileSettings() {
           placeholder="Doe"
           type="text"
           label="Nume"
-          value={clientSettings.lastName ? clientSettings.lastName : ""}
+          value={clientSettings?.lastName ? clientSettings.lastName : ""}
           autoCapitalize="none"
           autoComplete="false"
           autoCorrect="off"
@@ -236,7 +227,7 @@ export function ProfileSettings() {
           placeholder="jon_doe"
           type="text"
           label="Nume de utilizator"
-          value={clientSettings.username ? clientSettings.username : ""}
+          value={clientSettings?.username ? clientSettings.username : ""}
           autoCapitalize="none"
           autoComplete="false"
           autoCorrect="off"
@@ -267,58 +258,54 @@ export function ProfileSettings() {
         />
         {/*Birthday*/}
         <div>
-          <Popover
-            isOpen={isCalendarOpen}
-            onOpenChange={(open) => setCalendarIsOpen(open)}
-          >
-            <PopoverTrigger>
-              <Input
-                id="birth"
-                placeholder="Alege o data"
-                type="date"
-                value={
-                  birthDateFull
-                    ? format(birthDateFull, "PPP", {
-                        locale: ro,
-                      })
-                    : "Data nașterii"
-                }
-                autoCapitalize="none"
-                autoComplete="false"
-                autoCorrect="off"
-                variant="bordered"
-                isRequired
-                startContent={
-                  <CalendarIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-                }
-                color={birthError ? "danger" : "default"}
-                errorMessage={birthError}
-                isInvalid={!!birthError}
-                onFocusChange={(e) => {
-                  if (!e) {
-                    setBirthError("");
-                    handleInputRequired(birthDateFull.toString())
-                      ? setBirthError(InputError.InputRequired)
-                      : null;
-                    setConfirmBtnDisable(false);
-                  }
-                }}
-              />
-            </PopoverTrigger>
-            <PopoverContent className="w-auto p-0 bg-background">
-              <Calendar
-                mode="single"
-                selected={birthDateFull}
-                onSelect={($event) => {
-                  handleBirthChange($event);
-                  setCalendarIsOpen(false);
-                  setBirthError("");
-                }}
-                initialFocus
-                required
-              />
-            </PopoverContent>
-          </Popover>
+          {/*<Popover*/}
+          {/*  isOpen={isCalendarOpen}*/}
+          {/*  onOpenChange={(open) => setCalendarIsOpen(open)}*/}
+          {/*>*/}
+          {/*  <PopoverTrigger>*/}
+          {/*    <Input*/}
+          {/*      id="birth"*/}
+          {/*      placeholder="Alege o data"*/}
+          {/*      type="date"*/}
+          {/*      value={*/}
+          {/*        birthDateFull ? format(birthDateFull, "PPP") : "Data nașterii"*/}
+          {/*      }*/}
+          {/*      autoCapitalize="none"*/}
+          {/*      autoComplete="false"*/}
+          {/*      autoCorrect="off"*/}
+          {/*      variant="bordered"*/}
+          {/*      isRequired*/}
+          {/*      startContent={*/}
+          {/*        <CalendarIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />*/}
+          {/*      }*/}
+          {/*      color={birthError ? "danger" : "default"}*/}
+          {/*      errorMessage={birthError}*/}
+          {/*      isInvalid={!!birthError}*/}
+          {/*      onFocusChange={(e) => {*/}
+          {/*        if (!e) {*/}
+          {/*          setBirthError("");*/}
+          {/*          handleInputRequired(birthDateFull.toString())*/}
+          {/*            ? setBirthError(InputError.InputRequired)*/}
+          {/*            : null;*/}
+          {/*          setConfirmBtnDisable(false);*/}
+          {/*        }*/}
+          {/*      }}*/}
+          {/*    />*/}
+          {/*  </PopoverTrigger>*/}
+          {/*  <PopoverContent className="w-auto p-0 bg-background">*/}
+          {/*    <Calendar*/}
+          {/*      mode="single"*/}
+          {/*      selected={birthDateFull}*/}
+          {/*      onSelect={($event) => {*/}
+          {/*        handleBirthChange($event);*/}
+          {/*        setCalendarIsOpen(false);*/}
+          {/*        setBirthError("");*/}
+          {/*      }}*/}
+          {/*      initialFocus*/}
+          {/*      required*/}
+          {/*    />*/}
+          {/*  </PopoverContent>*/}
+          {/*</Popover>*/}
         </div>
         {/*Gender*/}
         <Select
@@ -328,9 +315,9 @@ export function ProfileSettings() {
           placeholder="Alege"
           isRequired
           defaultSelectedKeys={
-            clientSettings.gender ? [clientSettings.gender] : []
+            clientSettings?.gender ? [clientSettings.gender] : []
           }
-          value={clientSettings.gender ? clientSettings.gender : ""}
+          value={clientSettings?.gender ? clientSettings.gender : ""}
           onChange={(e) => {
             updateClientSettings({
               ...clientSettings,
@@ -366,10 +353,10 @@ export function ProfileSettings() {
         {/*Telefon*/}
         <Input
           id="phone"
-          placeholder="0770212948"
+          placeholder="+40770212948"
           type="text"
           label="Telefon"
-          value={clientSettings.phone ? clientSettings.phone : ""}
+          value={clientSettings?.phone ? clientSettings.phone : ""}
           autoCapitalize="none"
           autoComplete="false"
           autoCorrect="off"

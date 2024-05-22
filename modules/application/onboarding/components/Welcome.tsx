@@ -13,7 +13,7 @@ export function Welcome() {
       quote={
         "But effort? Nobody can judge that because effort is between you and you."
       }
-      title={"Welcome to FitSync!"}
+      title={"Welcome to FitSyncPro!"}
       body={"What type of account would you like to create?"}
     >
       <ul className="md:container px-3 mb-6 flex flex-wrap items-center justify-center">

@@ -7,8 +7,9 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "FitSync",
-  description: "The fastest way to build apps with Next.js and Supabase",
+  title: "FitSyncPro",
+  description:
+    "FitSyncPro is a platform that connects trainers, nutritionists, and gyms with clients.",
 };
 
 export default async function RootLayout({

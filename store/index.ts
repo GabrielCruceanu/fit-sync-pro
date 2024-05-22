@@ -91,7 +91,6 @@ export const useStore = create<State>()(
 
           if (users) {
             const user = users[0] as UserDetails;
-            console.log("userDetails", user);
 
             let trainerSettings: Trainer;
             let nutritionistSettings: Trainer;
@@ -103,7 +102,6 @@ export const useStore = create<State>()(
                   .from("trainers")
                   .select("*")
                   .eq("id", user.id);
-                console.log("trainers", trainers);
 
                 if (trainers?.length) trainerSettings = trainers[0];
                 break;
@@ -113,7 +111,6 @@ export const useStore = create<State>()(
                   .from("nutritionists")
                   .select("*")
                   .eq("id", user.id);
-                console.log("nutritionists", nutritionists);
 
                 if (nutritionists?.length)
                   nutritionistSettings = nutritionists[0];
@@ -124,7 +121,6 @@ export const useStore = create<State>()(
                   .from("clients")
                   .select("*")
                   .eq("client_id", user.id);
-                console.log("clients", clients);
 
                 if (clients?.length) clientSettings = clients[0];
                 break;
@@ -144,7 +140,6 @@ export const useStore = create<State>()(
           const { error } = await supabase.auth.signOut();
           if (error) throw error;
           sessionStorage.removeItem("fit-sync-storage");
-          console.log("sign out");
           window.location.reload();
         }
       },

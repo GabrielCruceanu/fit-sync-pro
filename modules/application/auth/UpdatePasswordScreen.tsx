@@ -21,11 +21,10 @@ export function UpdatePasswordScreen() {
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
             <div className="flex flex-col space-y-2 text-center">
               <h1 className="text-2xl font-semibold tracking-tight">
-                Actualizare parola
+                Update Password
               </h1>
               <p className="text-sm text-muted-foreground">
-                Introdu adresa de e-mail si parola in campurile de mai jos
-                pentru a intra in cont.
+                Enter your new password to update your account
               </p>
             </div>
             {/*<ClientReduxProviderWrapper>*/}

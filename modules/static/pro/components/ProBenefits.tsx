@@ -10,34 +10,34 @@ export default function ProBenefits() {
     <section className="bg-white dark:bg-background">
       <div className="py-8 px-4 mx-auto max-w-screen-xl text-center sm:py-16 lg:px-6">
         <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
-          De ce FitSync PRO?
+          Why FitSyncPro?
         </h2>
         <p className="text-gray-500 sm:text-xl dark:text-gray-400">
-          Cu FitSync PRO, obțineți acces la o lume de posibilități - de la
-          extinderea clientelei dvs. până la eficientizarea operațiunilor de
-          afaceri.
+          With FitSyncPro, you can grow your business, connect with a vast
+          network of fitness enthusiasts, and access powerful tools to
+          streamline your operations.
         </p>
         <div className="mt-8 lg:mt-12 space-y-8 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-12 md:space-y-0">
           <div>
             <ScanSearch className="mx-auto mb-4 w-12 h-12 text-primary-600 dark:text-primary-500" />
 
             <h3 className="mb-2 text-xl font-bold dark:text-white">
-              Extindeți-vă raza de acțiune
+              Connect with fitness enthusiasts
             </h3>
             <p className="mb-4 text-gray-500 dark:text-gray-400">
-              Conectați-vă cu o rețea vastă de pasionați de fitness care caută
-              îndrumare de specialitate.
+              Grow your business by connecting with a vast network of fitness
+              enthusiasts who are looking for your services.
             </p>
           </div>
           <div>
             <ClipboardList className="mx-auto mb-4 w-12 h-12 text-primary-600 dark:text-primary-500" />
 
             <h3 className="mb-2 text-xl font-bold dark:text-white">
-              Simplificați-vă operațiunile
+              Streamlined operations
             </h3>
             <p className="mb-4 text-gray-500 dark:text-gray-400">
-              Utilizați instrumentele noastre de programare și de gestionare de
-              ultimă generație pentru o eficiență maximă.
+              Simplify your operations with our powerful tools that help you
+              manage your clients, appointments.
             </p>
           </div>
           <div>

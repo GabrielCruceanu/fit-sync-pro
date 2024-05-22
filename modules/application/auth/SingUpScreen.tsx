@@ -16,29 +16,27 @@ export function SingUpScreen() {
         <div className="container p-4 py-8 lg:p-8">
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
             <div className="flex flex-col space-y-2 text-center">
-              <h1 className="text-2xl font-semibold tracking-tight">
-                Inregistrare
-              </h1>
+              <h1 className="text-2xl font-semibold tracking-tight">Sign up</h1>
               <p className="text-sm text-muted-foreground">
-                Completeaza campurile de mai jos pentru a intra pe platforma.
+                Create an account to access your profile
               </p>
             </div>
             <UserSignUpForm />
 
             <p className="px-4 text-center text-sm text-muted-foreground">
-              Prin crearea contului sunteți de acord cu{" "}
+              Creating an account means you’re okay with our{" "}
               <Link
-                href={TermsLinks.termeniSiConditii.link}
+                href={TermsLinks.termsAndConditions.link}
                 className="underline underline-offset-4 hover:text-primary transition-all"
               >
-                {TermsLinks.termeniSiConditii.name}
+                {TermsLinks.termsAndConditions.name}
               </Link>{" "}
-              și{" "}
+              and{" "}
               <Link
-                href={TermsLinks.gdpr.link}
+                href={TermsLinks.privacyPolicy.link}
                 className="underline underline-offset-4 hover:text-primary transition-all"
               >
-                {TermsLinks.gdpr.name}
+                {TermsLinks.privacyPolicy.name}
               </Link>{" "}
               .
             </p>

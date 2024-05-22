@@ -28,7 +28,7 @@ const ProfileDropDown = () => {
               key="profile"
               className="border-b-1 border-b-black dark:border-b-white"
             >
-              <p>Bun venit,</p>
+              <p>Welcome,</p>
               <p className="font-semibold">
                 {`${user.firstName} ${user.lastName}`}
               </p>

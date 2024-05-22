@@ -10,7 +10,7 @@ export default function HomeFaq() {
     <section className="bg-white dark:bg-background">
       <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6 ">
         <h2 className="mb-6 lg:mb-8 text-3xl lg:text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">
-          Întrebări frecvente
+          Frequently Asked Questions
         </h2>
         <div className="mx-auto max-w-screen-md">
           <Accordion>

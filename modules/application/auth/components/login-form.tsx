@@ -77,7 +77,7 @@ export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
 
         if (users) {
           const user = users[0] as UserDetails;
-          console.log("userDetails", user);
+
           setUser(user);
         }
       }

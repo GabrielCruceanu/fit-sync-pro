@@ -1,6 +1,6 @@
-# FitSync
+# FitSyncPro
 
-FitSync is a web application that connects clients with fitness and wellness professionals, including personal trainers, nutritionists, and gyms. It provides a platform for clients to find, book, and engage with professionals to achieve their health and fitness goals.
+FitSyncPro is a web application that connects clients with fitness and wellness professionals, including personal trainers, nutritionists, and gyms. It provides a platform for clients to find, book, and engage with professionals to achieve their health and fitness goals.
 
 ## Features
 
@@ -21,15 +21,15 @@ FitSync is a web application that connects clients with fitness and wellness pro
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/yourusername/fitsync.git`
-2. Navigate to the project directory: `cd fitsync`
+1. Clone the repository: `git clone https://github.com/yourusername/fit-sync-pro.git`
+2. Navigate to the project directory: `cd fit-sync-pro`
 3. Install dependencies: `npm install`
 4. Start the development server: `npm run dev`
 5. Open your browser and visit `http://localhost:3000`
 
 ## Contributing
 
-Contributions are welcome! If you'd like to contribute to FitSync, please follow these steps:
+Contributions are welcome! If you'd like to contribute to FitSyncPro, please follow these steps:
 
 1. Fork the repository on GitHub.
 2. Clone your forked repository to your local machine.
@@ -44,7 +44,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-For any questions or inquiries about FitSync, please contact us at support@fitsync.com.
+For any questions or inquiries about FitSyncPro, please contact us at support@fitsync.pro.
 
 ---
 

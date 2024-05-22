@@ -15,23 +15,25 @@ export default function HomeHowItWorks() {
       <div className="gap-8 items-start py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 xl:gap-16 sm:py-16 lg:px-6">
         <Image
           src={HowItWorkImage}
-          alt="Cum functioneaza FitSync"
+          alt="How it works FitSyncPro"
           placeholder="blur"
           className="lg:sticky top-10 mx-auto mb-4 w-fit md:mx-0 md:w-[500px] lg:w-[500px] lg:mb-0 rounded-lg"
         />
         <div className="text-gray-500 dark:text-gray-400 sm:text-lg">
           <h2 className="mb-4 text-2xl md:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
-            Este ușor să începeți cu FitSync!
+            How FitSyncPro Works
           </h2>
           <p className="mb-3 font-light lg:text-xl">
-            Misiunea noastră este de a oferi o platformă unde profesioniștii își
-            pot ajuta clienții să își atingă obiectivele de fitness.
+            FitSyncPro is a platform that helps clients find the best personal
+            trainers and gyms in their area. We provide a wide range of
+            trainers, nutritionists, and gyms to help you achieve your fitness
+            goals.
           </p>
           <Link
             href={ApplicationLinks.signUp.link}
             className="mb-8 inline-flex items-center text-primary-600 hover:text-primary-800 dark:text-primary-500 dark:hover:text-primary-600"
           >
-            Înregistrați-vă
+            {ApplicationLinks.signUp.name}
             <svg
               className="ml-1 w-6 h-6"
               fill="currentColor"
@@ -52,13 +54,12 @@ export default function HomeHowItWorks() {
               </div>
               <div>
                 <h3 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">
-                  Înregistrați-vă
+                  Create an account
                 </h3>
                 <p className="mb-2 font-light text-gray-500 dark:text-gray-400">
-                  Începeți-vă călătoria de fitness prin crearea contului
-                  FitSync. Este rapid și ușor - trebuie doar să furnizați
-                  informațiile de bază sau să vă înregistrați folosind contul
-                  Google, Facebook sau Apple.
+                  Sign up for an account to get started. You can create an
+                  account using your email address or by signing in with Google
+                  or Facebook.
                 </p>
               </div>
             </div>
@@ -68,13 +69,12 @@ export default function HomeHowItWorks() {
               </div>
               <div>
                 <h3 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">
-                  Alegeți-vă antrenorul / nutriționistul / sala de sport
+                  Find a professional
                 </h3>
                 <p className="mb-2 font-light text-gray-500 dark:text-gray-400">
-                  Răsfoiți lista noastră extinsă de antrenori de fitness
-                  certificați, nutriționiști experți și săli de sport de top.
-                  Utilizați filtrele pentru a găsi perechea perfectă în funcție
-                  de obiectivele, preferințele și locația dvs.
+                  Search for personal trainers, nutritionists, and gyms in your
+                  area. You can filter your search by location, price, and
+                  specialty to find the perfect match for your fitness goals.
                 </p>
               </div>
             </div>
@@ -84,14 +84,13 @@ export default function HomeHowItWorks() {
               </div>
               <div>
                 <h3 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">
-                  Rezervați o ședință
+                  Book a session
                 </h3>
                 <p className="mb-2 font-light text-gray-500 dark:text-gray-400">
-                  Odată ce ați găsit antrenorul de fitness, nutriționistul sau
-                  sala de fitness ideală, rezervați cu ușurință o sesiune sau o
-                  clasă direct prin intermediul aplicației. Alegeți o oră care
-                  se potrivește programului dvs. și pregătiți-vă să faceți
-                  următorul pas în călătoria dvs. de fitness.
+                  Once you've found a professional you like, you can book a
+                  session with them directly through the app. You can schedule
+                  sessions, track your progress, and communicate with your
+                  professional all in one place.
                 </p>
               </div>
             </div>
@@ -101,23 +100,22 @@ export default function HomeHowItWorks() {
               </div>
               <div>
                 <h3 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">
-                  Atingeți-vă obiectivele
+                  Achieve your goals
                 </h3>
                 <p className="mb-2 font-light text-gray-500 dark:text-gray-400">
-                  Începeți să vă antrenați și să vă urmăriți progresul! Cu
-                  FitSync, nu vă alăturați doar unei platforme, ci intrați
-                  într-o comunitate dedicată sănătății și bunăstării.
-                  Atingeți-vă obiectivele de fitness și bucurați-vă de un stil
-                  de viață mai sănătos.
+                  Work with your professional to achieve your fitness goals. You
+                  can track your progress, set new goals, and stay motivated
+                  with the help of your professional.
                 </p>
               </div>
             </div>
           </div>
-          <p className="text-sm">
-            Înțelegem că nevoile fiecăruia sunt diferite, iar aplicația noastră
-            permite antrenorilor și nutritioniștilor să ofere antrenamente și
-            planuri de nutriție personalizate pentru a satisface nevoile
-            individuale.
+          <p className="lg:text-lg">
+            We understand that finding the right professional can be difficult,
+            so we've made it easy for you to find the perfect match for your
+            fitness goals. Whether you're looking for a personal trainer,
+            nutritionist, or gym, FitSyncPro has you covered. Sign up today to
+            get started!
           </p>
         </div>
       </div>

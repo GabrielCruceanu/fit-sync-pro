@@ -72,7 +72,7 @@ export default function NavigationBar({
             size="lg"
           >
             <CircleUserRound className="mr-2" />
-            Contul tău
+            Account
           </Link>
         </NavbarMenuItem>
       </NavbarMenu>

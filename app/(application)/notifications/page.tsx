@@ -3,9 +3,9 @@ import { Metadata } from "next";
 import { LayoutTitle } from "@/modules/application/layout/components/LayoutTitle";
 import { ApplicationLinks } from "@/constants/links";
 export const metadata: Metadata = {
-  title: "Notificări | FitSync",
+  title: "Notifications | FitSyncPro",
   description:
-    "FitSync este o platformă care dorește să îmbunătățească experiența clienților cu antrenorii și să facă munca antrenorilor mai ușoară oferindu-le mai multe unelte prin care își pot gestiona clienții mai ușor.",
+    "FitSyncPro is a platform that connects trainers, nutritionists, and gyms with clients.",
 };
 export default function NotificationsPage() {
   return (
