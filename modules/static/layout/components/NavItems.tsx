@@ -1,9 +1,10 @@
 "use client";
-import { cn, NavbarItem, NavbarMenuItem } from "@nextui-org/react";
+import { NavbarItem, NavbarMenuItem } from "@nextui-org/react";
 import { Link } from "@nextui-org/react";
 import React from "react";
 import isSmallScreen from "@/helpers/is-small-screen";
 import { usePathname } from "next/navigation";
+import { cn } from "@/lib/cn";
 
 const navItems = [
   {

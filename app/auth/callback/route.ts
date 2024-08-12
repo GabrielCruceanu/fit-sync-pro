@@ -11,6 +11,7 @@ export async function GET(request: Request) {
 
   if (code) {
     const cookieStore = cookies();
+    console.log("cookieStore:", cookieStore);
     const supabase = createClient(cookieStore);
     await supabase.auth.exchangeCodeForSession(code);
   }

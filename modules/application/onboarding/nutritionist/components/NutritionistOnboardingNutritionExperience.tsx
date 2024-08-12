@@ -10,18 +10,13 @@ import { Button } from "@nextui-org/button";
 import { InputError, OnboardNutritionistSteps } from "@/ts/enum";
 import * as React from "react";
 import { useState } from "react";
-import {
-  Checkbox,
-  CheckboxGroup,
-  cn,
-  Select,
-  SelectItem,
-} from "@nextui-org/react";
+import { Checkbox, CheckboxGroup, Select, SelectItem } from "@nextui-org/react";
 import { foodPreferences } from "@/constants/foods";
 import { experienceList } from "@/constants/user";
 import nutritionistTypes from "@/constants/nutritionists";
 import { NutritionistType } from "@/ts/types";
 import { NutritionistLocation } from "@/ts/enum/onboarding.enum";
+import { cn } from "@/lib/cn";
 
 /**
  * This function component handles the onboarding process for a nutritionist.

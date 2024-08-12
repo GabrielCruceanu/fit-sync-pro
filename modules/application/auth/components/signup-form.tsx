@@ -7,7 +7,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { RegisterSchema } from "@/lib/validations/auth";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import {
   AuthErrorMessage,
   checkErrorMessage,

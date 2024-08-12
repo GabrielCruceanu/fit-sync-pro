@@ -6,7 +6,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { LoginSchema } from "@/lib/validations/auth";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 import {
   AuthErrorMessage,
@@ -15,8 +15,7 @@ import {
 import { AuthProvider } from "@/ts/enum";
 import { createClient } from "@/utils/supabase/create-client";
 import { ApplicationLinks } from "@/constants/links";
-import { Input } from "@nextui-org/input";
-import { Button } from "@nextui-org/react";
+import { Button, Input } from "@nextui-org/react";
 import { toast } from "@/components/shared/toast/use-toast";
 import { EyeFilledIcon, EyeSlashFilledIcon } from "@nextui-org/shared-icons";
 import { useStore } from "@/store";
@@ -77,7 +76,7 @@ export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
 
         if (users) {
           const user = users[0] as UserDetails;
-
+          console.log("User:", user);
           setUser(user);
         }
       }

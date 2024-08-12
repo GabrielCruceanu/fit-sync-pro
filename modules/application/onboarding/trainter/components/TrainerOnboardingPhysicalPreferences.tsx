@@ -5,8 +5,9 @@ import { Button } from "@nextui-org/button";
 import { InputError, OnboardTrainerSteps } from "@/ts/enum";
 import * as React from "react";
 import { useState } from "react";
-import { Checkbox, CheckboxGroup, cn } from "@nextui-org/react";
+import { Checkbox, CheckboxGroup } from "@nextui-org/react";
 import { TrainingLocation, TrainingPhysic } from "@/ts/enum/onboarding.enum";
+import { cn } from "@/lib/cn";
 
 export function TrainerOnboardingPhysicalPreferences() {
   const onboardingDetails = useStore(

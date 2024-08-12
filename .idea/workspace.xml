@@ -4,7 +4,53 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47929a90-811a-448f-b1af-cd5bff05d262" name="Changes" comment="FitSync translate to English;&#10;rebrand to FitSyncPro;&#10;All console.log deleted;&#10;License added;" />
+    <list default="true" id="47929a90-811a-448f-b1af-cd5bff05d262" name="Changes" comment="FitSync translate to English;&#10;rebrand to FitSyncPro;&#10;All console.log deleted;&#10;License added;">
+      <change afterPath="$PROJECT_DIR$/components/shared/goal-card.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/shared/quote-card.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/cn.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/application/dashboard/DashboardScreen.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/application/dashboard/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(application)/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(application)/dashboard/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/callback/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/callback/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/shared/calendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/shared/calendar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/shared/fit-sync-logo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/shared/fit-sync-logo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/shared/ratio-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/shared/ratio-button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/shared/toast/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/shared/toast/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/middleware.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/auth/components/header-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/auth/components/header-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/auth/components/login-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/auth/components/login-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/auth/components/reset-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/auth/components/reset-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/auth/components/signup-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/auth/components/signup-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/layout/LayoutScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/layout/LayoutScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/layout/components/LayoutNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/layout/components/LayoutNavigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/layout/components/LogoutButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/layout/components/LogoutButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/layout/components/UserNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/layout/components/UserNavigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/layout/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/layout/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingFoodPreferences.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingFoodPreferences.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingGoals.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingGoals.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingNotifications.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingNotifications.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingTrainingAvailability.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingTrainingAvailability.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/components/OnboardingLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/components/OnboardingLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/components/OnboardingSkeleton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/components/OnboardingSkeleton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/gym/components/GymOnboardingAvailability.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/gym/components/GymOnboardingAvailability.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/nutritionist/components/NutritionistOnboardingAvailability.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/nutritionist/components/NutritionistOnboardingAvailability.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/nutritionist/components/NutritionistOnboardingNutritionExperience.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/nutritionist/components/NutritionistOnboardingNutritionExperience.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingFitnessExperience.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingFitnessExperience.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingNutritionExperience.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingNutritionExperience.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingOnlinePreferences.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingOnlinePreferences.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingPhysicalPreferences.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingPhysicalPreferences.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingTrainingAvailability.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingTrainingAvailability.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/settings/components/SettingsSkeleton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/settings/components/SettingsSkeleton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/static/layout/components/NavItems.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/layout/components/NavItems.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/static/layout/components/NavigationBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/layout/components/NavigationBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/supabase/middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/supabase/middleware.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,9 +59,10 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="features/onboarding" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitToolBoxStore">
     <option name="recentBranches">
@@ -26,12 +73,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1716386896" />
+                    <option name="branchName" value="feature/dashboard" />
+                    <option name="lastUsedInstant" value="1723439521" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="features/onboarding" />
-                    <option name="lastUsedInstant" value="1716386895" />
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1723439188" />
                   </RecentBranch>
                 </list>
               </option>
@@ -42,11 +89,31 @@
       </RecentBranches>
     </option>
   </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="c2d44b7c-f573-46d0-863c-3db7de0202a5" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2ilnsmg0kHathgVXOel8Wz7gECU" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "git-widget-placeholder": "main",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "feature/dashboard",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "ts.external.directory.path": "/Users/kaapo-studio/Documents/Work/Projects/fit-sync/node_modules/typescript/lib"
+    "nodejs_package_manager_path": "yarn",
+    "npm.dev.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "/Users/kaapo-studio/Documents/Projects/fit-sync-pro/node_modules/prettier",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "ts.external.directory.path": "/Users/kaapo-studio/Documents/Projects/fit-sync-pro/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager" selected="npm.dev">
@@ -74,11 +141,36 @@
       <list>
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
+        <item itemvalue="npm.dev" />
+        <item itemvalue="npm.build" />
+        <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.17011.90" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="47929a90-811a-448f-b1af-cd5bff05d262" name="Changes" comment="FitSync translate to English;&#10;rebrand to FitSyncPro;&#10;All console.log deleted;&#10;License added;" />
+      <created>1720074240341</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1720074240341</updated>
+      <workItem from="1720074241433" duration="9161000" />
+      <workItem from="1720096240404" duration="9000" />
+      <workItem from="1723032545843" duration="1421000" />
+      <workItem from="1723438914489" duration="5842000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="FitSync translate to English;&#10;rebrand to FitSyncPro;&#10;All console.log deleted;&#10;License added;" />

@@ -1,6 +1,6 @@
 import { ApplicationLinks } from "@/constants/links";
 import React from "react";
-import { Button } from "@nextui-org/button";
+import { Button } from "@nextui-org/react";
 import { useStore } from "@/store";
 
 export function LogoutButton() {

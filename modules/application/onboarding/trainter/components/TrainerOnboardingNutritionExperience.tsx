@@ -5,13 +5,12 @@ import { Button } from "@nextui-org/button";
 import { InputError, OnboardTrainerSteps } from "@/ts/enum";
 import * as React from "react";
 import { useState } from "react";
-import { RadioGroup } from "@nextui-org/radio";
 import { RadioButton } from "@/components/shared/ratio-button";
 import { handleInputRequired } from "@/helpers/helpers";
 import {
   Checkbox,
   CheckboxGroup,
-  cn,
+  RadioGroup,
   Select,
   SelectItem,
 } from "@nextui-org/react";
@@ -20,6 +19,7 @@ import { IsNutritionist } from "@/ts/enum/onboarding.enum";
 import { experienceList } from "@/constants/user";
 import nutritionistTypes from "@/constants/nutritionists";
 import { NutritionistType } from "@/ts/types";
+import { cn } from "@/lib/cn";
 
 export function TrainerOnboardingNutritionExperience() {
   const onboardingDetails = useStore(

@@ -5,11 +5,12 @@ import { Button } from "@nextui-org/button";
 import { InputError, OnboardClientSteps } from "@/ts/enum";
 import * as React from "react";
 import { useState } from "react";
-import { Checkbox, CheckboxGroup, cn } from "@nextui-org/react";
+import { Checkbox, CheckboxGroup } from "@nextui-org/react";
 import {
   trainingAvailabilityDays,
   trainingAvailabilityTime,
 } from "@/constants/availability";
+import { cn } from "@/lib/cn";
 
 export function ClientOnboardingTrainingAvailability() {
   const onboardingDetails = useStore(

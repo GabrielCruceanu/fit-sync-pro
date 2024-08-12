@@ -6,16 +6,16 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { ForgotPasswordSchema } from "@/lib/validations/auth";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import {
   AuthErrorMessage,
   checkErrorMessage,
 } from "@/lib/validations/error-check";
 import { createClient } from "@/utils/supabase/create-client";
-import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
 import { Icons } from "@/components/icons/icons";
 import { toast } from "@/components/shared/toast/use-toast";
+import { Input } from "@nextui-org/react";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
