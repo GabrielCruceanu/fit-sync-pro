@@ -5,17 +5,12 @@ import { Button } from "@nextui-org/button";
 import { InputError, OnboardTrainerSteps } from "@/ts/enum";
 import * as React from "react";
 import { useState } from "react";
-import {
-  Checkbox,
-  CheckboxGroup,
-  cn,
-  Select,
-  SelectItem,
-} from "@nextui-org/react";
+import { Checkbox, CheckboxGroup, Select, SelectItem } from "@nextui-org/react";
 import { TrainingLocation } from "@/ts/enum/onboarding.enum";
 import { experienceList } from "@/constants/user";
 import trainerTypes from "@/constants/trainer";
 import { TrainerType } from "@/ts/types";
+import { cn } from "@/lib/cn";
 
 export function TrainerOnboardingFitnessExperience() {
   const onboardingDetails = useStore(

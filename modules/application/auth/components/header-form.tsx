@@ -1,5 +1,5 @@
 import { AuthType } from "@/ts/enum";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 export default function HeaderForm({
   authType,

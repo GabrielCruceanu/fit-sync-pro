@@ -30,7 +30,7 @@ export function UserNavigation({
         </h3>
         <h6 className="text-sm">{userType.toUpperCase()}</h6>
         <Link href={"/" + username}>
-          <span className="overflow-ellipsis truncate w-56">@{username}</span>
+          <span className="overflow-ellipsis truncate w-56 text-foreground">@{username}</span>
         </Link>
       </div>
     </>

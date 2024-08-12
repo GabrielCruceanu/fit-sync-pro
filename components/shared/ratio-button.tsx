@@ -1,4 +1,5 @@
-import { cn, RadioProps, useRadio, VisuallyHidden } from "@nextui-org/react";
+import { RadioProps, useRadio, VisuallyHidden } from "@nextui-org/react";
+import { cn } from "@/lib/cn";
 
 export const RadioButton = (props: RadioProps) => {
   const {

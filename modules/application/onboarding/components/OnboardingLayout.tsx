@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { cn } from "@nextui-org/react";
+import { cn } from "@/lib/cn";
 
 export function OnboardingLayout({
   title,
@@ -28,7 +28,7 @@ export function OnboardingLayout({
             )}
           />
           <div className="relative z-20 flex items-center text-lg font-medium">
-            Fit<span className="text-primary">Sync</span>
+            FitSyncPro
           </div>
           <div className="relative z-20 mt-auto">
             <blockquote className="space-y-2">

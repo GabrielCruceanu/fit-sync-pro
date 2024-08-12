@@ -5,7 +5,7 @@ import * as React from "react";
 import { useState } from "react";
 import { InputError, OnboardClientSteps } from "@/ts/enum";
 import { Checkbox, CheckboxGroup } from "@nextui-org/react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import { clientFitnessGoalsType } from "@/constants/client";
 
 export function ClientOnboardingGoals() {

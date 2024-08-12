@@ -1,5 +1,5 @@
 "use client";
-import { Button, cn, Link } from "@nextui-org/react";
+import { Button, Link } from "@nextui-org/react";
 import React, { useEffect, useState } from "react";
 import {
   Bell,
@@ -18,6 +18,7 @@ import { usePathname } from "next/navigation";
 import { useStore } from "@/store";
 import FitSyncLogo from "@/components/shared/fit-sync-logo";
 import { ThemeSwitcher } from "@/components/shared/theme-switcher";
+import { cn } from "@/lib/cn";
 
 export function LayoutNavigation({ children }: { children: React.ReactNode }) {
   const [drawerNavigation, setDrawerNavigation] = useState(true);

@@ -4,7 +4,8 @@ import { Button } from "@nextui-org/button";
 import * as React from "react";
 import { useState } from "react";
 import { OnboardClientSteps } from "@/ts/enum";
-import { cn, Switch } from "@nextui-org/react";
+import { Switch } from "@nextui-org/react";
+import { cn } from "@/lib/cn";
 
 export function ClientOnboardingNotifications() {
   const onboardingDetails = useStore(

@@ -13,7 +13,7 @@ import {
   Switch,
 } from "@nextui-org/react";
 import { clientFoodAllergies } from "@/constants/client";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import { FoodPreferences } from "@/ts/types";
 import { foodPreferences } from "@/constants/foods";
 

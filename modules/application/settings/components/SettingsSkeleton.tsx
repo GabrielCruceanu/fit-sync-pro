@@ -1,4 +1,4 @@
-import { cn, Skeleton } from "@nextui-org/react";
+import { Skeleton } from "@nextui-org/react";
 import React from "react";
 
 export function SettingsSkeleton() {
