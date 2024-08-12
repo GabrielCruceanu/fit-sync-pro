@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { Link } from "@nextui-org/react";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | FitSyncPro",
+  title: "Privacy Policy",
   description:
     "FitSyncPro is a platform that connects trainers, nutritionists, and gyms with clients.",
 };

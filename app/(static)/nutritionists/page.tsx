@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Nutritionists | FitSyncPro",
+  title: "Nutritionists",
   description:
     "FitSyncPro is a platform that connects trainers, nutritionists, and gyms with clients.",
 };
