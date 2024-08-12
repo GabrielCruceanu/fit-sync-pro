@@ -10,17 +10,17 @@ export default function PostNotFound() {
             404
           </h1>
           <p className="mb-4 text-3xl font-bold tracking-tight md:text-4xl">
-            Această pagină lipsește.
+            This page is missing.
           </p>
           <p className="mb-6 text-lg font-light ">
-            Ne pare rău, nu putem găsi pagina respectivă. Veți găsi multe de
-            explorat pe pagina principală.
+            Sorry, we can't find the page. You'll find plenty to explore on the
+            home page.
           </p>
           <Link
             className="w-full max-w-xl mx-auto flex cursor-pointer justify-center text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-500 dark:focus:ring-primary-700"
             href={WebsiteLinks.homePage.link}
           >
-            Acasă
+            Home
           </Link>
         </div>
       </div>
