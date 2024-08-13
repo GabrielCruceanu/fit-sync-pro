@@ -1,7 +1,7 @@
 import { HomeScreen } from "@/modules/static/home";
 import { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Home | FitSyncPro",
+  title: "Home",
   description:
     "FitSyncPro is a platform that connects trainers, nutritionists, and gyms with clients.",
 };

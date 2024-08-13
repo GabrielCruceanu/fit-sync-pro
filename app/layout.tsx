@@ -1,49 +1,54 @@
 import "./globals.css";
 import { Providers } from "@/app/providers/NextUiProvider";
-import { Inter } from "next/font/google";
-import { defaultUrl } from "@/helpers/helpers";
 import { Metadata } from "next";
-
-const inter = Inter({ subsets: ["latin"] });
+import { siteConfig } from "@/config/site";
+import { fontSans } from "@/lib/fonts";
+import clsx from "clsx";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(defaultUrl),
-  title: "FitSyncPro",
-  description:
-    "FitSyncPro is a platform that connects trainers, nutritionists, and gyms with clients.",
+  title: {
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
   keywords: ["fitness", "sync", "pro", "trainer", "nutritionist", "gym"],
-  referrer: "origin",
-  publisher: "FitSyncPro",
-  openGraph: {
-    type: "website",
-    url: "https:// Fit Sync. pro ",
-    title: "FitSyncPro",
-    description:
-      "FitSyncPro is a platform that connects trainers, nutritionists, and gyms with clients.",
-    siteName: "FitSyncPro",
-    images: [{ url: "https://fitSync.pro/opengraph-image.png" }],
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-32x32.png",
+    apple: "/apple-touch-icon.png",
   },
-  twitter: {
-    card: "summary_large_image",
-    site: "@site",
-    creator: "@creator",
-    images: "https://fitSync.pro/opengraph-image.png",
-  },
-  appleWebApp: {
-    capable: true,
-    title: "FitSyncPro",
-    statusBarStyle: "black-translucent",
+  manifest: "/manifest.json",
+  twitter: siteConfig.twitter,
+  openGraph: siteConfig.openGraph,
+  authors: [
+    {
+      name: "kaapo.studio",
+      url: "https://kaapo.studio",
+    },
+  ],
+  creator: "kaapo.studio",
+  alternates: {
+    canonical: "https://fitsync.pro",
+    types: {
+      "application/rss+xml": [
+        { url: "https://fitsync.pro/feed.xml", title: "FitSyncPro RSS Feed" },
+      ],
+    },
   },
 };
-
 export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ro">
-      <body className={inter.className + "dark text-foreground bg-background"}>
+    <html suppressHydrationWarning dir="ltr" lang="en">
+      <body
+        className={clsx(
+          "min-h-screen bg-background font-sans antialiased",
+          fontSans.variable,
+        )}
+      >
         <Providers>{children}</Providers>
       </body>
     </html>

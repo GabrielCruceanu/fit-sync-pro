@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { LayoutTitle } from "@/modules/application/layout/components/LayoutTitle";
 import { ApplicationLinks } from "@/constants/links";
 export const metadata: Metadata = {
-  title: "Notifications | FitSyncPro",
+  title: "Notifications",
   description:
     "FitSyncPro is a platform that connects trainers, nutritionists, and gyms with clients.",
 };
