@@ -8,10 +8,6 @@ import { cn } from "@/lib/cn";
 
 const navItems = [
   {
-    title: "Home",
-    url: "/",
-  },
-  {
     title: "Trainers",
     url: "/trainers",
   },
@@ -38,7 +34,9 @@ const NavItems = () => {
             <Link
               className={cn(
                 "w-full",
-                pathname === item.url ? "text-primary-500" : "text-foreground",
+                pathname === item.url
+                  ? "text-primary-500 font-semibold"
+                  : "text-foreground",
               )}
               href={item.url}
               size="lg"
@@ -51,7 +49,10 @@ const NavItems = () => {
             <Link
               href={item.url}
               className={cn(
-                pathname === item.url ? "text-primary-500" : "text-foreground",
+                "px-2 font-normal",
+                pathname === item.url
+                  ? "text-primary-500 font-semibold"
+                  : "text-foreground",
               )}
               aria-current="page"
             >
