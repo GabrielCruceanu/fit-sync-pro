@@ -1,5 +1,4 @@
 "use client";
-import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
 import { InputError } from "@/ts/enum";
@@ -12,12 +11,13 @@ import {
 } from "@/constants/availability";
 import { OnboardGymSteps } from "@/ts/enum/onboarding.enum";
 import { cn } from "@/lib/cn";
+import { useOnboardingStore } from "@/store/onboarding";
 
 export function GymOnboardingAvailability() {
-  const onboardingDetails = useStore(
+  const onboardingDetails = useOnboardingStore(
     (state) => state.onboarding.onboardingGymDetails,
   );
-  const updateOnboardingDetails = useStore(
+  const updateOnboardingDetails = useOnboardingStore(
     (state) => state.updateOnboardingGymDetails,
   );
 

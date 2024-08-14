@@ -2,7 +2,7 @@
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
 import { OnboardingType } from "@/ts/enum";
-import { useStore } from "@/store";
+import { useStore } from "@/store/auth";
 
 export function Welcome() {
   const updateOnboardingType = useStore((state) => state.updateOnboardingType);

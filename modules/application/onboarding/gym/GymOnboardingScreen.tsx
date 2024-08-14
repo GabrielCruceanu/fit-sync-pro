@@ -1,13 +1,13 @@
-import { useStore } from "@/store";
 import { OnboardGymSteps } from "@/ts/enum/onboarding.enum";
 import { GymOnboardingPersonalDetails } from "@/modules/application/onboarding/gym/components/GymOnboardingPersonalDetails";
 import { GymOnboardingOverview } from "@/modules/application/onboarding/gym/components/GymOnboardingOverview";
 import { GymOnboardingPersonalContact } from "@/modules/application/onboarding/gym/components/GymOnboardingPersonalContact";
 import { GymOnboardingLocation } from "@/modules/application/onboarding/gym/components/GymOnboardingLocation";
 import { GymOnboardingAvailability } from "@/modules/application/onboarding/gym/components/GymOnboardingAvailability";
+import { useOnboardingStore } from "@/store/onboarding";
 
 export function GymOnboardingScreen() {
-  const gymSteps = useStore(
+  const gymSteps = useOnboardingStore(
     (state) => state.onboarding.onboardingGymDetails.gymSteps,
   );
 

@@ -1,6 +1,6 @@
 "use client";
 import { OnboardClientSteps } from "@/ts/enum";
-import { useStore } from "@/store";
+import { useStore } from "@/store/auth";
 import {
   ClientOnboardingPersonalDetails,
   ClientOnboardingGoals,

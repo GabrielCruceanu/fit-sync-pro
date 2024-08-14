@@ -18,7 +18,7 @@ import { ApplicationLinks } from "@/constants/links";
 import { Button, Input } from "@nextui-org/react";
 import { toast } from "@/components/shared/toast/use-toast";
 import { EyeFilledIcon, EyeSlashFilledIcon } from "@nextui-org/shared-icons";
-import { useStore } from "@/store";
+import { useStore } from "@/store/auth";
 import { UserDetails } from "@/ts/types";
 import { Icons } from "@/components/icons/icons";
 import { Provider } from "@supabase/auth-js";

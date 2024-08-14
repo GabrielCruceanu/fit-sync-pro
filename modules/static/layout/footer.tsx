@@ -4,8 +4,8 @@ import { FacebookIcon, InstagramIcon, Mail, TwitterIcon } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="border-t mt-1 w-full border-divider px-4 py-11 antialiased">
-      <div className="container mx-auto flex flex-col lg:flex-row">
+    <footer className="border-t w-full border-divider px-4 py-11 antialiased">
+      <div className="container mx-auto max-w-screen-xl flex flex-col lg:flex-row">
         <div className="mb-5 w-full lg:mb-0">
           <h3 className="mb-2 text-2xl font-semibold">About us</h3>
           <p className="text-sm">

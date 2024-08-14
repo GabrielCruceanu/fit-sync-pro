@@ -15,7 +15,7 @@ import { LogoutButton } from "@/modules/application/layout/components/LogoutButt
 import { ApplicationLinks } from "@/constants/links";
 import isSmallScreen from "@/helpers/is-small-screen";
 import { usePathname } from "next/navigation";
-import { useStore } from "@/store";
+import { useStore } from "@/store/auth";
 import FitSyncLogo from "@/components/shared/fit-sync-logo";
 import { ThemeSwitcher } from "@/components/shared/theme-switcher";
 import { cn } from "@/lib/cn";

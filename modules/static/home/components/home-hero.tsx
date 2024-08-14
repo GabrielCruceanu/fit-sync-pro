@@ -6,11 +6,11 @@ import { ApplicationLinks, WebsiteLinks } from "@/constants/links";
 import HowItWorksDark from "@/public/images/homepage/how-it-works-hero.png";
 
 export default async function HomeHero() {
-  const cookieStore = cookies();
-  const supabase = createClient(cookieStore);
-  const { data: trainers } = await supabase.from("trainers").select();
-  const { data: nutritionists } = await supabase.from("nutritionists").select();
-  const { data: gyms } = await supabase.from("gyms").select();
+  // const cookieStore = cookies();
+  // const supabase = createClient(cookieStore);
+  // const { data: trainers } = await supabase.from("trainers").select();
+  // const { data: nutritionists } = await supabase.from("nutritionists").select();
+  // const { data: gyms } = await supabase.from("gyms").select();
 
   return (
     <section className="dark:bg-background">
@@ -39,37 +39,38 @@ export default async function HomeHero() {
           >
             I’m a professional
           </Link>
-          <ul className="block justify-between pt-6 mx-auto mt-10 border-t border-divider xl:flex dark:border-gray-700 dark:text-white">
-            <li className="flex items-center">
-              <span className="text-4xl font-extrabold lg:text-5xl">
-                {trainers?.length}
-              </span>
-              <div className="flex lg:block pl-4 text-xl">
-                <div className="mr-2 lg:mr-0">Trainers</div>
-              </div>
-            </li>
-            <li className="flex items-center">
-              <span className="text-4xl font-extrabold lg:text-5xl">
-                {nutritionists?.length}
-              </span>
-              <div className="flex lg:block pl-4 text-xl">
-                <div className="mr-2 lg:mr-0">Nutritionists</div>
-              </div>
-            </li>
-            <li className="flex items-center">
-              <span className="text-4xl font-extrabold lg:text-5xl">
-                {gyms?.length}
-              </span>
-              <div className="flex lg:block pl-4 text-xl">
-                <div className="mr-2 lg:mr-0">Gyms</div>
-              </div>
-            </li>
-          </ul>
+          {/*<ul className="block justify-between pt-6 mx-auto mt-10 border-t border-divider xl:flex dark:border-gray-700 dark:text-white">*/}
+          {/*  <li className="flex items-center">*/}
+          {/*    <span className="text-4xl font-extrabold lg:text-5xl">*/}
+          {/*      {trainers?.length}*/}
+          {/*    </span>*/}
+          {/*    <div className="flex lg:block pl-4 text-xl">*/}
+          {/*      <div className="mr-2 lg:mr-0">Trainers</div>*/}
+          {/*    </div>*/}
+          {/*  </li>*/}
+          {/*  <li className="flex items-center">*/}
+          {/*    <span className="text-4xl font-extrabold lg:text-5xl">*/}
+          {/*      {nutritionists?.length}*/}
+          {/*    </span>*/}
+          {/*    <div className="flex lg:block pl-4 text-xl">*/}
+          {/*      <div className="mr-2 lg:mr-0">Nutritionists</div>*/}
+          {/*    </div>*/}
+          {/*  </li>*/}
+          {/*  <li className="flex items-center">*/}
+          {/*    <span className="text-4xl font-extrabold lg:text-5xl">*/}
+          {/*      {gyms?.length}*/}
+          {/*    </span>*/}
+          {/*    <div className="flex lg:block pl-4 text-xl">*/}
+          {/*      <div className="mr-2 lg:mr-0">Gyms</div>*/}
+          {/*    </div>*/}
+          {/*  </li>*/}
+          {/*</ul>*/}
         </div>
         <div className="place-self-center mb-10 xl:mb-0 lg:col-span-5 ml-auto">
           <Image
             className="w-full rounded-lg"
             src={HowItWorksDark}
+            loading={"lazy"}
             alt="Experți nutriționiști"
           />
         </div>

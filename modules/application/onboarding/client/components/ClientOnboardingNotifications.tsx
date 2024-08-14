@@ -1,4 +1,4 @@
-import { useStore } from "@/store";
+import { useStore } from "@/store/auth";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
 import * as React from "react";

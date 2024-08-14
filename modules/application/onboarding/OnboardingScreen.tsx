@@ -1,19 +1,19 @@
 "use client";
-import { Welcome } from "@/modules/application/onboarding/components/Welcome";
-import { useStore } from "@/store";
-import { OnboardingType } from "@/ts/enum";
-import { ClientOnboardingScreen } from "@/modules/application/onboarding/client";
 import { useEffect, useState } from "react";
+import { OnboardingType } from "@/ts/enum";
+import { Welcome } from "@/modules/application/onboarding/components/Welcome";
+import { ClientOnboardingScreen } from "@/modules/application/onboarding/client";
 import { OnboardingSkeleton } from "@/modules/application/onboarding/components/OnboardingSkeleton";
 import { TrainerOnboardingScreen } from "@/modules/application/onboarding/trainter";
 import { createClient } from "@/utils/supabase/create-client";
 import { NutritionistOnboardingScreen } from "./nutritionist/NutritionistOnboardingScreen";
 import { GymOnboardingScreen } from "@/modules/application/onboarding/gym/GymOnboardingScreen";
+import { useOnboardingStore } from "@/store/onboarding";
 
 export function OnboardingScreen() {
   const supabase = createClient();
   const [isClient, setIsClient] = useState(false);
-  const { onboarding } = useStore();
+  const { onboarding } = useOnboardingStore();
   const getUser = async () => {
     const {
       data: { user },

@@ -4,7 +4,6 @@
 "use client";
 
 // Importing necessary modules and components
-import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
 import { InputError, OnboardNutritionistSteps } from "@/ts/enum";
@@ -17,6 +16,7 @@ import nutritionistTypes from "@/constants/nutritionists";
 import { NutritionistType } from "@/ts/types";
 import { NutritionistLocation } from "@/ts/enum/onboarding.enum";
 import { cn } from "@/lib/cn";
+import { useOnboardingStore } from "@/store/onboarding";
 
 /**
  * This function component handles the onboarding process for a nutritionist.
@@ -24,10 +24,10 @@ import { cn } from "@/lib/cn";
  */
 export function NutritionistOnboardingNutritionExperience() {
   // Using the store to get and update onboarding details
-  const onboardingDetails = useStore(
+  const onboardingDetails = useOnboardingStore(
     (state) => state.onboarding.onboardingNutritionistDetails,
   );
-  const updateOnboardingDetails = useStore(
+  const updateOnboardingDetails = useOnboardingStore(
     (state) => state.updateOnboardingNutritionistDetails,
   );
 

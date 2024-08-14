@@ -1,4 +1,3 @@
-import { useStore } from "@/store";
 import React, { useState } from "react";
 import {
   handleInputRequired,
@@ -9,6 +8,7 @@ import { InputError, OnboardNutritionistSteps } from "@/ts/enum";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
+import { useOnboardingStore } from "@/store/onboarding";
 
 /**
  * This component handles the onboarding process for a nutritionist's personal contact details.
@@ -20,10 +20,10 @@ import { Button } from "@nextui-org/button";
 
 export function NutritionistOnboardingPersonalContact() {
   // Using the store to get and update onboarding details
-  const onboardingDetails = useStore(
+  const onboardingDetails = useOnboardingStore(
     (state) => state.onboarding.onboardingNutritionistDetails,
   );
-  const updateOnboardingDetails = useStore(
+  const updateOnboardingDetails = useOnboardingStore(
     (state) => state.updateOnboardingNutritionistDetails,
   );
 

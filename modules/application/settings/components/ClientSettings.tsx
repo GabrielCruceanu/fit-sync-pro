@@ -12,7 +12,7 @@ import { Select, SelectItem } from "@nextui-org/react";
 import { genderList } from "@/constants/user";
 import React, { useState } from "react";
 import { createClient } from "@/utils/supabase/create-client";
-import { useStore } from "@/store";
+import { useStore } from "@/store/auth";
 import { Button } from "@nextui-org/button";
 import { updateClient } from "@/utils/supabase/client-service";
 import { GenderType } from "@/ts/types";

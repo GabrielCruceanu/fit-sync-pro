@@ -1,5 +1,4 @@
 "use client";
-import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
 import { InputError, OnboardTrainerSteps } from "@/ts/enum";
@@ -8,12 +7,13 @@ import { useState } from "react";
 import { Checkbox, CheckboxGroup } from "@nextui-org/react";
 import { TrainingLocation, TrainingPhysic } from "@/ts/enum/onboarding.enum";
 import { cn } from "@/lib/cn";
+import { useOnboardingStore } from "@/store/onboarding";
 
 export function TrainerOnboardingPhysicalPreferences() {
-  const onboardingDetails = useStore(
+  const onboardingDetails = useOnboardingStore(
     (state) => state.onboarding.onboardingTrainerDetails,
   );
-  const updateOnboardingDetails = useStore(
+  const updateOnboardingDetails = useOnboardingStore(
     (state) => state.updateOnboardingTrainerDetails,
   );
 

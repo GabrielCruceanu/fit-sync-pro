@@ -1,5 +1,4 @@
 import { createClient } from "@/utils/supabase/create-client";
-import { useStore } from "@/store";
 import React, { useState } from "react";
 import {
   handleInputRequired,
@@ -26,6 +25,7 @@ import { CalendarIcon } from "lucide-react";
 import { Calendar } from "@/components/shared/calendar";
 import { Button } from "@nextui-org/button";
 import { GenderType } from "@/ts/types";
+import { useOnboardingStore } from "@/store/onboarding";
 
 /**
  * This component handles the onboarding process for a nutritionist's personal contact details.
@@ -38,13 +38,15 @@ export function NutritionistOnboardingPersonalDetails() {
   const supabase = createClient();
 
   // Using the store to get and update onboarding details
-  const onboardingDetails = useStore(
+  const onboardingDetails = useOnboardingStore(
     (state) => state.onboarding.onboardingNutritionistDetails,
   );
-  const updateOnboardingDetails = useStore(
+  const updateOnboardingDetails = useOnboardingStore(
     (state) => state.updateOnboardingNutritionistDetails,
   );
-  const updateOnboardingType = useStore((state) => state.updateOnboardingType);
+  const updateOnboardingType = useOnboardingStore(
+    (state) => state.updateOnboardingType,
+  );
 
   // State variables for error handling
   const [firstNameError, setFirstNameError] = useState("");
