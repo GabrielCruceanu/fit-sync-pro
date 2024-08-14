@@ -32,7 +32,7 @@ export default function ProPrices() {
           </div>
         </div>
         <div className="mb-4 lg:mb-8 space-y-8 lg:grid lg:grid-cols-2 md:gap-12 xl:gap-16 lg:space-y-0">
-          {/*Pricing Card */}
+          {/*Pricing CardWithIcon */}
           <div className="flex flex-col max-w-lg text-gray-900 dark:text-gray-400">
             <h3 className="font-semibold text-gray-500 uppercase dark:text-gray-400">
               Starter
@@ -86,7 +86,7 @@ export default function ProPrices() {
               Începeți
             </a>
           </div>
-          {/*Pricing Card*/}
+          {/*Pricing CardWithIcon*/}
           <div className="flex flex-col max-w-lg text-gray-900 dark:text-gray-400">
             <h3 className="font-semibold text-gray-500 uppercase dark:text-gray-400">
               PRO
@@ -218,7 +218,7 @@ export default function ProPrices() {
               Începeți
             </a>
           </div>
-          {/*Pricing Card*/}
+          {/*Pricing CardWithIcon*/}
           {/*<div className="flex flex-col max-w-lg text-gray-900 dark:text-gray-400">*/}
           {/*  <h3 className="font-semibold text-gray-500 uppercase dark:text-gray-400">*/}
           {/*    Enterprise*/}

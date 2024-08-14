@@ -5,15 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47929a90-811a-448f-b1af-cd5bff05d262" name="Changes" comment="Navbar static done;&#10;Hero static done;">
+      <change afterPath="$PROJECT_DIR$/components/shared/card-with-icon.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/shared/faqs.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/static/home/components/home-faqs.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/static/home/components/home-features.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/static/home/components/HomeHero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/home/components/HomeHero.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/static/layout/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/layout/footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/static/layout/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/layout/header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/static/layout/components/NavItems.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/layout/components/nav-items.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/static/layout/components/NavigationBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/layout/components/navigation-bar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/static/layout/components/ProfileDropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/layout/components/ProfileDropdown.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/static/layout/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/layout/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/static/home/HomeScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/home/home-screen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/static/home/components/AuthBox.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/static/home/components/HomeBeAPro.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/home/components/home-be-a-pro.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/static/home/components/HomeFaq.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/static/home/components/HomeFeatures.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/static/home/components/HomeHero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/home/components/home-hero.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/static/home/components/HomeHowItWorks.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/home/components/home-how-it-works.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/static/home/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/home/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/static/layout/footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/layout/footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/static/pro/components/ProPrices.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/pro/components/ProPrices.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +79,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "feature/static",
-    "last_opened_file_path": "/Users/kaapo-studio/Documents/Projects/fit-sync-pro/public",
+    "last_opened_file_path": "/Users/kaapo-studio/Documents/Projects/fit-sync-pro/modules/static/home/components",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -87,6 +93,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/modules/static/home/components" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/app" />
     </key>
@@ -144,7 +151,7 @@
       <workItem from="1720074241433" duration="9161000" />
       <workItem from="1720096240404" duration="9000" />
       <workItem from="1723032545843" duration="1421000" />
-      <workItem from="1723438914489" duration="17539000" />
+      <workItem from="1723438914489" duration="25863000" />
     </task>
     <task id="LOCAL-00001" summary="Middleware fixed;">
       <option name="closed" value="true" />
@@ -170,7 +177,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723473220250</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Navbar static done;&#10;Hero static done;">
+      <option name="closed" value="true" />
+      <created>1723561528563</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1723561528563</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

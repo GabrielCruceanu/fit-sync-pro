@@ -1,9 +1,9 @@
 import { cookies } from "next/headers";
-import { createClient } from "@/utils/supabase/server";
 import { Link } from "@nextui-org/react";
-import { ApplicationLinks } from "@/constants/links";
 import Image from "next/image";
-import HowItWorksDark from "@/public/images/homepage/how-it-works.png";
+import { createClient } from "@/utils/supabase/server";
+import { ApplicationLinks, WebsiteLinks } from "@/constants/links";
+import HowItWorksDark from "@/public/images/homepage/how-it-works-hero.png";
 
 export default async function HomeHero() {
   const cookieStore = cookies();
@@ -11,9 +11,10 @@ export default async function HomeHero() {
   const { data: trainers } = await supabase.from("trainers").select();
   const { data: nutritionists } = await supabase.from("nutritionists").select();
   const { data: gyms } = await supabase.from("gyms").select();
+
   return (
     <section className="dark:bg-background">
-      <div className="border-x border-divider grid py-8 px-6 mx-auto max-w-screen-xl lg:gap-12 xl:gap-0 lg:py-56 lg:grid-cols-12">
+      <div className="border-x border-divider grid py-8 px-6 mx-auto max-w-screen-xl md:py-24 lg:gap-12 xl:gap-0 lg:grid-cols-12">
         <div className="place-self-center mb-10 xl:mb-0 lg:col-span-7 mr-auto">
           <h1 className="mb-6 max-w-2xl text-3xl font-semibold tracking-tight leading-none sm:text-5xl lg:text-6xl dark:text-white">
             Find the best Trainers, Nutritionists, and Gyms
@@ -26,10 +27,17 @@ export default async function HomeHero() {
           </p>
           <Link
             color="primary"
-            className="inline-flex items-center py-3 px-5 font-semibold text-center rounded-lg text-background bg-foreground"
+            className="inline-flex items-center py-3 px-5 mr-4 font-semibold text-center rounded-lg text-background bg-foreground"
             href={ApplicationLinks.signUp.link}
           >
-            Get started
+            Get Started
+          </Link>
+          <Link
+            color="primary"
+            className="inline-flex items-center py-3 px-5 font-semibold text-center rounded-lg text-background bg-foreground"
+            href={WebsiteLinks.proPage.link}
+          >
+            I’m a professional
           </Link>
           <ul className="block justify-between pt-6 mx-auto mt-10 border-t border-divider xl:flex dark:border-gray-700 dark:text-white">
             <li className="flex items-center">
