@@ -1,5 +1,4 @@
 "use client";
-import { useStore } from "@/store";
 import { OnboardTrainerSteps } from "@/ts/enum";
 import { TrainerOnboardingPersonalDetails } from "@/modules/application/onboarding/trainter/components/TrainerOnboardingPersonalDetails";
 import { TrainerOnboardingPersonalContact } from "@/modules/application/onboarding/trainter/components/TrainerOnboardingPersonalContact";
@@ -10,9 +9,10 @@ import { TrainerOnboardingOnlinePreferences } from "@/modules/application/onboar
 import { TrainerOnboardingTrainingAvailability } from "@/modules/application/onboarding/trainter/components/TrainerOnboardingTrainingAvailability";
 import { TrainerOnboardingPhysicalLocation } from "@/modules/application/onboarding/trainter/components/TrainerOnboardingPhysicalLocation";
 import { TrainerOnboardingOverview } from "@/modules/application/onboarding/trainter/components/TrainerOnboardingOverview";
+import { useOnboardingStore } from "@/store/onboarding";
 
 export function TrainerOnboardingScreen() {
-  const trainerSteps = useStore(
+  const trainerSteps = useOnboardingStore(
     (state) => state.onboarding.onboardingTrainerDetails.trainerSteps,
   );
   switch (trainerSteps) {

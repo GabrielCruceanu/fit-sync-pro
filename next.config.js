@@ -9,6 +9,7 @@ const nextConfig = {
       "firebasestorage.googleapis.com",
       "www.fitsync.ro",
       "kaapo-fit-angular.vercel.app",
+      "via.placeholder.com",
     ],
   },
 };

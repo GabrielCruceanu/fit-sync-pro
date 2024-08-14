@@ -1,5 +1,4 @@
 "use client";
-import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
 import { InputError } from "@/ts/enum";
@@ -9,12 +8,13 @@ import { Select, SelectItem } from "@nextui-org/react";
 import { CitiesData } from "@/constants/location";
 import { Input } from "@nextui-org/input";
 import { OnboardGymSteps } from "@/ts/enum/onboarding.enum";
+import { useOnboardingStore } from "@/store/onboarding";
 
 export function GymOnboardingLocation() {
-  const onboardingDetails = useStore(
+  const onboardingDetails = useOnboardingStore(
     (state) => state.onboarding.onboardingGymDetails,
   );
-  const updateOnboardingDetails = useStore(
+  const updateOnboardingDetails = useOnboardingStore(
     (state) => state.updateOnboardingGymDetails,
   );
 

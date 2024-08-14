@@ -1,5 +1,4 @@
 "use client";
-import { useStore } from "@/store";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
 import { InputError, OnboardNutritionistSteps } from "@/ts/enum";
@@ -8,12 +7,13 @@ import { handleInputRequired, validateOnlyLetter } from "@/helpers/helpers";
 import { Select, SelectItem } from "@nextui-org/react";
 import { CitiesData } from "@/constants/location";
 import { Input } from "@nextui-org/input";
+import { useOnboardingStore } from "@/store/onboarding";
 
 export function NutritionistOnboardingLocation() {
-  const onboardingDetails = useStore(
+  const onboardingDetails = useOnboardingStore(
     (state) => state.onboarding.onboardingNutritionistDetails,
   );
-  const updateOnboardingDetails = useStore(
+  const updateOnboardingDetails = useOnboardingStore(
     (state) => state.updateOnboardingNutritionistDetails,
   );
 

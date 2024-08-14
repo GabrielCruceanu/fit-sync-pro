@@ -8,7 +8,7 @@ import {
 } from "@nextui-org/react";
 import { ApplicationLinks } from "@/constants/links";
 import Link from "next/link";
-import { useStore } from "@/store";
+import { useStore } from "@/store/auth";
 
 const ProfileDropDown = () => {
   const { user, signOut } = useStore((state) => state);

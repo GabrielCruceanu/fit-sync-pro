@@ -4,16 +4,74 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47929a90-811a-448f-b1af-cd5bff05d262" name="Changes" comment="Navbar static done;&#10;Hero static done;">
+    <list default="true" id="47929a90-811a-448f-b1af-cd5bff05d262" name="Changes" comment="Home page done;">
+      <change afterPath="$PROJECT_DIR$/components/shared/pro-card.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/static/nutritionists/components/nutritionists-hero.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/static/nutritionists/components/nutritionists-list.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/static/nutritionists/components/nutritionists-search-form.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/static/nutritionists/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/static/nutritionists/nutritionists-screen.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/static/trainers/components/trainers-hero.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/static/trainers/components/trainers-list.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/static/trainers/components/trainers-search-form.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/static/trainers/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/static/trainers/trainers-screen.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/auth/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/nutritionists/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/onboarding/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/settings/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/trainers/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/static/home/components/HomeHero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/home/components/HomeHero.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/static/layout/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/layout/footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/static/layout/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/layout/header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/static/layout/components/NavItems.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/layout/components/nav-items.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/static/layout/components/NavigationBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/layout/components/navigation-bar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/static/layout/components/ProfileDropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/layout/components/ProfileDropdown.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/static/layout/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/layout/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(static)/nutritionists/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(static)/nutritionists/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(static)/trainers/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(static)/trainers/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/auth/components/login-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/auth/components/login-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/layout/components/LayoutNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/layout/components/LayoutNavigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/layout/components/LogoutButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/layout/components/LogoutButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/layout/components/ProfileDropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/layout/components/ProfileDropdown.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/OnboardingScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/OnboardingScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/client/ClientOnboardingScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/client/ClientOnboardingScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingFitnessExperience.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingFitnessExperience.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingFoodPreferences.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingFoodPreferences.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingGoals.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingGoals.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingLocation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingLocation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingNotifications.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingNotifications.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingOverview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingOverview.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingPersonalDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingPersonalDetails.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingTrainingAvailability.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingTrainingAvailability.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingTrainingInPerson.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingTrainingInPerson.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingTrainingLocation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingTrainingLocation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingTrainingOnline.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingTrainingOnline.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/components/Welcome.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/components/Welcome.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/gym/GymOnboardingScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/gym/GymOnboardingScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/gym/components/GymOnboardingAvailability.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/gym/components/GymOnboardingAvailability.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/gym/components/GymOnboardingLocation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/gym/components/GymOnboardingLocation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/gym/components/GymOnboardingOverview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/gym/components/GymOnboardingOverview.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/gym/components/GymOnboardingPersonalContact.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/gym/components/GymOnboardingPersonalContact.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/gym/components/GymOnboardingPersonalDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/gym/components/GymOnboardingPersonalDetails.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/nutritionist/NutritionistOnboardingScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/nutritionist/NutritionistOnboardingScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/nutritionist/components/NutritionistOnboardingAvailability.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/nutritionist/components/NutritionistOnboardingAvailability.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/nutritionist/components/NutritionistOnboardingLocation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/nutritionist/components/NutritionistOnboardingLocation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/nutritionist/components/NutritionistOnboardingNutritionExperience.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/nutritionist/components/NutritionistOnboardingNutritionExperience.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/nutritionist/components/NutritionistOnboardingOverview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/nutritionist/components/NutritionistOnboardingOverview.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/nutritionist/components/NutritionistOnboardingPersonalContact.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/nutritionist/components/NutritionistOnboardingPersonalContact.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/nutritionist/components/NutritionistOnboardingPersonalDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/nutritionist/components/NutritionistOnboardingPersonalDetails.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/trainter/TrainerOnboardingScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/trainter/TrainerOnboardingScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingFitnessExperience.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingFitnessExperience.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingNutritionExperience.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingNutritionExperience.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingOnlinePreferences.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingOnlinePreferences.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingOverview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingOverview.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingPersonalContact.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingPersonalContact.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingPersonalDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingPersonalDetails.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingPhysicalLocation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingPhysicalLocation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingPhysicalPreferences.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingPhysicalPreferences.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingTrainingAvailability.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingTrainingAvailability.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/settings/components/ClientSettings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/settings/components/ClientSettings.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/settings/profile/ProfileSettingsScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/settings/profile/ProfileSettingsScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/settings/theme/ThemeSettingsScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/settings/theme/ThemeSettingsScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/static/home/components/home-hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/home/components/home-hero.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/static/layout/footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/layout/footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/index.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +131,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "feature/static",
-    "last_opened_file_path": "/Users/kaapo-studio/Documents/Projects/fit-sync-pro/public",
+    "last_opened_file_path": "/Users/kaapo-studio/Documents/Projects/fit-sync-pro/store",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -87,10 +145,15 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/store" />
+      <recent name="$PROJECT_DIR$/modules/static" />
+      <recent name="$PROJECT_DIR$/store/settings" />
+      <recent name="$PROJECT_DIR$/store/trainers" />
+      <recent name="$PROJECT_DIR$/modules/static/trainers/components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/store/auth" />
+      <recent name="$PROJECT_DIR$/store/onboarding" />
       <recent name="$PROJECT_DIR$/modules/application/layout/components" />
       <recent name="$PROJECT_DIR$/public" />
     </key>
@@ -144,7 +207,7 @@
       <workItem from="1720074241433" duration="9161000" />
       <workItem from="1720096240404" duration="9000" />
       <workItem from="1723032545843" duration="1421000" />
-      <workItem from="1723438914489" duration="17539000" />
+      <workItem from="1723438914489" duration="42508000" />
     </task>
     <task id="LOCAL-00001" summary="Middleware fixed;">
       <option name="closed" value="true" />
@@ -170,7 +233,23 @@
       <option name="project" value="LOCAL" />
       <updated>1723473220250</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Navbar static done;&#10;Hero static done;">
+      <option name="closed" value="true" />
+      <created>1723561528563</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1723561528563</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Home page done;">
+      <option name="closed" value="true" />
+      <created>1723623787721</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1723623787721</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,6 +261,7 @@
     <MESSAGE value="Ready to redesign;" />
     <MESSAGE value="favicons done;&#10;metadata done;&#10;switch to black and white;" />
     <MESSAGE value="Navbar static done;&#10;Hero static done;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Navbar static done;&#10;Hero static done;" />
+    <MESSAGE value="Home page done;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Home page done;" />
   </component>
 </project>

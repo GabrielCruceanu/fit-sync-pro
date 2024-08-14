@@ -1,4 +1,3 @@
-import { useStore } from "@/store";
 import React, { useState } from "react";
 import {
   handleInputRequired,
@@ -9,12 +8,13 @@ import { InputError, OnboardTrainerSteps } from "@/ts/enum";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
+import { useOnboardingStore } from "@/store/onboarding";
 
 export function TrainerOnboardingPersonalContact() {
-  const onboardingDetails = useStore(
+  const onboardingDetails = useOnboardingStore(
     (state) => state.onboarding.onboardingTrainerDetails,
   );
-  const updateOnboardingDetails = useStore(
+  const updateOnboardingDetails = useOnboardingStore(
     (state) => state.updateOnboardingTrainerDetails,
   );
 

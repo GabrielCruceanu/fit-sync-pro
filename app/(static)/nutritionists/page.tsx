@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { NutritionistsScreen } from "@/modules/static/nutritionists";
 
 export const metadata: Metadata = {
   title: "Nutritionists",
@@ -6,9 +7,5 @@ export const metadata: Metadata = {
     "FitSyncPro is a platform that connects trainers, nutritionists, and gyms with clients.",
 };
 export default function Page() {
-  return (
-    <>
-      <h1>Nutritionists page</h1>
-    </>
-  );
+  return <NutritionistsScreen />;
 }

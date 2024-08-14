@@ -1,7 +1,7 @@
 import { ApplicationLinks } from "@/constants/links";
 import React from "react";
 import { Button } from "@nextui-org/react";
-import { useStore } from "@/store";
+import { useStore } from "@/store/auth";
 
 export function LogoutButton() {
   const { signOut } = useStore((state) => state);

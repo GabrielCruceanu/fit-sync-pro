@@ -1,6 +1,5 @@
-import { createClient } from "@/utils/supabase/create-client";
-import { useStore } from "@/store";
 import React, { useState } from "react";
+import { createClient } from "@/utils/supabase/create-client";
 import {
   handleInputRequired,
   validateOnlyLetter,
@@ -22,16 +21,19 @@ import { CalendarIcon } from "lucide-react";
 import { Calendar } from "@/components/shared/calendar";
 import { Button } from "@nextui-org/button";
 import { GenderType } from "@/ts/types";
+import { useOnboardingStore } from "@/store/onboarding";
 
 export function TrainerOnboardingPersonalDetails() {
   const supabase = createClient();
-  const onboardingDetails = useStore(
+  const onboardingDetails = useOnboardingStore(
     (state) => state.onboarding.onboardingTrainerDetails,
   );
-  const updateOnboardingDetails = useStore(
+  const updateOnboardingDetails = useOnboardingStore(
     (state) => state.updateOnboardingTrainerDetails,
   );
-  const updateOnboardingType = useStore((state) => state.updateOnboardingType);
+  const updateOnboardingType = useOnboardingStore(
+    (state) => state.updateOnboardingType,
+  );
 
   const [firstNameError, setFirstNameError] = useState("");
   const [lastNameError, setLastNameError] = useState("");

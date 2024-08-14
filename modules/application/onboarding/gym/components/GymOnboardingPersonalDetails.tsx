@@ -1,5 +1,4 @@
 import { createClient } from "@/utils/supabase/create-client";
-import { useStore } from "@/store";
 import React, { useState } from "react";
 import {
   handleInputRequired,
@@ -13,6 +12,7 @@ import { Button } from "@nextui-org/button";
 import { GymType } from "@/ts/types";
 import { OnboardGymSteps } from "@/ts/enum/onboarding.enum";
 import gymTypes, { gymActivePersonalTrainers } from "@/constants/gym";
+import { useOnboardingStore } from "@/store/onboarding";
 
 /**
  * This component handles the onboarding process for a gym's personal contact details.
@@ -25,13 +25,15 @@ export function GymOnboardingPersonalDetails() {
   const supabase = createClient();
 
   // Using the store to get and update onboarding details
-  const onboardingDetails = useStore(
+  const onboardingDetails = useOnboardingStore(
     (state) => state.onboarding.onboardingGymDetails,
   );
-  const updateOnboardingDetails = useStore(
+  const updateOnboardingDetails = useOnboardingStore(
     (state) => state.updateOnboardingGymDetails,
   );
-  const updateOnboardingType = useStore((state) => state.updateOnboardingType);
+  const updateOnboardingType = useOnboardingStore(
+    (state) => state.updateOnboardingType,
+  );
 
   // State variables for error handling
   const [gymNameError, setGymNameError] = useState("");

@@ -3,7 +3,7 @@ import { LayoutTitle } from "@/modules/application/layout/components/LayoutTitle
 import { Button } from "@nextui-org/button";
 import * as React from "react";
 import { SettingsStep } from "@/ts/enum";
-import { useStore } from "@/store";
+import { useStore } from "@/store/auth";
 
 export default function ThemeSettingsPage() {
   const updateSettingsType = useStore((state) => state.updateSettingsStep);
