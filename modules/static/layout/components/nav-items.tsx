@@ -35,7 +35,7 @@ const NavItems = () => {
               className={cn(
                 "w-full",
                 pathname === item.url
-                  ? "text-primary-500 font-semibold"
+                  ? "text-foreground font-semibold"
                   : "text-foreground",
               )}
               href={item.url}
@@ -51,7 +51,7 @@ const NavItems = () => {
               className={cn(
                 "px-2 font-normal",
                 pathname === item.url
-                  ? "text-primary-500 font-semibold"
+                  ? "text-foreground font-semibold"
                   : "text-foreground",
               )}
               aria-current="page"
