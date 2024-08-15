@@ -11,7 +11,7 @@ export const CardWithIcon = ({
   description,
 }: CardWithIconProps) => {
   return (
-    <div className="p-6 bg-white border border-divider shadow-lg rounded-lg">
+    <div className="p-6 bg-background border border-divider shadow-lg rounded-lg">
       <div className="flex justify-center items-center mr-4 w-11 h-11 border border-divider rounded bg-gray-200 dark:text-background shrink-0 mb-6">
         <div className="w-6 h-6 flex">{icon}</div>
       </div>

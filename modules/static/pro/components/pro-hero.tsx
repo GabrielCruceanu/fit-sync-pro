@@ -3,7 +3,7 @@ import Image from "next/image";
 import { ApplicationLinks, WebsiteLinks } from "@/constants/links";
 import HowItWorksDark from "@/public/images/homepage/how-it-works-hero.png";
 
-export default async function HomeHero() {
+export default async function ProHero() {
   // const cookieStore = cookies();
   // const supabase = createClient(cookieStore);
   // const { data: trainers } = await supabase.from("trainers").select();
@@ -15,13 +15,14 @@ export default async function HomeHero() {
       <div className="border-x border-divider grid py-8 px-6 mx-auto max-w-screen-xl md:py-24 lg:gap-12 xl:gap-0 lg:grid-cols-12 lg:min-h-[750px]">
         <div className="place-self-center mb-10 xl:mb-0 lg:col-span-7 mr-auto">
           <h1 className="mb-6 max-w-2xl text-3xl font-semibold tracking-tight leading-none sm:text-5xl lg:text-6xl dark:text-white">
-            Find the best Trainers, Nutritionists, and Gyms
+            Find More Clients, and Grow Your Business
           </h1>
           <p className="mb-6 max-w-2xl font-light lg:mb-8 md:text-lg lg:text-xl">
-            FitSyncPro is a platform that helps clients find the best personal
-            trainers and gyms in their area. We provide a wide range of
-            trainers, nutritionists, and gyms to help you achieve your fitness
-            goals.
+            FitSyncPro is the ultimate platform for fitness professionals like
+            you. Whether you’re a personal trainer, nutritionist, or gym owner,
+            FitSyncPro provides the tools and visibility you need to expand your
+            reach, manage your clients efficiently, and help more people achieve
+            their fitness goals.
           </p>
           <Link
             color="primary"
@@ -29,13 +30,6 @@ export default async function HomeHero() {
             href={ApplicationLinks.signUp.link}
           >
             Get Started
-          </Link>
-          <Link
-            color="primary"
-            className="inline-flex items-center py-3 px-5 font-semibold text-center rounded-lg text-background bg-foreground"
-            href={WebsiteLinks.proPage.link}
-          >
-            I’m a professional
           </Link>
           {/*<ul className="block justify-between pt-6 mx-auto mt-10 border-t border-divider xl:flex dark:border-gray-700 dark:text-white">*/}
           {/*  <li className="flex items-center">*/}

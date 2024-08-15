@@ -5,7 +5,7 @@ import { GymsSearchForm } from "@/modules/static/gyms/components/gyms-search-for
 export default function GymsHero() {
   return (
     <section className="dark:bg-background">
-      <div className="border-x border-divider grid py-8 px-6 mx-auto max-w-screen-xl md:py-24 lg:gap-12 xl:gap-0 lg:grid-cols-12">
+      <div className="border-x border-divider grid py-8 px-6 mx-auto max-w-screen-xl md:py-24 lg:gap-12 xl:gap-0 lg:grid-cols-12 lg:min-h-[750px]">
         <div className="place-self-center mb-10 xl:mb-0 lg:col-span-7 mr-auto">
           <h1 className="mb-6 max-w-2xl text-3xl font-semibold tracking-tight leading-none sm:text-5xl lg:text-6xl dark:text-white">
             Find the best Gyms

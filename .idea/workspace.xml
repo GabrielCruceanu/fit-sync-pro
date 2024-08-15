@@ -4,27 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47929a90-811a-448f-b1af-cd5bff05d262" name="Changes" comment="Client Onboarding Store fixed;">
-      <change afterPath="$PROJECT_DIR$/helpers/scroll-to.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/static/gyms/components/gyms-hero.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/static/gyms/components/gyms-list.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/static/gyms/components/gyms-search-form.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/static/gyms/gyms-screen.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/static/gyms/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/gyms/index.ts" afterDir="false" />
+    <list default="true" id="47929a90-811a-448f-b1af-cd5bff05d262" name="Changes" comment="Hero height fixed;">
+      <change afterPath="$PROJECT_DIR$/app/(static)/gyms/[username]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(static)/nutritionists/[username]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(static)/trainers/[username]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(static)/gyms/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(static)/gyms/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/shared/pro-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/shared/pro-card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingOverview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingOverview.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/static/layout/footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/layout/footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/static/nutritionists/components/nutritionists-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/nutritionists/components/nutritionists-list.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/static/nutritionists/components/nutritionists-search-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/nutritionists/components/nutritionists-search-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/static/trainers/components/trainers-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/trainers/components/trainers-list.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/static/trainers/components/trainers-search-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/trainers/components/trainers-search-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/nutritionists/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/nutritionists/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/settings/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/settings/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ts/supabase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ts/supabase.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/callback/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/callback/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/supabase/middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/supabase/middleware.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +70,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "feature/static",
-    "last_opened_file_path": "/Users/kaapo-studio/Documents/Projects/fit-sync-pro/store",
+    "last_opened_file_path": "/Users/kaapo-studio/Documents/Projects/fit-sync-pro/app/(static)/nutritionists",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -100,11 +86,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/(static)/nutritionists" />
+      <recent name="$PROJECT_DIR$/app/(static)/gyms" />
+      <recent name="$PROJECT_DIR$/modules/static/pro/components" />
       <recent name="$PROJECT_DIR$/store" />
       <recent name="$PROJECT_DIR$/modules/static" />
-      <recent name="$PROJECT_DIR$/store/settings" />
-      <recent name="$PROJECT_DIR$/store/trainers" />
-      <recent name="$PROJECT_DIR$/modules/static/trainers/components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/store/auth" />
@@ -146,9 +132,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
         <item itemvalue="npm.update-types" />
-        <item itemvalue="npm.dev" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
       </list>
@@ -172,7 +158,7 @@
       <workItem from="1720074241433" duration="9161000" />
       <workItem from="1720096240404" duration="9000" />
       <workItem from="1723032545843" duration="1421000" />
-      <workItem from="1723438914489" duration="50358000" />
+      <workItem from="1723438914489" duration="55694000" />
     </task>
     <task id="LOCAL-00001" summary="Middleware fixed;">
       <option name="closed" value="true" />
@@ -230,7 +216,47 @@
       <option name="project" value="LOCAL" />
       <updated>1723700665239</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Gyms page done;">
+      <option name="closed" value="true" />
+      <created>1723712442855</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1723712442855</updated>
+    </task>
+    <task id="LOCAL-00009" summary="some color bugs fixed;">
+      <option name="closed" value="true" />
+      <created>1723713992481</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1723713992481</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Professional page done;">
+      <option name="closed" value="true" />
+      <created>1723715796768</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1723715796768</updated>
+    </task>
+    <task id="LOCAL-00011" summary="pro screen renamed;">
+      <option name="closed" value="true" />
+      <created>1723715829789</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1723715829789</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Hero height fixed;">
+      <option name="closed" value="true" />
+      <created>1723716231893</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1723716231893</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -245,6 +271,11 @@
     <MESSAGE value="Home page done;" />
     <MESSAGE value="Nutritionist and Trainer page done;" />
     <MESSAGE value="Client Onboarding Store fixed;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Client Onboarding Store fixed;" />
+    <MESSAGE value="Gyms page done;" />
+    <MESSAGE value="some color bugs fixed;" />
+    <MESSAGE value="Professional page done;" />
+    <MESSAGE value="pro screen renamed;" />
+    <MESSAGE value="Hero height fixed;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Hero height fixed;" />
   </component>
 </project>
