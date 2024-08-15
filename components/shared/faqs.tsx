@@ -17,7 +17,7 @@ export const Faqs = ({ faqs }: FaqsProps) => {
           key={index}
           aria-label={"Accordion item " + index}
           title={faq.question}
-          className="py-3 px-5 mb-4 w-full font-semibold text-left text-gray-900 bg-white border border-divider rounded"
+          className="py-3 px-5 mb-4 w-full font-semibold text-left text-gray-900 bg-background border border-divider rounded dark:text-gray-200"
         >
           <p className="font-normal">{faq.answer}</p>
         </AccordionItem>

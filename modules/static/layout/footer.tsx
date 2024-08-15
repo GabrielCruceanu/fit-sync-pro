@@ -1,6 +1,6 @@
-import { Link } from "@nextui-org/react";
 import { SocialLinks, TermsLinks } from "@/constants/links";
 import { FacebookIcon, InstagramIcon, Mail, TwitterIcon } from "lucide-react";
+import Link from "next/link";
 
 export function Footer() {
   return (

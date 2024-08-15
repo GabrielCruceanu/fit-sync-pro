@@ -1,7 +1,5 @@
-import { cookies } from "next/headers";
 import { Link } from "@nextui-org/react";
 import Image from "next/image";
-import { createClient } from "@/utils/supabase/server";
 import { ApplicationLinks, WebsiteLinks } from "@/constants/links";
 import HowItWorksDark from "@/public/images/homepage/how-it-works-hero.png";
 
@@ -66,12 +64,12 @@ export default async function HomeHero() {
           {/*  </li>*/}
           {/*</ul>*/}
         </div>
-        <div className="place-self-center mb-10 xl:mb-0 lg:col-span-5 ml-auto">
+        <div className="place-self-center mb-10 xl:mb-0 lg:col-span-5 mx-auto min-h-[375px] ">
           <Image
             className="w-full rounded-lg"
             src={HowItWorksDark}
             loading={"lazy"}
-            alt="Experți nutriționiști"
+            alt="Hero image"
           />
         </div>
       </div>
