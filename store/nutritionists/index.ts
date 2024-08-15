@@ -1,7 +1,6 @@
 import { create } from "zustand";
 import { createClient } from "@/utils/supabase/create-client";
-import { Client, SettingsNavigation, Trainer, UserDetails } from "@/ts/types";
-import { SettingsStep } from "@/ts/enum";
+import { NutritionistType } from "@/ts/types";
 
 type NutritionistsState = {
   nutritionists: any[];
@@ -15,6 +14,7 @@ type NutritionistsState = {
   ) => Promise<void>;
 };
 
+const supabase = createClient();
 export const useNutritionistsStore = create<NutritionistsState>()(
   (set, state) => ({
     ...state,
@@ -22,7 +22,6 @@ export const useNutritionistsStore = create<NutritionistsState>()(
     nutritionists: [],
     filterNutritionists: [],
     fetchNutritionists: async () => {
-      const supabase = createClient();
       const { data: nutritionists, error } = await supabase
         .from("nutritionists")
         .select("*");
@@ -31,17 +30,17 @@ export const useNutritionistsStore = create<NutritionistsState>()(
     },
     fetchFilteredNutritionists: async (country, county, city, type) => {
       console.log("Filtering trainers by:", country, county, city, type);
-      const supabase = createClient();
       const { data: nutritionists, error } = await supabase
         .from("nutritionists")
         .select("*")
         .eq("country", country)
         .eq("state", county)
-        .eq("city", city)
-        .eq("nutritionistType", type);
+        .eq("city", city);
+      // .eq("nutritionistType", type as NutritionistType);
 
       if (error) throw error;
-
+      console.log("Filtered nutritionists:", nutritionists);
+      console.log("Filtered nutritionists error:", error);
       set({ filterNutritionists: nutritionists });
     },
   }),

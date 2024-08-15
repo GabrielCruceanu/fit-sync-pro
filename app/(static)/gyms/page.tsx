@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { GymsScreen } from "@/modules/static/gyms";
 
 export const metadata: Metadata = {
   title: "Gyms",
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <h1>Gyms page</h1>
+      <GymsScreen />
     </>
   );
 }

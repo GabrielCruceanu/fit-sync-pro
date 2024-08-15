@@ -19,6 +19,7 @@ export const useSettingsStore = create<SettingsState>()((set, state) => ({
       birthDate: null,
       birthMonth: null,
       birthYear: null,
+      birthday: null,
       city: null,
       client_id: "",
       country: null,

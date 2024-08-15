@@ -3,26 +3,25 @@ import React, { useState } from "react";
 import { Button, Select, SelectItem } from "@nextui-org/react";
 import { handleInputRequired } from "@/helpers/helpers";
 import { InputError } from "@/ts/enum";
-import { NutritionistType } from "@/ts/types";
+import { GymType, NutritionistType } from "@/ts/types";
 import { CitiesData } from "@/constants/location";
 import nutritionistTypes from "@/constants/nutritionists";
 import { useNutritionistsStore } from "@/store/nutritionists";
 import { handleScrollTo } from "@/helpers/scroll-to";
+import gymTypes from "@/constants/gym";
+import { useGymsStore } from "@/store/gyms";
 
-export const NutritionistsSearchForm = () => {
+export const GymsSearchForm = () => {
   const [country, setCountry] = useState<string>("");
   const [county, setCounty] = useState<string>("");
   const [city, setCity] = useState<string>("");
-  const [nutritionistType, setNutritionistType] = useState<string>("");
+  const [gymType, setGymType] = useState<GymType | null>(null);
   const [currentCountryError, setCurrentCountryError] = useState<string>("");
   const [currentCountyError, setCurrentCountyError] = useState<string>("");
   const [currentCityError, setCurrentCityError] = useState<string>("");
-  const [nutritionistTypeError, setNutritionistTypeError] =
-    useState<string>("");
+  const [gymTypeError, setGymTypeError] = useState<string>("");
   const [confirmBtnDisable, setConfirmBtnDisable] = useState<boolean>(false);
-  const { fetchFilteredNutritionists } = useNutritionistsStore(
-    (state) => state,
-  );
+  const { fetchFilteredGyms } = useGymsStore((state) => state);
 
   const inputsAreOk = () => {
     if (!country) {
@@ -41,18 +40,16 @@ export const NutritionistsSearchForm = () => {
       return;
     }
 
-    if (!nutritionistType) {
-      setNutritionistTypeError(InputError.InputRequired);
+    if (!gymType) {
+      setGymTypeError(InputError.InputRequired);
       setConfirmBtnDisable(true);
       return;
     }
 
-    fetchFilteredNutritionists(country, county, city, nutritionistType).finally(
-      () => {
-        setConfirmBtnDisable(false);
-        handleScrollTo("list");
-      },
-    );
+    fetchFilteredGyms(country, county, city, gymType).finally(() => {
+      setConfirmBtnDisable(false);
+      handleScrollTo("list");
+    });
   };
 
   let countries: string[];
@@ -194,32 +191,32 @@ export const NutritionistsSearchForm = () => {
             </SelectItem>
           ))}
         </Select>
-        {/*Nutritionist Type*/}
+        {/*Gym Type*/}
         <Select
-          label="Nutritionist Type"
+          label="Gym Type"
           className="bg-background"
           variant="bordered"
           placeholder="Choose"
           isRequired
-          value={nutritionistType}
-          defaultSelectedKeys={nutritionistType ? [nutritionistType] : []}
+          value={gymType ? gymType : ""}
+          defaultSelectedKeys={gymType ? [gymType] : []}
           onChange={(event) => {
-            setNutritionistType(event.target.value);
-            setNutritionistTypeError("");
+            setGymType(event.target.value as GymType);
+            setGymTypeError("");
             setConfirmBtnDisable(false);
           }}
-          color={nutritionistTypeError ? "danger" : "primary"}
-          errorMessage={nutritionistTypeError}
-          isInvalid={!!nutritionistTypeError}
+          color={gymTypeError ? "danger" : "primary"}
+          errorMessage={gymTypeError}
+          isInvalid={!!gymTypeError}
         >
-          {nutritionistTypes.map((nutritionist: NutritionistType) => (
+          {gymTypes.map((gym: GymType) => (
             <SelectItem
-              key={nutritionist}
-              value={nutritionist}
-              textValue={nutritionist}
+              key={gym}
+              value={gym}
+              textValue={gym}
               className="bg-background"
             >
-              {nutritionist}
+              {gym}
             </SelectItem>
           ))}
         </Select>

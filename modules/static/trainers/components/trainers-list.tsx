@@ -8,7 +8,7 @@ export default function TrainersList() {
   const { filterTrainers } = useTrainersStore((state) => state);
   return (
     filterTrainers.length > 0 && (
-      <section className="bg-white dark:bg-background">
+      <section id="list" className="bg-white dark:bg-background">
         <div className="md:border-x md:border-t border-divider gap-8 items-start py-8 px-4 mx-auto max-w-screen-xl sm:py-16 md:py-24 lg:px-6">
           <div className="text-center">
             <h2 className="mb-4 text-2xl md:text-4xl tracking-tight font-semibold">

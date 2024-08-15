@@ -1,16 +1,17 @@
 import Image from "next/image";
 import { cn } from "@/lib/cn";
-import { Briefcase, Locate, MapPin } from "lucide-react";
+import { Briefcase, MapPin } from "lucide-react";
 import Link from "next/link";
 
 type Props = {
   image: string | null;
   verified: boolean | null;
-  name: string;
+  name: string | null;
   type: string | null;
   location: string;
-  experience: string | null;
+  experience?: string | null;
   url: string;
+  activePersonalTrainers?: number | null;
 };
 export const ProCard = ({
   image,
@@ -20,6 +21,7 @@ export const ProCard = ({
   location,
   experience,
   url,
+  activePersonalTrainers,
 }: Props) => {
   return (
     <div className="bg-white shadow-lg rounded-lg p-4 border border-divider">
@@ -32,7 +34,7 @@ export const ProCard = ({
             blurDataURL={"https://via.placeholder.com/300"}
             className="object-cover w-full h-full"
             src={image ? image : "https://via.placeholder.com/300"}
-            alt={name}
+            alt={name ? name : "Pro image"}
           />
         </div>
         <div className="flex justify-between">
@@ -51,7 +53,10 @@ export const ProCard = ({
               "text-xs font-semibold px-2 py-1 rounded flex items-center tracking-wide bg-foreground text-background"
             }
           >
-            Experience: {experience}
+            {experience && experience + " years experience"}
+            {activePersonalTrainers &&
+              activePersonalTrainers +
+                (activePersonalTrainers <= 1 ? " trainer" : " trainers")}
           </p>
         </div>
         <div className="grid grid-cols-1 gap-y-1">
