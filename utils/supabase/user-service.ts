@@ -87,3 +87,14 @@ export const updateUser = async ({
     })
     .eq("id", user.id);
 };
+
+export const getUserByUsername = async (username: string) => {
+  const { data, error } = await supabaseClient
+    .from("users")
+    .select("*")
+    .eq("username", username);
+  if (error) {
+    console.log("get user by username error: ", error.message);
+  }
+  return data;
+};

@@ -10,10 +10,11 @@ export const siteConfig = {
   siteUrl: "https://kaapo.studio",
   metadataBase: new URL("https://fitsync.pro"),
   creator: "@kaapo.studio",
+  canonical: new URL("https://fitsync.pro"),
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://fitsync.pro",
+    url: new URL("https://fitsync.pro"),
     siteName: "FitSyncPro",
     description:
       "FitSyncPro is a platform that connects trainers, nutritionists, and gyms with clients.",

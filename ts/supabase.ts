@@ -649,6 +649,7 @@ export type Database = {
           birthMonth: string | null
           birthYear: string | null
           certificate: boolean | null
+          certifications: Json[] | null
           city: string | null
           completedClients: string | null
           country: string | null
@@ -692,6 +693,7 @@ export type Database = {
           birthMonth?: string | null
           birthYear?: string | null
           certificate?: boolean | null
+          certifications?: Json[] | null
           city?: string | null
           completedClients?: string | null
           country?: string | null
@@ -735,6 +737,7 @@ export type Database = {
           birthMonth?: string | null
           birthYear?: string | null
           certificate?: boolean | null
+          certifications?: Json[] | null
           city?: string | null
           completedClients?: string | null
           country?: string | null
