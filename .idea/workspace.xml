@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47929a90-811a-448f-b1af-cd5bff05d262" name="Changes" comment="Hero height fixed;">
-      <change afterPath="$PROJECT_DIR$/app/(static)/gyms/[username]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(static)/nutritionists/[username]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(static)/trainers/[username]/page.tsx" afterDir="false" />
+    <list default="true" id="47929a90-811a-448f-b1af-cd5bff05d262" name="Changes" comment="profile page hero done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/callback/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/callback/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/supabase/middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/supabase/middleware.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingOverview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingOverview.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/settings/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/settings/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,9 +129,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
         <item itemvalue="npm.update-types" />
+        <item itemvalue="npm.dev" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
       </list>
@@ -158,7 +155,7 @@
       <workItem from="1720074241433" duration="9161000" />
       <workItem from="1720096240404" duration="9000" />
       <workItem from="1723032545843" duration="1421000" />
-      <workItem from="1723438914489" duration="55694000" />
+      <workItem from="1723438914489" duration="62960000" />
     </task>
     <task id="LOCAL-00001" summary="Middleware fixed;">
       <option name="closed" value="true" />
@@ -256,7 +253,23 @@
       <option name="project" value="LOCAL" />
       <updated>1723716231893</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="profile page started">
+      <option name="closed" value="true" />
+      <created>1723717832388</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1723717832388</updated>
+    </task>
+    <task id="LOCAL-00014" summary="profile page hero done">
+      <option name="closed" value="true" />
+      <created>1723731655639</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1723731655639</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,6 +289,8 @@
     <MESSAGE value="Professional page done;" />
     <MESSAGE value="pro screen renamed;" />
     <MESSAGE value="Hero height fixed;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Hero height fixed;" />
+    <MESSAGE value="profile page started" />
+    <MESSAGE value="profile page hero done" />
+    <option name="LAST_COMMIT_MESSAGE" value="profile page hero done" />
   </component>
 </project>

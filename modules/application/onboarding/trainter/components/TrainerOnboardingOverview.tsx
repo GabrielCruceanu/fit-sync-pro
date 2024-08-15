@@ -99,6 +99,7 @@ export function TrainerOnboardingOverview() {
         gymName: onboardingDetails.gymName!,
         trainingExperience: onboardingDetails.trainingExperience!,
         trainerType: onboardingDetails.trainerType!,
+        certifications: null,
       };
 
       // CREATE TRAINER PROFILE

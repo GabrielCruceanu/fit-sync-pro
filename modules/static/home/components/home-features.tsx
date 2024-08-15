@@ -1,16 +1,4 @@
-import HowItWorkImage from "@/public/images/homepage/how-it-works.png";
-import Image from "next/image";
-import Link from "next/link";
-import { ApplicationLinks } from "@/constants/links";
-import {
-  CalendarCheck,
-  CircleUserRound,
-  MonitorSmartphone,
-  PocketKnife,
-  SearchCheck,
-  ShieldCheck,
-  Target,
-} from "lucide-react";
+import { MonitorSmartphone, PocketKnife, ShieldCheck } from "lucide-react";
 import { CardWithIcon } from "@/components/shared/card-with-icon";
 import React from "react";
 

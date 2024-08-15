@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   keywords: ["fitness", "sync", "pro", "trainer", "nutritionist", "gym"],
   metadataBase: siteConfig.metadataBase,
   alternates: {
-    canonical: "/",
+    canonical: siteConfig.canonical,
     types: {
       "application/rss+xml": [
         { url: "https://fitsync.pro/feed.xml", title: "FitSyncPro RSS Feed" },
