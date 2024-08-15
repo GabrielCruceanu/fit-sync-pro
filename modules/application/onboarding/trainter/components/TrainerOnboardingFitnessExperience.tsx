@@ -100,6 +100,7 @@ export function TrainerOnboardingFitnessExperience() {
                 <SelectItem
                   key={trainer}
                   value={trainer}
+                  textValue={trainer}
                   className="bg-background"
                 >
                   {trainer}
@@ -139,6 +140,7 @@ export function TrainerOnboardingFitnessExperience() {
                 <SelectItem
                   key={experience}
                   value={experience}
+                  textValue={experience}
                   className="bg-background"
                 >
                   {experience}

@@ -363,6 +363,7 @@ export function NutritionistOnboardingPersonalDetails() {
               <SelectItem
                 key={gender}
                 value={gender}
+                textValue={gender}
                 className="bg-background"
                 onClick={() => {
                   setGenderError("");

@@ -132,6 +132,7 @@ export function TrainerOnboardingPhysicalLocation() {
                 color={"primary"}
                 key={gen}
                 value={gen}
+                textValue={gen}
                 onClick={() => {
                   currentCounties = [];
                   currentCites = [];
@@ -176,6 +177,7 @@ export function TrainerOnboardingPhysicalLocation() {
                 color={"primary"}
                 key={county}
                 value={county}
+                textValue={county}
                 onClick={() => {
                   setCurrentCountyError("");
                   setConfirmBtnDisable(false);
@@ -215,6 +217,7 @@ export function TrainerOnboardingPhysicalLocation() {
                 color={"primary"}
                 key={city}
                 value={city}
+                textValue={city}
                 onClick={() => {
                   setCurrentCityError("");
                   setConfirmBtnDisable(false);

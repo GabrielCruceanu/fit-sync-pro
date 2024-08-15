@@ -331,6 +331,7 @@ export function TrainerOnboardingPersonalDetails() {
               <SelectItem
                 key={gender}
                 value={gender}
+                textValue={gender}
                 className="bg-background"
                 onClick={() => {
                   setGenderError("");

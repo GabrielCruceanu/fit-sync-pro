@@ -1,5 +1,4 @@
 "use client";
-import { useStore } from "@/store/auth";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
 import { InputError, OnboardClientSteps } from "@/ts/enum";
@@ -16,12 +15,13 @@ import { clientFoodAllergies } from "@/constants/client";
 import { cn } from "@/lib/cn";
 import { FoodPreferences } from "@/ts/types";
 import { foodPreferences } from "@/constants/foods";
+import { useOnboardingStore } from "@/store/onboarding";
 
 export function ClientOnboardingFoodPreferences() {
-  const onboardingDetails = useStore(
+  const onboardingDetails = useOnboardingStore(
     (state) => state.onboarding.onboardingClientDetails,
   );
-  const updateOnboardingDetails = useStore(
+  const updateOnboardingDetails = useOnboardingStore(
     (state) => state.updateOnboardingClientDetails,
   );
 
@@ -150,6 +150,7 @@ export function ClientOnboardingFoodPreferences() {
                 <SelectItem
                   key={alergy}
                   value={alergy}
+                  textValue={alergy}
                   className="bg-background"
                 >
                   {alergy}

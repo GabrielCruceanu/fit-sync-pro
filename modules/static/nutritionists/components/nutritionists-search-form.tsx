@@ -1,13 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import { Select, SelectItem, Button } from "@nextui-org/react";
+import { Button, Select, SelectItem } from "@nextui-org/react";
 import { handleInputRequired } from "@/helpers/helpers";
 import { InputError } from "@/ts/enum";
-import { NutritionistType, TrainerType } from "@/ts/types";
+import { NutritionistType } from "@/ts/types";
 import { CitiesData } from "@/constants/location";
-import trainerTypes from "@/constants/trainer";
-import { useStore } from "@/store/auth";
-import { useTrainersStore } from "@/store/trainers";
 import nutritionistTypes from "@/constants/nutritionists";
 import { useNutritionistsStore } from "@/store/nutritionists";
 

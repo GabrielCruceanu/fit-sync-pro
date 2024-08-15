@@ -211,7 +211,12 @@ export function GymOnboardingPersonalDetails() {
             isInvalid={!!gymTypeError}
           >
             {gymTypes.map((gym: GymType) => (
-              <SelectItem key={gym} value={gym} className="bg-background">
+              <SelectItem
+                key={gym}
+                value={gym}
+                textValue={gym}
+                className="bg-background"
+              >
                 {gym}
               </SelectItem>
             ))}
@@ -249,6 +254,7 @@ export function GymOnboardingPersonalDetails() {
               <SelectItem
                 key={personal}
                 value={personal}
+                textValue={personal}
                 className="bg-background"
               >
                 {personal}

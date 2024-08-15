@@ -1,4 +1,3 @@
-import { useStore } from "@/store/auth";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
 import * as React from "react";
@@ -6,12 +5,13 @@ import { useState } from "react";
 import { OnboardClientSteps } from "@/ts/enum";
 import { Switch } from "@nextui-org/react";
 import { cn } from "@/lib/cn";
+import { useOnboardingStore } from "@/store/onboarding";
 
 export function ClientOnboardingNotifications() {
-  const onboardingDetails = useStore(
+  const onboardingDetails = useOnboardingStore(
     (state) => state.onboarding.onboardingClientDetails,
   );
-  const updateOnboardingDetails = useStore(
+  const updateOnboardingDetails = useOnboardingStore(
     (state) => state.updateOnboardingClientDetails,
   );
 

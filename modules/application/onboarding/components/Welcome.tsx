@@ -2,10 +2,12 @@
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
 import { OnboardingType } from "@/ts/enum";
-import { useStore } from "@/store/auth";
+import { useOnboardingStore } from "@/store/onboarding";
 
 export function Welcome() {
-  const updateOnboardingType = useStore((state) => state.updateOnboardingType);
+  const updateOnboardingType = useOnboardingStore(
+    (state) => state.updateOnboardingType,
+  );
   return (
     <OnboardingLayout
       image={"/images/onboarding/welcome.jpg"}
