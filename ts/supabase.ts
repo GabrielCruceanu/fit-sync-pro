@@ -54,6 +54,7 @@ export type Database = {
       clients: {
         Row: {
           birthDate: string | null
+          birthday: string | null
           birthMonth: string | null
           birthYear: string | null
           city: string | null
@@ -85,6 +86,7 @@ export type Database = {
         }
         Insert: {
           birthDate?: string | null
+          birthday?: string | null
           birthMonth?: string | null
           birthYear?: string | null
           city?: string | null
@@ -116,6 +118,7 @@ export type Database = {
         }
         Update: {
           birthDate?: string | null
+          birthday?: string | null
           birthMonth?: string | null
           birthYear?: string | null
           city?: string | null
@@ -180,7 +183,7 @@ export type Database = {
       }
       gyms: {
         Row: {
-          activePersonalTrainers: string | null
+          activePersonalTrainers: number | null
           availabilityDays: string[] | null
           availabilityTime: string[] | null
           biography: string | null
@@ -206,7 +209,7 @@ export type Database = {
           website: string | null
         }
         Insert: {
-          activePersonalTrainers?: string | null
+          activePersonalTrainers?: number | null
           availabilityDays?: string[] | null
           availabilityTime?: string[] | null
           biography?: string | null
@@ -232,7 +235,7 @@ export type Database = {
           website?: string | null
         }
         Update: {
-          activePersonalTrainers?: string | null
+          activePersonalTrainers?: number | null
           availabilityDays?: string[] | null
           availabilityTime?: string[] | null
           biography?: string | null

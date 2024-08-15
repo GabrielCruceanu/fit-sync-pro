@@ -52,7 +52,7 @@ export function Footer() {
         </div>
 
         <div className="mb-5 w-full lg:mb-0">
-          <h3 className="mb-2 text-2xl font-semibold lg:text-right">Other</h3>
+          <h3 className="mb-2 text-2xl font-semibold lg:text-right">Company</h3>
           <div className="flex flex-col text-sm md:flex-row lg:justify-end">
             <Link href={TermsLinks.termsAndConditions.link} target="_blank">
               {TermsLinks.termsAndConditions.name}

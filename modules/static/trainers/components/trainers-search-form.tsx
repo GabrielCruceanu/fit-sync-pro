@@ -7,6 +7,7 @@ import { TrainerType } from "@/ts/types";
 import { CitiesData } from "@/constants/location";
 import trainerTypes from "@/constants/trainer";
 import { useTrainersStore } from "@/store/trainers";
+import { handleScrollTo } from "@/helpers/scroll-to";
 
 export const TrainersSearchForm = () => {
   const [country, setCountry] = useState<string>("");
@@ -43,9 +44,10 @@ export const TrainersSearchForm = () => {
       return;
     }
     console.log("Search for trainers in:", country, county, city, trainerType);
-    fetchFilteredTrainers(country, county, city, trainerType).finally(() =>
-      setConfirmBtnDisable(false),
-    );
+    fetchFilteredTrainers(country, county, city, trainerType).finally(() => {
+      setConfirmBtnDisable(false);
+      handleScrollTo("list");
+    });
   };
 
   let countries: string[];

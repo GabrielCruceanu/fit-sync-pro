@@ -67,6 +67,7 @@ export function ClientOnboardingOverview() {
         birthDate: onboardingDetails.birthdate?.date!,
         birthMonth: onboardingDetails.birthdate?.month!,
         birthYear: onboardingDetails.birthdate?.year!,
+        birthday: `${onboardingDetails.birthdate?.date!}.${onboardingDetails.birthdate?.month!}.${onboardingDetails.birthdate?.year!}`,
         gender: onboardingDetails.gender!,
         joined: today,
         profilePictureUrl: null,
