@@ -8,10 +8,10 @@ import {
 } from "@nextui-org/react";
 import { ApplicationLinks } from "@/constants/links";
 import Link from "next/link";
-import { useStore } from "@/store/auth";
+import { useAuthStore } from "@/store/auth";
 
 const ProfileDropDown = () => {
-  const { user, signOut } = useStore((state) => state);
+  const { user, signOut } = useAuthStore((state) => state);
 
   return (
     <div className="flex items-center gap-4">

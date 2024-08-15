@@ -12,17 +12,25 @@ import { Select, SelectItem } from "@nextui-org/react";
 import { genderList } from "@/constants/user";
 import React, { useState } from "react";
 import { createClient } from "@/utils/supabase/create-client";
-import { useStore } from "@/store/auth";
+import { useAuthStore } from "@/store/auth";
 import { Button } from "@nextui-org/button";
 import { updateClient } from "@/utils/supabase/client-service";
 import { GenderType } from "@/ts/types";
+import { useSettingsStore } from "@/store/settings";
+import { useOnboardingStore } from "@/store/onboarding";
 
 export function ProfileSettings() {
   const supabase = createClient();
-  const { user } = useStore((state) => state);
-  const clientSettings = useStore((state) => state.settings.clientSettings);
-  const updateClientSettings = useStore((state) => state.updateClientSettings);
-  const updateOnboardingType = useStore((state) => state.updateOnboardingType);
+  const { user } = useAuthStore((state) => state);
+  const clientSettings = useSettingsStore(
+    (state) => state.settings.clientSettings,
+  );
+  const updateClientSettings = useSettingsStore(
+    (state) => state.updateClientSettings,
+  );
+  const updateOnboardingType = useOnboardingStore(
+    (state) => state.updateOnboardingType,
+  );
 
   const [firstNameError, setFirstNameError] = useState("");
   const [lastNameError, setLastNameError] = useState("");
@@ -339,6 +347,7 @@ export function ProfileSettings() {
             <SelectItem
               key={gen}
               value={gen}
+              textValue={gen}
               className="bg-background"
               onClick={() => {
                 setGenderError("");

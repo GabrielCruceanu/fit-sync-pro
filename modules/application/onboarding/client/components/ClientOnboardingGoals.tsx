@@ -1,4 +1,3 @@
-import { useStore } from "@/store/auth";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
 import * as React from "react";
@@ -7,12 +6,13 @@ import { InputError, OnboardClientSteps } from "@/ts/enum";
 import { Checkbox, CheckboxGroup } from "@nextui-org/react";
 import { cn } from "@/lib/cn";
 import { clientFitnessGoalsType } from "@/constants/client";
+import { useOnboardingStore } from "@/store/onboarding";
 
 export function ClientOnboardingGoals() {
-  const onboardingDetails = useStore(
+  const onboardingDetails = useOnboardingStore(
     (state) => state.onboarding.onboardingClientDetails,
   );
-  const updateOnboardingDetails = useStore(
+  const updateOnboardingDetails = useOnboardingStore(
     (state) => state.updateOnboardingClientDetails,
   );
 

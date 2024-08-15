@@ -15,7 +15,7 @@ import { LogoutButton } from "@/modules/application/layout/components/LogoutButt
 import { ApplicationLinks } from "@/constants/links";
 import isSmallScreen from "@/helpers/is-small-screen";
 import { usePathname } from "next/navigation";
-import { useStore } from "@/store/auth";
+import { useAuthStore } from "@/store/auth";
 import FitSyncLogo from "@/components/shared/fit-sync-logo";
 import { ThemeSwitcher } from "@/components/shared/theme-switcher";
 import { cn } from "@/lib/cn";
@@ -23,7 +23,7 @@ import { cn } from "@/lib/cn";
 export function LayoutNavigation({ children }: { children: React.ReactNode }) {
   const [drawerNavigation, setDrawerNavigation] = useState(true);
   const pathname = usePathname();
-  const { user, autoLogin } = useStore((state) => state);
+  const { user, autoLogin } = useAuthStore((state) => state);
   useEffect(() => {
     const drawerState = isSmallScreen();
     setDrawerNavigation(drawerState);

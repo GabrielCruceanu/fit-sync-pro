@@ -8,6 +8,7 @@ export const siteConfig = {
   author: "KaapoStudio",
   email: "kaapostudio@gmail.com",
   siteUrl: "https://kaapo.studio",
+  metadataBase: new URL("https://fitsync.pro"),
   creator: "@kaapo.studio",
   openGraph: {
     type: "website",
@@ -18,7 +19,7 @@ export const siteConfig = {
       "FitSyncPro is a platform that connects trainers, nutritionists, and gyms with clients.",
     images: [
       {
-        url: "https://fitsync.pro/twitter-cards/fitsyncpro.jpeg",
+        url: "/twitter-cards/fitsyncpro.jpeg",
         width: 1200,
         height: 630,
         alt: "FitSyncPro",
@@ -30,7 +31,7 @@ export const siteConfig = {
     title: "FitSyncPro - Connection between clients and professionals",
     description:
       "FitSyncPro is a platform that connects trainers, nutritionists, and gyms with clients.",
-    image: "https://fitsync.pro/twitter-cards/fitsyncpro.jpeg",
+    image: "/twitter-cards/fitsyncpro.jpeg",
     creator: "@KaapoStudio",
   },
   links: {

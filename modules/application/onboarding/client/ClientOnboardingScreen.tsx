@@ -1,6 +1,5 @@
 "use client";
 import { OnboardClientSteps } from "@/ts/enum";
-import { useStore } from "@/store/auth";
 import {
   ClientOnboardingPersonalDetails,
   ClientOnboardingGoals,
@@ -14,8 +13,9 @@ import {
 } from "@/modules/application/onboarding/client";
 import { ClientOnboardingNotifications } from "@/modules/application/onboarding/client/components/ClientOnboardingNotifications";
 import { ClientOnboardingOverview } from "@/modules/application/onboarding/client/components/ClientOnboardingOverview";
+import { useOnboardingStore } from "@/store/onboarding";
 export function ClientOnboardingScreen() {
-  const clientSteps = useStore(
+  const clientSteps = useOnboardingStore(
     (state) => state.onboarding.onboardingClientDetails.clientSteps,
   );
   switch (clientSteps) {

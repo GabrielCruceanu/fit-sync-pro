@@ -1,6 +1,4 @@
-import { useStore } from "@/store/auth";
 import { Button } from "@nextui-org/button";
-import * as React from "react";
 import { useState } from "react";
 import { OnboardClientSteps, TrainingLocation } from "@/ts/enum";
 import { createClient } from "@/utils/supabase/create-client";
@@ -12,14 +10,15 @@ import { createUserName, updateUser } from "@/utils/supabase/user-service";
 import { OnboardingMessage } from "@/lib/validations/error-check";
 import { UserType } from "@/ts/enum/user.enum";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
+import { useOnboardingStore } from "@/store/onboarding";
 
 export function ClientOnboardingOverview() {
   const supabase = createClient();
   const router = useRouter();
-  const onboardingDetails = useStore(
+  const onboardingDetails = useOnboardingStore(
     (state) => state.onboarding.onboardingClientDetails,
   );
-  const updateOnboardingDetails = useStore(
+  const updateOnboardingDetails = useOnboardingStore(
     (state) => state.updateOnboardingClientDetails,
   );
 

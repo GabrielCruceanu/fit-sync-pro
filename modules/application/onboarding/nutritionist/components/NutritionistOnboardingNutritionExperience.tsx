@@ -122,6 +122,7 @@ export function NutritionistOnboardingNutritionExperience() {
                   <SelectItem
                     key={nutritionist}
                     value={nutritionist}
+                    textValue={nutritionist}
                     className="bg-background"
                   >
                     {nutritionist}
@@ -161,6 +162,7 @@ export function NutritionistOnboardingNutritionExperience() {
                   <SelectItem
                     key={experience}
                     value={experience}
+                    textValue={experience}
                     className="bg-background"
                   >
                     {experience}

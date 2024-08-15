@@ -1,4 +1,3 @@
-import { useStore } from "@/store/auth";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
 import { InputError, OnboardClientSteps, OnboardingType } from "@/ts/enum";
@@ -23,16 +22,19 @@ import {
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { GenderType } from "@/ts/types";
+import { useOnboardingStore } from "@/store/onboarding";
 
 export function ClientOnboardingPersonalDetails() {
   const supabase = createClient();
-  const onboardingDetails = useStore(
+  const onboardingDetails = useOnboardingStore(
     (state) => state.onboarding.onboardingClientDetails,
   );
-  const updateOnboardingDetails = useStore(
+  const updateOnboardingDetails = useOnboardingStore(
     (state) => state.updateOnboardingClientDetails,
   );
-  const updateOnboardingType = useStore((state) => state.updateOnboardingType);
+  const updateOnboardingType = useOnboardingStore(
+    (state) => state.updateOnboardingType,
+  );
 
   const [firstNameError, setFirstNameError] = useState("");
   const [lastNameError, setLastNameError] = useState("");
@@ -376,6 +378,7 @@ export function ClientOnboardingPersonalDetails() {
               <SelectItem
                 key={gender}
                 value={gender}
+                textValue={gender}
                 className="bg-background"
                 onClick={() => {
                   setGenderError("");

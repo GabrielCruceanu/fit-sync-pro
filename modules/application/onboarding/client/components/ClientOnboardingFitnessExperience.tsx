@@ -1,5 +1,4 @@
 "use client";
-import { useStore } from "@/store/auth";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
 import { FitnessExperience, InputError, OnboardClientSteps } from "@/ts/enum";
@@ -8,12 +7,13 @@ import { useState } from "react";
 import { RadioGroup } from "@nextui-org/radio";
 import { RadioButton } from "@/components/shared/ratio-button";
 import { handleInputRequired } from "@/helpers/helpers";
+import { useOnboardingStore } from "@/store/onboarding";
 
 export function ClientOnboardingFitnessExperience() {
-  const onboardingDetails = useStore(
+  const onboardingDetails = useOnboardingStore(
     (state) => state.onboarding.onboardingClientDetails,
   );
-  const updateOnboardingDetails = useStore(
+  const updateOnboardingDetails = useOnboardingStore(
     (state) => state.updateOnboardingClientDetails,
   );
 

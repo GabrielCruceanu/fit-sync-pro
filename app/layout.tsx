@@ -12,6 +12,18 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   keywords: ["fitness", "sync", "pro", "trainer", "nutritionist", "gym"],
+  metadataBase: siteConfig.metadataBase,
+  alternates: {
+    canonical: "/",
+    types: {
+      "application/rss+xml": [
+        { url: "https://fitsync.pro/feed.xml", title: "FitSyncPro RSS Feed" },
+      ],
+    },
+    languages: {
+      en: "https://fitsync.pro",
+    },
+  },
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon-32x32.png",
@@ -26,15 +38,7 @@ export const metadata: Metadata = {
       url: "https://kaapo.studio",
     },
   ],
-  creator: "kaapo.studio",
-  alternates: {
-    canonical: "https://fitsync.pro",
-    types: {
-      "application/rss+xml": [
-        { url: "https://fitsync.pro/feed.xml", title: "FitSyncPro RSS Feed" },
-      ],
-    },
-  },
+  creator: siteConfig.creator,
 };
 export default async function RootLayout({
   children,

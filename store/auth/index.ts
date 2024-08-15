@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { createClient } from "@/utils/supabase/create-client";
 import { UserDetails } from "@/ts/types";
 
-type State = {
+type AuthState = {
   isLoading: boolean;
   setIsLoading: (loading: boolean) => void;
   isGoogleLoading: boolean;
@@ -16,7 +16,7 @@ type State = {
 };
 
 const supabase = createClient();
-export const useStore = create<State>()((set, state) => ({
+export const useAuthStore = create<AuthState>()((set, state) => ({
   ...state,
   isLoading: false,
   setIsLoading: (isLoading) =>

@@ -1,5 +1,4 @@
 "use client";
-import { useStore } from "@/store/auth";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
 import { Button } from "@nextui-org/button";
 import { InputError, OnboardClientSteps } from "@/ts/enum";
@@ -7,12 +6,13 @@ import { useState } from "react";
 import { handleInputRequired } from "@/helpers/helpers";
 import { Select, SelectItem } from "@nextui-org/react";
 import { CitiesData } from "@/constants/location";
+import { useOnboardingStore } from "@/store/onboarding";
 
 export function ClientOnboardingLocation() {
-  const onboardingDetails = useStore(
+  const onboardingDetails = useOnboardingStore(
     (state) => state.onboarding.onboardingClientDetails,
   );
-  const updateOnboardingDetails = useStore(
+  const updateOnboardingDetails = useOnboardingStore(
     (state) => state.updateOnboardingClientDetails,
   );
 
