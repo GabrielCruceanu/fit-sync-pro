@@ -1,1 +1,1 @@
-export { ProScreen } from "./ProScreen";
+export { ProScreen } from "./pro-screen";

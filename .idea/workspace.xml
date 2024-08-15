@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47929a90-811a-448f-b1af-cd5bff05d262" name="Changes" comment="some color bugs fixed;">
-      <change afterPath="$PROJECT_DIR$/modules/static/pro/components/pro-faqs.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/static/pro/components/pro-features.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/static/pro/components/pro-hero.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/static/pro/components/pro-how-it-works.tsx" afterDir="false" />
+    <list default="true" id="47929a90-811a-448f-b1af-cd5bff05d262" name="Changes" comment="Professional page done;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/static/pro/ProScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/pro/ProScreen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/static/pro/components/ProBenefits.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/static/pro/components/ProFaq.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/static/pro/components/ProHeader.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/static/pro/components/ProPrices.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/pro/components/pro-prices.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/static/pro/ProScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/pro/pro-screen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/static/pro/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/pro/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +155,7 @@
       <workItem from="1720074241433" duration="9161000" />
       <workItem from="1720096240404" duration="9000" />
       <workItem from="1723032545843" duration="1421000" />
-      <workItem from="1723438914489" duration="53658000" />
+      <workItem from="1723438914489" duration="53702000" />
     </task>
     <task id="LOCAL-00001" summary="Middleware fixed;">
       <option name="closed" value="true" />
@@ -236,7 +229,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723713992481</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Professional page done;">
+      <option name="closed" value="true" />
+      <created>1723715796768</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1723715796768</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,6 +254,7 @@
     <MESSAGE value="Client Onboarding Store fixed;" />
     <MESSAGE value="Gyms page done;" />
     <MESSAGE value="some color bugs fixed;" />
-    <option name="LAST_COMMIT_MESSAGE" value="some color bugs fixed;" />
+    <MESSAGE value="Professional page done;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Professional page done;" />
   </component>
 </project>
