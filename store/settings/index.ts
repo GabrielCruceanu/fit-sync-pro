@@ -87,6 +87,7 @@ export const useSettingsStore = create<SettingsState>()((set, state) => ({
       type: null,
       username: null,
       website: null,
+      certifications: null,
     },
   },
   autoSettings: async () => {
