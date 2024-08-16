@@ -24,7 +24,7 @@ export const ProCard = ({
   activePersonalTrainers,
 }: Props) => {
   return (
-    <div className="bg-white shadow-lg rounded-lg p-4 border border-divider">
+    <div className="bg-background shadow-lg rounded-lg p-4 border border-divider">
       <div className="grid gap-3">
         <div className="w-full flex max-h-[200px] rounded overflow-hidden">
           <Image
