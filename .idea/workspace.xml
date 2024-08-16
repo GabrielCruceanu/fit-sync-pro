@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47929a90-811a-448f-b1af-cd5bff05d262" name="Changes" comment="profile page hero done">
+    <list default="true" id="47929a90-811a-448f-b1af-cd5bff05d262" name="Changes" comment="bug fixed;">
+      <change afterPath="$PROJECT_DIR$/modules/static/profile/components/profile-certifications.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingOverview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingOverview.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/settings/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/settings/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/shared/simple-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/shared/simple-card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/static/profile/components/profile-about.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/profile/components/profile-about.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/static/profile/trainer-profile-screen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/profile/trainer-profile-screen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/static/trainers/components/trainers-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/trainers/components/trainers-list.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/trainers/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/trainers/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +71,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "feature/static",
-    "last_opened_file_path": "/Users/kaapo-studio/Documents/Projects/fit-sync-pro/app/(static)/nutritionists",
+    "last_opened_file_path": "/Users/kaapo-studio/Documents/Projects/fit-sync-pro/modules/static/profile/components",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -83,11 +87,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/modules/static/profile/components" />
       <recent name="$PROJECT_DIR$/app/(static)/nutritionists" />
       <recent name="$PROJECT_DIR$/app/(static)/gyms" />
       <recent name="$PROJECT_DIR$/modules/static/pro/components" />
       <recent name="$PROJECT_DIR$/store" />
-      <recent name="$PROJECT_DIR$/modules/static" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/store/auth" />
@@ -129,9 +133,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
         <item itemvalue="npm.update-types" />
-        <item itemvalue="npm.dev" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
       </list>
@@ -155,7 +159,7 @@
       <workItem from="1720074241433" duration="9161000" />
       <workItem from="1720096240404" duration="9000" />
       <workItem from="1723032545843" duration="1421000" />
-      <workItem from="1723438914489" duration="62960000" />
+      <workItem from="1723438914489" duration="69020000" />
     </task>
     <task id="LOCAL-00001" summary="Middleware fixed;">
       <option name="closed" value="true" />
@@ -269,7 +273,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723731655639</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="bug fixed;">
+      <option name="closed" value="true" />
+      <created>1723731773775</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1723731773775</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,6 +303,7 @@
     <MESSAGE value="Hero height fixed;" />
     <MESSAGE value="profile page started" />
     <MESSAGE value="profile page hero done" />
-    <option name="LAST_COMMIT_MESSAGE" value="profile page hero done" />
+    <MESSAGE value="bug fixed;" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fixed;" />
   </component>
 </project>

@@ -4,11 +4,9 @@ type Props = {
 };
 export const SimpleCard = ({ title, description }: Props) => {
   return (
-    <div className="flex">
-      <div>
-        <h3 className="mb-2 text-xl font-semibold">{title}</h3>
-        <p className="mb-2">{description}</p>
-      </div>
+    <div className="p-6 text-center border border-divider rounded">
+      <p className="mb-2">{title}</p>
+      <h3 className="text-xl font-semibold">{description}</h3>
     </div>
   );
 };

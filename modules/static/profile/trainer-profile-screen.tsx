@@ -3,6 +3,10 @@ import { Trainer } from "@/ts/types";
 import { ProfileHero } from "@/modules/static/profile/components/profile-hero";
 import { AdsBanner } from "@/components/shared/ads-branner";
 import { ProfileAbout } from "@/modules/static/profile/components/profile-about";
+import {
+  Certification,
+  ProfileCertifications,
+} from "@/modules/static/profile/components/profile-certifications";
 
 type Props = {
   profile: Trainer;
@@ -23,6 +27,10 @@ export function TrainerProfileScreen({ profile }: Props) {
     trainerType,
     biography,
     trainingExperience,
+    certificate,
+    certifications,
+    nutritionistType,
+    nutritionistExperience,
   } = profile;
   return (
     <>
@@ -38,6 +46,14 @@ export function TrainerProfileScreen({ profile }: Props) {
       <ProfileAbout
         biography={biography}
         trainerExperience={trainingExperience}
+        trainerType={trainerType}
+        verifiedAsTrainer={certificate}
+        nutritionistExperience={nutritionistExperience}
+        nutritionistType={nutritionistType}
+        verifiedAsNutritionist={certificate}
+      />
+      <ProfileCertifications
+        certifications={certifications as Certification[]}
       />
     </>
   );
