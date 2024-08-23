@@ -26,6 +26,7 @@ export const useTrainersStore = create<TrainersState>()((set, state) => ({
       .from("trainers")
       .select("*");
     if (error) throw error;
+    console.log("Trainers:", trainers);
     set({ trainers });
   },
   fetchFilteredTrainers: async (country, county, city, type) => {

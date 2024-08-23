@@ -13,7 +13,7 @@ import {
 import { UserNavigation } from "@/modules/application/layout";
 import { LogoutButton } from "@/modules/application/layout/components/LogoutButton";
 import { ApplicationLinks } from "@/constants/links";
-import isSmallScreen from "@/helpers/is-small-screen";
+import { isSmallScreen } from "@/helpers/responsive";
 import { usePathname } from "next/navigation";
 import { useAuthStore } from "@/store/auth";
 import FitSyncLogo from "@/components/shared/fit-sync-logo";

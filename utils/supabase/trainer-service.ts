@@ -1,4 +1,5 @@
 import { TypedSupabaseClient, Trainer, Trainers } from "@/ts/types";
+import { TrainerAvailabilities, TrainerAvailability } from "@/ts/types/trainer";
 
 export const createTrainerProfile = async (
   trainer: Trainer,
@@ -56,4 +57,20 @@ export const getTrainerProfileByUserName = async (
   }
 
   return trainers as unknown as Trainer;
+};
+
+export const getTrainerAvailabilityById = async (
+  id: string,
+  supabase: TypedSupabaseClient,
+) => {
+  const { data: availability, error } = await supabase
+    .from("trainer_availability")
+    .select("*")
+    .eq("trainer_id", id);
+
+  if (error) {
+    console.log("select trainer availability by id error: ", error.message);
+  }
+
+  return availability as unknown as TrainerAvailabilities;
 };

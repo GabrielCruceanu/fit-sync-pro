@@ -4,10 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47929a90-811a-448f-b1af-cd5bff05d262" name="Changes" comment="profile page hero done">
+    <list default="true" id="47929a90-811a-448f-b1af-cd5bff05d262" name="Changes" comment="pro card fixed;">
+      <change afterPath="$PROJECT_DIR$/components/shared/review-card.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/helpers/days-order.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/helpers/median-rating.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/helpers/responsive.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/static/profile/components/profile-availability.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/static/profile/components/profile-review.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/static/profile/components/profile-transforms.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ts/types/review.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/supabase/review-service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/supabase/trainer-image-transforms.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingOverview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingOverview.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/settings/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/settings/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(static)/trainers/[username]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(static)/trainers/[username]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/shared/simple-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/shared/simple-card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/is-small-screen.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/layout/components/LayoutNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/layout/components/LayoutNavigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/static/layout/components/nav-items.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/layout/components/nav-items.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/static/profile/components/profile-certifications.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/profile/components/profile-certifications.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/static/profile/components/profile-hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/profile/components/profile-hero.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/static/profile/trainer-profile-screen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/profile/trainer-profile-screen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ts/supabase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ts/supabase.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ts/types/trainer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ts/types/trainer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/supabase/trainer-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/supabase/trainer-service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +88,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "feature/static",
-    "last_opened_file_path": "/Users/kaapo-studio/Documents/Projects/fit-sync-pro/app/(static)/nutritionists",
+    "last_opened_file_path": "/Users/kaapo-studio/Documents/Projects/fit-sync-pro/modules/static/profile/components",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -76,18 +97,18 @@
     "npm.dev.executor": "Run",
     "npm.update-types.executor": "Run",
     "prettierjs.PrettierConfiguration.Package": "/Users/kaapo-studio/Documents/Projects/fit-sync-pro/node_modules/prettier",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "ts.external.directory.path": "/Users/kaapo-studio/Documents/Projects/fit-sync-pro/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/modules/static/profile/components" />
       <recent name="$PROJECT_DIR$/app/(static)/nutritionists" />
       <recent name="$PROJECT_DIR$/app/(static)/gyms" />
       <recent name="$PROJECT_DIR$/modules/static/pro/components" />
       <recent name="$PROJECT_DIR$/store" />
-      <recent name="$PROJECT_DIR$/modules/static" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/store/auth" />
@@ -96,7 +117,7 @@
       <recent name="$PROJECT_DIR$/public" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.build">
+  <component name="RunManager" selected="npm.update-types">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -129,9 +150,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.build" />
         <item itemvalue="npm.update-types" />
         <item itemvalue="npm.dev" />
+        <item itemvalue="npm.build" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
       </list>
@@ -140,7 +161,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.17011.90" />
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-WS-242.20224.342" />
       </set>
     </attachedChunks>
   </component>
@@ -155,7 +176,10 @@
       <workItem from="1720074241433" duration="9161000" />
       <workItem from="1720096240404" duration="9000" />
       <workItem from="1723032545843" duration="1421000" />
-      <workItem from="1723438914489" duration="62960000" />
+      <workItem from="1723438914489" duration="69748000" />
+      <workItem from="1724159714849" duration="101000" />
+      <workItem from="1724159880752" duration="9000" />
+      <workItem from="1724160605942" duration="24538000" />
     </task>
     <task id="LOCAL-00001" summary="Middleware fixed;">
       <option name="closed" value="true" />
@@ -269,7 +293,31 @@
       <option name="project" value="LOCAL" />
       <updated>1723731655639</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="bug fixed;">
+      <option name="closed" value="true" />
+      <created>1723731773775</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1723731773775</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Profile About done;&#10;Profile Certifications done;">
+      <option name="closed" value="true" />
+      <created>1723817009745</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1723817009745</updated>
+    </task>
+    <task id="LOCAL-00017" summary="pro card fixed;">
+      <option name="closed" value="true" />
+      <created>1723817109899</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1723817109899</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,6 +339,9 @@
     <MESSAGE value="Hero height fixed;" />
     <MESSAGE value="profile page started" />
     <MESSAGE value="profile page hero done" />
-    <option name="LAST_COMMIT_MESSAGE" value="profile page hero done" />
+    <MESSAGE value="bug fixed;" />
+    <MESSAGE value="Profile About done;&#10;Profile Certifications done;" />
+    <MESSAGE value="pro card fixed;" />
+    <option name="LAST_COMMIT_MESSAGE" value="pro card fixed;" />
   </component>
 </project>
