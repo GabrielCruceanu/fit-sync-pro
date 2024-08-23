@@ -22,7 +22,7 @@ export const ProfileHero = ({
   return (
     <section className="dark:bg-background">
       <div className="border-x border-divider grid py-8 px-6 mx-auto max-w-screen-xl md:py-24 lg:gap-12 xl:gap-0 lg:grid-cols-12 lg:min-h-[750px]">
-        <div className="place-self-center mb-10 w-full mr-auto grid grid-cols-1 gap-y-6 order-2 md:order-1 lg:col-span-7 xl:mb-0">
+        <div className="place-self-center mb-10 w-full mr-auto grid grid-cols-1 gap-y-6 order-2 lg:order-1 lg:col-span-7 xl:mb-0">
           <h1 className="max-w-2xl text-3xl font-semibold tracking-tight leading-none sm:text-5xl lg:text-6xl dark:text-white">
             {name}
           </h1>
@@ -87,7 +87,7 @@ export const ProfileHero = ({
           {/*  </li>*/}
           {/*</ul>*/}
         </div>
-        <div className="place-self-center mb-10 mx-auto min-h-[375px] max-h-[375px] max-w-[375px] w-full flex items-center relative order-1 md:order-2 lg:col-span-5 xl:mb-0">
+        <div className="place-self-center mb-10 mx-auto md:min-h-[375px] md:max-h-[375px] md:max-w-[375px] h-60 w-full flex items-center relative order-1 lg:order-2 lg:col-span-5 xl:mb-0">
           <Image
             fill
             className="rounded-lg object-cover"

@@ -538,7 +538,7 @@ export type Database = {
           date_created: string | null
           description: string | null
           id: number
-          stars: number | null
+          rating: number | null
         }
         Insert: {
           beneficiary_id?: string | null
@@ -549,7 +549,7 @@ export type Database = {
           date_created?: string | null
           description?: string | null
           id?: number
-          stars?: number | null
+          rating?: number | null
         }
         Update: {
           beneficiary_id?: string | null
@@ -560,7 +560,7 @@ export type Database = {
           date_created?: string | null
           description?: string | null
           id?: number
-          stars?: number | null
+          rating?: number | null
         }
         Relationships: [
           {
@@ -641,6 +641,85 @@ export type Database = {
           },
         ]
       }
+      trainer_availability: {
+        Row: {
+          created_at: string | null
+          day: string
+          end_time: string
+          gym_name: string
+          id: number
+          start_time: string
+          trainer_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          day: string
+          end_time: string
+          gym_name: string
+          id?: never
+          start_time: string
+          trainer_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          day?: string
+          end_time?: string
+          gym_name?: string
+          id?: never
+          start_time?: string
+          trainer_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "trainer_availability_trainer_id_fkey"
+            columns: ["trainer_id"]
+            isOneToOne: false
+            referencedRelation: "trainers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      trainer_image_transforms: {
+        Row: {
+          after_image_url: string
+          before_image_url: string
+          description: string | null
+          id: string
+          is_public: boolean | null
+          trainer_id: string | null
+          transformed_at: string | null
+          uploaded_at: string | null
+        }
+        Insert: {
+          after_image_url: string
+          before_image_url: string
+          description?: string | null
+          id?: string
+          is_public?: boolean | null
+          trainer_id?: string | null
+          transformed_at?: string | null
+          uploaded_at?: string | null
+        }
+        Update: {
+          after_image_url?: string
+          before_image_url?: string
+          description?: string | null
+          id?: string
+          is_public?: boolean | null
+          trainer_id?: string | null
+          transformed_at?: string | null
+          uploaded_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "trainer_image_transforms_trainer_id_fkey"
+            columns: ["trainer_id"]
+            isOneToOne: false
+            referencedRelation: "trainers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       trainers: {
         Row: {
           activeClients: string | null
@@ -675,7 +754,7 @@ export type Database = {
           profilePictureUrl: string | null
           state: string | null
           trainerType: Database["public"]["Enums"]["trainer_type"] | null
-          trainingAvailabilityDays: string[] | null
+          trainingAvailabilityDays: Json[] | null
           trainingAvailabilityTime: string[] | null
           trainingExperience: string | null
           trainingLocation: string[] | null
@@ -719,7 +798,7 @@ export type Database = {
           profilePictureUrl?: string | null
           state?: string | null
           trainerType?: Database["public"]["Enums"]["trainer_type"] | null
-          trainingAvailabilityDays?: string[] | null
+          trainingAvailabilityDays?: Json[] | null
           trainingAvailabilityTime?: string[] | null
           trainingExperience?: string | null
           trainingLocation?: string[] | null
@@ -763,7 +842,7 @@ export type Database = {
           profilePictureUrl?: string | null
           state?: string | null
           trainerType?: Database["public"]["Enums"]["trainer_type"] | null
-          trainingAvailabilityDays?: string[] | null
+          trainingAvailabilityDays?: Json[] | null
           trainingAvailabilityTime?: string[] | null
           trainingExperience?: string | null
           trainingLocation?: string[] | null

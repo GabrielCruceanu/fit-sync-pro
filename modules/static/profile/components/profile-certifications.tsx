@@ -17,6 +17,10 @@ export const ProfileCertifications = ({ certifications }: Props) => {
           <h2 className="mb-4 text-2xl md:text-4xl tracking-tight font-semibold">
             Certifications and qualifications
           </h2>
+          <p>
+            Check out the certifications and qualifications that the trainer has
+            achieved.
+          </p>
 
           <ul className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {certifications.map((certification: Certification, index) => (

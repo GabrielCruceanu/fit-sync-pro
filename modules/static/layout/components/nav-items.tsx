@@ -2,7 +2,7 @@
 import { NavbarItem, NavbarMenuItem } from "@nextui-org/react";
 import { Link } from "@nextui-org/react";
 import React from "react";
-import isSmallScreen from "@/helpers/is-small-screen";
+import { isSmallScreen } from "@/helpers/responsive";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/cn";
 

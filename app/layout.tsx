@@ -1,4 +1,6 @@
 import "./globals.css";
+// Import Swiper styles
+import "swiper/css";
 import { Providers } from "@/app/providers/NextUiProvider";
 import { Metadata } from "next";
 import { siteConfig } from "@/config/site";

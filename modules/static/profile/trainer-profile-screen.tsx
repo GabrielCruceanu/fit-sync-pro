@@ -7,12 +7,28 @@ import {
   Certification,
   ProfileCertifications,
 } from "@/modules/static/profile/components/profile-certifications";
+import { ProfileAvailability } from "@/modules/static/profile/components/profile-availability";
+import {
+  TrainerAvailabilities,
+  TrainerImageTransforms,
+} from "@/ts/types/trainer";
+import { Reviews } from "@/ts/types/review";
+import { ProfileReview } from "@/modules/static/profile/components/profile-review";
+import { ProfileTransforms } from "@/modules/static/profile/components/profile-transforms";
 
 type Props = {
   profile: Trainer;
+  trainerAvailabilities: TrainerAvailabilities;
+  reviews: Reviews;
+  transforms: TrainerImageTransforms;
 };
 
-export function TrainerProfileScreen({ profile }: Props) {
+export function TrainerProfileScreen({
+  profile,
+  trainerAvailabilities,
+  reviews,
+  transforms,
+}: Props) {
   const {
     firstName,
     lastName,
@@ -25,6 +41,11 @@ export function TrainerProfileScreen({ profile }: Props) {
     state,
     city,
     trainerType,
+    trainingLocation,
+    trainingPhysicalPreferences,
+    trainingOnlinePreferences,
+    gymStreet,
+    gymName,
     biography,
     trainingExperience,
     certificate,
@@ -39,7 +60,7 @@ export function TrainerProfileScreen({ profile }: Props) {
         birthday={birthMonth + " / " + birthDate + " / " + birthYear}
         profilePictureUrl={profilePictureUrl}
         gender={gender}
-        location={city + " / " + state + " / " + country}
+        location={city + ", " + state + ", " + country}
         profession={trainerType}
       />
       <AdsBanner />
@@ -55,6 +76,20 @@ export function TrainerProfileScreen({ profile }: Props) {
       <ProfileCertifications
         certifications={certifications as Certification[]}
       />
+      <ProfileAvailability
+        availabilities={trainerAvailabilities}
+        location={city + ", " + state + ", " + country}
+        trainingLocation={trainingLocation}
+        trainingPhysicalPreferences={trainingPhysicalPreferences}
+        trainingOnlinePreferences={trainingOnlinePreferences}
+        gymStreet={gymStreet}
+        gymName={gymName}
+      />
+      <ProfileReview
+        reviews={reviews}
+        beneficiaryName={firstName + " " + lastName}
+      />
+      <ProfileTransforms transforms={transforms} />
     </>
   );
 }
