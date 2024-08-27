@@ -1,37 +1,37 @@
 import React from "react";
-import { Trainer } from "@/ts/types";
+import { Nutritionist } from "@/ts/types";
 import { ProfileHero } from "@/modules/static/profile/components/profile-hero";
 import { AdsBanner } from "@/components/shared/ads-branner";
 import { ProfileAbout } from "@/modules/static/profile/components/profile-about";
 import { ProfileCertifications } from "@/modules/static/profile/components/profile-certifications";
 import { ProfileAvailability } from "@/modules/static/profile/components/profile-availability";
-import {
-  TrainerAvailabilities,
-  TrainerCertifications,
-  TrainerImagesGallery,
-  TrainerImageTransforms,
-} from "@/ts/types/trainer";
 import { Reviews } from "@/ts/types/review";
 import { ProfileReview } from "@/modules/static/profile/components/profile-review";
 import { ProfileTransforms } from "@/modules/static/profile/components/profile-transforms";
 import { ProfileGallery } from "@/modules/static/profile/components/profile-gallery";
+import {
+  NutritionistAvailabilities,
+  NutritionistCertifications,
+  NutritionistImagesGallery,
+  NutritionistImagesTransform,
+} from "@/ts/types/nutritionist";
 
 type Props = {
-  profile: Trainer;
-  trainerAvailabilities: TrainerAvailabilities;
+  profile: Nutritionist;
+  availabilities: NutritionistAvailabilities;
   reviews: Reviews;
-  transforms: TrainerImageTransforms;
-  certifications: TrainerCertifications;
-  gallery: TrainerImagesGallery;
+  transforms: NutritionistImagesTransform;
+  gallery: NutritionistImagesGallery;
+  certifications: NutritionistCertifications;
 };
 
-export function TrainerProfileScreen({
+export function NutritionistProfileScreen({
   profile,
-  trainerAvailabilities,
+  availabilities,
   reviews,
   transforms,
-  certifications,
   gallery,
+  certifications,
 }: Props) {
   const {
     firstName,
@@ -50,17 +50,12 @@ export function TrainerProfileScreen({
     country,
     state,
     city,
-    trainerType,
-    trainingLocation,
-    trainingPhysicalPreferences,
-    trainingOnlinePreferences,
-    gymStreet,
-    gymName,
     biography,
-    trainingExperience,
     certificate,
     nutritionistType,
     nutritionistExperience,
+    cabinetStreet,
+    cabinetName,
   } = profile;
 
   return (
@@ -71,7 +66,7 @@ export function TrainerProfileScreen({
         profilePictureUrl={profilePictureUrl}
         gender={gender}
         location={city + ", " + state + ", " + country}
-        profession={trainerType}
+        profession={nutritionistType}
         phone={phoneNumber}
         email={email}
         website={website}
@@ -82,22 +77,16 @@ export function TrainerProfileScreen({
       <AdsBanner />
       <ProfileAbout
         biography={biography}
-        trainerExperience={trainingExperience}
-        trainerType={trainerType}
-        verifiedAsTrainer={certificate}
         nutritionistExperience={nutritionistExperience}
         nutritionistType={nutritionistType}
         verifiedAsNutritionist={certificate}
       />
       <ProfileCertifications certifications={certifications} />
       <ProfileAvailability
-        availabilities={trainerAvailabilities}
+        availabilities={availabilities}
         location={city + ", " + state + ", " + country}
-        trainingLocation={trainingLocation}
-        trainingPhysicalPreferences={trainingPhysicalPreferences}
-        trainingOnlinePreferences={trainingOnlinePreferences}
-        gymStreet={gymStreet}
-        gymName={gymName}
+        gymStreet={cabinetStreet}
+        gymName={cabinetName}
       />
       <ProfileReview
         reviews={reviews}

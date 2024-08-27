@@ -3,9 +3,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { TrainerImagesGallery } from "@/ts/types/trainer";
 import { isSmallScreen } from "@/helpers/responsive";
+import { NutritionistImagesGallery } from "@/ts/types/nutritionist";
 
 type Props = {
-  gallery: TrainerImagesGallery;
+  gallery: TrainerImagesGallery | NutritionistImagesGallery;
 };
 export const ProfileGallery = ({ gallery }: Props) => {
   return (
@@ -14,9 +15,11 @@ export const ProfileGallery = ({ gallery }: Props) => {
         <h2 className="mb-4 text-2xl md:text-4xl tracking-tight font-semibold">
           Gallery
         </h2>
-        {gallery.length === 0 && <p>No images yet.</p>}
+        {gallery === null || (gallery && gallery.length === 0) ? (
+          <p>No images yet.</p>
+        ) : null}
 
-        {gallery.length > 0 && (
+        {gallery && gallery.length > 0 && (
           <>
             <p className="mb-4">
               Check out the amazing transformations that clients have achieved

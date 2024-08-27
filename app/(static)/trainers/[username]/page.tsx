@@ -8,6 +8,7 @@ import { getReviewsByBeneficiaryId } from "@/utils/supabase/review-service";
 import { getTrainerImageTransformsByTrainerId } from "@/utils/supabase/trainer/trainer-image-transforms";
 import { getTrainerAvailabilityById } from "@/utils/supabase/trainer/trainer-availability";
 import { getTrainerGalleryByTrainerId } from "@/utils/supabase/trainer/trainer-gallery";
+import { getTrainerCertificationsByTrainerId } from "@/utils/supabase/trainer/trainer-certifications";
 
 type Props = {
   params: {
@@ -49,35 +50,40 @@ export async function generateMetadata(
 }
 
 export default async function Page({ params: { username } }: Props) {
-  const trainerProfile = await getTrainerProfileByUserName(
+  const profile = await getTrainerProfileByUserName(
     username,
     createClient(cookies()),
   );
-  const trainerAvailabilities = await getTrainerAvailabilityById(
-    trainerProfile.id,
+  const availabilities = await getTrainerAvailabilityById(
+    profile.id,
     createClient(cookies()),
   );
-  const trainerReviews = await getReviewsByBeneficiaryId(
-    trainerProfile.id,
+  const reviews = await getReviewsByBeneficiaryId(
+    profile.id,
     createClient(cookies()),
   );
-  const trainerTransforms = await getTrainerImageTransformsByTrainerId(
-    trainerProfile.id,
+  const transforms = await getTrainerImageTransformsByTrainerId(
+    profile.id,
     createClient(cookies()),
   );
-  const trainerGallery = await getTrainerGalleryByTrainerId(
-    trainerProfile.id,
+  const certifications = await getTrainerCertificationsByTrainerId(
+    profile.id,
+    createClient(cookies()),
+  );
+  const gallery = await getTrainerGalleryByTrainerId(
+    profile.id,
     createClient(cookies()),
   );
 
   return (
     <>
       <TrainerProfileScreen
-        profile={trainerProfile}
-        trainerAvailabilities={trainerAvailabilities}
-        reviews={trainerReviews}
-        transforms={trainerTransforms}
-        gallery={trainerGallery}
+        profile={profile}
+        trainerAvailabilities={availabilities}
+        reviews={reviews}
+        transforms={transforms}
+        certifications={certifications}
+        gallery={gallery}
       />
     </>
   );

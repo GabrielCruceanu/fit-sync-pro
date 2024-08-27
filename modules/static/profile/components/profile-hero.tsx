@@ -105,7 +105,11 @@ export const ProfileHero = ({
           <Image
             fill
             className="rounded-lg object-cover"
-            src={profilePictureUrl ? profilePictureUrl : ""}
+            src={
+              profilePictureUrl
+                ? profilePictureUrl
+                : "https://via.placeholder.com/375"
+            }
             loading={"lazy"}
             alt={name ? name : ""}
           />

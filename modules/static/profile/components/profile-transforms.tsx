@@ -1,11 +1,11 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
-import { isMediumScreen, isSmallScreen } from "@/helpers/responsive";
 import { TrainerImageTransforms } from "@/ts/types/trainer";
+import { NutritionistImagesTransform } from "@/ts/types/nutritionist";
 
 type Props = {
-  transforms: TrainerImageTransforms;
+  transforms: TrainerImageTransforms | NutritionistImagesTransform;
 };
 export const ProfileTransforms = ({ transforms }: Props) => {
   return (

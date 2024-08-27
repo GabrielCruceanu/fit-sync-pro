@@ -34,10 +34,12 @@ export const ProfileAbout = ({
               description={trainerType}
             ></SimpleCard>
           )}
-          <SimpleCard
-            title={"Experience in training"}
-            description={trainerExperience + " Years"}
-          ></SimpleCard>
+          {trainerExperience && (
+            <SimpleCard
+              title={"Experience in training"}
+              description={trainerExperience + " Years"}
+            ></SimpleCard>
+          )}
           {trainerType && (
             <SimpleCard
               title={"Verified as Trainer"}
