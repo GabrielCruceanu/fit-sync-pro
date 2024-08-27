@@ -3,15 +3,17 @@ import React, { useState } from "react";
 import { Button, Select, SelectItem } from "@nextui-org/react";
 import { handleInputRequired } from "@/helpers/helpers";
 import { InputError } from "@/ts/enum";
-import { GymType, NutritionistType } from "@/ts/types";
+import { GymType } from "@/ts/types";
 import { CitiesData } from "@/constants/location";
-import nutritionistTypes from "@/constants/nutritionists";
-import { useNutritionistsStore } from "@/store/nutritionists";
 import { handleScrollTo } from "@/helpers/scroll-to";
 import gymTypes from "@/constants/gym";
 import { useGymsStore } from "@/store/gyms";
 
-export const GymsSearchForm = () => {
+type Props = {
+  onClick: () => void;
+};
+
+export const GymsSearchForm = ({ onClick }: Props) => {
   const [country, setCountry] = useState<string>("");
   const [county, setCounty] = useState<string>("");
   const [city, setCity] = useState<string>("");
@@ -50,6 +52,7 @@ export const GymsSearchForm = () => {
       setConfirmBtnDisable(false);
       handleScrollTo("list");
     });
+    onClick();
   };
 
   let countries: string[];
@@ -81,7 +84,7 @@ export const GymsSearchForm = () => {
   currentCites = [...new Set(duplicateCities)].sort();
   return (
     <>
-      <div className="grid md:grid-cols-2 gap-x-3 gap-y-4">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-x-3 gap-y-4">
         {/*Country*/}
         <Select
           label="Country"
@@ -222,7 +225,7 @@ export const GymsSearchForm = () => {
         </Select>
       </div>
 
-      <div className="mt-4">
+      <div className="mt-4 lg:max-w-80 lg:mx-auto">
         <Button
           onClick={() => inputsAreOk()}
           type="button"
