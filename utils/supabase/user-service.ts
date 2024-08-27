@@ -1,7 +1,7 @@
 import { User } from "@supabase/auth-helpers-nextjs";
 import { Json } from "@/ts/supabase";
 import { TypedSupabaseClient, UserDetails } from "@/ts/types";
-import { supabaseClient } from "@/utils/supabase/client-service";
+import { supabaseClient } from "@/utils/supabase/client/client-service";
 
 // CREATE
 export const createUserName = async ({

@@ -4,11 +4,50 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47929a90-811a-448f-b1af-cd5bff05d262" name="Changes" comment="Trainer profile done">
-      <change afterPath="$PROJECT_DIR$/modules/static/profile/components/profile-contact-modal.tsx" afterDir="false" />
+    <list default="true" id="47929a90-811a-448f-b1af-cd5bff05d262" name="Changes" comment="Gallery Trainer profile done">
+      <change afterPath="$PROJECT_DIR$/modules/static/profile/components/profile-gallery.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/supabase/trainer/trainer-availability.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/supabase/trainer/trainer-gallery.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(application)/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(application)/dashboard/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(application)/messages/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(application)/messages/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(application)/notifications/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(application)/notifications/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(application)/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(application)/profile/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(application)/settings/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(application)/settings/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(auth)/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/login/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(auth)/reset-password/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/reset-password/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(auth)/sign-up/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/sign-up/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(auth)/update-password/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/update-password/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(static)/(root)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(static)/(root)/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(static)/cookie-policy/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(static)/cookie-policy/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(static)/gyms/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(static)/gyms/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(static)/nutritionists/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(static)/nutritionists/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(static)/privacy-policy/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(static)/privacy-policy/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(static)/professional/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(static)/professional/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(static)/terms-and-conditions/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(static)/terms-and-conditions/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(static)/trainers/[username]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(static)/trainers/[username]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(static)/trainers/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(static)/trainers/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/site.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/site.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/constants/links.ts" beforeDir="false" afterPath="$PROJECT_DIR$/constants/links.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingOverview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingOverview.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/gym/components/GymOnboardingOverview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/gym/components/GymOnboardingOverview.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/nutritionist/components/NutritionistOnboardingOverview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/nutritionist/components/NutritionistOnboardingOverview.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingOverview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/trainter/components/TrainerOnboardingOverview.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/settings/components/ClientSettings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/settings/components/ClientSettings.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/static/home/components/home-features.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/home/components/home-features.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/static/home/components/home-hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/home/components/home-hero.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/static/pro/components/pro-hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/pro/components/pro-hero.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/static/profile/components/profile-hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/profile/components/profile-hero.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/static/profile/trainer-profile-screen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/profile/trainer-profile-screen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/nutritionists/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/nutritionists/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ts/supabase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ts/supabase.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ts/types/trainer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ts/types/trainer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/supabase/client-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/supabase/client/client-service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/supabase/gym-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/supabase/gym/gym-service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/supabase/nutritionist-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/supabase/nutritionist/nutritionist-service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/supabase/trainer-image-transforms.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/supabase/trainer/trainer-image-transforms.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/supabase/trainer-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/supabase/trainer/trainer-service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/supabase/user-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/supabase/user-service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,13 +130,14 @@
       <recent name="$PROJECT_DIR$/store" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/utils/supabase/client" />
+      <recent name="$PROJECT_DIR$/utils/supabase/nutritionists" />
+      <recent name="$PROJECT_DIR$/utils/supabase/gym" />
+      <recent name="$PROJECT_DIR$/utils/supabase/trainer" />
       <recent name="$PROJECT_DIR$/store/auth" />
-      <recent name="$PROJECT_DIR$/store/onboarding" />
-      <recent name="$PROJECT_DIR$/modules/application/layout/components" />
-      <recent name="$PROJECT_DIR$/public" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.build">
+  <component name="RunManager" selected="npm.update-types">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -131,8 +171,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.dev" />
-        <item itemvalue="npm.build" />
         <item itemvalue="npm.update-types" />
+        <item itemvalue="npm.build" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
       </list>
@@ -159,7 +199,7 @@
       <workItem from="1723438914489" duration="69748000" />
       <workItem from="1724159714849" duration="101000" />
       <workItem from="1724159880752" duration="9000" />
-      <workItem from="1724160605942" duration="26678000" />
+      <workItem from="1724160605942" duration="29806000" />
     </task>
     <task id="LOCAL-00001" summary="Middleware fixed;">
       <option name="closed" value="true" />
@@ -305,7 +345,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724418897471</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Contact and Trainer profile done">
+      <option name="closed" value="true" />
+      <created>1724760496010</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1724760496010</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,6 +379,8 @@
     <MESSAGE value="Profile About done;&#10;Profile Certifications done;" />
     <MESSAGE value="pro card fixed;" />
     <MESSAGE value="Trainer profile done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Trainer profile done" />
+    <MESSAGE value="Contact and Trainer profile done" />
+    <MESSAGE value="Gallery Trainer profile done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gallery Trainer profile done" />
   </component>
 </project>

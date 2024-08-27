@@ -46,7 +46,7 @@ export const WebsiteLinks = {
     name: "Trainers",
   },
   searchNutritionistHomePage: {
-    link: "/nutritionists",
+    link: "/nutritionist",
     name: "Nutritionists",
   },
   searchGymHomePage: {

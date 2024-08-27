@@ -10,17 +10,20 @@ import {
 import { ProfileAvailability } from "@/modules/static/profile/components/profile-availability";
 import {
   TrainerAvailabilities,
+  TrainerImagesGallery,
   TrainerImageTransforms,
 } from "@/ts/types/trainer";
 import { Reviews } from "@/ts/types/review";
 import { ProfileReview } from "@/modules/static/profile/components/profile-review";
 import { ProfileTransforms } from "@/modules/static/profile/components/profile-transforms";
+import { ProfileGallery } from "@/modules/static/profile/components/profile-gallery";
 
 type Props = {
   profile: Trainer;
   trainerAvailabilities: TrainerAvailabilities;
   reviews: Reviews;
   transforms: TrainerImageTransforms;
+  gallery: TrainerImagesGallery;
 };
 
 export function TrainerProfileScreen({
@@ -28,6 +31,7 @@ export function TrainerProfileScreen({
   trainerAvailabilities,
   reviews,
   transforms,
+  gallery,
 }: Props) {
   const {
     firstName,
@@ -59,6 +63,7 @@ export function TrainerProfileScreen({
     nutritionistType,
     nutritionistExperience,
   } = profile;
+
   return (
     <>
       <ProfileHero
@@ -102,6 +107,7 @@ export function TrainerProfileScreen({
         beneficiaryName={firstName + " " + lastName}
       />
       <ProfileTransforms transforms={transforms} />
+      <ProfileGallery gallery={gallery} />
     </>
   );
 }

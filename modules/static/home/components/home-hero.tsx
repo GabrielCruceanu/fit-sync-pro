@@ -7,7 +7,7 @@ export default async function HomeHero() {
   // const cookieStore = cookies();
   // const supabase = createClient(cookieStore);
   // const { data: trainers } = await supabase.from("trainers").select();
-  // const { data: nutritionists } = await supabase.from("nutritionists").select();
+  // const { data: nutritionist } = await supabase.from("nutritionist").select();
   // const { data: gyms } = await supabase.from("gyms").select();
 
   return (
@@ -48,7 +48,7 @@ export default async function HomeHero() {
           {/*  </li>*/}
           {/*  <li className="flex items-center">*/}
           {/*    <span className="text-4xl font-extrabold lg:text-5xl">*/}
-          {/*      {nutritionists?.length}*/}
+          {/*      {nutritionist?.length}*/}
           {/*    </span>*/}
           {/*    <div className="flex lg:block pl-4 text-xl">*/}
           {/*      <div className="mr-2 lg:mr-0">Nutritionists</div>*/}

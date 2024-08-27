@@ -5,7 +5,7 @@ import { ApplicationLinks } from "@/constants/links";
 export const metadata: Metadata = {
   title: "Notifications",
   description:
-    "FitSyncPro is a platform that connects trainers, nutritionists, and gyms with clients.",
+    "FitSyncPro is a platform that connects trainers, nutritionist, and gyms with clients.",
 };
 export default function NotificationsPage() {
   return (

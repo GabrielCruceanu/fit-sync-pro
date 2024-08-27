@@ -3,12 +3,11 @@ import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
 import React from "react";
 import { TrainerProfileScreen } from "@/modules/static/profile";
-import {
-  getTrainerAvailabilityById,
-  getTrainerProfileByUserName,
-} from "@/utils/supabase/trainer-service";
+import { getTrainerProfileByUserName } from "@/utils/supabase/trainer/trainer-service";
 import { getReviewsByBeneficiaryId } from "@/utils/supabase/review-service";
-import { getTrainerImageTransformsByTrainerId } from "@/utils/supabase/trainer-image-transforms";
+import { getTrainerImageTransformsByTrainerId } from "@/utils/supabase/trainer/trainer-image-transforms";
+import { getTrainerAvailabilityById } from "@/utils/supabase/trainer/trainer-availability";
+import { getTrainerGalleryByTrainerId } from "@/utils/supabase/trainer/trainer-gallery";
 
 type Props = {
   params: {
@@ -66,6 +65,10 @@ export default async function Page({ params: { username } }: Props) {
     trainerProfile.id,
     createClient(cookies()),
   );
+  const trainerGallery = await getTrainerGalleryByTrainerId(
+    trainerProfile.id,
+    createClient(cookies()),
+  );
 
   return (
     <>
@@ -74,6 +77,7 @@ export default async function Page({ params: { username } }: Props) {
         trainerAvailabilities={trainerAvailabilities}
         reviews={trainerReviews}
         transforms={trainerTransforms}
+        gallery={trainerGallery}
       />
     </>
   );

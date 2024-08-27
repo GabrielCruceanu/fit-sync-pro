@@ -270,6 +270,117 @@ export type Database = {
           },
         ]
       }
+      nutritionist_availability: {
+        Row: {
+          cabinet_name: string
+          created_at: string | null
+          day: string
+          end_time: string
+          id: number
+          nutritionist_id: string | null
+          start_time: string
+        }
+        Insert: {
+          cabinet_name: string
+          created_at?: string | null
+          day: string
+          end_time: string
+          id?: never
+          nutritionist_id?: string | null
+          start_time: string
+        }
+        Update: {
+          cabinet_name?: string
+          created_at?: string | null
+          day?: string
+          end_time?: string
+          id?: never
+          nutritionist_id?: string | null
+          start_time?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "nutritionist_availability_nutritionist_id_fkey"
+            columns: ["nutritionist_id"]
+            isOneToOne: false
+            referencedRelation: "nutritionists"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      nutritionist_gallery: {
+        Row: {
+          caption: string | null
+          id: number
+          image_url: string
+          nutritionist_id: string | null
+          upload_date: string | null
+        }
+        Insert: {
+          caption?: string | null
+          id?: never
+          image_url: string
+          nutritionist_id?: string | null
+          upload_date?: string | null
+        }
+        Update: {
+          caption?: string | null
+          id?: never
+          image_url?: string
+          nutritionist_id?: string | null
+          upload_date?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "nutritionist_gallery_nutritionist_id_fkey"
+            columns: ["nutritionist_id"]
+            isOneToOne: false
+            referencedRelation: "nutritionists"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      nutritionist_image_transforms: {
+        Row: {
+          after_image_url: string
+          before_image_url: string
+          description: string | null
+          id: string
+          is_public: boolean | null
+          nutritionist_id: string | null
+          transformed_at: string | null
+          uploaded_at: string | null
+        }
+        Insert: {
+          after_image_url: string
+          before_image_url: string
+          description?: string | null
+          id?: string
+          is_public?: boolean | null
+          nutritionist_id?: string | null
+          transformed_at?: string | null
+          uploaded_at?: string | null
+        }
+        Update: {
+          after_image_url?: string
+          before_image_url?: string
+          description?: string | null
+          id?: string
+          is_public?: boolean | null
+          nutritionist_id?: string | null
+          transformed_at?: string | null
+          uploaded_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "nutritionist_image_transforms_nutritionist_id_fkey"
+            columns: ["nutritionist_id"]
+            isOneToOne: false
+            referencedRelation: "nutritionists"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       nutritionists: {
         Row: {
           activeClients: string | null
@@ -672,6 +783,38 @@ export type Database = {
         Relationships: [
           {
             foreignKeyName: "trainer_availability_trainer_id_fkey"
+            columns: ["trainer_id"]
+            isOneToOne: false
+            referencedRelation: "trainers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      trainer_gallery: {
+        Row: {
+          caption: string | null
+          id: number
+          image_url: string
+          trainer_id: string | null
+          upload_date: string | null
+        }
+        Insert: {
+          caption?: string | null
+          id?: never
+          image_url: string
+          trainer_id?: string | null
+          upload_date?: string | null
+        }
+        Update: {
+          caption?: string | null
+          id?: never
+          image_url?: string
+          trainer_id?: string | null
+          upload_date?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "trainer_gallery_trainer_id_fkey"
             columns: ["trainer_id"]
             isOneToOne: false
             referencedRelation: "trainers"

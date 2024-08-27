@@ -1,6 +1,5 @@
 import { create } from "zustand";
 import { createClient } from "@/utils/supabase/create-client";
-import { NutritionistType } from "@/ts/types";
 
 type NutritionistsState = {
   nutritionists: any[];
@@ -39,8 +38,8 @@ export const useNutritionistsStore = create<NutritionistsState>()(
       // .eq("nutritionistType", type as NutritionistType);
 
       if (error) throw error;
-      console.log("Filtered nutritionists:", nutritionists);
-      console.log("Filtered nutritionists error:", error);
+      console.log("Filtered nutritionist:", nutritionists);
+      console.log("Filtered nutritionist error:", error);
       set({ filterNutritionists: nutritionists });
     },
   }),

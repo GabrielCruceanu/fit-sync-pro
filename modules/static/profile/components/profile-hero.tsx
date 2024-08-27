@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Button } from "@nextui-org/button";
 import { Briefcase, Calendar, MapPin, User } from "lucide-react";
 import { ProfileContactModal } from "@/modules/static/profile/components/profile-contact-modal";
 
@@ -86,7 +85,7 @@ export const ProfileHero = ({
           {/*  </li>*/}
           {/*  <li className="flex items-center">*/}
           {/*    <span className="text-4xl font-extrabold lg:text-5xl">*/}
-          {/*      {nutritionists?.length}*/}
+          {/*      {nutritionist?.length}*/}
           {/*    </span>*/}
           {/*    <div className="flex lg:block pl-4 text-xl">*/}
           {/*      <div className="mr-2 lg:mr-0">Nutritionists</div>*/}
