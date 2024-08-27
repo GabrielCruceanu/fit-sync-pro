@@ -37,6 +37,12 @@ export function TrainerProfileScreen({
     birthMonth,
     birthYear,
     gender,
+    phoneNumber,
+    email,
+    twitter,
+    instagram,
+    facebook,
+    website,
     country,
     state,
     city,
@@ -62,6 +68,12 @@ export function TrainerProfileScreen({
         gender={gender}
         location={city + ", " + state + ", " + country}
         profession={trainerType}
+        phone={phoneNumber}
+        email={email}
+        website={website}
+        instagram={instagram}
+        facebook={facebook}
+        twitter={twitter}
       />
       <AdsBanner />
       <ProfileAbout

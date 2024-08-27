@@ -4,31 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47929a90-811a-448f-b1af-cd5bff05d262" name="Changes" comment="pro card fixed;">
-      <change afterPath="$PROJECT_DIR$/components/shared/review-card.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/helpers/days-order.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/helpers/median-rating.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/helpers/responsive.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/static/profile/components/profile-availability.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/static/profile/components/profile-review.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/static/profile/components/profile-transforms.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ts/types/review.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/supabase/review-service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/supabase/trainer-image-transforms.ts" afterDir="false" />
+    <list default="true" id="47929a90-811a-448f-b1af-cd5bff05d262" name="Changes" comment="Trainer profile done">
+      <change afterPath="$PROJECT_DIR$/modules/static/profile/components/profile-contact-modal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(static)/trainers/[username]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(static)/trainers/[username]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/shared/simple-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/shared/simple-card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/is-small-screen.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/application/layout/components/LayoutNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/layout/components/LayoutNavigation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/static/layout/components/nav-items.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/layout/components/nav-items.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/static/profile/components/profile-certifications.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/profile/components/profile-certifications.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/static/profile/components/profile-hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/profile/components/profile-hero.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/static/profile/trainer-profile-screen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/profile/trainer-profile-screen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ts/supabase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ts/supabase.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ts/types/trainer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ts/types/trainer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/supabase/trainer-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/supabase/trainer-service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +97,7 @@
       <recent name="$PROJECT_DIR$/public" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.update-types">
+  <component name="RunManager" selected="npm.build">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -150,9 +130,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.update-types" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
+        <item itemvalue="npm.update-types" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
       </list>
@@ -179,7 +159,7 @@
       <workItem from="1723438914489" duration="69748000" />
       <workItem from="1724159714849" duration="101000" />
       <workItem from="1724159880752" duration="9000" />
-      <workItem from="1724160605942" duration="24538000" />
+      <workItem from="1724160605942" duration="26678000" />
     </task>
     <task id="LOCAL-00001" summary="Middleware fixed;">
       <option name="closed" value="true" />
@@ -317,7 +297,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723817109899</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Trainer profile done">
+      <option name="closed" value="true" />
+      <created>1724418897471</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1724418897471</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -342,6 +330,7 @@
     <MESSAGE value="bug fixed;" />
     <MESSAGE value="Profile About done;&#10;Profile Certifications done;" />
     <MESSAGE value="pro card fixed;" />
-    <option name="LAST_COMMIT_MESSAGE" value="pro card fixed;" />
+    <MESSAGE value="Trainer profile done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Trainer profile done" />
   </component>
 </project>
