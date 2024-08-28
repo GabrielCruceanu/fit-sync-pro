@@ -4,9 +4,10 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { TrainerImagesGallery } from "@/ts/types/trainer";
 import { isSmallScreen } from "@/helpers/responsive";
 import { NutritionistImagesGallery } from "@/ts/types/nutritionist";
+import { GymImagesGallery } from "@/ts/types/gym";
 
 type Props = {
-  gallery: TrainerImagesGallery | NutritionistImagesGallery;
+  gallery: TrainerImagesGallery | NutritionistImagesGallery | GymImagesGallery;
 };
 export const ProfileGallery = ({ gallery }: Props) => {
   return (

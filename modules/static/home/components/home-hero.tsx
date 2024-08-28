@@ -25,14 +25,14 @@ export default async function HomeHero() {
           </p>
           <Link
             color="primary"
-            className="inline-flex items-center py-3 px-5 mr-4 font-semibold text-center rounded-lg text-background bg-foreground"
+            className="inline-flex items-center py-3 px-5 mr-4 mt-3 sm:mt-0 font-semibold text-center rounded-lg text-background bg-foreground"
             href={ApplicationLinks.signUp.link}
           >
             Get Started
           </Link>
           <Link
             color="primary"
-            className="inline-flex items-center py-3 px-5 font-semibold text-center rounded-lg text-background bg-foreground"
+            className="inline-flex items-center py-3 px-5 mt-3 sm:mt-0 font-semibold text-center rounded-lg text-background bg-foreground"
             href={WebsiteLinks.proPage.link}
           >
             I’m a professional

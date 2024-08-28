@@ -58,7 +58,9 @@ export const GymsSearchForm = ({ onClick }: Props) => {
   let countries: string[];
   let currentCounties: string[] = [];
   let currentCites: string[] = [];
-  const duplicateCountries = CitiesData.map((city) => city.country);
+  const duplicateCountries = CitiesData.map((city) =>
+    city.country === "Romania" ? city.country : "",
+  );
   const duplicateCounties = CitiesData.map((city) => {
     if (city.country === country) {
       return city.county;
@@ -140,13 +142,13 @@ export const GymsSearchForm = ({ onClick }: Props) => {
               : null;
             setConfirmBtnDisable(false);
           }}
-          color={currentCountyError ? "danger" : "primary"}
+          color={currentCountyError ? "danger" : "default"}
           errorMessage={currentCountyError}
           isInvalid={!!currentCountyError}
         >
           {currentCounties.map((county) => (
             <SelectItem
-              color={"primary"}
+              color={"default"}
               key={county}
               value={county}
               textValue={county}
@@ -175,13 +177,13 @@ export const GymsSearchForm = ({ onClick }: Props) => {
               : null;
             setConfirmBtnDisable(false);
           }}
-          color={currentCityError ? "danger" : "primary"}
+          color={currentCityError ? "danger" : "default"}
           errorMessage={currentCityError}
           isInvalid={!!currentCityError}
         >
           {currentCites.map((city) => (
             <SelectItem
-              color={"primary"}
+              color={"default"}
               key={city}
               value={city}
               textValue={city}
@@ -208,17 +210,12 @@ export const GymsSearchForm = ({ onClick }: Props) => {
             setGymTypeError("");
             setConfirmBtnDisable(false);
           }}
-          color={gymTypeError ? "danger" : "primary"}
+          color={gymTypeError ? "danger" : "default"}
           errorMessage={gymTypeError}
           isInvalid={!!gymTypeError}
         >
           {gymTypes.map((gym: GymType) => (
-            <SelectItem
-              key={gym}
-              value={gym}
-              textValue={gym}
-              className="bg-background"
-            >
+            <SelectItem key={gym} value={gym} textValue={gym}>
               {gym}
             </SelectItem>
           ))}
@@ -233,7 +230,7 @@ export const GymsSearchForm = ({ onClick }: Props) => {
           radius={"sm"}
           fullWidth
           disabled={confirmBtnDisable}
-          className="mb-3"
+          className="mb-3 bg-foreground text-background"
         >
           Search
         </Button>

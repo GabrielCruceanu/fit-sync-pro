@@ -15,7 +15,7 @@ export default function TrainersList({ trainers }: { trainers: Trainers }) {
           <h2 className="mb-4 text-2xl md:text-4xl tracking-tight font-semibold">
             Find the best Trainers
           </h2>
-          <p className="mb-4 max-w-[746px] mx-auto">
+          <p className="mb-6 max-w-[746px] mx-auto">
             We helps you find the best trainers for your fitness goals. Whether
             you’re looking to lose weight, gain muscle, or improve your overall
             health, we have the perfect trainer for you.
@@ -27,6 +27,7 @@ export default function TrainersList({ trainers }: { trainers: Trainers }) {
           <div className="py-6 my-6 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
             {filterTrainers?.map((trainer: Trainer) => (
               <ProCard
+                key={trainer.username}
                 image={trainer.profilePictureUrl}
                 name={trainer.firstName + " " + trainer.lastName}
                 type={trainer.trainerType}
@@ -48,6 +49,7 @@ export default function TrainersList({ trainers }: { trainers: Trainers }) {
           <div className="py-6 my-6 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
             {trainers?.map((trainer: Trainer) => (
               <ProCard
+                key={trainer.username}
                 image={trainer.profilePictureUrl}
                 name={trainer.firstName + " " + trainer.lastName}
                 type={trainer.trainerType}

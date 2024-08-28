@@ -142,13 +142,13 @@ export const TrainersSearchForm = ({ onClick }: Props) => {
               : null;
             setConfirmBtnDisable(false);
           }}
-          color={currentCountyError ? "danger" : "primary"}
+          color={currentCountyError ? "danger" : "default"}
           errorMessage={currentCountyError}
           isInvalid={!!currentCountyError}
         >
           {currentCounties.map((county) => (
             <SelectItem
-              color={"primary"}
+              color={"default"}
               key={county}
               value={county}
               textValue={county}
@@ -177,13 +177,13 @@ export const TrainersSearchForm = ({ onClick }: Props) => {
               : null;
             setConfirmBtnDisable(false);
           }}
-          color={currentCityError ? "danger" : "primary"}
+          color={currentCityError ? "danger" : "default"}
           errorMessage={currentCityError}
           isInvalid={!!currentCityError}
         >
           {currentCites.map((city) => (
             <SelectItem
-              color={"primary"}
+              color={"default"}
               key={city}
               value={city}
               textValue={city}
@@ -199,7 +199,6 @@ export const TrainersSearchForm = ({ onClick }: Props) => {
         {/*Trainer Type*/}
         <Select
           label="Trainer Type"
-          className="bg-background"
           variant="bordered"
           placeholder="Choose"
           isRequired
@@ -210,17 +209,12 @@ export const TrainersSearchForm = ({ onClick }: Props) => {
             setTrainerTypeError("");
             setConfirmBtnDisable(false);
           }}
-          color={trainerTypeError ? "danger" : "primary"}
+          color={trainerTypeError ? "danger" : "default"}
           errorMessage={trainerTypeError}
           isInvalid={!!trainerTypeError}
         >
           {trainerTypes.map((trainer: TrainerType) => (
-            <SelectItem
-              key={trainer}
-              value={trainer}
-              textValue={trainer}
-              className="bg-background"
-            >
+            <SelectItem key={trainer} value={trainer} textValue={trainer}>
               {trainer}
             </SelectItem>
           ))}
@@ -235,7 +229,7 @@ export const TrainersSearchForm = ({ onClick }: Props) => {
           radius={"sm"}
           fullWidth
           disabled={confirmBtnDisable}
-          className="mb-3"
+          className="mb-3 bg-foreground text-background"
         >
           Search
         </Button>
