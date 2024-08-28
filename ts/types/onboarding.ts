@@ -23,10 +23,10 @@ export type ClientFitnessGoalsType =
 export type FoodPreferences = "Omnivor" | "Vegetarian" | "Vegan" | "Keto";
 
 export type Birthdate = {
-  date?: string;
-  month?: string;
-  year?: string;
-  full?: Date;
+  date?: number;
+  month?: number;
+  year?: number;
+  full?: string;
 };
 
 export type Location = {
@@ -72,7 +72,7 @@ export type OnboardingClientDetails = {
   type?: UserType;
   foodPreferences?: FoodPreferences[];
   haveFoodAllergies?: boolean;
-  foodAllergiesType?: string;
+  foodAllergiesType?: string[];
   foodAllergiesDescription?: string;
   fitnessExperience?: FitnessExperience;
   trainingLocation?: string;

@@ -23,7 +23,7 @@ export default function HeaderForm({
         )}
       />
       <div className="relative z-20 flex items-center text-lg font-medium">
-        Fit<span className="text-primary">Sync</span>
+        FitSyncPro
       </div>
       <div className="relative z-20 mt-auto">
         <blockquote className="space-y-2">

@@ -70,8 +70,8 @@ export function ClientOnboardingGoals() {
                   className={cn(
                     "w-full border-2 rounded p-2",
                     onboardingDetails.goals?.includes(goal)
-                      ? "border-primary"
-                      : "border-default",
+                      ? ""
+                      : "border-divider",
                   )}
                 >
                   <Checkbox value={goal}>{goal}</Checkbox>
@@ -89,7 +89,7 @@ export function ClientOnboardingGoals() {
           radius={"sm"}
           fullWidth
           disabled={confirmBtnDisable}
-          className="mb-3"
+          className="mb-3 bg-foreground text-background"
         >
           Next
         </Button>

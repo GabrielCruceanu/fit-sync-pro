@@ -4,9 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47929a90-811a-448f-b1af-cd5bff05d262" name="Changes" comment="Some minor bugs fixed;">
+    <list default="true" id="47929a90-811a-448f-b1af-cd5bff05d262" name="Changes" comment="Client onboarding done;">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/nutritionist/components/NutritionistOnboardingOverview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/nutritionist/components/NutritionistOnboardingOverview.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/helpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/helpers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/auth/components/header-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/auth/components/header-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingFoodPreferences.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingFoodPreferences.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingGoals.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingGoals.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingNotifications.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingNotifications.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingOverview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingOverview.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingPersonalDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/client/components/ClientOnboardingPersonalDetails.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/components/Welcome.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/components/Welcome.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/static/layout/components/navigation-bar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/layout/components/navigation-bar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ts/supabase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ts/supabase.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ts/types/onboarding.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ts/types/onboarding.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/supabase/middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/supabase/middleware.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +80,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "feature/static",
+    "git-widget-placeholder": "feature/onboarding",
     "last_opened_file_path": "/Users/kaapo-studio/Documents/Projects/fit-sync-pro/utils/supabase/gym",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -99,7 +111,7 @@
       <recent name="$PROJECT_DIR$/store/auth" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.build">
+  <component name="RunManager" selected="npm.update-types">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -132,9 +144,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.update-types" />
         <item itemvalue="npm.build" />
         <item itemvalue="npm.dev" />
-        <item itemvalue="npm.update-types" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
       </list>
@@ -362,7 +374,6 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="FitSync translate to English;&#10;rebrand to FitSyncPro;&#10;All console.log deleted;&#10;License added;" />
     <MESSAGE value="Middleware fixed;" />
     <MESSAGE value="Ready to redesign;" />
     <MESSAGE value="favicons done;&#10;metadata done;&#10;switch to black and white;" />
@@ -387,6 +398,7 @@
     <MESSAGE value="Nutritionist profile done;" />
     <MESSAGE value="Gym profile done;" />
     <MESSAGE value="Some minor bugs fixed;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some minor bugs fixed;" />
+    <MESSAGE value="Client onboarding done;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Client onboarding done;" />
   </component>
 </project>
