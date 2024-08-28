@@ -35,6 +35,7 @@ export type {
   TrainingAvailabilityTime,
   OnboardingNutritionistDetails,
 } from "./onboarding";
+export type { Faq, Faqs } from "./faq";
 
 export type { SettingsNavigation } from "./settings";
 

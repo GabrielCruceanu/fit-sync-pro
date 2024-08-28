@@ -1,16 +1,9 @@
 "use client";
 import React from "react";
 import { Faqs } from "@/components/shared/faqs";
+import { faqsForProfessionals } from "@/constants/faqs";
 
 export default function ProFaqs() {
-  const faqs = [
-    {
-      question: "What is Lorem Ipsum?",
-      answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
-  ];
-
   return (
     <section className="bg-white dark:bg-background">
       <div className="md:border-x border-divider gap-8 items-start py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 xl:gap-16 sm:py-16 md:py-24 lg:px-6">
@@ -23,7 +16,7 @@ export default function ProFaqs() {
           </h2>
         </div>
         <div className="">
-          <Faqs faqs={faqs} />
+          <Faqs faqs={faqsForProfessionals} />
         </div>
       </div>
     </section>

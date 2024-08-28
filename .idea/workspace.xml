@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47929a90-811a-448f-b1af-cd5bff05d262" name="Changes" comment="Some minor bugs fixed;">
+    <list default="true" id="47929a90-811a-448f-b1af-cd5bff05d262" name="Changes" comment="Nutritionist onboarding fixed;">
+      <change afterPath="$PROJECT_DIR$/constants/faqs.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ts/types/faq.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/application/onboarding/nutritionist/components/NutritionistOnboardingOverview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/application/onboarding/nutritionist/components/NutritionistOnboardingOverview.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/static/home/components/home-faqs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/home/components/home-faqs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/static/pro/components/pro-faqs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/modules/static/pro/components/pro-faqs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ts/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ts/types/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,8 +136,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.build" />
         <item itemvalue="npm.dev" />
+        <item itemvalue="npm.build" />
         <item itemvalue="npm.update-types" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
@@ -161,7 +165,7 @@
       <workItem from="1723438914489" duration="69748000" />
       <workItem from="1724159714849" duration="101000" />
       <workItem from="1724159880752" duration="9000" />
-      <workItem from="1724160605942" duration="46579000" />
+      <workItem from="1724160605942" duration="48219000" />
     </task>
     <task id="LOCAL-00001" summary="Middleware fixed;">
       <option name="closed" value="true" />
@@ -355,14 +359,21 @@
       <option name="project" value="LOCAL" />
       <updated>1724831987616</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Nutritionist onboarding fixed;">
+      <option name="closed" value="true" />
+      <created>1724832223739</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1724832223739</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="FitSync translate to English;&#10;rebrand to FitSyncPro;&#10;All console.log deleted;&#10;License added;" />
     <MESSAGE value="Middleware fixed;" />
     <MESSAGE value="Ready to redesign;" />
     <MESSAGE value="favicons done;&#10;metadata done;&#10;switch to black and white;" />
@@ -387,6 +398,7 @@
     <MESSAGE value="Nutritionist profile done;" />
     <MESSAGE value="Gym profile done;" />
     <MESSAGE value="Some minor bugs fixed;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some minor bugs fixed;" />
+    <MESSAGE value="Nutritionist onboarding fixed;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nutritionist onboarding fixed;" />
   </component>
 </project>
