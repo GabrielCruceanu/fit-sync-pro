@@ -79,10 +79,7 @@ export function NutritionistOnboardingOverview() {
         facebook: onboardingDetails.facebook!,
         instagram: onboardingDetails.instagram!,
         twitter: onboardingDetails.twitter!,
-        gallery: null,
         hasPremium: false,
-        nutritionAvailabilityDays: onboardingDetails.nutritionAvailabilityDays!,
-        nutritionAvailabilityTime: onboardingDetails.nutritionAvailabilityTime!,
         nutritionLocation: onboardingDetails.nutritionLocation!,
         nutritionOnlinePreferences:
           onboardingDetails.nutritionOnlinePreferences!,
