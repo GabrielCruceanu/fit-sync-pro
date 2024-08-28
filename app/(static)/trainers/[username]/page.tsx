@@ -33,15 +33,15 @@ export async function generateMetadata(
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
-    title: `${profile.firstName} ${profile.lastName}`,
+    title: `${profile?.firstName} ${profile?.lastName}`,
     description: `FitSyncPro is a platform that connects trainers, nutritionists, and gyms with clients.`,
     openGraph: {
       images: [
         {
-          url: profile.profilePictureUrl ? profile.profilePictureUrl : "",
+          url: profile?.profilePictureUrl ? profile.profilePictureUrl : "",
           width: 800,
           height: 600,
-          alt: `${profile.firstName} ${profile.lastName}`,
+          alt: `${profile?.firstName} ${profile?.lastName}`,
         },
         ...previousImages,
       ],
@@ -55,23 +55,23 @@ export default async function Page({ params: { username } }: Props) {
     createClient(cookies()),
   );
   const availabilities = await getTrainerAvailabilityById(
-    profile.id,
+    profile?.id,
     createClient(cookies()),
   );
   const reviews = await getReviewsByBeneficiaryId(
-    profile.id,
+    profile?.id,
     createClient(cookies()),
   );
   const transforms = await getTrainerImageTransformsByTrainerId(
-    profile.id,
+    profile?.id,
     createClient(cookies()),
   );
   const certifications = await getTrainerCertificationsByTrainerId(
-    profile.id,
+    profile?.id,
     createClient(cookies()),
   );
   const gallery = await getTrainerGalleryByTrainerId(
-    profile.id,
+    profile?.id,
     createClient(cookies()),
   );
 

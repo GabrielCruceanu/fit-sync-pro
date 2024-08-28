@@ -147,13 +147,13 @@ export const NutritionistsSearchForm = ({ onClick }: Props) => {
               : null;
             setConfirmBtnDisable(false);
           }}
-          color={currentCountyError ? "danger" : "primary"}
+          color={currentCountyError ? "danger" : "default"}
           errorMessage={currentCountyError}
           isInvalid={!!currentCountyError}
         >
           {currentCounties.map((county) => (
             <SelectItem
-              color={"primary"}
+              color={"default"}
               key={county}
               value={county}
               textValue={county}
@@ -182,13 +182,13 @@ export const NutritionistsSearchForm = ({ onClick }: Props) => {
               : null;
             setConfirmBtnDisable(false);
           }}
-          color={currentCityError ? "danger" : "primary"}
+          color={currentCityError ? "danger" : "default"}
           errorMessage={currentCityError}
           isInvalid={!!currentCityError}
         >
           {currentCites.map((city) => (
             <SelectItem
-              color={"primary"}
+              color={"default"}
               key={city}
               value={city}
               textValue={city}
@@ -204,7 +204,6 @@ export const NutritionistsSearchForm = ({ onClick }: Props) => {
         {/*Nutritionist Type*/}
         <Select
           label="Nutritionist Type"
-          className="bg-background"
           variant="bordered"
           placeholder="Choose"
           isRequired
@@ -215,7 +214,7 @@ export const NutritionistsSearchForm = ({ onClick }: Props) => {
             setNutritionistTypeError("");
             setConfirmBtnDisable(false);
           }}
-          color={nutritionistTypeError ? "danger" : "primary"}
+          color={nutritionistTypeError ? "danger" : "default"}
           errorMessage={nutritionistTypeError}
           isInvalid={!!nutritionistTypeError}
         >
@@ -224,7 +223,7 @@ export const NutritionistsSearchForm = ({ onClick }: Props) => {
               key={nutritionist}
               value={nutritionist}
               textValue={nutritionist}
-              className="bg-background"
+              color={"default"}
             >
               {nutritionist}
             </SelectItem>
@@ -236,11 +235,10 @@ export const NutritionistsSearchForm = ({ onClick }: Props) => {
         <Button
           onClick={() => inputsAreOk()}
           type="button"
-          color={"primary"}
           radius={"sm"}
           fullWidth
           disabled={confirmBtnDisable}
-          className="mb-3"
+          className="mb-3 bg-foreground text-background"
         >
           Search
         </Button>

@@ -38,7 +38,7 @@ export const WebsiteLinks = {
     name: "Home",
   },
   proPage: {
-    link: "/pro",
+    link: "/professional",
     name: "PRO",
   },
   searchTrainerHomePage: {

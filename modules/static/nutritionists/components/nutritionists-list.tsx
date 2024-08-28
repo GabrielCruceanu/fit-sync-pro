@@ -20,7 +20,7 @@ export default function NutritionistsList({
           <h2 className="mb-4 text-2xl md:text-4xl tracking-tight font-semibold">
             Find the best Nutritionists
           </h2>
-          <p className="mb-4 max-w-[746px] mx-auto">
+          <p className="mb-6 max-w-[746px] mx-auto">
             We helps you find the best nutritionists for your fitness goals.
             Whether you’re looking to lose weight, gain muscle, or improve your
             overall health, we have the perfect nutritionist for you.
