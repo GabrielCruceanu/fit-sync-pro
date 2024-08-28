@@ -181,6 +181,76 @@ export type Database = {
           },
         ]
       }
+      gym_availability: {
+        Row: {
+          created_at: string | null
+          day: string
+          end_time: string
+          gym_id: string | null
+          id: number
+          location_name: string
+          start_time: string
+        }
+        Insert: {
+          created_at?: string | null
+          day: string
+          end_time: string
+          gym_id?: string | null
+          id?: never
+          location_name: string
+          start_time: string
+        }
+        Update: {
+          created_at?: string | null
+          day?: string
+          end_time?: string
+          gym_id?: string | null
+          id?: never
+          location_name?: string
+          start_time?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "gym_availability_gym_id_fkey"
+            columns: ["gym_id"]
+            isOneToOne: false
+            referencedRelation: "gyms"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      gym_gallery: {
+        Row: {
+          caption: string | null
+          gym_id: string | null
+          id: number
+          image_url: string
+          upload_date: string | null
+        }
+        Insert: {
+          caption?: string | null
+          gym_id?: string | null
+          id?: never
+          image_url: string
+          upload_date?: string | null
+        }
+        Update: {
+          caption?: string | null
+          gym_id?: string | null
+          id?: never
+          image_url?: string
+          upload_date?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "gym_gallery_gym_id_fkey"
+            columns: ["gym_id"]
+            isOneToOne: false
+            referencedRelation: "gyms"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       gyms: {
         Row: {
           activePersonalTrainers: number | null
@@ -429,15 +499,12 @@ export type Database = {
           email: string | null
           facebook: string | null
           firstName: string | null
-          gallery: string[] | null
           gender: Database["public"]["Enums"]["gender_type"] | null
           hasPremium: boolean | null
           id: string
           instagram: string | null
           joined: string
           lastName: string | null
-          nutritionAvailabilityDays: string[] | null
-          nutritionAvailabilityTime: string[] | null
           nutritionistDiets: string[] | null
           nutritionistExperience: string | null
           nutritionistType:
@@ -469,15 +536,12 @@ export type Database = {
           email?: string | null
           facebook?: string | null
           firstName?: string | null
-          gallery?: string[] | null
           gender?: Database["public"]["Enums"]["gender_type"] | null
           hasPremium?: boolean | null
           id: string
           instagram?: string | null
           joined?: string
           lastName?: string | null
-          nutritionAvailabilityDays?: string[] | null
-          nutritionAvailabilityTime?: string[] | null
           nutritionistDiets?: string[] | null
           nutritionistExperience?: string | null
           nutritionistType?:
@@ -509,15 +573,12 @@ export type Database = {
           email?: string | null
           facebook?: string | null
           firstName?: string | null
-          gallery?: string[] | null
           gender?: Database["public"]["Enums"]["gender_type"] | null
           hasPremium?: boolean | null
           id?: string
           instagram?: string | null
           joined?: string
           lastName?: string | null
-          nutritionAvailabilityDays?: string[] | null
-          nutritionAvailabilityTime?: string[] | null
           nutritionistDiets?: string[] | null
           nutritionistExperience?: string | null
           nutritionistType?:

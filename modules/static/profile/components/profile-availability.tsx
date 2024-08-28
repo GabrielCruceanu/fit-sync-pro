@@ -2,9 +2,14 @@ import { SimpleCard } from "@/components/shared/simple-card";
 import { TrainerAvailabilities } from "@/ts/types/trainer";
 import { daysOrder, formattedTime } from "@/helpers/days-order";
 import { NutritionistAvailabilities } from "@/ts/types/nutritionist";
+import { GymAvailabilities } from "@/ts/types/gym";
 
 type Props = {
-  availabilities: TrainerAvailabilities | NutritionistAvailabilities | null;
+  availabilities:
+    | TrainerAvailabilities
+    | NutritionistAvailabilities
+    | GymAvailabilities
+    | null;
   location: string;
   trainingLocation?: string[] | null;
   trainingPhysicalPreferences?: string[] | null;
@@ -32,6 +37,9 @@ export const ProfileAvailability = ({
         <h2 className="mb-4 text-2xl md:text-4xl tracking-tight font-semibold">
           Availability and Location
         </h2>
+        {!availabilities || availabilities.length === 0 ? (
+          <p>No availability yet.</p>
+        ) : null}
         {trainingLocation?.includes("Online") && (
           <p>
             <strong>Online:</strong> Available for on-demand virtual sessions

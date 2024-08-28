@@ -8,7 +8,7 @@ import { calculateMedianRating } from "@/helpers/median-rating";
 
 type Props = {
   reviews: Reviews;
-  beneficiaryName: string;
+  beneficiaryName: string | null;
 };
 export const ProfileReview = ({ reviews, beneficiaryName }: Props) => {
   return (

@@ -27,11 +27,12 @@ export default function GymsList({ gyms }: { gyms: Gyms }) {
             {filterGyms &&
               filterGyms?.map((gym: Gym) => (
                 <ProCard
+                  key={gym.username}
                   image={gym.profilePictureUrl}
                   name={gym.gymName}
                   type={gym.gymType}
                   verified={gym.certificate}
-                  url={`/nutritionists/${gym.username}`}
+                  url={`/gyms/${gym.username}`}
                   location={gym.country + ", " + gym.state + ", " + gym.city}
                   activePersonalTrainers={gym.activePersonalTrainers}
                 />
@@ -47,11 +48,12 @@ export default function GymsList({ gyms }: { gyms: Gyms }) {
             {gyms &&
               gyms?.map((gym: Gym) => (
                 <ProCard
+                  key={gym.username}
                   image={gym.profilePictureUrl}
                   name={gym.gymName}
                   type={gym.gymType}
                   verified={gym.certificate}
-                  url={`/nutritionists/${gym.username}`}
+                  url={`/gyms/${gym.username}`}
                   location={gym.country + ", " + gym.state + ", " + gym.city}
                   activePersonalTrainers={gym.activePersonalTrainers}
                 />

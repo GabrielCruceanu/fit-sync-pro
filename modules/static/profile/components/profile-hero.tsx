@@ -5,9 +5,9 @@ import { ProfileContactModal } from "@/modules/static/profile/components/profile
 type Props = {
   name: string | null;
   profession: string | null;
-  gender: string | null;
+  gender?: string | null;
   location: string | null;
-  birthday: string | null;
+  birthday?: string | null;
   profilePictureUrl: string | null;
   phone: string | null;
   email: string | null;
@@ -39,12 +39,14 @@ export const ProfileHero = ({
             {name}
           </h1>
           <div className="grid md:grid-cols-2 gap-3 gap-x-6 w-full">
-            <div className="flex">
-              <Briefcase />
-              <p className="ml-3 max-w-2xl font-normal md:text-lg lg:text-xl">
-                {profession}
-              </p>
-            </div>
+            {profession && (
+              <div className="flex">
+                <Briefcase />
+                <p className="ml-3 max-w-2xl font-normal md:text-lg lg:text-xl">
+                  {profession}
+                </p>
+              </div>
+            )}
             {gender && (
               <div className="flex">
                 <User />
@@ -53,18 +55,22 @@ export const ProfileHero = ({
                 </p>
               </div>
             )}
-            <div className="flex">
-              <MapPin />
-              <p className="ml-3 max-w-2xl font-normal md:text-lg lg:text-xl">
-                {location}
-              </p>
-            </div>
-            <div className="flex ">
-              <Calendar />
-              <p className="ml-3 max-w-2xl font-normal md:text-lg lg:text-xl">
-                {birthday}
-              </p>
-            </div>
+            {location && (
+              <div className="flex">
+                <MapPin />
+                <p className="ml-3 max-w-2xl font-normal md:text-lg lg:text-xl">
+                  {location}
+                </p>
+              </div>
+            )}
+            {birthday && (
+              <div className="flex ">
+                <Calendar />
+                <p className="ml-3 max-w-2xl font-normal md:text-lg lg:text-xl">
+                  {birthday}
+                </p>
+              </div>
+            )}
           </div>
           <ProfileContactModal
             phone={phone}

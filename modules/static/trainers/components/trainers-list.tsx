@@ -27,6 +27,7 @@ export default function TrainersList({ trainers }: { trainers: Trainers }) {
           <div className="py-6 my-6 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
             {filterTrainers?.map((trainer: Trainer) => (
               <ProCard
+                key={trainer.username}
                 image={trainer.profilePictureUrl}
                 name={trainer.firstName + " " + trainer.lastName}
                 type={trainer.trainerType}
@@ -48,6 +49,7 @@ export default function TrainersList({ trainers }: { trainers: Trainers }) {
           <div className="py-6 my-6 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
             {trainers?.map((trainer: Trainer) => (
               <ProCard
+                key={trainer.username}
                 image={trainer.profilePictureUrl}
                 name={trainer.firstName + " " + trainer.lastName}
                 type={trainer.trainerType}

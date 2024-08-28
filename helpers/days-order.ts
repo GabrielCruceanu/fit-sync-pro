@@ -10,7 +10,10 @@ export const daysOrder = [
   "Sunday",
 ];
 
-export const formattedTime = (dateString: string) => {
+export const formattedTime = (dateString?: string) => {
+  if (!dateString) {
+    return "";
+  }
   const date = parseISO(`1970-01-01T${dateString}`);
   const formattedTime = format(date, "HH:mm");
 

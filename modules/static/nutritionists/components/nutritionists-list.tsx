@@ -33,6 +33,7 @@ export default function NutritionistsList({
           <div className="py-6 my-6 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
             {filterNutritionists?.map((nutritionist: Nutritionist) => (
               <ProCard
+                key={nutritionist.username}
                 image={nutritionist.profilePictureUrl}
                 name={nutritionist.firstName + " " + nutritionist.lastName}
                 type={nutritionist.nutritionistType}
@@ -58,6 +59,7 @@ export default function NutritionistsList({
           <div className="py-6 my-6 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
             {nutritionists?.map((nutritionist: Nutritionist) => (
               <ProCard
+                key={nutritionist.username}
                 image={nutritionist.profilePictureUrl}
                 name={nutritionist.firstName + " " + nutritionist.lastName}
                 type={nutritionist.nutritionistType}
