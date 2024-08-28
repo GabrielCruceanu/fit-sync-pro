@@ -1,7 +1,7 @@
 import { User } from "@supabase/auth-helpers-nextjs";
 import { Json } from "@/ts/supabase";
-import { TypedSupabaseClient, UserDetails } from "@/ts/types";
-import { supabaseClient } from "@/utils/supabase/client-service";
+import { TypedSupabaseClient, UserDetails, UsersDetails } from "@/ts/types";
+import { supabaseClient } from "@/utils/supabase/client/client-service";
 
 // CREATE
 export const createUserName = async ({
@@ -88,13 +88,13 @@ export const updateUser = async ({
     .eq("id", user.id);
 };
 
-export const getUserByUsername = async (username: string) => {
-  const { data, error } = await supabaseClient
+export const getUsersByUsername = async (username: string) => {
+  const { data: users, error } = await supabaseClient
     .from("users")
     .select("*")
     .eq("username", username);
   if (error) {
     console.log("get user by username error: ", error.message);
   }
-  return data;
+  return users as unknown as UsersDetails;
 };

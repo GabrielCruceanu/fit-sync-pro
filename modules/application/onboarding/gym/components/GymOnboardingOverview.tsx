@@ -8,7 +8,7 @@ import { createUserName, updateUser } from "@/utils/supabase/user-service";
 import { OnboardingMessage } from "@/lib/validations/error-check";
 import { UserType } from "@/ts/enum/user.enum";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
-import { createGymProfile } from "@/utils/supabase/gym-service";
+import { createGymProfile } from "@/utils/supabase/gym/gym-service";
 import { OnboardGymSteps } from "@/ts/enum/onboarding.enum";
 import { useOnboardingStore } from "@/store/onboarding";
 

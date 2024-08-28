@@ -14,7 +14,7 @@ import React, { useState } from "react";
 import { createClient } from "@/utils/supabase/create-client";
 import { useAuthStore } from "@/store/auth";
 import { Button } from "@nextui-org/button";
-import { updateClient } from "@/utils/supabase/client-service";
+import { updateClient } from "@/utils/supabase/client/client-service";
 import { GenderType } from "@/ts/types";
 import { useSettingsStore } from "@/store/settings";
 import { useOnboardingStore } from "@/store/onboarding";

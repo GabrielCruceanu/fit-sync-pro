@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { Button } from "@nextui-org/button";
 import { Briefcase, Calendar, MapPin, User } from "lucide-react";
+import { ProfileContactModal } from "@/modules/static/profile/components/profile-contact-modal";
 
 type Props = {
   name: string | null;
@@ -9,6 +9,12 @@ type Props = {
   location: string | null;
   birthday: string | null;
   profilePictureUrl: string | null;
+  phone: string | null;
+  email: string | null;
+  website: string | null;
+  instagram: string | null;
+  facebook: string | null;
+  twitter: string | null;
 };
 
 export const ProfileHero = ({
@@ -18,6 +24,12 @@ export const ProfileHero = ({
   location,
   birthday,
   profilePictureUrl,
+  phone,
+  email,
+  website,
+  instagram,
+  facebook,
+  twitter,
 }: Props) => {
   return (
     <section className="dark:bg-background">
@@ -54,12 +66,14 @@ export const ProfileHero = ({
               </p>
             </div>
           </div>
-          <Button
-            color="primary"
-            className="inline-flex items-center py-3 px-5 font-semibold text-center rounded-lg text-background bg-foreground w-full lg:max-w-[300px]"
-          >
-            Contact
-          </Button>
+          <ProfileContactModal
+            phone={phone}
+            email={email}
+            instagram={instagram}
+            facebook={facebook}
+            website={website}
+            twitter={twitter}
+          />
           {/*<ul className="block justify-between pt-6 mx-auto mt-10 border-t border-divider xl:flex dark:border-gray-700 dark:text-white">*/}
           {/*  <li className="flex items-center">*/}
           {/*    <span className="text-4xl font-extrabold lg:text-5xl">*/}
@@ -71,7 +85,7 @@ export const ProfileHero = ({
           {/*  </li>*/}
           {/*  <li className="flex items-center">*/}
           {/*    <span className="text-4xl font-extrabold lg:text-5xl">*/}
-          {/*      {nutritionists?.length}*/}
+          {/*      {nutritionist?.length}*/}
           {/*    </span>*/}
           {/*    <div className="flex lg:block pl-4 text-xl">*/}
           {/*      <div className="mr-2 lg:mr-0">Nutritionists</div>*/}
@@ -91,7 +105,11 @@ export const ProfileHero = ({
           <Image
             fill
             className="rounded-lg object-cover"
-            src={profilePictureUrl ? profilePictureUrl : ""}
+            src={
+              profilePictureUrl
+                ? profilePictureUrl
+                : "https://via.placeholder.com/375"
+            }
             loading={"lazy"}
             alt={name ? name : ""}
           />

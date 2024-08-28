@@ -1,7 +1,5 @@
 import { create } from "zustand";
 import { createClient } from "@/utils/supabase/create-client";
-import { Client, SettingsNavigation, Trainer, UserDetails } from "@/ts/types";
-import { SettingsStep } from "@/ts/enum";
 
 type TrainersState = {
   trainers: any[];
@@ -26,7 +24,7 @@ export const useTrainersStore = create<TrainersState>()((set, state) => ({
       .from("trainers")
       .select("*");
     if (error) throw error;
-    console.log("Trainers:", trainers);
+
     set({ trainers });
   },
   fetchFilteredTrainers: async (country, county, city, type) => {
@@ -41,7 +39,7 @@ export const useTrainersStore = create<TrainersState>()((set, state) => ({
       .eq("trainerType", type);
 
     if (error) throw error;
-    console.log("Trainers:", trainers);
+
     set({ filterTrainers: trainers });
   },
 }));

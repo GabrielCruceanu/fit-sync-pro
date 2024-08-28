@@ -20,10 +20,9 @@ export const getAllNutritionists = async (supabase: TypedSupabaseClient) => {
     .select("*");
 
   if (error) {
-    console.log("select nutritionists error: ", error.message);
+    console.log("select nutritionist error: ", error.message);
   }
 
-  console.log("select nutritionists data:", nutritionists);
   return nutritionists as unknown as Nutritionist[];
 };
 
@@ -61,6 +60,5 @@ export const getNutritionistProfileByUserName = async (
     );
   }
 
-  console.log("select nutritionist profile by username data:", nutritionist);
   return nutritionist as unknown as Nutritionist;
 };

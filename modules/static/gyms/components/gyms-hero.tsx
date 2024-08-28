@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Hero from "@/public/images/gym/hero.png";
-import { GymsSearchForm } from "@/modules/static/gyms/components/gyms-search-form";
 
 export default function GymsHero() {
   return (
@@ -15,8 +14,6 @@ export default function GymsHero() {
             you’re looking to lose weight, gain muscle, or improve your overall
             health, we have the perfect gym for you.
           </p>
-
-          <GymsSearchForm />
         </div>
         <div className="place-self-center mb-10 xl:mb-0 lg:col-span-5 ml-auto">
           <Image

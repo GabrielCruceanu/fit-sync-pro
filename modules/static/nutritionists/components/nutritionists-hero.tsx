@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Hero from "@/public/images/nutritionist/hero.png";
-import { NutritionistsSearchForm } from "@/modules/static/nutritionists/components/nutritionists-search-form";
 
 export default function NutritionistsHero() {
   return (
@@ -15,8 +14,6 @@ export default function NutritionistsHero() {
             Whether you’re looking to lose weight, gain muscle, or improve your
             overall health, we have the perfect nutritionist for you.
           </p>
-
-          <NutritionistsSearchForm />
         </div>
         <div className="place-self-center mb-10 xl:mb-0 lg:col-span-5 ml-auto">
           <Image

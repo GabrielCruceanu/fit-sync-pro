@@ -25,14 +25,14 @@ export const ProCard = ({
 }: Props) => {
   return (
     <div className="bg-background shadow-lg rounded-lg p-4 border border-divider">
-      <div className="grid gap-3">
-        <div className="w-full flex max-h-[200px] rounded overflow-hidden">
+      <div className="flex flex-col gap-3 h-full">
+        <div className="w-full flex items-center h-full max-h-[200px] rounded overflow-hidden">
           <Image
             width={295}
             height={200}
             placeholder={"blur"}
             blurDataURL={"https://via.placeholder.com/300"}
-            className="object-cover w-full h-full"
+            className="object-cover w-full h-full min-h-[200px] overflow-hidden"
             src={image ? image : "https://via.placeholder.com/300"}
             alt={name ? name : "Pro image"}
           />
@@ -70,10 +70,10 @@ export const ProCard = ({
             <span className="ml-1">{location}</span>
           </div>
         </div>
-        <div className="flex">
+        <div className="flex mt-auto">
           <Link
             href={url}
-            className="p-2 border border-divider rounded mt-4 w-full text-center text-sm font-semibold"
+            className="p-2 border sborder-divider rounded mt-4 w-full text-center text-sm font-semibold"
           >
             View Profile
           </Link>

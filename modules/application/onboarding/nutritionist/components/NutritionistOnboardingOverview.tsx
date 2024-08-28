@@ -9,7 +9,7 @@ import { createUserName, updateUser } from "@/utils/supabase/user-service";
 import { OnboardingMessage } from "@/lib/validations/error-check";
 import { UserType } from "@/ts/enum/user.enum";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
-import { createNutritionistProfile } from "@/utils/supabase/nutritionist-service";
+import { createNutritionistProfile } from "@/utils/supabase/nutritionist/nutritionist-service";
 import { useOnboardingStore } from "@/store/onboarding";
 
 export function NutritionistOnboardingOverview() {

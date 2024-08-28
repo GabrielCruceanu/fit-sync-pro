@@ -9,7 +9,11 @@ import nutritionistTypes from "@/constants/nutritionists";
 import { useNutritionistsStore } from "@/store/nutritionists";
 import { handleScrollTo } from "@/helpers/scroll-to";
 
-export const NutritionistsSearchForm = () => {
+type Props = {
+  onClick: () => void;
+};
+
+export const NutritionistsSearchForm = ({ onClick }: Props) => {
   const [country, setCountry] = useState<string>("");
   const [county, setCounty] = useState<string>("");
   const [city, setCity] = useState<string>("");
@@ -53,12 +57,15 @@ export const NutritionistsSearchForm = () => {
         handleScrollTo("list");
       },
     );
+    onClick();
   };
 
   let countries: string[];
   let currentCounties: string[] = [];
   let currentCites: string[] = [];
-  const duplicateCountries = CitiesData.map((city) => city.country);
+  const duplicateCountries = CitiesData.map((city) =>
+    city.country === "Romania" ? city.country : "",
+  );
   const duplicateCounties = CitiesData.map((city) => {
     if (city.country === country) {
       return city.county;
@@ -84,7 +91,7 @@ export const NutritionistsSearchForm = () => {
   currentCites = [...new Set(duplicateCities)].sort();
   return (
     <>
-      <div className="grid md:grid-cols-2 gap-x-3 gap-y-4">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-x-3 gap-y-4">
         {/*Country*/}
         <Select
           label="Country"
@@ -225,7 +232,7 @@ export const NutritionistsSearchForm = () => {
         </Select>
       </div>
 
-      <div className="mt-4">
+      <div className="mt-4 lg:max-w-80 lg:mx-auto">
         <Button
           onClick={() => inputsAreOk()}
           type="button"

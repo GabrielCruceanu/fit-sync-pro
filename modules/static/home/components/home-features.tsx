@@ -32,7 +32,7 @@ export default function HomeFeatures() {
             icon={<ShieldCheck />}
             title={"Trusted Professionals"}
             description={
-              "We vet our trainers and nutritionists to ensure you get the best guidance and support."
+              "We vet our trainers and nutritionist to ensure you get the best guidance and support."
             }
           ></CardWithIcon>
           <CardWithIcon

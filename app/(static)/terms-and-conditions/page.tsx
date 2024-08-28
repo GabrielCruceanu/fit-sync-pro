@@ -3,7 +3,7 @@ import { Link } from "@nextui-org/react";
 export const metadata: Metadata = {
   title: "Terms and Conditions",
   description:
-    "FitSyncPro is a platform that connects trainers, nutritionists, and gyms with clients.",
+    "FitSyncPro is a platform that connects trainers, nutritionist, and gyms with clients.",
 };
 
 export default function TermsPage() {
