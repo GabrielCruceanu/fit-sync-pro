@@ -252,9 +252,9 @@ export function NutritionistOnboardingOverview() {
           <Button
             onClick={() => handleConfirm()}
             type="button"
-            color={"primary"}
             radius={"sm"}
             fullWidth
+            className="bg-foreground text-background"
           >
             Confirm
           </Button>

@@ -38,8 +38,6 @@ export function ClientOnboardingPersonalDetails() {
   const [heightError, setHeightError] = useState("");
   const [weightError, setWeightError] = useState("");
 
-  const [isCalendarOpen, setCalendarIsOpen] = React.useState(false);
-
   const [confirmBtnDisable, setConfirmBtnDisable] = useState(false);
 
   const handleSearchUsername = async (username: string) => {
@@ -83,6 +81,7 @@ export function ClientOnboardingPersonalDetails() {
       return;
     }
   };
+
   const handleBirthChange = (newValue: any) => {
     updateOnboardingDetails({
       ...onboardingDetails,

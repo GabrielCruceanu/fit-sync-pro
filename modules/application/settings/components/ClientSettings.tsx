@@ -38,16 +38,9 @@ export function ProfileSettings() {
   const [genderError, setGenderError] = useState("");
   const [birthError, setBirthError] = useState("");
 
-  const birthDate = parseInt(
-    clientSettings?.birthDate ? clientSettings.birthDate : "",
-  );
-  const birthMonth =
-    parseInt(clientSettings?.birthMonth ? clientSettings.birthMonth : "") - 1; // Months are zero-based in JavaScript Date object
-  const birthYear = parseInt(
-    clientSettings?.birthYear ? clientSettings.birthYear : "",
-  );
-
-  const birthDateFull = new Date(birthYear, birthMonth, birthDate);
+  const birthDate = clientSettings?.birthDate;
+  const birthMonth = clientSettings?.birthMonth; // Months are zero-based in JavaScript Date object
+  const birthYear = clientSettings?.birthYear;
 
   const [phoneError, setPhoneError] = useState("");
   const [heightError, setHeightError] = useState("");
@@ -96,19 +89,14 @@ export function ProfileSettings() {
     }
   };
   const handleBirthChange = (newValue: any) => {
-    const dateLanding = new Date(newValue);
-    const date = dateLanding.getDate().toString();
-    const month = (dateLanding.getMonth() + 1).toString();
-    const year = dateLanding.getFullYear().toString();
-
     updateClientSettings({
       ...clientSettings,
-      birthMonth: month,
-      birthDate: date,
-      birthYear: year,
+      birthDate: newValue.day,
+      birthMonth: newValue.month,
+      birthYear: newValue.year,
     });
 
-    handleInputRequired(newValue.startDate === null ? "" : newValue.startDate)
+    handleInputRequired(`${newValue.day}/${newValue.month}/${newValue.year}`)
       ? setBirthError(InputError.InputRequired)
       : null;
   };

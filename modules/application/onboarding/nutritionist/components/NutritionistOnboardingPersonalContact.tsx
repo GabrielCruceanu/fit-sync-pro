@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  formatPhoneNumber,
   handleInputRequired,
   validateIsPhoneNumber,
   validateIsWebsiteLink,
@@ -43,18 +44,23 @@ export function NutritionistOnboardingPersonalContact() {
    * @param {string} phoneNumber - The input phone number.
    */
   const handleSetPhoneNumber = (phoneNumber: string) => {
+    const clearNumber = formatPhoneNumber(phoneNumber);
+
     setPhoneError("");
+    setConfirmBtnDisable(false);
     updateOnboardingDetails({
       ...onboardingDetails,
-      phoneNumber: phoneNumber,
+      phoneNumber: clearNumber,
     });
-    setConfirmBtnDisable(false);
+
     if (handleInputRequired(phoneNumber)) {
       setPhoneError(InputError.InputRequired);
+      setConfirmBtnDisable(true);
       return;
     }
-    if (!validateIsPhoneNumber(phoneNumber)) {
+    if (!validateIsPhoneNumber(clearNumber)) {
       setPhoneError(InputError.OnlyNumbers);
+      setConfirmBtnDisable(true);
       return;
     }
   };

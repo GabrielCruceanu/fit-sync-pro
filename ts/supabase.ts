@@ -487,9 +487,9 @@ export type Database = {
         Row: {
           activeClients: string | null
           biography: string | null
-          birthDate: string | null
-          birthMonth: string | null
-          birthYear: string | null
+          birthDate: number | null
+          birthMonth: number | null
+          birthYear: number | null
           cabinetName: string | null
           cabinetStreet: string | null
           certificate: boolean | null
@@ -524,9 +524,9 @@ export type Database = {
         Insert: {
           activeClients?: string | null
           biography?: string | null
-          birthDate?: string | null
-          birthMonth?: string | null
-          birthYear?: string | null
+          birthDate?: number | null
+          birthMonth?: number | null
+          birthYear?: number | null
           cabinetName?: string | null
           cabinetStreet?: string | null
           certificate?: boolean | null
@@ -561,9 +561,9 @@ export type Database = {
         Update: {
           activeClients?: string | null
           biography?: string | null
-          birthDate?: string | null
-          birthMonth?: string | null
-          birthYear?: string | null
+          birthDate?: number | null
+          birthMonth?: number | null
+          birthYear?: number | null
           cabinetName?: string | null
           cabinetStreet?: string | null
           certificate?: boolean | null
@@ -992,9 +992,9 @@ export type Database = {
         Row: {
           activeClients: string | null
           biography: string | null
-          birthDate: string | null
-          birthMonth: string | null
-          birthYear: string | null
+          birthDate: number | null
+          birthMonth: number | null
+          birthYear: number | null
           certificate: boolean | null
           certifications: Json[] | null
           city: string | null
@@ -1036,9 +1036,9 @@ export type Database = {
         Insert: {
           activeClients?: string | null
           biography?: string | null
-          birthDate?: string | null
-          birthMonth?: string | null
-          birthYear?: string | null
+          birthDate?: number | null
+          birthMonth?: number | null
+          birthYear?: number | null
           certificate?: boolean | null
           certifications?: Json[] | null
           city?: string | null
@@ -1080,9 +1080,9 @@ export type Database = {
         Update: {
           activeClients?: string | null
           biography?: string | null
-          birthDate?: string | null
-          birthMonth?: string | null
-          birthYear?: string | null
+          birthDate?: number | null
+          birthMonth?: number | null
+          birthYear?: number | null
           certificate?: boolean | null
           certifications?: Json[] | null
           city?: string | null
