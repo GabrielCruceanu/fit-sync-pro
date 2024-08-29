@@ -65,9 +65,7 @@ export function ClientOnboardingNotifications() {
           >
             <div className="flex flex-col gap-1">
               <p className="text-medium">Workout</p>
-              <p className="text-tiny text-default-400">
-                Receive notifications about workout
-              </p>
+              <p className="text-tiny">Receive notifications about workout</p>
             </div>
           </Switch>
           {/*NutritionNotifications*/}
@@ -99,9 +97,7 @@ export function ClientOnboardingNotifications() {
           >
             <div className="flex flex-col gap-1">
               <p className="text-medium">Nutrition</p>
-              <p className="text-tiny text-default-400">
-                Receive notifications about nutrition
-              </p>
+              <p className="text-tiny">Receive notifications about nutrition</p>
             </div>
           </Switch>
           {/*NewsAndActualizations*/}
@@ -133,7 +129,7 @@ export function ClientOnboardingNotifications() {
           >
             <div className="flex flex-col gap-1">
               <p className="text-medium">News and actualizations</p>
-              <p className="text-tiny text-default-400">
+              <p className="text-tiny">
                 Receive notifications about news and actualizations
               </p>
             </div>
@@ -168,7 +164,7 @@ export function ClientOnboardingNotifications() {
           >
             <div className="flex flex-col gap-1">
               <p className="text-medium">Offers and promotions</p>
-              <p className="text-tiny text-default-400">
+              <p className="text-tiny">
                 Receive notifications about offers and promotions
               </p>
             </div>

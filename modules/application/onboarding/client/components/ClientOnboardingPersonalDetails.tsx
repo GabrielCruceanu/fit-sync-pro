@@ -5,24 +5,17 @@ import { Input } from "@nextui-org/input";
 import React, { useState } from "react";
 import { createClient } from "@/utils/supabase/create-client";
 import {
+  formatPhoneNumber,
   handleInputRequired,
   validateIsPhoneNumber,
   validateOnlyLetter,
   validateUsername,
 } from "@/helpers/helpers";
 import { genderList } from "@/constants/user";
-import { Calendar } from "@/components/shared/calendar";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  Select,
-  SelectItem,
-} from "@nextui-org/react";
-import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
+import { DateInput, Select, SelectItem } from "@nextui-org/react";
 import { GenderType } from "@/ts/types";
 import { useOnboardingStore } from "@/store/onboarding";
+import { CalendarDate } from "@internationalized/date";
 
 export function ClientOnboardingPersonalDetails() {
   const supabase = createClient();
@@ -44,8 +37,6 @@ export function ClientOnboardingPersonalDetails() {
   const [phoneError, setPhoneError] = useState("");
   const [heightError, setHeightError] = useState("");
   const [weightError, setWeightError] = useState("");
-
-  const [isCalendarOpen, setCalendarIsOpen] = React.useState(false);
 
   const [confirmBtnDisable, setConfirmBtnDisable] = useState(false);
 
@@ -70,40 +61,39 @@ export function ClientOnboardingPersonalDetails() {
   };
 
   const handleSetPhoneNumber = (phoneNumber: string) => {
-    // const clearNumber = formatPhoneNumber(phoneNumber);
+    const clearNumber = formatPhoneNumber(phoneNumber);
 
     setPhoneError("");
     setConfirmBtnDisable(false);
-    if (handleInputRequired(phoneNumber)) {
-      setPhoneError(InputError.InputRequired);
-      return;
-    }
-    if (!validateIsPhoneNumber(phoneNumber)) {
-      setPhoneError(InputError.OnlyNumbers);
-      return;
-    }
     updateOnboardingDetails({
       ...onboardingDetails,
-      phoneNumber: phoneNumber,
+      phoneNumber: clearNumber,
     });
-  };
-  const handleBirthChange = (newValue: any) => {
-    const dateLanding = new Date(newValue);
-    const date = dateLanding.getDate().toString();
-    const month = (dateLanding.getMonth() + 1).toString();
-    const year = dateLanding.getFullYear().toString();
 
+    if (handleInputRequired(phoneNumber)) {
+      setPhoneError(InputError.InputRequired);
+      setConfirmBtnDisable(true);
+      return;
+    }
+    if (!validateIsPhoneNumber(clearNumber)) {
+      setPhoneError(InputError.OnlyNumbers);
+      setConfirmBtnDisable(true);
+      return;
+    }
+  };
+
+  const handleBirthChange = (newValue: any) => {
     updateOnboardingDetails({
       ...onboardingDetails,
       birthdate: {
-        date,
-        month,
-        year,
-        full: dateLanding,
+        date: newValue.day,
+        month: newValue.month,
+        year: newValue.year,
+        full: `${newValue.year}-${newValue.month}-${newValue.day}`,
       },
     });
 
-    handleInputRequired(newValue.startDate === null ? "" : newValue.startDate)
+    handleInputRequired(onboardingDetails.birthdate?.full?.toString())
       ? setBirthError(InputError.InputRequired)
       : null;
   };
@@ -294,60 +284,41 @@ export function ClientOnboardingPersonalDetails() {
             }}
           />
           {/*Birthday*/}
-          <div>
-            <Popover
-              isOpen={isCalendarOpen}
-              onOpenChange={(open) => setCalendarIsOpen(open)}
-            >
-              <PopoverTrigger>
-                <Input
-                  id="birth"
-                  placeholder="Choose a date"
-                  type="date"
-                  value={
-                    onboardingDetails.birthdate?.full
-                      ? format(onboardingDetails.birthdate.full, "PPP")
-                      : "Birthday"
-                  }
-                  autoCapitalize="none"
-                  autoComplete="false"
-                  autoCorrect="off"
-                  variant="bordered"
-                  isRequired
-                  startContent={
-                    <CalendarIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-                  }
-                  color={birthError ? "danger" : "default"}
-                  errorMessage={birthError}
-                  isInvalid={!!birthError}
-                  onFocusChange={(e) => {
-                    if (!e) {
-                      setBirthError("");
-                      handleInputRequired(
-                        onboardingDetails.birthdate?.full?.toString(),
-                      )
-                        ? setBirthError(InputError.InputRequired)
-                        : null;
-                      setConfirmBtnDisable(false);
-                    }
-                  }}
-                />
-              </PopoverTrigger>
-              <PopoverContent className="w-auto p-0 bg-background">
-                <Calendar
-                  mode="single"
-                  selected={onboardingDetails.birthdate?.full}
-                  onSelect={($event) => {
-                    handleBirthChange($event);
-                    setCalendarIsOpen(false);
-                    setBirthError("");
-                  }}
-                  initialFocus
-                  required
-                />
-              </PopoverContent>
-            </Popover>
-          </div>
+          <DateInput
+            label={"Birth date"}
+            isRequired
+            variant="bordered"
+            color={birthError ? "danger" : "default"}
+            value={
+              new CalendarDate(
+                onboardingDetails?.birthdate?.year
+                  ? +onboardingDetails.birthdate.year
+                  : 1988,
+                onboardingDetails?.birthdate?.month
+                  ? +onboardingDetails.birthdate.month
+                  : 1,
+                onboardingDetails?.birthdate?.date
+                  ? +onboardingDetails.birthdate.date
+                  : 1,
+              )
+            }
+            errorMessage={birthError}
+            isInvalid={!!birthError}
+            onFocusChange={(e) => {
+              if (!e) {
+                setBirthError("");
+                handleInputRequired(
+                  onboardingDetails.birthdate?.full?.toString(),
+                )
+                  ? setBirthError(InputError.InputRequired)
+                  : null;
+                setConfirmBtnDisable(false);
+              }
+            }}
+            onChange={($event) => {
+              handleBirthChange($event);
+            }}
+          />
           {/*Gender*/}
           <Select
             label="Gender"
@@ -412,7 +383,7 @@ export function ClientOnboardingPersonalDetails() {
           {/*Height*/}
           <Input
             id="height"
-            placeholder="173 cm"
+            placeholder="173"
             type="number"
             label="Height"
             value={onboardingDetails.height?.toString()}
@@ -447,7 +418,7 @@ export function ClientOnboardingPersonalDetails() {
           {/*Weight*/}
           <Input
             id="weight"
-            placeholder="75 Kg"
+            placeholder="75"
             type="number"
             label="Weight"
             value={onboardingDetails.weight?.toString()}
@@ -484,17 +455,16 @@ export function ClientOnboardingPersonalDetails() {
       <Button
         onClick={() => inputsAreOk()}
         type="button"
-        color={"primary"}
         radius={"sm"}
         fullWidth
         disabled={confirmBtnDisable}
+        className="bg-foreground text-background"
       >
         Next
       </Button>
       <Button
         onClick={() => updateOnboardingType(OnboardingType.Welcome)}
         type="button"
-        color={"default"}
         variant={"ghost"}
         radius={"sm"}
         fullWidth

@@ -23,7 +23,6 @@ export function Welcome() {
           <Button
             onClick={() => updateOnboardingType(OnboardingType.Client)}
             type="button"
-            color={"primary"}
             variant={"ghost"}
             fullWidth
             className="capitalize"
@@ -35,7 +34,6 @@ export function Welcome() {
           <Button
             onClick={() => updateOnboardingType(OnboardingType.Trainer)}
             type="button"
-            color={"primary"}
             variant={"ghost"}
             fullWidth
             className="capitalize"
@@ -47,7 +45,6 @@ export function Welcome() {
           <Button
             onClick={() => updateOnboardingType(OnboardingType.Nutritionist)}
             type="button"
-            color={"primary"}
             variant={"ghost"}
             fullWidth
             className="capitalize"
@@ -59,7 +56,6 @@ export function Welcome() {
           <Button
             onClick={() => updateOnboardingType(OnboardingType.Gym)}
             type="button"
-            color={"primary"}
             variant={"ghost"}
             fullWidth
             className="capitalize"

@@ -67,15 +67,15 @@ export const formatPhoneNumber = (phoneNumber: string): string => {
   if (clearNumber.includes(")")) {
     clearNumber = clearNumber.replace(")", "");
   }
-  if (clearNumber.startsWith("+", 0)) {
+  if (clearNumber.startsWith("++", 0)) {
     clearNumber = clearNumber.slice(1);
   }
-  if (clearNumber.startsWith("4", 0)) {
-    clearNumber = clearNumber.slice(1);
-  }
-  if (clearNumber.startsWith("004", 0)) {
-    clearNumber = clearNumber.slice(3);
-  }
+  // if (clearNumber.startsWith("4", 0)) {
+  //   clearNumber = clearNumber.slice(1);
+  // }
+  // if (clearNumber.startsWith("004", 0)) {
+  //   clearNumber = clearNumber.slice(3);
+  // }
 
   return clearNumber;
 };

@@ -14,7 +14,6 @@ import { ApplicationLinks } from "@/constants/links";
 import React from "react";
 import { usePathname } from "next/navigation";
 import FitSyncLogo from "@/components/shared/fit-sync-logo";
-import { ThemeSwitcher } from "@/components/shared/theme-switcher";
 import { cn } from "@/lib/cn";
 
 export default function NavigationBar() {
@@ -42,9 +41,9 @@ export default function NavigationBar() {
         </NavbarContent>
 
         <NavbarContent justify="end">
-          <NavbarItem>
-            <ThemeSwitcher />
-          </NavbarItem>
+          {/*<NavbarItem>*/}
+          {/*  <ThemeSwitcher />*/}
+          {/*</NavbarItem>*/}
           <NavbarItem className="mr-2 mr-lg-0 hidden lg:flex">
             <Link
               className="inline-flex items-center py-3 px-5 font-semibold text-center rounded-lg text-background bg-foreground"

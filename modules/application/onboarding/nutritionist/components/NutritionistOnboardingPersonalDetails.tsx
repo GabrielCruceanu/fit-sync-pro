@@ -12,20 +12,11 @@ import {
 } from "@/ts/enum";
 import { genderList } from "@/constants/user";
 import { OnboardingLayout } from "@/modules/application/onboarding/components/OnboardingLayout";
-import {
-  Input,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  Select,
-  SelectItem,
-} from "@nextui-org/react";
-import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/shared/calendar";
+import { DateInput, Input, Select, SelectItem } from "@nextui-org/react";
 import { Button } from "@nextui-org/button";
 import { GenderType } from "@/ts/types";
 import { useOnboardingStore } from "@/store/onboarding";
+import { CalendarDate } from "@internationalized/date";
 
 /**
  * This component handles the onboarding process for a nutritionist's personal contact details.
@@ -54,9 +45,6 @@ export function NutritionistOnboardingPersonalDetails() {
   const [usernameError, setUsernameError] = useState("");
   const [genderError, setGenderError] = useState("");
   const [birthError, setBirthError] = useState("");
-
-  // State variable to open and close the calendar
-  const [isCalendarOpen, setCalendarIsOpen] = React.useState(false);
 
   // State variable to disable the confirm button
   const [confirmBtnDisable, setConfirmBtnDisable] = useState(false);
@@ -92,22 +80,17 @@ export function NutritionistOnboardingPersonalDetails() {
    * @param {any} newValue - The input birthdate.
    */
   const handleBirthChange = (newValue: any) => {
-    const dateLanding = new Date(newValue);
-    const date = dateLanding.getDate().toString();
-    const month = (dateLanding.getMonth() + 1).toString();
-    const year = dateLanding.getFullYear().toString();
-
     updateOnboardingDetails({
       ...onboardingDetails,
       birthdate: {
-        date,
-        month,
-        year,
-        full: dateLanding,
+        date: newValue.day,
+        month: newValue.month,
+        year: newValue.year,
+        full: `${newValue.year}-${newValue.month}-${newValue.day}`,
       },
     });
 
-    handleInputRequired(newValue.startDate === null ? "" : newValue.startDate)
+    handleInputRequired(onboardingDetails.birthdate?.full?.toString())
       ? setBirthError(InputError.InputRequired)
       : null;
   };
@@ -278,61 +261,41 @@ export function NutritionistOnboardingPersonalDetails() {
             }}
           />
           {/*Birthday*/}
-          <div className="group flex flex-col w-full h-full">
-            <Popover
-              isOpen={isCalendarOpen}
-              onOpenChange={(open) => setCalendarIsOpen(open)}
-            >
-              <PopoverTrigger>
-                <Input
-                  id="birth"
-                  placeholder="Choose a date"
-                  type="date"
-                  value={
-                    onboardingDetails.birthdate?.full
-                      ? format(onboardingDetails.birthdate.full, "PPP")
-                      : "Birthday"
-                  }
-                  autoCapitalize="none"
-                  autoComplete="false"
-                  autoCorrect="off"
-                  variant="bordered"
-                  isRequired
-                  startContent={
-                    <CalendarIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-                  }
-                  color={birthError ? "danger" : "default"}
-                  errorMessage={birthError}
-                  className="h-full"
-                  isInvalid={!!birthError}
-                  onFocusChange={(e) => {
-                    if (!e) {
-                      setBirthError("");
-                      handleInputRequired(
-                        onboardingDetails.birthdate?.full?.toString(),
-                      )
-                        ? setBirthError(InputError.InputRequired)
-                        : null;
-                      setConfirmBtnDisable(false);
-                    }
-                  }}
-                />
-              </PopoverTrigger>
-              <PopoverContent className="w-auto p-0 bg-background">
-                <Calendar
-                  mode="single"
-                  selected={onboardingDetails.birthdate?.full}
-                  onSelect={($event) => {
-                    handleBirthChange($event);
-                    setCalendarIsOpen(false);
-                    setBirthError("");
-                  }}
-                  initialFocus
-                  required
-                />
-              </PopoverContent>
-            </Popover>
-          </div>
+          <DateInput
+            label={"Birth date"}
+            isRequired
+            variant="bordered"
+            color={birthError ? "danger" : "default"}
+            value={
+              new CalendarDate(
+                onboardingDetails?.birthdate?.year
+                  ? +onboardingDetails.birthdate.year
+                  : 1988,
+                onboardingDetails?.birthdate?.month
+                  ? +onboardingDetails.birthdate.month
+                  : 1,
+                onboardingDetails?.birthdate?.date
+                  ? +onboardingDetails.birthdate.date
+                  : 1,
+              )
+            }
+            errorMessage={birthError}
+            isInvalid={!!birthError}
+            onFocusChange={(e) => {
+              if (!e) {
+                setBirthError("");
+                handleInputRequired(
+                  onboardingDetails.birthdate?.full?.toString(),
+                )
+                  ? setBirthError(InputError.InputRequired)
+                  : null;
+                setConfirmBtnDisable(false);
+              }
+            }}
+            onChange={($event) => {
+              handleBirthChange($event);
+            }}
+          />
           {/*Gender*/}
           <Select
             label="Gender"
@@ -380,10 +343,10 @@ export function NutritionistOnboardingPersonalDetails() {
       <Button
         onClick={() => inputsAreOk()}
         type="button"
-        color={"primary"}
         radius={"sm"}
         fullWidth
         disabled={confirmBtnDisable}
+        className="bg-foreground text-background"
       >
         Next
       </Button>

@@ -53,10 +53,10 @@ export type Database = {
       }
       clients: {
         Row: {
-          birthDate: string | null
+          birthDate: number | null
           birthday: string | null
-          birthMonth: string | null
-          birthYear: string | null
+          birthMonth: number | null
+          birthYear: number | null
           city: string | null
           client_id: string
           country: string | null
@@ -64,7 +64,7 @@ export type Database = {
           firstName: string | null
           fitnessExperience: string | null
           foodAllergiesDescription: string | null
-          foodAllergiesType: string | null
+          foodAllergiesType: string[] | null
           foodPreferences: string[] | null
           gender: Database["public"]["Enums"]["gender_type"] | null
           goals: string[] | null
@@ -85,10 +85,10 @@ export type Database = {
           weight: number | null
         }
         Insert: {
-          birthDate?: string | null
+          birthDate?: number | null
           birthday?: string | null
-          birthMonth?: string | null
-          birthYear?: string | null
+          birthMonth?: number | null
+          birthYear?: number | null
           city?: string | null
           client_id: string
           country?: string | null
@@ -96,7 +96,7 @@ export type Database = {
           firstName?: string | null
           fitnessExperience?: string | null
           foodAllergiesDescription?: string | null
-          foodAllergiesType?: string | null
+          foodAllergiesType?: string[] | null
           foodPreferences?: string[] | null
           gender?: Database["public"]["Enums"]["gender_type"] | null
           goals?: string[] | null
@@ -117,10 +117,10 @@ export type Database = {
           weight?: number | null
         }
         Update: {
-          birthDate?: string | null
+          birthDate?: number | null
           birthday?: string | null
-          birthMonth?: string | null
-          birthYear?: string | null
+          birthMonth?: number | null
+          birthYear?: number | null
           city?: string | null
           client_id?: string
           country?: string | null
@@ -128,7 +128,7 @@ export type Database = {
           firstName?: string | null
           fitnessExperience?: string | null
           foodAllergiesDescription?: string | null
-          foodAllergiesType?: string | null
+          foodAllergiesType?: string[] | null
           foodPreferences?: string[] | null
           gender?: Database["public"]["Enums"]["gender_type"] | null
           goals?: string[] | null
@@ -487,9 +487,9 @@ export type Database = {
         Row: {
           activeClients: string | null
           biography: string | null
-          birthDate: string | null
-          birthMonth: string | null
-          birthYear: string | null
+          birthDate: number | null
+          birthMonth: number | null
+          birthYear: number | null
           cabinetName: string | null
           cabinetStreet: string | null
           certificate: boolean | null
@@ -524,9 +524,9 @@ export type Database = {
         Insert: {
           activeClients?: string | null
           biography?: string | null
-          birthDate?: string | null
-          birthMonth?: string | null
-          birthYear?: string | null
+          birthDate?: number | null
+          birthMonth?: number | null
+          birthYear?: number | null
           cabinetName?: string | null
           cabinetStreet?: string | null
           certificate?: boolean | null
@@ -561,9 +561,9 @@ export type Database = {
         Update: {
           activeClients?: string | null
           biography?: string | null
-          birthDate?: string | null
-          birthMonth?: string | null
-          birthYear?: string | null
+          birthDate?: number | null
+          birthMonth?: number | null
+          birthYear?: number | null
           cabinetName?: string | null
           cabinetStreet?: string | null
           certificate?: boolean | null
@@ -992,9 +992,9 @@ export type Database = {
         Row: {
           activeClients: string | null
           biography: string | null
-          birthDate: string | null
-          birthMonth: string | null
-          birthYear: string | null
+          birthDate: number | null
+          birthMonth: number | null
+          birthYear: number | null
           certificate: boolean | null
           certifications: Json[] | null
           city: string | null
@@ -1036,9 +1036,9 @@ export type Database = {
         Insert: {
           activeClients?: string | null
           biography?: string | null
-          birthDate?: string | null
-          birthMonth?: string | null
-          birthYear?: string | null
+          birthDate?: number | null
+          birthMonth?: number | null
+          birthYear?: number | null
           certificate?: boolean | null
           certifications?: Json[] | null
           city?: string | null
@@ -1080,9 +1080,9 @@ export type Database = {
         Update: {
           activeClients?: string | null
           biography?: string | null
-          birthDate?: string | null
-          birthMonth?: string | null
-          birthYear?: string | null
+          birthDate?: number | null
+          birthMonth?: number | null
+          birthYear?: number | null
           certificate?: boolean | null
           certifications?: Json[] | null
           city?: string | null

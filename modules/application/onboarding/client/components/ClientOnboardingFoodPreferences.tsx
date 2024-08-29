@@ -10,6 +10,7 @@ import {
   Select,
   SelectItem,
   Switch,
+  Selection,
 } from "@nextui-org/react";
 import { clientFoodAllergies } from "@/constants/client";
 import { cn } from "@/lib/cn";
@@ -24,11 +25,28 @@ export function ClientOnboardingFoodPreferences() {
   const updateOnboardingDetails = useOnboardingStore(
     (state) => state.updateOnboardingClientDetails,
   );
-
+  const [foodAllergiesType, setFoodAllergiesType] = useState<Selection>(
+    new Set(
+      onboardingDetails.foodAllergiesType
+        ? onboardingDetails.foodAllergiesType
+        : [],
+    ),
+  );
   const [foodPreferencesError, setFoodPreferencesError] = useState("");
   const [foodAllergiesError, setFoodAllergiesError] = useState("");
   const [confirmBtnDisable, setConfirmBtnDisable] = useState(false);
 
+  const setFoodAllergiesTypeOnBlur = () => {
+    console.log("foodValues", foodAllergiesType);
+    updateOnboardingDetails({
+      ...onboardingDetails,
+      foodAllergiesType: Array.from(foodAllergiesType).map(
+        (value) => value as string,
+      ),
+    });
+    setFoodPreferencesError("");
+    setConfirmBtnDisable(false);
+  };
   const inputsAreOk = () => {
     if (
       !onboardingDetails?.foodPreferences ||
@@ -123,37 +141,17 @@ export function ClientOnboardingFoodPreferences() {
               variant="bordered"
               placeholder="Select your allergies"
               isRequired
-              value={
-                onboardingDetails.foodAllergiesType
-                  ? onboardingDetails.foodAllergiesType
-                  : ""
-              }
-              defaultSelectedKeys={
-                onboardingDetails.foodAllergiesType
-                  ? [onboardingDetails.foodAllergiesType]
-                  : []
-              }
-              color={foodAllergiesError ? "danger" : "primary"}
+              selectedKeys={foodAllergiesType}
+              color={foodAllergiesError ? "danger" : "default"}
               errorMessage={foodAllergiesError}
               isInvalid={!!foodAllergiesError}
               selectionMode="multiple"
-              onChange={(event) => {
-                updateOnboardingDetails({
-                  ...onboardingDetails,
-                  foodAllergiesType: event.target.value,
-                });
-                setFoodAllergiesError("");
-                setConfirmBtnDisable(false);
-              }}
+              onSelectionChange={setFoodAllergiesType}
+              onBlur={setFoodAllergiesTypeOnBlur}
             >
-              {clientFoodAllergies.map((alergy) => (
-                <SelectItem
-                  key={alergy}
-                  value={alergy}
-                  textValue={alergy}
-                  className="bg-background"
-                >
-                  {alergy}
+              {clientFoodAllergies.map((allergy) => (
+                <SelectItem key={allergy} value={allergy} textValue={allergy}>
+                  {allergy}
                 </SelectItem>
               ))}
             </Select>

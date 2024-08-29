@@ -66,7 +66,6 @@ export async function updateSession(request: NextRequest) {
       new URL(ApplicationLinks.dashboard.link, request.url),
     );
   }
-  console.log("user:", user);
 
   const onboardingPaths = [
     ApplicationLinks.dashboard.link,
@@ -81,24 +80,25 @@ export async function updateSession(request: NextRequest) {
       .from("users")
       .select("hasOnboarding")
       .eq("id", user?.id);
-    console.log("usersProfile:", usersProfile);
-    console.log("error:", error);
+
     const userProfile = usersProfile?.length ? usersProfile[0] : null;
-    console.log("userProfile", userProfile);
 
     if (
       user &&
       !userProfile?.hasOnboarding &&
-      (request.nextUrl.pathname === ApplicationLinks.onboarding.link ||
-        onboardingPaths.includes(request.nextUrl.pathname))
+      onboardingPaths.includes(request.nextUrl.pathname)
     ) {
       return NextResponse.redirect(
-        new URL(
-          request.nextUrl.pathname === ApplicationLinks.onboarding.link
-            ? ApplicationLinks.dashboard.link
-            : ApplicationLinks.onboarding.link,
-          request.url,
-        ),
+        new URL(ApplicationLinks.onboarding.link, request.url),
+      );
+    }
+    if (
+      user &&
+      userProfile?.hasOnboarding &&
+      request.nextUrl.pathname === ApplicationLinks.onboarding.link
+    ) {
+      return NextResponse.redirect(
+        new URL(ApplicationLinks.dashboard.link, request.url),
       );
     }
   }
